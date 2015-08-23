@@ -1,0 +1,49 @@
+<!--                                       -->
+<!-- Overzicht Soortbetaling = tariefsoort -->
+<!-- 20150816 onnodige div verwijderd     -->
+<!--                                      -->
+<h3>Overzicht Tariefsoorten</h3>
+<hr/>
+<div>
+  <a ui-sref="home"        class="btn btn-lg btn-success">Terug</a>
+  <a ui-sref="createSoortBetaling" class="btn btn-lg btn-primary">Nieuw</a>
+  <!-- <button ng-click="clickGet()"   class="btn btn-lg btn-primary">Zoeken</button> -->
+  <!-- <button ng-click="clickCancel()" class="btn btn-lg btn-primary">Doe iets</button> -->
+  <!-- <button ng-click="delSoortBetaling()" class="btn btn-lg btn-primary">Verwijder</button> -->
+  <br><br>
+  <!-- <p>
+    Filter : <input type="text" size="10" height="28" ng-model="filter.soortbetaling" class="input-lg" placeholder="SoortBetaling..."/>
+    <input type="text" size="10" ng-model="filter.omschrijving" class="input-lg" placeholder="Omschrijving..." />
+    <button class="btn btn-lg btn-primary" ng-click="clearFilter();">Clear</button>
+  </p> -->
+  <div class="person-grid">
+    <scrollable-table watch="soortbetaling" watch-cols="display">
+      <table class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr>
+             <!-- <th><center><input type="checkbox" ng-change="checkAll(selectedAll);" ng-model="selectedAll" ng-true-value="true" ng-false-value="false" /></center></th> -->
+            <th col="soortbetaling"   ng-if="display.soortbetalingSoortBetaling"><a href="javascript:void(0);" ng-click="clickSort('SoortBetaling', !reverse)">SoortBetaling</a></th>
+            <th col="omschrijving"    ng-if="display.soortbetalingOmschrijving"><a href="javascript:void(0);" ng-click="clickSort('Omschrijving', !reverse)">Omschrijving</a></th>
+            <th col="bedrag"          ng-if="display.soortbetalingBedrag"><a href="javascript:void(0);" ng-click="clickSort('Bedrag', !reverse)">Bedrag</a></th>
+            <th col="aantaltermijnen" ng-if="display.soortbetalingAantalTermijnen"><a href="javascript:void(0);" ng-click="clickSort('AantalTermijnen', !reverse)">Aantal Termijnen</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- orderBy kan op meerdere velden -->
+          <tr ng-repeat="soortbetalings in soortbetaling | orderBy: mySort : reverse
+          | filter : { SoortBetaling: filter.soortbetaling, Omschrijving: filter.omschrijving } as numResults" ng-click="goViewSoortBetaling(soortbetalings.SoortBetaling)">
+          <!--  <td style="width:100px"><center><input type="checkbox" ng-checked="selection.indexOf(soortbetalings.id) > -1" ng-click="toggleSelection(soortbetalings.soortbetaling)" ng-model="selected" value="{{soortbetalings.soortbetaling}}"  /></center></td>  -->
+            <td ng-if="display.soortbetalingSoortBetaling">{{ soortbetalings.SoortBetaling }}</td>
+            <td ng-if="display.soortbetalingOmschrijving">{{ soortbetalings.Omschrijving }}</td>
+            <td ng-if="display.soortbetalingBedrag">{{ soortbetalings.Bedrag }}</td>
+            <td ng-if="display.soortbetalingAantalTermijnen">{{ soortbetalings.AantalTermijnen }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </scrollable-table>
+  </div>
+  <div ng-if="numResults.length === 0">
+    <strong>Geen resultaten gevonden...</strong>
+  </div>
+</div>
+<hr/>

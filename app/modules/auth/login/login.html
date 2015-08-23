@@ -1,0 +1,21 @@
+<form method="post" ng-submit='login()' class="loginform">
+  <div class="inner">
+    <h4>Login to your account</h4>
+    <div class="field_text">
+      <label class="label_title">Username</label>
+      <input type="text" ng-model="auth.username" class="required" value="" placeholder="Username" required />
+      <span class="input_icon input_email"></span>
+    </div>
+    <div class="field_text">
+      <label class="label_title">Password</label>
+      <input type="password" ng-model="auth.password" class="required" value="" placeholder="Password" required />
+      <span class="input_icon input_pass"></span>
+    </div>
+    <div ng-if="error">{{error}}</div>
+  </div>
+  <div class="rowSubmit">
+    <button class="btn btn-success btn-icon" type="submit">
+      <span id="login-submit"><i></i>Sign In</span>
+    </button>
+  </div>
+</form>

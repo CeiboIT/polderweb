@@ -1,0 +1,29 @@
+<div>
+  <div class="jumbotron">
+    <h1>Nieuwe kenmerk toevoegen</h1>
+    <form ng-submit="addKenmerk(form)" name="form" novalidate>
+      <div class="row">
+        <div class="col-xs-4">
+          <div class="form-group" ng-class="{'has-error':form.kenmerk.$invalid && submitted}">
+            <input type="text" ng-model="kenmerks.kenmerk" name="kenmerk"
+                   class="form-control input-lg"
+                   placeholder="kenmerks" required />
+            <p class="help-block" ng-show="form.kenmerks.$error.required && submitted">
+              This input is required
+            </p>
+          </div>
+          <div class="form-group" ng-class="{'has-error':form.omschrijving.$invalid && submitted}">
+            <input type="text" ng-model="kenmerks.omschrijving" name="omschrijving"
+                   class="form-control input-lg" placeholder="omschrijving" required/>
+            <p class="help-block" ng-show="form.omschrijving.$error.required && submitted">
+              This input is required
+            </p>
+          </div>
+          <button class="btn btn-lg btn-primary" type="submit">Toevoegen</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <hr/>
+  <a ui-sref="adminKenmerk" class="btn btn-lg btn-warning">Annuleren</a>
+</div>

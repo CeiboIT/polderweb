@@ -1,0 +1,48 @@
+<!--                                     -->
+<!-- Overzicht Mutreden                 -->
+<!-- 20150816 onnodige div verwijderd    -->
+<!--                                     -->
+<h3>Overzicht Mutatie-redenen</h3>
+<hr/>
+<div>
+  <a ui-sref="home"              class="btn btn-lg btn-success">Terug</a>
+  <a ui-sref="createMutReden"    class="btn btn-lg btn-primary">Nieuw</a>
+  <!-- <button ng-click="clickGet()"  class="btn btn-lg btn-primary">Zoeken</button> -->
+  <!-- <button ng-click="clickCancel()" class="btn btn-lg btn-primary">Doe iets</button> -->
+  <!-- <button ng-click="delMutReden()" class="btn btn-lg btn-primary">Verwijder</button> -->
+  <br><br>
+  <p>
+    Filter : <input type="text" size="10" height="28" ng-model="filter.soortmut"     class="input-lg" placeholder="Soort Mutatie..."/>
+             <input type="text" size="10"             ng-model="filter.mutreden"     class="input-lg" placeholder="Mutatiereden..." />
+             <input type="text" size="10"             ng-model="filter.omschrijving" class="input-lg" placeholder="Omschrijving..." />
+    <button class="btn btn-lg btn-primary" ng-click="clearFilter();">Clear</button>
+  </p>
+  <div class="person-grid">
+    <scrollable-table watch="mutreden" watch-cols="display">
+      <table class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr>
+             <!-- <th><center><input type="checkbox" ng-change="checkAll(selectedAll);" ng-model="selectedAll" ng-true-value="true" ng-false-value="false" /></center></th> -->
+            <th col="soortmut" ng-if="display.mutredenSoortMut"><a href="javascript:void(0);" ng-click="clickSort('SoortMut', !reverse)">Soort Mutatie</a></th>
+            <th col="mutreden" ng-if="display.mutredenMutReden"><a href="javascript:void(0);" ng-click="clickSort('MutReden', !reverse)">MutReden</a></th>
+            <th col="omschrijving" ng-if="display.mutredenOmschrijving"><a href="javascript:void(0);" ng-click="clickSort('Omschrijving', !reverse)">Omschrijving</a></th>
+            <th col="stopfactureren" ng-if="display.mutredenStopFactureren"><a href="javascript:void(0);" ng-click="clickSort('StopFactureren', !reverse)">Stop Factureren</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="mutredens in mutreden | orderBy: mySort : reverse | filter : { SoortMut: filter.soortmut, MutReden: filter.mutreden, Omschrijving: filter.omschrijving } as numResults" ng-click="goViewMutReden(mutredens.MutReden)">
+          <!--  <td style="width:100px"><center><input type="checkbox" ng-checked="selection.indexOf(mutredens.id) > -1" ng-click="toggleSelection(mutredens.mutreden)" ng-model="selected" value="{{mutredens.mutreden}}"  /></center></td>  -->
+            <td ng-if="display.mutredenSoortMut">{{ mutredens.SoortMut }}</td>
+            <td ng-if="display.mutredenMutReden">{{ mutredens.MutReden }}</td>
+            <td ng-if="display.mutredenOmschrijving">{{ mutredens.Omschrijving }}</td>
+            <td ng-if="display.mutredenStopFactureren">{{ mutredens.StopFactureren }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </scrollable-table>
+  </div>
+  <div ng-if="numResults.length === 0">
+    <strong>Geen resultaten gevonden...</strong>
+  </div>
+</div>
+<hr/>

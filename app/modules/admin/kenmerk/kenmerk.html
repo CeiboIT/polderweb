@@ -1,0 +1,47 @@
+<!--                                     -->
+<!-- Overzicht Kenmerken                 -->
+<!-- 20150816 onnodige div verwijderd    -->
+<!--                                     -->
+<h3>Overzicht Kenmerken</h3>
+<hr/>
+<div>
+  <a ui-sref="home"              class="btn btn-lg btn-success">Terug</a>
+  <a ui-sref="createKenmerk"      class="btn btn-lg btn-primary">Nieuw</a>
+  <!-- <button ng-click="clickGet()"  class="btn btn-lg btn-primary">Zoeken</button> -->
+  <!-- <button ng-click="clickCancel()" class="btn btn-lg btn-primary">Doe iets</button> -->
+  <!-- <button ng-click="delKenmerk()" class="btn btn-lg btn-primary">Verwijder</button> -->
+  <br><br>
+<!--
+  <p>
+    Filter : <input type="text" size="10" height="28" ng-model="filter.kenmerk" class="input-lg" placeholder="Kenmerk..."/>
+    <input type="text" size="10" ng-model="filter.omschrijving" class="input-lg" placeholder="Omschrijving..." />
+    <button class="btn btn-lg btn-primary" ng-click="clearFilter();">Clear</button>
+  </p>
+-->
+  <div class="person-grid">
+    <scrollable-table watch="kenmerk" watch-cols="display">
+      <table class="table table-bordered table-striped table-hover"> 
+        <thead>
+          <tr>
+            <!-- <th><center><input type="checkbox" ng-change="checkAll(selectedAll);" ng-model="selectedAll" ng-true-value="true" ng-false-value="false" /></center></th> -->
+            <th col="kenmerk" ng-if="display.kenmerkKenmerk"><a href="javascript:void(0);" ng-click="clickSort('Kenmerk', !reverse)">Kenmerk</a></th>
+            <th col="omschrijving" ng-if="display.kenmerkOmschrijving"><a href="javascript:void(0);" ng-click="clickSort('Omschrijving', !reverse)">Omschrijving</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- orderBy kan op meerdere velden -->
+          <tr ng-repeat="kenmerks in kenmerk | orderBy: mySort : reverse
+          | filter : { Kenmerk: filter.kenmerk, Omschrijving: filter.omschrijving } as numResults" ng-click="goViewKenmerk(kenmerks.Kenmerk)">
+          <!--  <td style="width:100px"><center><input type="checkbox" ng-checked="selection.indexOf(kenmerks.id) > -1" ng-click="toggleSelection(kenmerks.kenmerk)" ng-model="selected" value="{{kenmerks.kenmerk}}"  /></center></td>  -->
+          <td ng-if="display.kenmerkKenmerk">{{ kenmerks.Kenmerk }}</td>
+          <td ng-if="display.kenmerkOmschrijving">{{ kenmerks.Omschrijving }}</td> 
+          </tr>
+        </tbody>
+      </table>
+    </scrollable-table>
+  </div>
+  <div ng-if="numResults.length === 0">
+    <strong>Geen resultaten gevonden...</strong>
+  </div>
+</div>
+<hr/>

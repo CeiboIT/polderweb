@@ -1,0 +1,47 @@
+<!--                                     -->
+<!-- Overzicht Groepen                   -->
+<!-- 20150816 onnodige div verwijderd    -->
+<!--                                     -->
+<h3>Overzicht Tariefgroepen</h3>
+<hr/>
+<div>
+  <a ui-sref="home"              class="btn btn-lg btn-success">Terug</a>
+  <a ui-sref="createGroep"       class="btn btn-lg btn-primary">Nieuw</a>
+  <!-- <button ng-click="clickGet()"  class="btn btn-lg btn-primary">Zoeken</button> -->
+  <!-- <button ng-click="clickCancel()" class="btn btn-lg btn-primary">Doe iets</button> -->
+  <!-- <button ng-click="delGroep()" class="btn btn-lg btn-primary">Verwijder</button> -->
+  <br><br>
+  <p>
+    Filter : <input type="text" size="10" height="28" ng-model="filter.groep" class="input-lg" placeholder="Groep..."/>
+    <input type="text" size="10" ng-model="filter.omschrijving" class="input-lg" placeholder="Omschrijving..." />
+    <button class="btn btn-lg btn-primary" ng-click="clearFilter();">Clear</button>
+  </p>
+  <div class="person-grid">
+    <scrollable-table watch="groep" watch-cols="display">
+      <table class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr>
+             <!-- <th><center><input type="checkbox" ng-change="checkAll(selectedAll);" ng-model="selectedAll" ng-true-value="true" ng-false-value="false" /></center></th> -->
+            <th col="groep" ng-if="display.groepGroep"><a href="javascript:void(0);" ng-click="clickSort('Groep', !reverse)">Groep</a></th>
+            <th col="omschrijving" ng-if="display.groepOmschrijving"><a href="javascript:void(0);" ng-click="clickSort('Omschrijving', !reverse)">Omschrijving</a></th>
+            <th col="periode" ng-if="display.groepPeriode"><a href="javascript:void(0);" ng-click="clickSort('Periode', !reverse)">Periode</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- orderBy kan op meerdere velden -->
+          <tr ng-repeat="groeps in groep | orderBy: mySort : reverse
+          | filter : { Groep: filter.groep, Omschrijving: filter.omschrijving } as numResults" ng-click="goViewGroep(groeps.Groep)">
+          <!--  <td style="width:100px"><center><input type="checkbox" ng-checked="selection.indexOf(groeps.id) > -1" ng-click="toggleSelection(groeps.groep)" ng-model="selected" value="{{groeps.groep}}"  /></center></td>  -->
+            <td ng-if="display.groepGroep">{{ groeps.Groep }}</td>
+            <td ng-if="display.groepOmschrijving">{{ groeps.Omschrijving }}</td>
+            <td ng-if="display.groepPeriode">{{ groeps.Periode }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </scrollable-table>
+  </div>
+  <div ng-if="numResults.length === 0">
+    <strong>Geen resultaten gevonden...</strong>
+  </div>
+</div>
+<hr/>

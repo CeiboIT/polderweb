@@ -1,0 +1,33 @@
+<h3>Details Lidnr {{ pers.LidNr}} : {{pers.Voorletters}}  {{pers.Tussenvoegsel}} {{pers.Naam}} </h3>
+<hr/>
+<form ng-submit="clickSave(form)" name="form" novalidate>
+  <a ui-sref="adminPersoon" class="btn btn-lg btn-success">Terug </a>
+  <div class='pull-right mb10'>
+    <button type="button" ng-click="clickPre()"  class="btn btn-lg btn-success">Vorig</button>
+    <button type="button" ng-click="clickNext()" class="btn btn-lg btn-success">Volgende</button>
+  </div>
+  <hr/>
+  <div class="clearfix"></div>
+  <div class="jumbotron">
+<!--    <table class="table table-bordered table-striped table-hover"> -->
+    <table>
+      <tr><td> Lidnr </td>               <td><input type="text" readonly ng-model="pers.LidNr"          name="lidnr"          class="form-control input-lg" placeholder="Lidnr"         required/><p class="help-block" ng-show="form.lidnr.$error.required && submitted">This input is required</p></td></tr>
+      <tr><td> Naam </td>                <td><input type="text"          ng-model="pers.Naam"           name="naam"           class="form-control input-lg" placeholder="Naam"          required/><p class="help-block" ng-show="form.naam.$error.required && submitted">This input is required</p></td></tr>
+      <tr><td> Voornaam </td>            <td><input type="text"          ng-model="pers.Voornaam"       name="voornaam"       class="form-control input-lg" placeholder="Voornaam" />             <p class="help-block" ng-show="form.voornaam.$error.required && submitted">This input is required</p></td></tr>
+      <tr><td> Voorletters </td>         <td><input type="text"          ng-model="pers.Voorletters"    name="voorletters"    class="form-control input-lg" placeholder="Voorletters" />          <p class="help-block" ng-show="form.voorletters.$error.required && submitted">This input is required</p></td></tr>
+      <tr><td> Tussenvoegsel&nbsp;&nbsp;</td><td><input type="text"      ng-model="pers.Tussenvoegsel"  name="tussenvoegsel"  class="form-control input-lg" placeholder="Tussenvoegsel" />        <p class="help-block" ng-show="form.tussenvoegsel.$error.required && submitted">This input is required</p></td></tr>
+      <tr><td> Straat </td>              <td><input type="text"          ng-model="pers.Straat"         name="straat"         class="form-control input-lg" placeholder="Straat"   />             <p class="help-block" ng-show="form.straat.$error.required && submitted">This input is required</p></td></tr>
+      <tr><td> HuisNr </td>              <td><input type="text"          ng-model="pers.HuisNr"         name="huisnr"         class="form-control input-lg" placeholder="Huisnr"   />             <p class="help-block" ng-show="form.huisnr.$error.required && submitted">This input is required</p></td></tr>
+      <tr><td> Postcode </td>            <td><input type="text"          ng-model="pers.Postcode"       name="postcode"       class="form-control input-lg" placeholder="Postcode" />             <p class="help-block" ng-show="form.postcode.$error.required && submitted">This input is required</p></td></tr>
+      <tr><td> Plaats </td>              <td><input type="text"          ng-model="pers.Plaats"         name="plaats"         class="form-control input-lg" placeholder="Plaats"   />             <p class="help-block" ng-show="form.plaats.$error.required && submitted">This input is required</p></td></tr>
+      <tr><td> DatumGeb </td>            <td><input type="text"          ng-model="pers.DatumGeb"       name="datumgeb"       class="form-control input-lg" placeholder="Datum geboren" />        <p class="help-block" ng-show="form.datumgeb.$error.required && submitted">This input is required</p></td></tr>
+      <tr><td> Leeftijd </td>            <td><input type="text" readonly ng-model="pers.Leeftijd"       name="leeftijd"       class="form-control input-lg" placeholder="Leeftijd" />             <p class="help-block" ng-show="form.leeftijd.$error.required && submitted">This input is required</p></td></tr>
+    </table>
+  </div>
+  <hr/>
+  <!-- <a href="#/home" class="btn btn-lg btn-success">Home</a> -->
+  <button type="submit"                          class="btn btn-lg btn-primary"> Opslaan </button>
+  <button type="button" ng-click="clickCancel()" class="btn btn-lg btn-primary">Annuleer</button>
+  <button type="button" ng-click="clickDel()"    class="btn btn-lg btn-success">Verwijder</button>
+  <hr/>
+</form>

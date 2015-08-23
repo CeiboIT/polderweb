@@ -1,0 +1,48 @@
+<!--                                     -->
+<!-- Overzicht Waarden                   -->
+<!-- 20150816 onnodige div verwijderd    -->
+<!--                                     -->
+<h3>Overzicht Waardes per Kenmerk</h3>
+<hr/>
+<div>
+  <a ui-sref="adminKenmerk"      class="btn btn-lg btn-success">Terug</a>
+  <a ui-sref="createKenmKode"    class="btn btn-lg btn-primary">Nieuw</a>
+  <!-- <button ng-click="clickGet()"  class="btn btn-lg btn-primary">Zoeken</button> -->
+  <!-- <button ng-click="clickCancel()" class="btn btn-lg btn-primary">Doe iets</button> -->
+  <!-- <button ng-click="delKenmKode()" class="btn btn-lg btn-primary">Verwijder</button> -->
+  <br><br>
+<!--
+  <p>
+    Filter : <input type="text" size="10" height="28" ng-model="filter.kenmkode" class="input-lg" placeholder="KenmKode..."/>
+    <input type="text" size="10" ng-model="filter.omschrijving" class="input-lg" placeholder="Omschrijving..." />
+    <button class="btn btn-lg btn-primary" ng-click="clearFilter();">Clear</button>
+  </p>
+-->
+  <h2>Kenmerk: {{kenmerk.Kenmerk}}</h2>
+  <hr/>
+  <div class="person-grid">
+    <scrollable-table watch="kenmkode" watch-cols="display">
+      <table class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr>
+            <!-- <th><center><input type="checkbox" ng-change="checkAll(selectedAll);" ng-model="selectedAll" ng-true-value="true" ng-false-value="false" /></center></th> -->
+            <th col="kode"         ng-if="display.kenmkodeKode">        <a href="javascript:void(0);" ng-click="clickSort('Kode', !reverse)">Kode</a></th>
+            <th col="omschrijving" ng-if="display.kenmkodeOmschrijving"><a href="javascript:void(0);" ng-click="clickSort('Omschrijving', !reverse)">Omschrijving</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- orderBy kan op meerdere velden -->
+          <tr ng-repeat="kenmkodes in kenmkode | orderBy: mySort : reverse
+          | filter : { Kode: filter.kode, Omschrijving: filter.omschrijving } as numResults" ng-click="goViewKenmKode(kenmkodes.Kenmerk, kenmkodes.Kode)">
+          <td ng-if="display.kenmkodeKode">{{ kenmkodes.Kode }}</td>
+          <td ng-if="display.kenmkodeOmschrijving">{{ kenmkodes.Omschrijving }}</td> 
+          </tr>
+        </tbody>
+      </table>
+    </scrollable-table>
+  </div>
+  <div ng-if="numResults.length === 0">
+    <strong>Geen resultaten gevonden...</strong>
+  </div>
+</div>
+<hr/>
