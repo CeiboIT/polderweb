@@ -27,9 +27,10 @@
     "angular-loading-bar": "~0.7",
     "angular-csv-import": "0.0.16",
     "angular-scrollable-table": "#master",
-    "angular-bootstrap-checkbox": "~0.3.1"
+    "angular-bootstrap-checkbox": "~0.3.1",
+    "angular-flash": "~0.1.14"
   },
   "resolutions": {
-    "angular": ">= 1.2.0"
+    "angular": "^1.4.0"
   }
 }

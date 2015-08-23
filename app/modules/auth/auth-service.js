@@ -1,4 +1,4 @@
-angular.module('polderweb')
+angular.module('polderweb.auth')
   .factory('authService', function ($location, $rootScope, $http, userService, $cookieStore, $q) {
     var currentUser = {};
     if ($cookieStore.get('token')) {

@@ -3,7 +3,7 @@ var pHeaderCtrl = function($element) {
 
 };
 
-angular.module('components.header', [])
+angular.module('pldr.components.header', [])
   .controller('pHeaderCtrl', pHeaderCtrl)
   .directive('pHeader', function(){
       return {

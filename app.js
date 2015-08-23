@@ -1,13 +1,19 @@
 angular.module('polderweb', [
-  'ui.utils',
-  'ui.router',
-  'ngAnimate',
-  'ui.bootstrap',
-  'ngCookies',
-  'ngSanitize',
-  'ngResource',
-  'scrollable-table',
-  'ui.checkbox'
+    'ui.utils',
+    'ui.router',
+    'ngAnimate',
+    'ui.bootstrap',
+    'ngCookies',
+    'ngSanitize',
+    'ngResource',
+    'scrollable-table',
+    'ui.checkbox',
+
+    //our components
+
+    //our modules
+    'polderweb.auth'
+
 ]);
 angular.module('polderweb').config(function ($urlRouterProvider) {
 

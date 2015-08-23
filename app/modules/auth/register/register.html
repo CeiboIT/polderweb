@@ -1,0 +1,40 @@
+<form method="post" ng-submit='ctrl.submit(ctrl.model)' class="loginform">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Register a new account</h4>
+        </div>
+        <div class="row">
+            <label class="label_title">Username</label>
+            <input type="text" ng-model="ctrl.model.username" class="required form-control" value="" placeholder="Username" required />
+            <span class="input_icon input_email"></span>
+        </div>
+        <div class="row">
+            <label class="label_title">Password</label>
+            <input type="password" ng-model="ctrl.model.password" class="required form-control" value="" placeholder="Password"
+                   ng-change="ctrl.comparePasswords(ctrl.model.password, ctrl.repeatPassword, ctrl)" required />
+            <span class="input_icon input_pass"></span>
+        </div>
+        <div class="row">
+            <label class="label_title">Repeat password</label>
+            <input type="password" ng-model="ctrl.repeatPassword" class="required form-control" value="" placeholder="Repeat password"
+                   ng-change="ctrl.comparePasswords(ctrl.model.password, ctrl.repeatPassword, ctrl)" required />
+            <span class="input_icon input_pass"></span>
+        </div>
+        <!-- Subscribe to error flash messages. -->
+
+        <div flash-alert
+             active-class="in"
+             class="alert row col-md-4 fade"
+             ng-class="{'alert-success' : flash.type == 'success', 'alert-danger': flash.type == 'error'}" duration="0">
+            <span class="alert-message">{{flash.message}}</span>
+        </div>
+
+        {{ ctrl.validPass}}
+
+    </div>
+    <div class="rowSubmit">
+        <button class="btn btn-success btn-icon" type="submit">
+            <span id="login-submit"><i></i>Sign In</span>
+        </button>
+    </div>
+</form>

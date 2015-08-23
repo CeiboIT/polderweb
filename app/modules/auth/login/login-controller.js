@@ -1,18 +1,22 @@
-angular.module('polderweb')
-  .controller('LoginCtrl',
-  function ($scope, authService,$state) {
-    if(authService.getToken()!=null){
-       $state.go('home');
-     }else{
-      $scope.auth = {};
-      $scope.login = function () {
-        authService.login($scope.auth, function(err){
-          if(err){
-            $scope.error=err.message;
-          }else{
+//use the array syntax or $injector for define a the controller function with his dependencies, or it will break when minified.
+
+var LoginCtrl = ['authService', '$state', 'flash',function (authService,$state, flash) {
+    var ctrl = this;
+    ctrl.login = function() {
+        //Todo refactor this with an http interceptor
+        if(authService.getToken()!=null){
             $state.go('home');
-          }
-        });
-      };
-     }
-    });
+        } else {
+            authService.login(ctrl.auth, function error(err){
+                if(err) {
+                    flash.error = err.message;
+                }else{
+                    $state.go('home');
+                }
+            })
+        }
+    };
+}];
+
+angular.module('polderweb.auth')
+  .controller('LoginCtrl', LoginCtrl);
