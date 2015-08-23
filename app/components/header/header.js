@@ -7,7 +7,7 @@ angular.module('components.header', [])
   .controller('pHeaderCtrl', pHeaderCtrl)
   .directive('pHeader', function(){
       return {
-          templateUrl: 'app/directives/header/header.html',
+          templateUrl: 'app/components/header/header.html',
           scope: {
               user: '='
           }, //isolate or not
