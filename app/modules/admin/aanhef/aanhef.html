@@ -26,6 +26,9 @@
             <!-- <th><center><input type="checkbox" ng-change="checkAll(selectedAll);" ng-model="selectedAll" ng-true-value="true" ng-false-value="false" /></center></th> -->
             <th col="aanhef"       ng-if="display.aanhefAanhef">      <a href="javascript:void(0);" ng-click="clickSort('Aanhef', !reverse)">Aanhef</a></th>
             <th col="omschrijving" ng-if="display.aanhefOmschrijving"><a href="javascript:void(0);" ng-click="clickSort('Omschrijving', !reverse)">Omschrijving</a></th>
+              <th>
+
+              </th>
           </tr>
         </thead>
         <tbody>
@@ -34,7 +37,8 @@
           | filter : { Aanhef: filter.aanhef, Omschrijving: filter.omschrijving } as numResults" ng-click="goViewAanhef(aanhefs.Aanhef)">
           <!--  <td style="width:100px"><center><input type="checkbox" ng-checked="selection.indexOf(aanhefs.id) > -1" ng-click="toggleSelection(aanhefs.aanhef)" ng-model="selected" value="{{aanhefs.aanhef}}"  /></center></td>  -->
           <td ng-if="display.aanhefAanhef">{{ aanhefs.Aanhef }}</td>
-          <td ng-if="display.aanhefOmschrijving">{{ aanhefs.Omschrijving }}</td> 
+          <td ng-if="display.aanhefOmschrijving">{{ aanhefs.Omschrijving }}</td>
+              <td style="width:50px"><button type="button" ng-click="ctrl.clickDel(aanhefs.Aanhef)" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></td>
           </tr>
         </tbody>
       </table>

@@ -1,13 +1,18 @@
 angular.module('polderweb')
   .controller('AanhefController',
    function ($rootScope, $scope, $state, Aanhef,aanhef,authService) {
+
+       var model = {
+           selection : []
+       };
+
     if(authService.getToken()==null){
        $state.go('login');
      }else{
        //start checkbox
       $rootScope.aanhef=aanhef;
-      $scope.selection=[];
-      $scope.toggleSelection = function toggleSelection(personId) {
+
+      function toggleSelection(personId) {
        var idx = $scope.selection.indexOf(personId);
        if (idx > -1) {
          $scope.selection.splice(idx, 1);
@@ -15,38 +20,36 @@ angular.module('polderweb')
        else {
          $scope.selection.push(personId);
        }
-      };
+      }
       //end start checkbox
 
-      $scope.clickSort=function(sortField, reverse){
+      function clickSort(sortField, reverse){
         $rootScope.mySort=sortField;
         $rootScope.reverse=reverse;
-      };
+      }
 
-      $scope.clickNew = function () {
+      function clickNew() {
         alert('Er is op nieuw geklikt!');
-      };
-      $scope.clickCancel = function () {
-        alert('Er is op Doe Iets geklikt!');
-      };
+      }
 
-      $scope.clickGet = function () {
+      function clickGet() {
         Aanhef.findAll();
-      };
+      }
 
-      $scope.goViewAanhef = function (aanhefId) {
+      function goViewAanhef (aanhefId) {
         $state.go('viewAanhef', {aanhefId: aanhefId});
       };
 
-      $scope.delAanhef=function(){
+      function delAanhef(){
         angular.forEach($scope.selection, function (aanhef) {
           _.remove($rootScope.aanhef,function(aanhefs){
             return aanhefs.aanhef===aanhef;
           });
         });
          $scope.selection=[];
-      };
-      $scope.checkAll=function(checked){
+      }
+
+      function checkAll(checked){
         if(checked){
           $scope.selected=checked;
           angular.forEach($scope.aanhef, function (aanhefs) {
@@ -56,49 +59,74 @@ angular.module('polderweb')
           $scope.selected=checked;
           $scope.selection=[];
         }
-      };
-      $scope.clearFilter=function(){
+      }
+
+      function clearFilter(){
         $scope.filter.aanhef="";
         $scope.filter.omschrijving="";
         $scope.display.aanhefAanhef=true;
         $scope.display.aanhefOmschrijving=true;
       }
-      $scope.viewAanhef=function(aanhefId){
+
+      function viewAanhef(aanhefId){
         $scope.detail = true;
         $scope.reg=Aanhef.getAanhef(aanhefId);
       }
-      $scope.clickSave = function (form) {
+      function clickSave (form) {
         $scope.submitted = true;
         if (form.$valid) {
           Aanhef.updateAanhef($scope.ah.aanhef, $scope.reg);
          // $state.go('home');
         }
-      };
-      $scope.clickDel = function () {
-        Aanhef.nextAanhef($scope.ah.aanhef,function (aanhefId) {
+      }
+
+      function clickDel(aanhef) {
+          var context = this;
+          console.log(aanhef);
+        Aanhef.nextAanhef(aanhef,function (aanhefId) {
           if (aanhefId) {
-            Aanhef.delAanhef($scope.ah.aanhef);
-            $scope.reg = aanhefId;
+            Aanhef.delAanhef(aanhef);
+           context.model.reg = aanhefId;
           }
         });
        // $state.go('home'); // Terug naar homepage
-      };
-      $scope.clickCancel = function () {
-        $scope.detail = false;
-      };
-      $scope.clickNext = function () {
-        Aanhef.nextAanhef($scope.ah.aanhef,function (aanhefId) {
-          if (aanhefId) {
-            $scope.reg = aanhefId;
+      }
+          function clickCancel() {
+            $scope.detail = false;
           }
-        });
-      };
-      $scope.clickPre = function () {
-        Aanhef.preAanhef($scope.ah.aanhef, function (aanhefId) {
-          if (aanhefId) {
-            $scope.per = aanhefId;
+
+          function clickNext () {
+            Aanhef.nextAanhef($scope.ah.aanhef,function (aanhefId) {
+              if (aanhefId) {
+                $scope.reg = aanhefId;
+              }
+            });
           }
-        });
-      };
+
+        function clickPre () {
+            Aanhef.preAanhef($scope.ah.aanhef, function (aanhefId) {
+              if (aanhefId) {
+                $scope.per = aanhefId;
+              }
+            });
+        }
+
+
+        angular.extend(this,{
+            model: model,
+            clickNext : clickNext,
+            clickPre: clickPre,
+            clickCancel: clickCancel,
+            toggleSelection: toggleSelection,
+            clickSort: clickSort,
+            clickNew : clickNew,
+            clickGet: clickGet,
+            delAanhef: delAanhef,
+            goViewAanhef: goViewAanhef,
+            clickSave: clickSave,
+            clickDel: clickDel,
+            checkAll : checkAll,
+            clearFilter : clearFilter
+        })
      }
     });
