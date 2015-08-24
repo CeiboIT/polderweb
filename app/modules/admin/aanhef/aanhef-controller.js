@@ -81,12 +81,11 @@ angular.module('polderweb')
       }
 
       function clickDel(aanhef) {
-          var context = this;
-          console.log(aanhef);
+
         Aanhef.nextAanhef(aanhef,function (aanhefId) {
           if (aanhefId) {
             Aanhef.delAanhef(aanhef);
-           context.model.reg = aanhefId;
+          $state.go('adminAanhef');
           }
         });
        // $state.go('home'); // Terug naar homepage
