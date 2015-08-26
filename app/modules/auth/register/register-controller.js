@@ -1,7 +1,7 @@
 var RegisterController= ['authService', 'flash', function(authService, flash) {
 
     var ctrlContext = this;
-    //var model
+    //our model that will interact with the api
     var auth = {
         username: '',
         password: ''
@@ -15,8 +15,6 @@ var RegisterController= ['authService', 'flash', function(authService, flash) {
     }
 
     function comparePasswords (val1, val2) {
-
-
         //Don't need to use it often
 
         if(!!val1 && !!val2) {
@@ -32,7 +30,7 @@ var RegisterController= ['authService', 'flash', function(authService, flash) {
             }
         }
 
-    };
+    }
 
     //A kind of "export" function, getting ready for angular 2.0 and more clever syntax
     //in this object we will choose which functions will be public
@@ -43,16 +41,6 @@ var RegisterController= ['authService', 'flash', function(authService, flash) {
     })
 
 }];
-
-/**
- * Created by mmasuyama on 8/23/2015.
- */
-//Dependencies are declared in an array for don't lost the reference when we minify the code.
-
-
-
-
-
 
 angular.module('polderweb.auth')
     .controller('RegisterController', RegisterController);
