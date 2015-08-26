@@ -1,34 +1,3 @@
-<!--<form method="post" ng-submit='ctrl.login()' class="loginform">
-  <div class="inner">
-    <h4>Login to your account</h4>
-    <div class="field_text">
-      <label class="label_title">Username</label>
-      <input type="text" ng-model="ctrl.auth.username" class="required" value="" placeholder="Username" required />
-      <span class="input_icon input_email"></span>
-    </div>
-    <div class="field_text">
-      <label class="label_title">Password</label>
-      <input type="password" ng-model="ctrl.auth.password" class="required" value="" placeholder="Password" required />
-      <span class="input_icon input_pass"></span>
-    </div>
-      <!-- Subscribe to error flash messages.
-      <div class="row">
-          <div flash-alert="error" active-class="in" class="alert alert-warning col-md-4 fade">
-              <span class="alert-message">{{flash.message}}</span>
-          </div>
-      </div>
-  </div>
-  <div class="rowSubmit">
-    <button class="btn btn-success btn-icon" type="submit">
-      <span id="login-submit"><i></i>Sign In</span>
-    </button>
-  <a class="btn btn-primary btn-icon" ui-sref="auth.register">
-      <span id="register"><i></i>Register</span>
-  </a>
-  </div>
-</form>
--->
-
 <div class="top-content">
 
     <div class="inner-bg">
@@ -65,11 +34,23 @@
                                 <input type="password" name="form-password" placeholder="Password..." ng-model="ctrl.auth.password" class="form-password form-control" id="form-password">
                             </div>
                             <button type="submit" class="btn">Sign in!</button>
+                            <br/>
+
                         </form>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 social-login">
+                        <h3>...or </h3>
+                        <div class="social-login-buttons">
+                            <a class="btn btn-link-1 btn-link-1-facebook" ui-sref="auth.register">
+                                Sign up
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>

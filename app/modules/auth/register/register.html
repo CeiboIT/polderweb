@@ -1,40 +1,87 @@
-<form method="post" ng-submit='ctrl.submit(ctrl.model)' class="loginform">
-    <div class="row">
-        <div class="col-md-12">
-            <h4>Register a new account</h4>
-        </div>
-        <div class="row">
-            <label class="label_title">Username</label>
-            <input type="text" ng-model="ctrl.model.username" class="required form-control" value="" placeholder="Username" required />
-            <span class="input_icon input_email"></span>
-        </div>
-        <div class="row">
-            <label class="label_title">Password</label>
-            <input type="password" ng-model="ctrl.model.password" class="required form-control" value="" placeholder="Password"
-                   ng-change="ctrl.comparePasswords(ctrl.model.password, ctrl.repeatPassword, ctrl)" required />
-            <span class="input_icon input_pass"></span>
-        </div>
-        <div class="row">
-            <label class="label_title">Repeat password</label>
-            <input type="password" ng-model="ctrl.repeatPassword" class="required form-control" value="" placeholder="Repeat password"
-                   ng-change="ctrl.comparePasswords(ctrl.model.password, ctrl.repeatPassword, ctrl)" required />
-            <span class="input_icon input_pass"></span>
-        </div>
-        <!-- Subscribe to error flash messages. -->
+<div class="top-content">
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text">
+                    <h1><strong>Poldersoft</strong> Sign up</h1>
+                    <div class="description">
+                        <p>
+                            Description for poldersoft
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-form name="registerForm" ng-submit="ctrl.submit(ctrl.model)">
+                <div class="col-sm-6 col-sm-offset-3 form-box">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h3>Sign up to our site</h3>
+                            <p>Enter your username, name, email and password to sign up:</p>
+                        </div>
+                        <div class="form-top-right">
+                            <i class="fa fa-key"></i>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <form role="form" action="" method="post" class="login-form">
+                            <div class="form-group">
+                                <label class="sr-only" for="form-username">Username</label>
+                                <input type="text" name="form-username" placeholder="Username..." ng-model="ctrl.model.username" class="form-username form-control" id="form-username" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-name">Name</label>
+                                <input type="text" name="form-name" placeholder="Name..." ng-model="ctrl.model.name" class="form-username form-control" id="form-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-name">Email</label>
+                                <input type="email" name="form-name" placeholder="Email..." ng-model="ctrl.model.email" class="form-username form-control" id="form-name" required>
+                            </div>
 
-        <div flash-alert
-             active-class="in"
-             class="alert row col-md-4 fade"
-             ng-class="{'alert-success' : flash.type == 'success', 'alert-danger': flash.type == 'error'}" duration="0">
-            <span class="alert-message">{{flash.message}}</span>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-password">Password</label>
+                                <input type="password" name="form-password" placeholder="Password..." ng-model="ctrl.model.password"
+                                       class="form-password form-control"
+                                       ng-change="ctrl.comparePasswords(ctrl.model.password, ctrl.repeatPassword, ctrl)"
+                                       id="form-password"
+                                       required
+                                    >
+                            </div>
+
+                            <div class="form-group">
+                                <label class="sr-only" for="form-password">Repeat password</label>
+                                <input type="password" name="form-password" placeholder="Repeat password..." ng-model="ctrl.repeatPassword"
+                                       ng-change="ctrl.comparePasswords(ctrl.model.password, ctrl.repeatPassword, ctrl)"
+                                       class="form-password form-control"
+                                       id="form-password"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <div flash-alert
+                                     active-class="in"
+                                     class="alert col-md-offset-3 col-md-6 fade"
+                                     ng-class="{'alert-success' : flash.type == 'success', 'alert-danger': flash.type == 'error'}" duration="0">
+                                    <span class="alert-message">{{flash.message}}</span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-sign-up">Sign up!</button>
+                            <br/>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 social-login">
+                        <h3>...or </h3>
+                        <div class="social-login-buttons">
+                            <a class="btn btn-link-1 btn-link-1-google-plus" ui-sref="auth.login">
+                                Login
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-
-
     </div>
-    <div class="rowSubmit">
-        <button class="btn btn-success btn-icon" type="submit">
-            <span id="login-submit"><i></i>Sign In</span>
-        </button>
-    </div>
-</form>
+</div>
+
