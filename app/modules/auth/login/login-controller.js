@@ -4,17 +4,18 @@ var LoginCtrl = ['authService', '$state', 'flash',function (authService,$state, 
     var ctrl = this;
     ctrl.login = function() {
         //Todo refactor this with an http interceptor
-        if(authService.getToken()!=null){
-            $state.go('home');
-        } else {
+// temporary 20150826 couldn't pass login
+//        if(authService.getToken()!=null){
+//            $state.go('home');
+//        } else {
             authService.login(ctrl.auth, function error(err){
                 if(err) {
                     flash.error = err.message;
-                }else{
-                    $state.go('home');
+//                }else{
+//                    $state.go('home');
                 }
             })
-        }
+//        }
     };
 }];
 

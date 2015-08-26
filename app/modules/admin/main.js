@@ -1,6 +1,10 @@
 angular.module('polderweb')
   .config(function ($stateProvider) {
     $stateProvider
+ // --------------------------------------------------------------------------------- 
+ .state('adminUser', { url:'/admin/user',                                    templateUrl:'app/modules/admin/user/user.html',                                               controller:'UserController', resolve: { user: function (User) { return User.findAll(); } } })
+ .state('createUser',{ url:'/admin/user/create',                             templateUrl:'app/modules/admin/user/create-user/create-user.html',                            controller:'createUserCtrl' })
+ .state('viewUser',  { url:'/admin/user/:userId',                            templateUrl:'app/modules/admin/user/view-user/view-user.html',                                controller:'viewUserCtrl' })
  // ---------------------------------------------------------------------------------
  .state('adminRegio', { url:'/admin/regio',                                  templateUrl:'app/modules/admin/regio/regio.html',                                             controller:'RegioController', resolve: { regio: function (Regio) { return Regio.findAll(); } } })
  .state('createRegio',{ url:'/admin/regio/create',                           templateUrl:'app/modules/admin/regio/create-regio/create-regio.html',                         controller:'createRegioCtrl' })
