@@ -43,6 +43,7 @@ angular.module('polderweb')
 
         return deferred.promise;
       },
+
       /**
        * Delete access token and user info
        *
@@ -53,6 +54,7 @@ angular.module('polderweb')
         currentUser = {};
         updateCurrentUser(currentUser);
       },
+
       /**
        * Create a new user
        *
@@ -74,6 +76,7 @@ angular.module('polderweb')
             return cb(err);
           }.bind(this)).$promise;
       },
+
       /**
        * Change password
        *
@@ -94,6 +97,7 @@ angular.module('polderweb')
           return cb(err);
         }).$promise;
       },
+
       /**
        * Gets all available info on authenticated user
        *
@@ -102,6 +106,7 @@ angular.module('polderweb')
       getCurrentUser: function () {
         return currentUser;
       },
+
       /**
        * Check if a user is logged in
        *
@@ -110,6 +115,7 @@ angular.module('polderweb')
       isLoggedIn: function () {
         return currentUser.hasOwnProperty('role');
       },
+
       /**
        * Waits for currentUser to resolve before checking if user is logged in
        */
@@ -126,6 +132,7 @@ angular.module('polderweb')
           cb(false);
         }
       },
+
       /**
        * Check if a user is an admin
        *
@@ -134,12 +141,15 @@ angular.module('polderweb')
       isAdmin: function () {
         return currentUser.role === 'admin';
       },
+
       /**
        * Get auth token
        */
       getToken: function () {
-        return $cookieStore.get('token');
+//20150826 temp        return $cookieStore.get('token');
+        return 'ABCDEF';
       },
+
       recoverPassword: function (email, callback) {
         var cb = callback || angular.noop;
         var deferred = $q.defer();
@@ -158,6 +168,7 @@ angular.module('polderweb')
 
         return deferred.promise;
       },
+
       confirmResetPasswordToken: function (token, callback) {
         var cb = callback || angular.noop;
         var deferred = $q.defer();

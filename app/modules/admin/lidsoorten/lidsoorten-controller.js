@@ -1,10 +1,11 @@
 angular.module('polderweb')
   .controller('LidsoortenController',
-     function ($rootScope, $scope, $state, Soortlid,soortlid,authService) {
+     function ($rootScope, $scope, $state, Soortlid, soortlid, authService) {
       if(authService.getToken()==null){
         $state.go('login');
      }else{
-           //start checkbox
+
+	 //start checkbox
       $rootScope.soortl=soortlid;
       //$scope.soortl=soortlid;
       $scope.selection=[];
@@ -18,6 +19,7 @@ angular.module('polderweb')
        }
       };
       //end start checkbox
+
       $scope.clickSort=function(sortField, reverse){
         $rootScope.mySort=sortField;
         $rootScope.reverse=reverse;
@@ -33,7 +35,7 @@ angular.module('polderweb')
       $scope.clickGet = function () {
         Soortlid.findAll();
       };
-      //-----------------------------------------------------------------------------
+
       $scope.goViewSoortlid = function (soortlid) {
 		// console.log('soortlid1 ' + soortlid);
         $scope.detail = true;
@@ -48,7 +50,7 @@ angular.module('polderweb')
         // Deze verschijnt niet : console.log('soortlid3 ' + soortlid);
         $scope.so=Soortlid.getSoortlid(soortlid);
       }
-      //-----------------------------------------------------------------------------
+
       $scope.delSoortlid=function(){
         angular.forEach($scope.selection, function (soortlid) {
 

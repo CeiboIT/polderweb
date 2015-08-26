@@ -126,6 +126,7 @@ angular.module('polderweb.auth')
           cb(false);
         }
       },
+
       /**
        * Check if a user is an admin
        *
@@ -134,12 +135,15 @@ angular.module('polderweb.auth')
       isAdmin: function () {
         return currentUser.role === 'admin';
       },
+
       /**
        * Get auth token
        */
       getToken: function () {
-        return $cookieStore.get('token');
+//temp 20150826        return $cookieStore.get('token');
+        return 'ABCDEF';
       },
+
       recoverPassword: function (email, callback) {
         var cb = callback || angular.noop;
         var deferred = $q.defer();
