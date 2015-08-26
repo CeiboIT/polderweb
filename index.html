@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/bower_components/angular-notify/angular-notify.css" />
     <link rel="stylesheet" href="/bower_components/angular-loading-bar/build/loading-bar.css" />
     <link rel="stylesheet" href="app/components/angular-scrollable-table/scrollable-table.css" />
+      <link rel="stylesheet" href="app/modules/auth/form-elements.css" />
+      <link rel="stylesheet" href="app/modules/auth/style.css" />
     <link rel="stylesheet" href="app.css">
   </head>
   <body>
@@ -121,15 +123,11 @@
     <script src="app/services/persoon-service.js"></script>
 
     <div>
-      <p-header></p-header>
 
-      <div id="content" class="container">
-        <div class="row">
-          <div ui-view>
-          </div>
-        </div>
-      </div>
+        <div ui-view=""></div>
+
     </div>
+
     <script type="text/javascript">
 
     createService();

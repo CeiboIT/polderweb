@@ -1,4 +1,4 @@
-<form method="post" ng-submit='ctrl.login()' class="loginform">
+<!--<form method="post" ng-submit='ctrl.login()' class="loginform">
   <div class="inner">
     <h4>Login to your account</h4>
     <div class="field_text">
@@ -11,7 +11,7 @@
       <input type="password" ng-model="ctrl.auth.password" class="required" value="" placeholder="Password" required />
       <span class="input_icon input_pass"></span>
     </div>
-      <!-- Subscribe to error flash messages. -->
+      <!-- Subscribe to error flash messages.
       <div class="row">
           <div flash-alert="error" active-class="in" class="alert alert-warning col-md-4 fade">
               <span class="alert-message">{{flash.message}}</span>
@@ -27,3 +27,49 @@
   </a>
   </div>
 </form>
+-->
+
+<div class="top-content">
+
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text">
+                    <h1><strong>Poldersoft</strong> Login</h1>
+                    <div class="description">
+                        <p>
+                           Description for poldersoft
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-form name="loginForm" ng-submit="ctrl.login()">
+                <div class="col-sm-6 col-sm-offset-3 form-box">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h3>Login to our site</h3>
+                            <p>Enter your username and password to log on:</p>
+                        </div>
+                        <div class="form-top-right">
+                            <i class="fa fa-key"></i>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <form role="form" action="" method="post" class="login-form">
+                            <div class="form-group">
+                                <label class="sr-only" for="form-username">Username</label>
+                                <input type="text" name="form-username" placeholder="Username..." ng-model="ctrl.auth.username" class="form-username form-control" id="form-username">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-password">Password</label>
+                                <input type="password" name="form-password" placeholder="Password..." ng-model="ctrl.auth.password" class="form-password form-control" id="form-password">
+                            </div>
+                            <button type="submit" class="btn">Sign in!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
