@@ -28,7 +28,8 @@
     "angular-csv-import": "0.0.16",
     "angular-scrollable-table": "#master",
     "angular-bootstrap-checkbox": "~0.3.1",
-    "angular-flash": "~0.1.14"
+    "angular-flash": "~0.1.14",
+    "angular-ui-router-styles" : "*"
   },
   "resolutions": {
     "angular": "^1.4.0"

@@ -1,19 +1,22 @@
-angular.module('polderweb.auth', ['angular-flash.service', 'angular-flash.flash-alert-directive'])
+angular.module('polderweb.auth', ['angular-flash.service', 'angular-flash.flash-alert-directive','uiRouterStyles'])
   .config(function ($stateProvider) {
     $stateProvider
 
         .state('auth', {
             url: '/access',
             abstract: true,
-            template: '<div ui-view=""></div>'
+            template: '<div ui-view=""></div>',
+            data: {
+                css: ['app/modules/auth/form-elements.css', 'app/modules/auth/style.css']
+            }
         })
 
         .state('auth.login', {
         url: '/login',
         templateUrl: 'app/modules/auth/login/login.html',
         controller: 'LoginCtrl as ctrl'
-        })
 
+        })
         .state('auth.register', {
             url: '/register',
             templateUrl: 'app/modules/auth/register/register.html',
