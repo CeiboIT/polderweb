@@ -9,23 +9,23 @@ angular.module('polderweb')
       var myUser = new TUser();
       return {
         findAll: function () {
-			$rootScope.display.userUsername=true; 
+			$rootScope.display.userUsername=true;
 			$rootScope.display.userPasswrd=true;
 			var defer = $q.defer();
             userService.get().$promise.then(function(res){
                 myUser.fromObject({Bedrijf : 0
 				                 , Username : 'admin'
 								 , Passwrd : '123456'});
-          // Service.SvcUser("R", currentUser.username, myUser, function(result) { 
+          // Service.SvcUser("R", currentUser.username, myUser, function(result) {
           // we don't need a common username
-          Service.SvcUser("R", myUser, function(result) { 
+          Service.SvcUser("R", myUser, function(result) {
                 defer.resolve(result.toObject());
 //           alert(JSON.stringify(result.toObject()));
                 });
             });
              return defer.promise;
         },
-        // a user can only be found be specifying the right username + passwrd 
+        // a user can only be found be specifying the right username + passwrd
 
         getUser: function (userId) {
             var defer = $q.defer();
@@ -43,14 +43,39 @@ angular.module('polderweb')
             return defer.promise;
         },
 
-        addUser: function (User,Passwrd) {
+          checkUserName : function(userName) {
+
+              var checkUserNamePromise = $q.defer();
+
+              this.getUser(userName).then(function(result){
+                  if(result) {
+                      checkUserNamePromise.reject(true)
+                  }
+
+                  checkUserNamePromise.resolve(true);
+              });
+
+              return checkUserNamePromise.promise;
+
+          },
+
+        addUser: function (userData) {
+
+            var addUserPromise = $q.defer();
            userService.get().$promise.then(function(res){
                 myUser.fromObject({Bedrijf : res.bedrijf
-				                  ,Username : User
-								  ,Passwrd : Passwrd});
+				                  ,Username : userData.username
+								  ,Passwrd : userData.password
+                                    ,Email : userData.email
+                                    ,Name : userData.name
+                });
 //                Service.SvcUser("C", currentUser.username, myUser);
-                Service.SvcUser("C", myUser);
+                Service.SvcUser("C", myUser, function(result){
+                    addUserPromise.resolve(!!result.items && !!result.items[0]);
+                });
             });
+
+            return addUserPromise.promise;
         },
 
         updateUser:function(User,Passwrd){

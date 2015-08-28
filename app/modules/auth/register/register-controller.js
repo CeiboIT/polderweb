@@ -1,4 +1,4 @@
-var RegisterController= ['authService', 'flash', function(authService, flash) {
+var RegisterController= ['User', 'flash', function(User, flash) {
 
     var ctrlContext = this;
     //our model that will interact with the api
@@ -7,11 +7,29 @@ var RegisterController= ['authService', 'flash', function(authService, flash) {
         password: ''
     };
 
-    //Public methods.
+    //
+
+    function checkUserName (userName) {
+        User.checkUserName(userName)
+            .then(function success(result){
+                ctrlContext.validName = true;
+                flash.success = 'Username available'
+            }, function error(err){
+                ctrlContext.validName = false;
+                flash.error = 'Username already in use'
+            })
+    }
+
     function submit (data) {
-        authService.createUser(data, function callback(err) {
-            flash.error = err.data;
-        })
+        User.addUser(data)
+            .then(function(success){
+                if(success) {
+                    flash.success = 'Your account has been created with success'
+                }
+                else {
+                    flash.error = 'There was an error, please, retry later'
+                }
+            })
     }
 
     function comparePasswords (val1, val2) {
@@ -37,7 +55,8 @@ var RegisterController= ['authService', 'flash', function(authService, flash) {
     angular.extend(ctrlContext, {
         model: auth,
         comparePasswords: comparePasswords,
-        submit: submit
+        submit: submit,
+        checkUserName : checkUserName
     })
 
 }];

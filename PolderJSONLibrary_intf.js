@@ -311,6 +311,7 @@ __namespace.TUser = function TUser() {
     this.Passwrd = {dataType : "AnsiString", value : null};
     this.Token = {dataType : "AnsiString", value : null};
     this.Username = {dataType : "AnsiString", value : null};
+    this.Name = {dataType : "AnsiString", value : null};
 };
 __namespace.TUser.prototype = new RemObjects.SDK.ROStructType();
 __namespace.TUser.prototype.constructor = __namespace.TUser;
