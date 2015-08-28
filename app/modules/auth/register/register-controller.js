@@ -7,8 +7,6 @@ var RegisterController= ['User', 'flash', function(User, flash) {
         password: ''
     };
 
-    //
-
     function checkUserName (userName) {
         User.checkUserName(userName)
             .then(function success(result){
@@ -24,10 +22,10 @@ var RegisterController= ['User', 'flash', function(User, flash) {
         User.addUser(data)
             .then(function(success){
                 if(success) {
-                    flash.success = 'Your account has been created with success'
+                    flash.to("nameAvailability").success = 'Your account has been created with success'
                 }
                 else {
-                    flash.error = 'There was an error, please, retry later'
+                    flash.to("nameAvailability").error = 'There was an error, please, retry later'
                 }
             })
     }
@@ -37,14 +35,14 @@ var RegisterController= ['User', 'flash', function(User, flash) {
 
         if(!!val1 && !!val2) {
             if(val1 == val2) {
-                flash.error= '';
-                flash.success = 'The passwords are equals';
-                ctrlContext.invalidPass = false;
+
+                flash.to("passwordCheck").success = 'The passwords are equals';
+                ctrlContext.validPass = true;
 
             } else {
-                flash.error = 'The passwords are not equals';
-                flash.success= '';
-                ctrlContext.invalidPass = true;
+                flash.to("passwordCheck").error = 'The passwords are not equals';
+
+                ctrlContext.validPass = false;
             }
         }
 

@@ -25,13 +25,6 @@
                     <div class="form-bottom">
                         <form role="form" action="" method="post" class="login-form">
 
-                            <div flash-alert
-                                 active-class="in"
-                                 ng-show="flash.type"
-                                 class="form-group alert col-md-offset-3 col-md-6 fade"
-                                 ng-class="{'alert-success' : flash.type == 'success', 'alert-danger': flash.type == 'error'}" duration="0">
-                                <span class="alert-message">{{flash.message}}</span>
-                            </div>
 
                             <div class="form-group">
                                 <label class="sr-only" for="form-username">Username</label>
@@ -42,10 +35,27 @@
                                        ng-change="ctrl.checkUserName(ctrl.model.username)"
                                        id="form-username" required>
                             </div>
+                            <div flash-alert
+                                 active-class="in"
+                                 ng-show="flash.type"
+                                 class="form-group alert col-md-offset-3 col-md-6 fade"
+                                 ng-class="{'alert-success' : flash.type == 'success', 'alert-danger': flash.type == 'error'}" duration="0">
+                                <span class="alert-message">{{flash.message}}</span>
+                            </div>
+
                             <div class="form-group">
                                 <label class="sr-only" for="form-name">Name</label>
                                 <input type="text" name="form-name" placeholder="Name..." ng-model="ctrl.model.name" class="form-username form-control" id="form-name" required>
                             </div>
+                            <div flash-alert
+                                 id="nameAvailability"
+                                 active-class="in"
+                                 ng-show="flash.type"
+                                 class="form-group alert col-md-offset-3 col-md-6 fade"
+                                 ng-class="{'alert-success' : flash.type == 'success', 'alert-danger': flash.type == 'error'}" duration="0">
+                                <span class="alert-message">{{flash.message}}</span>
+                            </div>
+
                             <div class="form-group">
                                 <label class="sr-only" for="form-name">Email</label>
                                 <input type="email" name="form-name" placeholder="Email..." ng-model="ctrl.model.email" class="form-username form-control" id="form-name" required>
@@ -70,7 +80,16 @@
                                        required>
                             </div>
 
-                            <button type="submit" class="btn btn-sign-up" ng-disabled="registerForm.$invalid" >Sign up!</button>
+                            <div flash-alert
+                                 id="passwordCheck"
+                                 active-class="in"
+                                 ng-show="flash.type"
+                                 class="form-group alert col-md-offset-3 col-md-6 fade"
+                                 ng-class="{'alert-success' : flash.type == 'success', 'alert-danger': flash.type == 'error'}" duration="0">
+                                <span class="alert-message">{{flash.message}}</span>
+                            </div>
+
+                            <button type="submit" class="btn btn-sign-up" ng-disabled="registerForm.$invalid || !ctrl.validPass || !ctrl.validName" >Sign up!</button>
                             <br/>
                         </form>
                     </div>
