@@ -1,4 +1,4 @@
-angular.module('polderweb')
+angular.module('polderweb.user')
   .controller('viewUserCtrl',
     function ($scope, User, $state, $stateParams,authService) {
       if(authService.getToken()==null){

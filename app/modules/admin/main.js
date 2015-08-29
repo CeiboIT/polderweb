@@ -1,10 +1,21 @@
-angular.module('polderweb')
-  .config(function ($stateProvider) {
+angular.module('polderweb.admin', [
+    //submodules of admin modules
+    'polderweb.user'
+
+])
+    //configure the parent state for this module here
+    .constant('adminParentState', 'home')
+    //configuration
+  .config(function ($stateProvider, adminParentState) {
     $stateProvider
- // --------------------------------------------------------------------------------- 
- .state('adminUser', { url:'/admin/user',                                    templateUrl:'app/modules/admin/user/user.html',                                               controller:'UserController', resolve: { user: function (User) { return User.findAll(); } } })
- .state('createUser',{ url:'/admin/user/create',                             templateUrl:'app/modules/admin/user/create-user/create-user.html',                            controller:'createUserCtrl' })
- .state('viewUser',  { url:'/admin/user/:userId',                            templateUrl:'app/modules/admin/user/view-user/view-user.html',                                controller:'viewUserCtrl' })
+
+        .state('admin', {
+            url: '/admin',
+            parent: adminParentState,
+            template: '<div ui-view=""></div>',
+            abstract: true
+        })
+
  // ---------------------------------------------------------------------------------
  .state('adminRegio', { url:'/admin/regio',                                  templateUrl:'app/modules/admin/regio/regio.html',                                             controller:'RegioController', resolve: { regio: function (Regio) { return Regio.findAll(); } } })
  .state('createRegio',{ url:'/admin/regio/create',                           templateUrl:'app/modules/admin/regio/create-regio/create-regio.html',                         controller:'createRegioCtrl' })

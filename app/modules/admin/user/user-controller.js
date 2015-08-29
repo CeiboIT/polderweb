@@ -1,4 +1,4 @@
-angular.module('polderweb')
+angular.module('polderweb.user')
   .controller('UserController',
    function ($rootScope, $scope, $state, User,user,authService) {
     if(authService.getToken()==null){
@@ -94,14 +94,14 @@ angular.module('polderweb')
          var msg = confirm("Verwijderen ? J/N");
           if (msg == true) {
             User.delUser(userId);
-//            $state.go('adminUser'); 
+//            $state.go('adminUser');
           }
       };
 
       $scope.goViewUser = function (userId) {
         $state.go('viewUser', {userId: userId});
       };
-	  
+
 	  $scope.clickCancel = function () {
         $scope.detail = false;
       };

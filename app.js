@@ -12,7 +12,8 @@ angular.module('polderweb', [
     //our components
 
     //our modules
-    'polderweb.auth'
+    'polderweb.auth',
+    'polderweb.admin'
 
 ]);
 angular.module('polderweb').config(function ($urlRouterProvider) {
@@ -42,8 +43,12 @@ angular.module('polderweb').config(function ($urlRouterProvider) {
       }
     };
   })
-  .constant('GLOBALS', {
-    personUrl: 'data/persons.json',
-    regioUrl: 'data/regio.json',
-    soortlidUrl: 'data/soortlid.json'
-  });
+
+    .constant('loginState', 'auth.login')
+    .constant('homeState', 'home.init')
+    .constant('appParentState', 'home')
+    .constant('GLOBALS', {
+        personUrl: 'data/persons.json',
+        regioUrl: 'data/regio.json',
+        soortlidUrl: 'data/soortlid.json'
+    });
