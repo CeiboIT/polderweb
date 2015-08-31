@@ -17,10 +17,18 @@ angular.module('polderweb.auth', ['angular-flash.service', 'angular-flash.flash-
         controller: 'LoginCtrl as ctrl'
 
         })
+
         .state('auth.register', {
             url: '/register',
             templateUrl: 'app/modules/auth/register/register.html',
             controller: 'RegisterController as ctrl'
+        })
+
+
+        .state('auth.forgot', {
+            url: '/forgot',
+            templateUrl: 'app/modules/auth/forgot/forgot.html',
+            controller: 'ForgotController as ctrl'
         })
 
       .state('auth.logout', {

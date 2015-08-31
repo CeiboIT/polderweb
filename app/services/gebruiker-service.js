@@ -43,6 +43,24 @@ angular.module('polderweb')
             return defer.promise;
         },
 
+          getUserByMail : function(query) {
+              var getUserByMailPromise = $q.defer();
+
+                  myUser.fromObject({
+                     Bedrijf : 0,
+                      Email: query
+                  });
+
+              Service.SvcUser("R", myUser, function(result) {
+                  var data = _.find(result.toObject(), {'Email':query});
+                  defer.resolve(data);
+                  alert(JSON.stringify(data));
+              });
+
+
+              return getUserByMailPromise.promise;
+          },
+
           checkUserName : function(userName) {
 
               var checkUserNamePromise = $q.defer();
@@ -79,13 +97,27 @@ angular.module('polderweb')
         },
 
         updateUser:function(User,Passwrd){
-           userService.get().$promise.then(function(res){
+            var updateUserPromise = $q.defer();
+
+            userService.get().$promise.then(function(res){
                 myUser.fromObject({Bedrijf : res.bedrijf
-				                       ,Username : User
-									   ,Passwrd : Passwrd});
-//                Service.SvcUser("U", currentUser.username, myUser);
-                Service.SvcUser("U", myUser);
+                    ,Username : User
+                    ,Passwrd : Passwrd});
+
+                Service.SvcUser("U", myUser, function(result){
+
+                    if(result) {
+                        updateUserPromise.resolve(true)
+                    }
+
+                    updateUserPromise.reject(true);
+
+                });
             });
+
+            return updateUserPromise.promise;
+
+
         },
 
         delUser:function(User,Passwrd){

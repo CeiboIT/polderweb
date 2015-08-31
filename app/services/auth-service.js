@@ -1,5 +1,5 @@
 angular.module('polderweb')
-  .factory('authService', function ($location, $rootScope, $http, userService, $cookieStore, $q) {
+  .factory('authService', function ($location, $rootScope, $http, userService, $cookieStore, $q, User) {
     var currentUser = {};
     if ($cookieStore.get('token')) {
       currentUser = userService.get();
@@ -142,12 +142,22 @@ angular.module('polderweb')
         return currentUser.role === 'admin';
       },
 
+        /**
+         * Forgot password
+         */
+
+        forgotPassWord: function() {
+            User.getUser()
+
+            User.updateUser()
+        },
+
       /**
        * Get auth token
        */
       getToken: function () {
 //20150826 temp        return $cookieStore.get('token');
-        return 'ABCDEF';
+        return 'A';
       },
 
       recoverPassword: function (email, callback) {

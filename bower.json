@@ -24,16 +24,17 @@
     "angular-file-upload": "~1.1.5",
     "angular-sanitize": "^1.4.0",
     "angular-notify": "~2.5",
-    "angular-loading-bar": "~0.7",
     "angular-csv-import": "0.0.16",
     "angular-scrollable-table": "#master",
     "angular-bootstrap-checkbox": "~0.3.1",
     "angular-flash": "~0.1.14",
     "angular-ui-router-styles": "*",
-    "angular-busy": "*"
+    "angular-busy": "*",
+    "angular-loading-bar": "~0.8.0"
   },
   "resolutions": {
     "angular": "^1.4.0",
-    "angular-animate": "^1.4.0"
+    "angular-animate": "^1.4.0",
+    "angular-loading-bar": "~0.8.0"
   }
 }

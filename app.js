@@ -8,6 +8,7 @@ angular.module('polderweb', [
     'ngResource',
     'scrollable-table',
     'ui.checkbox',
+    'angular-loading-bar',
 
     //our components
 
@@ -16,10 +17,10 @@ angular.module('polderweb', [
     'polderweb.admin'
 
 ]);
-angular.module('polderweb').config(function ($urlRouterProvider) {
+angular.module('polderweb').config(function ($urlRouterProvider, loginUrl) {
 
   /* Add New States Above */
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise(loginUrl);
 
 })
   .run(function ($rootScope, Person,Soortlid,Regio) {
@@ -45,6 +46,7 @@ angular.module('polderweb').config(function ($urlRouterProvider) {
   })
 
     .constant('loginState', 'auth.login')
+    .constant('loginUrl', '/access/login')
     .constant('homeState', 'home.init')
     .constant('appParentState', 'home')
     .constant('GLOBALS', {
