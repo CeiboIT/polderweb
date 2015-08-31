@@ -60,6 +60,7 @@
     <script src="app/modules/admin/lidsoorten/create-lidsoorten/create-lidsoorten-controller.js"></script>
     <script src="app/modules/admin/lidsoorten/view-lidsoorten/view-lidsoorten-controller.js"></script>
 
+    <script src="app/modules/admin/aanhef/main.js"></script>
     <script src="app/modules/admin/aanhef/aanhef-controller.js"></script>
     <script src="app/modules/admin/aanhef/create-aanhef/create-aanhef-controller.js"></script>
     <script src="app/modules/admin/aanhef/view-aanhef/view-aanhef-controller.js"></script>
@@ -167,7 +168,7 @@
         }
 
         function connectToService() {
-            svcUrl += 'json'
+            svcUrl += 'json';
             Service = new PolderJSONService(svcUrl);
         }
 

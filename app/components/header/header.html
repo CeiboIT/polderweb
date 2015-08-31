@@ -2,7 +2,7 @@
   <div class="container container-wide">
     <div class="text-right">
       <div ng-if="user.id">
-        {{user.username}}, 
+        {{user.username}},
         <a ui-sref="logout">{{user.username}} in administratie {{user.bedrijf}} logout</a>
       </div>
       <div ng-if="!user.id"><a ui-sref="login">Login</a></div>
@@ -81,7 +81,7 @@
           <li><a></a></li>
         </ul>
       </li>
-      <li><a>Gebruikers</a></li>
+      <li><a ui-sref="user.list">Gebruikers</a></li>
     </ul>
   </div>
 </header>

@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('AanhefController',
-   function ($rootScope, $scope, $state, Aanhef,aanhef,authService) {
+   function ($rootScope, $scope, $state, Aanhef,aanhef,authService, homeState) {
 
        var model = {
            selection : []
@@ -37,7 +37,7 @@ angular.module('polderweb')
       }
 
       function goViewAanhef (aanhefId) {
-        $state.go('viewAanhef', {aanhefId: aanhefId});
+        $state.go('aanhef.view', {aanhefId: aanhefId});
       };
 
       function delAanhef(){
@@ -85,7 +85,7 @@ angular.module('polderweb')
         Aanhef.nextAanhef(aanhef,function (aanhefId) {
           if (aanhefId) {
             Aanhef.delAanhef(aanhef);
-          $state.go('adminAanhef');
+          $state.go(homeState);
           }
         });
        // $state.go('home'); // Terug naar homepage
@@ -107,6 +107,7 @@ angular.module('polderweb')
               if (aanhefId) {
                 $scope.per = aanhefId;
               }
+
             });
         }
 

@@ -2,13 +2,13 @@
   <div class="container container-wide">
     <div class="text-right">
       <div ng-if="user.id">
-        {{user.username}}, 
+        {{user.username}},
         <a ui-sref="logout">{{user.username}} in administratie {{user.bedrijf}} logout</a>
       </div>
       <div ng-if="!user.id"><a ui-sref="login">Login</a></div>
     </div>
     <ul class="menu-top">
-      <li><a>Dashboard</a></li>
+      <li><a ui-sref="home.init">Dashboard</a></li>
       <li>
         <a>Leden</a>
         <ul>
@@ -69,7 +69,7 @@
           <li><a ui-sref="adminLidsoorten">Soort Lid</a></li>
           <li><a ui-sref="adminGroep">Tariefgroepen</a></li>
           <li><a ui-sref="adminSoortBetaling">Tariefsoorten</a></li>
-          <li><a ui-sref="adminAanhef">Aanhef</a></li>
+          <li><a ui-sref="aanhef.list">Aanhef</a></li>
           <li><a ui-sref="adminKenmerk">Kenmerken</a></li>
           <li><a ui-sref="adminKenmKode">Waardes per Kenmerk</a></li>
           <li><a ui-sref="adminRegio">Regio's</a></li>
@@ -82,7 +82,7 @@
         </ul>
       </li>
 <!--      <li><a>Gebruikers</a></li> -->
-      <li><a ui-sref="adminUser">Gebruikers</a></li>
+        <li><a ui-sref="user.list">Gebruikers</a></li>
     </ul>
   </div>
 </header>

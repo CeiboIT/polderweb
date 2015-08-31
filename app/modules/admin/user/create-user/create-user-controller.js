@@ -8,7 +8,7 @@ angular.module('polderweb.user')
 	        $scope.submitted = true;
 	        if (form.$valid) {
                 User.addUser( $scope.users.user, $scope.users.passwrd);
-	          $state.go('adminUser'); // Terug naar homepage
+	          $state.go('user.list'); // Terug naar homepage
 	        }
     	}
          }

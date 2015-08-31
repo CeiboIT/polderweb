@@ -6,6 +6,8 @@ angular.module('polderweb')
      }else{
        //start checkbox
       $rootScope.categorie=categorie;
+      $scope.categorie = categorie;
+
       $scope.selection=[];
       $scope.toggleSelection = function toggleSelection(personId) {
        var idx = $scope.selection.indexOf(personId);

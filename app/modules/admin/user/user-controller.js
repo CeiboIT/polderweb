@@ -6,6 +6,7 @@ angular.module('polderweb.user')
      }else{
        //start checkbox
       $rootScope.user=user;
+      $scope.user=user;
       $scope.selection=[];
       $scope.toggleSelection = function toggleSelection(personId) {
        var idx = $scope.selection.indexOf(personId);
@@ -99,7 +100,7 @@ angular.module('polderweb.user')
       };
 
       $scope.goViewUser = function (userId) {
-        $state.go('viewUser', {userId: userId});
+        $state.go('user.view', {userId: userId});
       };
 
 	  $scope.clickCancel = function () {

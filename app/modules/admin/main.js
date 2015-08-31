@@ -1,6 +1,7 @@
 angular.module('polderweb.admin', [
     //submodules of admin modules
-    'polderweb.user'
+    'polderweb.user',
+    'polderweb.aanhef'
 
 ])
     //configure the parent state for this module here
@@ -25,10 +26,7 @@ angular.module('polderweb.admin', [
  .state('createSoortBetaling',{ url:'/admin/soortbetaling/create',           templateUrl:'app/modules/admin/soortbetaling/create-soortbetaling/create-soortbetaling.html', controller:'createSoortBetalingCtrl' })
  .state('viewSoortBetaling',  { url:'/admin/soortbetaling/:soortbetalingId', templateUrl:'app/modules/admin/soortbetaling/view-soortbetaling/view-soortbetaling.html',     controller:'viewSoortBetalingCtrl' })
  // ---------------------------------------------------------------------------------
- .state('adminAanhef', { url:'/admin/aanhef',                                templateUrl:'app/modules/admin/aanhef/aanhef.html',                                           controller:'AanhefController as ctrl', resolve: { aanhef: function (Aanhef) { return Aanhef.findAll(); } } })
- .state('createAanhef',{ url:'/admin/aanhef/create',                         templateUrl:'app/modules/admin/aanhef/create-aanhef/create-aanhef.html',                      controller:'createAanhefCtrl' })
- .state('viewAanhef',  { url:'/admin/aanhef/:aanhefId',                      templateUrl:'app/modules/admin/aanhef/view-aanhef/view-aanhef.html',                          controller:'viewAanhefCtrl' })
- // ---------------------------------------------------------------------------------
+
  .state('adminKenmerk', { url:'/admin/kenmerk',                              templateUrl:'app/modules/admin/kenmerk/kenmerk.html',                                         controller:'KenmerkController', resolve: { kenmerk: function (Kenmerk) { return Kenmerk.findAll(); } } })
  .state('createKenmerk',{ url:'/admin/kenmerk/create',                       templateUrl:'app/modules/admin/kenmerk/create-kenmerk/create-kenmerk.html',                   controller:'createKenmerkCtrl' })
  .state('viewKenmerk',  { url:'/admin/kenmerk/:kenmerkId',                   templateUrl:'app/modules/admin/kenmerk/view-kenmerk/view-kenmerk.html',                       controller:'viewKenmerkCtrl' })
@@ -60,9 +58,7 @@ angular.module('polderweb.admin', [
  .state('createMutReden',{ url:'/admin/mutreden/create', templateUrl:'app/modules/admin/mutreden/create-mutreden/create-mutreden.html', controller:'createMutRedenCtrl'})
  .state('viewMutReden' , { url:'/admin/mutreden/:mutredenId', templateUrl:'app/modules/admin/mutreden/view-mutreden/view-mutreden.html', controller:'viewMutRedenCtrl'})
  // ---------------------------------------------------------------------------------
- .state('adminCategorie', { url: '/admin/categorie', templateUrl: 'app/modules/admin/categorie/categorie.html', controller: 'CategorieController', resolve: { categorie: function (Categorie) { return Categorie.findAll(); } } })
- .state('createCategorie',{ url:'/admin/categorie/create', templateUrl:'app/modules/admin/categorie/create-categorie/create-categorie.html', controller:'createCategorieCtrl' })
- .state('viewCategorie',  { url:'/admin/categorie/:categorieId', templateUrl:'app/modules/admin/categorie/view-categorie/view-categorie.html', controller:'viewCategorieCtrl' })
+
  // ---------------------------------------------------------------------------------
  .state('adminLidsoorten', { url: '/admin/lidsoorten', templateUrl: 'app/modules/admin/lidsoorten/lidsoorten.html', controller: 'LidsoortenController', resolve: { soortlid: function (Soortlid) { return Soortlid.findAll(); } } })
  .state('createSoortlid',  { url:'/admin/lidsoorten/create', templateUrl:'app/modules/admin/lidsoorten/create-lidsoorten/create-lidsoorten.html', controller: 'createSoortLidCtrl' })
