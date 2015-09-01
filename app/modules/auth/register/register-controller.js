@@ -1,4 +1,5 @@
-var RegisterController= ['User', 'flash','$stateParams', function(User, flash, $stateParams) {
+var RegisterController= ['User', 'flash','$stateParams','passwordMinLength',
+    function(User, flash, $stateParams, passwordMinLength) {
 
     var ctrlContext = this;
     //our model that will interact with the api
@@ -60,7 +61,8 @@ var RegisterController= ['User', 'flash','$stateParams', function(User, flash, $
         model: auth,
         comparePasswords: comparePasswords,
         submit: submit,
-        checkUserName : checkUserName
+        checkUserName : checkUserName,
+        passwordMinLength : passwordMinLength
     })
 
 }];

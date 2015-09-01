@@ -1,5 +1,9 @@
 angular.module('polderweb.auth', ['angular-flash.service', 'angular-flash.flash-alert-directive','uiRouterStyles'])
-  .config(function ($stateProvider) {
+    .constant('passwordMinLength', 4)
+  .config(function ($stateProvider, flashProvider) {
+
+    flashProvider.errorClassnames.push('alert-danger');
+
     $stateProvider
 
         .state('auth', {
