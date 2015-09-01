@@ -1,6 +1,6 @@
 //use the array syntax or $injector for define a the controller function with his dependencies, or it will break when minified.
 
-var LoginCtrl = ['User', '$state', 'flash',function (User,$state, flash) {
+var LoginCtrl = ['User', '$state', 'flash','homeState',function (User,$state, flash, homeState) {
     var ctrl = this;
     ctrl.login = function() {
         //Todo refactor this with an http interceptor
@@ -15,20 +15,13 @@ var LoginCtrl = ['User', '$state', 'flash',function (User,$state, flash) {
                     flash.error = 'Invalid username'
                 } else {
                     if(data.Passwrd == ctrl.auth.password) {
-                        $state.go('home');
+                        $state.go(homeState);
                     } else {
                         flash.error = 'Invalid password'
                     }
                 }
             });
 
-            /*authService.login(ctrl.auth, function error(err){
-                if(err) {
-                    flash.error = err.message;
-//                }else{
-//                    $state.go('home');
-                }
-            })*/
 //        }
     };
 }];
