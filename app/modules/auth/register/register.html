@@ -34,6 +34,7 @@
                                        class="form-username form-control"
                                        ng-change="ctrl.checkUserName(ctrl.model.username)"
                                        id="form-username" required>
+                                <p ng-show="ctrl.suggestions.login">Would you like to <a ui-sref="auth.login({username: ctrl.model.username})">login</a>?</p>
                             </div>
                             <div flash-alert
                                  active-class="in"

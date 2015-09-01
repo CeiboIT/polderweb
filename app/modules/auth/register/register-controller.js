@@ -1,20 +1,26 @@
-var RegisterController= ['User', 'flash', function(User, flash) {
+var RegisterController= ['User', 'flash','$stateParams', function(User, flash, $stateParams) {
 
     var ctrlContext = this;
     //our model that will interact with the api
     var auth = {
-        username: '',
+        username: $stateParams.username || '',
         password: ''
     };
+
+    ctrlContext.suggestions = {};
 
     function checkUserName (userName) {
         User.checkUserName(userName)
             .then(function success(result){
                 ctrlContext.validName = true;
-                flash.success = 'Username available'
+                flash.success = 'Username available';
+                ctrlContext.suggestions = {};
             }, function error(err){
                 ctrlContext.validName = false;
-                flash.error = 'Username already in use'
+                flash.error = 'Username already in use';
+                ctrlContext.suggestions = {
+                    login : true
+                }
             })
     }
 

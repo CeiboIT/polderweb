@@ -1,20 +1,27 @@
-/**
- * Created by mmasuyama on 8/31/2015.
- */
-var ForgotController= ['User', 'flash', function(User, flash) {
+var ForgotController= ['User', 'flash','$stateParams' ,function(User, flash,$stateParams) {
 
     var ctrlContext = this;
+
+    ctrlContext.suggestions = {};
+
     //our model that will interact with the api
+
+
     var auth = {
-        username: '',
+        username: $stateParams.username || '',
         password: ''
     };
+
+
 
     function checkUserName (userName) {
         User.checkUserName(userName)
             .then(function error(err){
                 ctrlContext.validName= false;
-                flash.error = 'Username is not in use'
+                flash.error = 'Username is not in use';
+                ctrlContext.suggestions = {
+                    register: true
+                }
             }, function success(data){
                 ctrlContext.validName = true;
                 flash.success = 'The username is right'
@@ -42,6 +49,9 @@ var ForgotController= ['User', 'flash', function(User, flash) {
     })
 
 }];
+/**
+ * Created by mmasuyama on 8/31/2015.
+ */
 
 angular.module('polderweb.auth')
     .controller('ForgotController', ForgotController);

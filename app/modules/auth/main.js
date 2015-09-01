@@ -14,21 +14,31 @@ angular.module('polderweb.auth', ['angular-flash.service', 'angular-flash.flash-
         .state('auth.login', {
         url: '/login',
         templateUrl: 'app/modules/auth/login/login.html',
-        controller: 'LoginCtrl as ctrl'
+        controller: 'LoginCtrl as ctrl',
+        params: {
+            username : null
+        }
 
         })
 
         .state('auth.register', {
             url: '/register',
             templateUrl: 'app/modules/auth/register/register.html',
-            controller: 'RegisterController as ctrl'
+            controller: 'RegisterController as ctrl',
+            params: {
+                username : null
+            }
         })
 
 
         .state('auth.forgot', {
             url: '/forgot',
             templateUrl: 'app/modules/auth/forgot/forgot.html',
-            controller: 'ForgotController as ctrl'
+            controller: 'ForgotController as ctrl',
+            params: {
+                username : null
+            }
+
         })
 
       .state('auth.logout', {

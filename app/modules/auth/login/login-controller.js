@@ -1,8 +1,15 @@
 //use the array syntax or $injector for define a the controller function with his dependencies, or it will break when minified.
 
-var LoginCtrl = ['User', '$state', 'flash','homeState',function (User,$state, flash, homeState) {
+var LoginCtrl = ['User', '$state','$stateParams', 'flash','homeState',function (User,$state, $stateParams, flash, homeState) {
     var ctrl = this;
-    ctrl.login = function() {
+
+    ctrl.suggestions = {};
+
+    var model = {
+        username: $stateParams.username || ''
+    };
+
+    function login () {
         //Todo refactor this with an http interceptor
 // temporary 20150826 couldn't pass login
 //        if(authService.getToken()!=null){
@@ -13,17 +20,28 @@ var LoginCtrl = ['User', '$state', 'flash','homeState',function (User,$state, fl
 
                 if(!data) {
                     flash.error = 'Invalid username'
+                    ctrl.suggestions = {
+                        register: true
+                    }
                 } else {
                     if(data.Passwrd == ctrl.auth.password) {
                         $state.go(homeState);
                     } else {
                         flash.error = 'Invalid password'
+                        ctrl.suggestions = {
+                            forgot: true
+                        }
                     }
                 }
             });
 
 //        }
     };
+
+    angular.extend(ctrl,{
+        auth: model,
+        login: login
+    })
 }];
 
 angular.module('polderweb.auth')

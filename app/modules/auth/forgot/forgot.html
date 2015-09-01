@@ -40,9 +40,11 @@
                                        class="form-username form-control"
                                        ng-change="ctrl.checkUserName(ctrl.model.username)"
                                        id="form-username" required>
+
+                                <p ng-show="ctrl.suggestions.register">Would you like to <a ui-sref="auth.register({username : ctrl.model.username })">Register</a>?</p>
                             </div>
 
-                            <button type="submit" ng-disabled="loginForm.$invalid" class="btn">Recover!</button>
+                            <button type="submit" ng-disabled="forgotPassForm.$invalid" class="btn">Recover!</button>
                             <br/>
 
                         </form>
