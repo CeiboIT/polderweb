@@ -1,5 +1,5 @@
-var RegisterController= ['User', 'flash','$stateParams','passwordMinLength',
-    function(User, flash, $stateParams, passwordMinLength) {
+var RegisterController= ['User', 'flash','$stateParams','passwordMinLength', 'userMinLength',
+    function(User, flash, $stateParams, passwordMinLength,userMinLength) {
 
     var ctrlContext = this;
     //our model that will interact with the api
@@ -11,18 +11,22 @@ var RegisterController= ['User', 'flash','$stateParams','passwordMinLength',
     ctrlContext.suggestions = {};
 
     function checkUserName (userName) {
-        User.checkUserName(userName)
-            .then(function success(result){
-                ctrlContext.validName = true;
-                flash.success = 'Username available';
-                ctrlContext.suggestions = {};
-            }, function error(err){
-                ctrlContext.validName = false;
-                flash.error = 'Username already in use';
-                ctrlContext.suggestions = {
-                    login : true
-                }
-            })
+
+        if(userName.length >= userMinLength) {
+            User.checkUserName(userName)
+                .then(function success(result){
+                    ctrlContext.validName = true;
+                    flash.success = 'Username available';
+                    ctrlContext.suggestions = {};
+                }, function error(err){
+                    ctrlContext.validName = false;
+                    flash.error = 'Username already in use';
+                    ctrlContext.suggestions = {
+                        login : true
+                    }
+                })
+        }
+
     }
 
     function submit (data) {
@@ -62,7 +66,8 @@ var RegisterController= ['User', 'flash','$stateParams','passwordMinLength',
         comparePasswords: comparePasswords,
         submit: submit,
         checkUserName : checkUserName,
-        passwordMinLength : passwordMinLength
+        passwordMinLength : passwordMinLength,
+        userMinLength : userMinLength
     })
 
 }];
