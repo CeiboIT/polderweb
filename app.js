@@ -7,7 +7,7 @@ angular.module('polderweb', [
     'ngSanitize',
     'ngMessages',
     'ngResource',
-    'scrollable-table',
+    'smart-table',
     'ui.checkbox',
     'angular-loading-bar',
 
