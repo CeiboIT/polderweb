@@ -15,7 +15,10 @@ angular.module('polderweb.aanhef', [])
                 url:'/list',
                 templateUrl:'app/modules/admin/aanhef/aanhef.html',
                 controller:'AanhefController as ctrl',
-                resolve: { aanhef: function (Aanhef) { return Aanhef.findAll(); } }
+                resolve: { aanhefs: function (Aanhef) {
+                    return Aanhef.findAll();
+                    }
+                }
             })
             .state('aanhef.create',
             {

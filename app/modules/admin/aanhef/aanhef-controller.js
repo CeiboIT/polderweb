@@ -1,16 +1,19 @@
 angular.module('polderweb')
   .controller('AanhefController',
-   function ($rootScope, $scope, $state, Aanhef,aanhef,authService, homeState) {
+   function ($rootScope, $scope, $state, Aanhef,aanhefs,authService, homeState) {
 
        var model = {
-           selection : []
+           selection : [],
+           aanhefs: aanhefs
        };
+
+
 
     if(authService.getToken()==null){
        $state.go('login');
      }else{
        //start checkbox
-      $rootScope.aanhef=aanhef;
+
 
       function toggleSelection(personId) {
        var idx = $scope.selection.indexOf(personId);
@@ -35,10 +38,6 @@ angular.module('polderweb')
       function clickGet() {
         Aanhef.findAll();
       }
-
-      function goViewAanhef (aanhefId) {
-        $state.go('aanhef.view', {aanhefId: aanhefId});
-      };
 
       function delAanhef(){
         angular.forEach($scope.selection, function (aanhef) {
@@ -122,7 +121,6 @@ angular.module('polderweb')
             clickNew : clickNew,
             clickGet: clickGet,
             delAanhef: delAanhef,
-            goViewAanhef: goViewAanhef,
             clickSave: clickSave,
             clickDel: clickDel,
             checkAll : checkAll,

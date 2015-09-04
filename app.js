@@ -5,13 +5,14 @@ angular.module('polderweb', [
     'ui.bootstrap',
     'ngCookies',
     'ngSanitize',
+    'ngMessages',
     'ngResource',
     'scrollable-table',
     'ui.checkbox',
     'angular-loading-bar',
 
     //our components
-
+    'ceibo.components.table.export',
     //our modules
     'polderweb.auth',
     'polderweb.admin'

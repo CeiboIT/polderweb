@@ -36,7 +36,14 @@ angular.module('polderweb.user', [])
                 {
                     url:'/:userId',
                     templateUrl:'app/modules/admin/user/view-user/view-user.html',
-                    controller:'viewUserCtrl'
+                    controller:'viewUserCtrl',
+                    resolve: {
+                        user: function(User, $stateParams) {
+                            return User.getUser($stateParams.userId).then(function(res){
+                                return res;
+                            });
+                        }
+                    }
                 })
 
 
