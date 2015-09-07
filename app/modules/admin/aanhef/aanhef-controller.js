@@ -26,12 +26,13 @@ angular.module('polderweb')
 
       function clickDel(aanhef) {
 
-        Aanhef.nextAanhef(aanhef,function (aanhefId) {
-          if (aanhefId) {
-            Aanhef.delAanhef(aanhef);
-          $state.go(homeState);
-          }
-        });
+          Aanhef.nextAanhef(aanhef, function (aanhefId) {
+              if (aanhefId) {
+                  Aanhef.delAanhef(aanhef);
+                  $state.go(homeState);
+              }
+          });
+      }
 
         angular.extend(this,{
             model: model,
@@ -40,5 +41,4 @@ angular.module('polderweb')
             clickDel: clickDel
 
         })
-     }
     });
