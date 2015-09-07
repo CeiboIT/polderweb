@@ -1,13 +1,15 @@
 angular.module('polderweb')
   .controller('viewAanhefCtrl',
     function ($scope, Aanhef, $state, $stateParams,authService) {
-      if(authService.getToken()==null){
-           $state.go('login');
-         }else{
-      Aanhef.getAanhef($stateParams.aanhefId).then(function(res){
+//      if(authService.getToken()==null){
+//           $state.go('login');
+//         }else{
+      
+	  Aanhef.getAanhef($stateParams.aanhefId).then(function(res){
         $scope.aanhef = res;
       });
-      $scope.clickSave = function (form) {
+      
+	  $scope.clickSave = function (form) {
         $scope.submitted = true;
         if (form.$valid) {
             Aanhef.updateAanhef($scope.aanhef.Aanhef,$scope.aanhef.Omschrijving);
@@ -44,5 +46,5 @@ angular.module('polderweb')
           }
         });
       };
-  }
+//  }
     });

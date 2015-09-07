@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('AanhefController',
-   function ($rootScope, $scope, $state, Aanhef,aanhefs,authService, homeState) {
+   function ($rootScope, $scope, $state, Aanhef, aanhefs, authService, homeState) {
 
        var model = {
            selection : [],
@@ -34,6 +34,7 @@ angular.module('polderweb')
           });
       }
 
+
         angular.extend(this,{
             model: model,
             delAanhef: delAanhef,
@@ -41,4 +42,5 @@ angular.module('polderweb')
             clickDel: clickDel
 
         })
+
     });

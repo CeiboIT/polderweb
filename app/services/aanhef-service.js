@@ -8,14 +8,15 @@ angular.module('polderweb')
       var myAanhef = new TAanhef();
       return {
         findAll: function () {
-			$rootScope.display.aanhefAanhef=true;       //20150801 always display
-			$rootScope.display.aanhefOmschrijving=true;
+//			$rootScope.display.aanhefAanhef=true;       //20150801 always display
+//			$rootScope.display.aanhefOmschrijving=true;
 			var defer = $q.defer();
             userService.get().$promise.then(function(res){
                 myAanhef.fromObject({Bedrijf : res.bedrijf,Aanhef : '', Omschrijving : ''});
                 Service.SvcAanhef("R", currentUser.username, myAanhef, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(myAanhef));
+//          alert(JSON.stringify(result.toObject()));
                 });
             });
              return defer.promise;

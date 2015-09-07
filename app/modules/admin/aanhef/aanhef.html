@@ -55,7 +55,9 @@
                      <tr ng-repeat="row in ctrl.model.aanhefs">
                          <td>{{row.Aanhef}}</td>
                          <td>{{row.Omschrijving}}</td>
+<!--
                          <td>{{row.Geslacht}}</td>
+-->
                          <td>
                              <a class="btn btn-sm btn-info" ui-sref="aanhef.view({aanhefId: row.Aanhef})"><i class="fa fa-eye"></i></a>
                              <button type="button" ng-click="ctrl.clickDel(row.Aanhef)" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
