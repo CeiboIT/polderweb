@@ -4,16 +4,16 @@ angular.module('polderweb')
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{
-      
+
 	  Aanhef.getAanhef($stateParams.aanhefId).then(function(res){
         $scope.aanhef = res;
       });
-      
+
 	  $scope.clickSave = function (form) {
         $scope.submitted = true;
         if (form.$valid) {
             Aanhef.updateAanhef($scope.aanhef.Aanhef,$scope.aanhef.Omschrijving);
-             $state.go('adminAanhef');
+             $state.go('aanhef.list');
         }
       };
 
@@ -21,7 +21,7 @@ angular.module('polderweb')
          var msg = confirm("Verwijderen ? J/N");
           if (msg == true) {
             Aanhef.delAanhef($scope.aanhef.Aanhef,$scope.aanhef.Omschrijving);
-            $state.go('adminAanhef'); // Terug naar homepage
+            $state.go('aanhef.list'); // Terug naar homepage
           }
       };
 

@@ -46,11 +46,23 @@ angular.module('polderweb')
                 Service.SvcAanhef("U", currentUser.username, myAanhef);
             });
         },
-        delAanhef:function(Aanhef,Omschrijving){
-         userService.get().$promise.then(function(res){
+
+        delAanhef: function(Aanhef,Omschrijving){
+
+            var delAanhefPromise = $q.defer();
+
+            userService.get().$promise.then(function(res){
                 myAanhef.fromObject({Bedrijf : res.bedrijf,Aanhef : Aanhef, Omschrijving : Omschrijving});
-             Service.SvcAanhef("D", currentUser.username, myAanhef);
-         });
+                Service.SvcAanhef("D", currentUser.username, myAanhef, function(result){
+                    console.log(result);
+
+                    delAanhefPromise.resolve(result)
+                });
+            });
+
+            return delAanhefPromise.promise;
+
+
 
           // _.remove($rootScope.aanhef,function(aanhefs){
           //   return aanhefs.aanhef===aanhefId;

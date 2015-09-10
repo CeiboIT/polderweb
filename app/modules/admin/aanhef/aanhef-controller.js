@@ -7,14 +7,6 @@ angular.module('polderweb')
            aanhefs: aanhefs
        };
 
-       function delAanhef(){
-        angular.forEach($scope.selection, function (aanhef) {
-          _.remove($rootScope.aanhef,function(aanhefs){
-            return aanhefs.aanhef===aanhef;
-          });
-        });
-         $scope.selection=[];
-      }
 
      function clickSave (form) {
         $scope.submitted = true;
@@ -37,7 +29,7 @@ angular.module('polderweb')
 
         angular.extend(this,{
             model: model,
-            delAanhef: delAanhef,
+            aanhefService: Aanhef,
             clickSave: clickSave,
             clickDel: clickDel
 
