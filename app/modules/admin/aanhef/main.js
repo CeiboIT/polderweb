@@ -1,5 +1,6 @@
 angular.module('polderweb.aanhef', [])
     .constant('aanhefParentStata','admin')
+    .constant('geslachtOptions', ['M', 'V', 'O'])
 
     .config(function($stateProvider, aanhefParentStata) {
         $stateProvider

@@ -4,10 +4,10 @@
 var elementDeletionCtrl = function($scope, $element, $attrs) {
     var ctrl = this;
 
-    var comparaByKey = ctrl.options.compareBy || 'id'; //use id by default
+    var compareByKey = ctrl.options.compareBy || 'id'; //use id by default
 
     $element.bind('click', function() {
-            submitDeletion(ctrl.collection, ctrl.item);
+            submitDeletion(ctrl.collection, ctrl.ngModel);
         }
     );
 
@@ -33,11 +33,11 @@ var elementDeletionCtrl = function($scope, $element, $attrs) {
 
         ctrl.collection.some(function(elem, elemIndex){
             index = elemIndex;
-           // if(typeof ctrl.item != 'object') {
-                return elem[comparaByKey] == ctrl.item;
-           // }
+            if(typeof ctrl.ngModel != 'object') {
+                return elem[compareByKey] == ctrl.ngModel;
+            }
 
-            //return elem[comparaByKey] == ctrl.item[comparaByKey];
+            return elem[compareByKey] == ctrl.ngModel[compareByKey];
         });
 
         ctrl.collection.splice(index, 1);
@@ -45,13 +45,32 @@ var elementDeletionCtrl = function($scope, $element, $attrs) {
 
     function submitDeletion(item) {
         if(ctrl.deletionService) {
-            if(ctrl.deletionService().then) {
-                ctrl.deletionService(item)
-                    .then(ctrl.onSuccces, ctrl.onError);
+
+            if (Array.isArray(ctrl.ngModel)) {
+
+                var promisesArray = [];
+
+                ctrl.ngModel.forEach(function(modelElement){
+                    var modelElementPromise = $q.defer();
+                    promisesArray.push(modelElementPromise.promise);
+                    ctrl.deletionService(modelElement).then(ctrl.onSuccces, ctrl.onError)
+                });
+
+                promisesArray.all(function(results){
+                   console.log(results)
+                })
+
+
             } else {
-                ctrl.deletionService(item, ctrl.onSuccess)
-            }
-            console.log(ctrl.deletionService);
+                if(ctrl.deletionService().then) {
+                 ctrl.deletionService(item)
+                    .then(ctrl.onSuccces, ctrl.onError);
+                 } else {
+                    ctrl.deletionService(item, ctrl.onSuccess)
+                 }
+
+                liveDeletion();
+             }
 
         }
     }
@@ -65,16 +84,16 @@ angular.module('ceibo.components.commons.elements', [])
   .controller('elementDeletionCtrl', elementDeletionCtrl)
   .directive('elementDeletion', function(){
       return {
+          require: "ngModel",
         scope: {
             collection: '=',
-            item: '=',
+            ngModel: '=',
             deletionService: '=', //service for delete element if there is an interaction with any api
-            options: '=', // liveUpdate : boolean
-            params: '=' //params must be in order
+            options: '=' // liveUpdate : boolean
         }, //isolate or not
         restrict : 'AC', //A = attribute, C = class, E = Element
         controller: 'elementDeletionCtrl as ctrl',
-        bindToController: true, //true or false
+        bindToController: true //true or false
       }
   })
 ;

@@ -26,7 +26,7 @@ angular.module('ceibo.components.commons.elements')
     .directive('delOption', function(){
         return {
 
-            require: '^elementDeletion',
+            require: ['^elementDeletion', 'ngModel'],
             scope: {
                 elemDelOption: '='
             }, //isolate or not

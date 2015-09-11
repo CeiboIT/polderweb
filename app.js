@@ -13,6 +13,7 @@ angular.module('polderweb', [
 
     //our components
     'ceibo.components.table.export',
+    'ceibo.components.commons.elements',
     //our modules
     'polderweb.auth',
     'polderweb.admin'

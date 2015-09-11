@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('viewAanhefCtrl',
-    function ($scope, Aanhef, $state, $stateParams,authService) {
+    function ($scope, Aanhef, $state, $stateParams, geslachtOptions) {
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{
@@ -8,6 +8,8 @@ angular.module('polderweb')
 	  Aanhef.getAanhef($stateParams.aanhefId).then(function(res){
         $scope.aanhef = res;
       });
+
+        $scope.geslachtOptions = geslachtOptions;
 
 	  $scope.clickSave = function (form) {
         $scope.submitted = true;
