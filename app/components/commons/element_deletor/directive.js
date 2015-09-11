@@ -63,13 +63,11 @@ var elementDeletionCtrl = function($scope, $element, $attrs) {
 
             } else {
                 if(ctrl.deletionService().then) {
-                 ctrl.deletionService(item)
+                 ctrl.deletionService(ctrl.ngModel)
                     .then(ctrl.onSuccces, ctrl.onError);
                  } else {
-                    ctrl.deletionService(item, ctrl.onSuccess)
+                    ctrl.deletionService(ctrl.ngModel, ctrl.onSuccess)
                  }
-
-                liveDeletion();
              }
 
         }
