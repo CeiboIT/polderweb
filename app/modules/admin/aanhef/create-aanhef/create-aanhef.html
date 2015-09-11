@@ -19,6 +19,11 @@
               This input is required
             </p>
           </div>
+
+            <div class="form-group" ng-class="{'has-error':form.Geslacht.$invalid && submitted}">
+                <select ng-model="aanhef.Geslacht" class="form-control input-lg" name="Geslacht" ng-options="val for val in geslachtOptions"></select>
+                <p class="help-block" ng-show="form.Geslacht.$error.required && submitted">This input is required</p>
+            </div>
           <button class="btn btn-lg btn-primary" type="submit">Toevoegen</button>
         </div>
       </div>
