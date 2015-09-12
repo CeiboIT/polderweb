@@ -62,7 +62,7 @@ var elementDeletionCtrl = function($scope, $element, $attrs) {
 
 
             } else {
-                if(ctrl.deletionService().then) {
+                if(ctrl.options.usePromise) {
                  ctrl.deletionService(ctrl.ngModel)
                     .then(ctrl.onSuccces, ctrl.onError);
                  } else {
