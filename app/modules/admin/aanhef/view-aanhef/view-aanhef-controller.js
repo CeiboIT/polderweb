@@ -14,7 +14,7 @@ angular.module('polderweb')
 	  $scope.clickSave = function (form) {
         $scope.submitted = true;
         if (form.$valid) {
-            Aanhef.updateAanhef($scope.aanhef.Aanhef,$scope.aanhef.Omschrijving);
+            Aanhef.updateAanhef($scope.aanhef);
              $state.go('aanhef.list');
         }
       };

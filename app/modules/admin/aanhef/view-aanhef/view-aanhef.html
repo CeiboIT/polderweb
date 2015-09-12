@@ -14,12 +14,22 @@
   <div class="clearfix"></div>
   <div class="jumbotron">
     <table class="table table-bordered"> <!--" table-striped table-hover" -->
-      <tr><td>Aanhef</td><td>      <input type="text" readonly ng-model="aanhef.Aanhef"       name="aanhef"       class="form-control input-lg" placeholder="aanhef"       required/><p class="help-block" ng-show="form.aanhef.$error.required && submitted">This input is required</p></td></tr>
-      <tr><td>Omschrijving</td><td><input type="text"          ng-model="aanhef.Omschrijving" name="omschrijving" class="form-control input-lg" placeholder="Omschrijving" required/><p class="help-block" ng-show="form.omschrijving.$error.required && submitted">This input is required</p></td></tr>
+      <tr><td>Aanhef</td>
+      <td>
+          <input type="text" readonly ng-model="aanhef.Aanhef"       name="aanhef"       class="form-control input-lg" placeholder="Aanhef"       required/><p class="help-block" ng-show="form.aanhef.$error.required && submitted">This input is required</p>
+      </td>
+      </tr>
+      <tr>
+          <td>Omschrijving</td>
+          <td>
+            <input type="text" ng-model="aanhef.Omschrijving" name="omschrijving" class="form-control input-lg" placeholder="Omschrijving" required/>
+            <p class="help-block" ng-show="form.omschrijving.$error.required && submitted">This input is required</p>
+          </td>
+      </tr>
       <tr>
           <td>Geslacht</td>
           <td>
-              <select ng-model="aanhef.Geslacht" class="form-control input-lg" ng-options="val for val in geslachtOptions"></select>
+              <select ng-model="aanhef.Geslacht" class="form-control input-lg" ng-options="geslacht.value as geslacht.label for geslacht in geslachtOptions"></select>
               <p class="help-block" ng-show="form.omschrijving.$error.required && submitted">This input is required</p>
           </td>
       </tr>

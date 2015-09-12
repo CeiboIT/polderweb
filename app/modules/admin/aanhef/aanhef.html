@@ -56,7 +56,7 @@
                          <td>{{row.Aanhef}}</td>
                          <td>{{row.Omschrijving}}</td>
 
-                         <td>{{row.Geslacht}}</td>
+                         <td>{{row.Geslacht | geslachtFilter}}</td>
 
                          <td>
                              <a class="btn btn-sm btn-info" ui-sref="aanhef.view({aanhefId: row.Aanhef})"><i class="fa fa-eye"></i></a>

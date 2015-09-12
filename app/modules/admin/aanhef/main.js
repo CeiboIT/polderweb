@@ -1,6 +1,26 @@
 angular.module('polderweb.aanhef', [])
     .constant('aanhefParentStata','admin')
-    .constant('geslachtOptions', ['M', 'V', 'O'])
+    .constant('geslachtOptions', [
+        {'value': 'M', 'label': 'Man'},
+        {'value' : 'V', 'label': 'Vrouw'},
+        {'value': 'O', 'label': 'Onbekend'}
+    ])
+
+    .filter('geslachtFilter', function(geslachtOptions){
+
+        return function(input) {
+            if(input) {
+                var ind;
+                geslachtOptions.some(function(option, index){
+                    ind = index;
+                    return option.value == input
+                });
+
+                return geslachtOptions[ind].label;
+            }
+        }
+
+    })
 
     .config(function($stateProvider, aanhefParentStata) {
         $stateProvider

@@ -33,16 +33,16 @@ angular.module('polderweb')
             });
             return defer.promise;
         },
-        addAanhef: function (Aanhef,Omschrijving) {
+        addAanhef: function (aanhefData) {
            userService.get().$promise.then(function(res){
-                myAanhef.fromObject({Bedrijf : res.bedrijf,Aanhef : Aanhef, Omschrijving : Omschrijving});
+                myAanhef.fromObject({Bedrijf : res.bedrijf,Aanhef : aanhefData.Aanhef, Omschrijving : aanhefData.Omschrijving, Geslacht: aanhefData.Geslacht });
                 Service.SvcAanhef("C", currentUser.username, myAanhef);
             });
 
         },
-        updateAanhef:function(Aanhef,Omschrijving){
+        updateAanhef:function(aanhefData){
            userService.get().$promise.then(function(res){
-                myAanhef.fromObject({Bedrijf : res.bedrijf,Aanhef : Aanhef, Omschrijving : Omschrijving});
+                myAanhef.fromObject({Bedrijf : res.bedrijf,Aanhef : aanhefData.Aanhef, Omschrijving : aanhefData.Omschrijving, Geslacht: aanhefData.Geslacht });
                 Service.SvcAanhef("U", currentUser.username, myAanhef);
             });
         },
