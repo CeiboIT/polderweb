@@ -10,6 +10,7 @@ angular.module('polderweb')
 		 $scope.addAanhef = function (form) {
 	        $scope.submitted = true;
 	        if (form.$valid) {
+                $scope.aanhefs.geslacht = Aanhef.Geslacht;
                 Aanhef.addAanhef($scope.aanhefs);
 	          $state.go('aanhef.list'); // Terug naar homepage
 	        }
