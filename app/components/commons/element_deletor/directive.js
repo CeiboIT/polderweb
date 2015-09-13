@@ -13,8 +13,8 @@ var elementDeletionCtrl = function($scope, $element, $attrs, $modal) {
 
 
 
-    if(!ctrl.onSuccess) {
-        ctrl.onSuccces = function(result){
+    if(!ctrl.deletionOnSuccess) {
+        ctrl.deletionOnSuccess = function(result){
             console.log(result);
             if(ctrl.options.liveUpdate) {
                 liveDeletion()
@@ -23,8 +23,19 @@ var elementDeletionCtrl = function($scope, $element, $attrs, $modal) {
         }
     }
 
-    if(!ctrl.onError) {
-        ctrl.onError = function(result){
+    if(!ctrl.deletionCallback ) {
+        ctrl.deletionCallback = function() {
+            console.log(result);
+            if(ctrl.options.liveUpdate && !result.error) {
+                liveDeletion()
+            }
+
+            return result
+        }
+    }
+
+    if(!ctrl.deletionOnError) {
+        ctrl.deletionOnError = function(result){
             console.log(result);
             return result
         }
@@ -54,7 +65,7 @@ var elementDeletionCtrl = function($scope, $element, $attrs, $modal) {
             ctrl.ngModel.forEach(function(modelElement){
                 var modelElementPromise = $q.defer();
                 promisesArray.push(modelElementPromise.promise);
-                ctrl.deletionService(modelElement).then(ctrl.onSuccces, ctrl.onError)
+                ctrl.deletionService(modelElement).then(ctrl.deletionOnSuccess, ctrl.deletionOnError)
             });
 
             promisesArray.all(function(results){
@@ -65,9 +76,9 @@ var elementDeletionCtrl = function($scope, $element, $attrs, $modal) {
         } else {
             if(ctrl.options.usePromise) {
                 ctrl.deletionService(ctrl.ngModel)
-                    .then(ctrl.onSuccces, ctrl.onError);
+                    .then(ctrl.deletionOnSuccess, ctrl.deletionOnError);
             } else {
-                ctrl.deletionService(ctrl.ngModel, ctrl.onSuccess)
+                ctrl.deletionService(ctrl.ngModel, ctrl.deletionCallback)
             }
         }
 
@@ -131,8 +142,11 @@ angular.module('ceibo.components.commons.elements', ['ui.bootstrap.modal'])
             ngModel: '=',
             deletionService: '=', //service for delete element if there is an interaction with any api
             options: '=', // liveUpdate : boolean
-            modalOptions: '='
-        }, //isolate or not
+            modalOptions: '=',
+            deletionOnSuccess : '=', //function that we should execute on success
+            deletionOnError : '=', //function that we should execute on error
+            deletionCallback : '=' //function that we should execute after deletion if the deletionService is not a proimise
+        }, //isolate  or not
         restrict : 'AC', //A = attribute, C = class, E = Element
         controller: 'elementDeletionCtrl as ctrl',
         bindToController: true //true or false
