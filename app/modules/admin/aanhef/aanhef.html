@@ -62,7 +62,10 @@
                              <a class="btn btn-sm btn-primary" ui-sref="aanhef.view({aanhefId: row.Aanhef})"><i class="fa fa-pencil"></i></a>
                              <button type="button" element-deletion
                                      collection="ctrl.model.aanhefs"
-                                     options="{liveUpdate: true, compareBy : 'Aanhef', usePromise: true}"
+                                     options="{liveUpdate: true,
+                                        compareBy : 'Aanhef',
+                                        usePromise: true,
+                                        askBeforeDelete: true}"
                                      ng-model="row.Aanhef"
                                      deletion-service="ctrl.aanhefService.delAanhef"
                                      class="btn btn-sm btn-danger
