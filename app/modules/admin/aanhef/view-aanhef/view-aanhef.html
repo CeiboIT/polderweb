@@ -39,6 +39,12 @@
   <!-- <a href="#/home" class="btn btn-lg btn-success">Home</a> -->
   <button type="submit" class="btn btn-lg btn-primary"> Opslaan</button>
   <button type="button" ng-click="clickCancel()" class="btn btn-lg btn-primary">Annuleer</button>
-  <button type="button" ng-click="clickDel()"    class="btn btn-lg btn-success">Verwijder</button>
+  <button type="button"    class="btn btn-lg btn-success" element-deletion
+          options="{askBeforeDelete: true, usePromise: true}"
+          deletion-on-success="deletionOnSuccess"
+          ng-model="aanhef.Aanhef"
+          deletion-service="aanhefService.delAanhef">
+      Verwijder
+  </button>
   <hr/>
 </form>

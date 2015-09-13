@@ -9,6 +9,8 @@ angular.module('polderweb')
         $scope.aanhef = res;
       });
 
+        $scope.aanhefService = Aanhef;
+
         $scope.geslachtOptions = geslachtOptions;
 
 	  $scope.clickSave = function (form) {
@@ -18,6 +20,10 @@ angular.module('polderweb')
              $state.go('aanhef.list');
         }
       };
+
+        $scope.deletionOnSuccess = function() {
+            $state.go('aanhef.list')
+        };
 
       $scope.clickDel = function () {
          var msg = confirm("Verwijderen ? J/N");
