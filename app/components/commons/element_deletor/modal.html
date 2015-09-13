@@ -1,0 +1,17 @@
+<div class="modal-body">
+    <div ng-show="ctrl.isArray">
+        <p>Are you sure you want to delete the following items</p>
+        <ul>
+            <li ng-repeat="item in ctrl.items">
+                {{ item }}
+            </li>
+        </ul>
+    </div>
+    <p ng-show="!ctrl.isArray">
+       Are you sure you want to delete {{ ctrl.items}}
+    </p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ctrl.ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="ctrl.cancell()">Cancel</button>
+</div>
