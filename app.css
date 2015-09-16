@@ -7,10 +7,7 @@
 .person-grid .scrollArea table tbody tr td{
   /*width:20%;*/
 }
-.header{
-  background-color: #000;
-  margin-bottom: 20px;
-}
+
 .text-right {
   float: right;
   margin-top: 10px;
@@ -26,7 +23,7 @@
 }
 .menu-top li {
   list-style: none;
-} 
+}
 .menu-top > li > a {
   display: block;
   cursor:pointer;
@@ -50,7 +47,7 @@
   padding: 7px 15px;
   color: #666;
   cursor: pointer;
-} 
+}
 .menu-top > li > ul > li > a:hover {
   background: #eee;
 }

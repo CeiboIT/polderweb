@@ -10,7 +10,13 @@
     <link rel="stylesheet" href="/bower_components/angular-loading-bar/build/loading-bar.css" />
     <link rel="stylesheet" href="/bower_components/angular-busy/dist/angular-busy.min.css" />
     <link rel="stylesheet" href="app/components/angular-scrollable-table/scrollable-table.css" />
+    <link rel="stylesheet" href="bower_components/angular-aside/dist/css/angular-aside.min.css" />
+    <link rel="stylesheet" href="bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css" />
 
+
+    <link rel="stylesheet" href="app/components/sidebar/style.css"/>
+    <link rel="stylesheet" href="app/components/header/style.css"/>
+    <link rel="stylesheet" href="app/components/commons/commons.css"/>
     <link rel="stylesheet" href="app.css">
   </head>
   <body>
@@ -41,14 +47,20 @@
     <script src="/bower_components/angular-flash/dist/angular-flash.min.js"></script>
     <script src="/bower_components/angular-ui-router-styles/ui-router-styles.js"></script>
     <script src="/bower_components/angular-messages/angular-messages.min.js"></script>
-    <script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
+    <script src="/bower_components/angular-smart-table/dist/smart-table.js"></script>
+    <script src="/bower_components/angular-aside/dist/js/angular-aside.min.js"></script>
+    <script src="/bower_components/angular-perfect-scrollbar/src/angular-perfect-scrollbar.js"></script>
+    <script src="/bower_components/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+    <script src="/bower_components/perfect-scrollbar/js/min/perfect-scrollbar.jquery.min.js"></script>
 
     <!-- Our components -->
     <script src="app/components/angular-scrollable-table/angular-scrollable-table.js"></script>
+    <script src="app/components/sidebar/directive.js"></script>
     <script src="app/components/tables/export/tableExportDirective.js"></script>
     <script src="app/components/tables/export/tableExportOptionDirective.js"></script>
 
     <script src="app/components/commons/element_deletor/directive.js"></script>
+    <script src="app/components/header/header.js"></script>
 
     <!--TODO See how to refactor this for bower -->
 
@@ -61,8 +73,9 @@
 
     <!-- End of TO DO for tables -->
 
+
     <script src="app.js"></script>
-    <script src="app/directives/header/header.js"></script>
+
     <script src="app/modules/auth/main.js"></script>
     <script src="app/modules/auth/login/login-controller.js"></script>
     <script src="app/modules/auth/forgot/forgot-controller.js"></script>
@@ -148,7 +161,7 @@
 
     <div>
 
-        <div ui-view=""></div>
+        <div ui-view="" class="app-container"></div>
 
     </div>
 

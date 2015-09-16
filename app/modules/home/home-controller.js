@@ -4,6 +4,8 @@ angular.module('polderweb')
     if(authService.getToken()==null){
         $state.go('login');
      }else{
+
+        $scope.rootScope = $rootScope;
       $scope.regio=regio;
       $scope.soortlid=soortlid;
 

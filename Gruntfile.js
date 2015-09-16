@@ -72,6 +72,20 @@ module.exports = function (grunt) {
       }
     },
     less: {
+
+        development: {
+
+            options: {
+                paths: ["assets"]
+            },
+
+            files: {
+                "styles/app.css": "styles/source.less"
+            }
+
+        },
+
+
       production: {
         options: {
         },
@@ -164,7 +178,7 @@ module.exports = function (grunt) {
         }
       }
     },
-    //Imagemin has issues on Windows.  
+    //Imagemin has issues on Windows.
     //To enable imagemin:
     // - "npm install grunt-contrib-imagemin"
     // - Comment in this section

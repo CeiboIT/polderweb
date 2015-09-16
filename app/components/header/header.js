@@ -1,5 +1,26 @@
-var pHeaderCtrl = function($element) {
+var pHeaderCtrl = function($state, $element, $rootScope ) {
   var ctrl = this;
+
+    var toggleAsideNav = function(){
+        var asideNav = $aside.open({
+            templateUrl: 'app/components/header/aside.nav.html',
+            controller: 'AsideNavController as AsideNavController',
+            placement: 'left',
+            size: 'sm'
+        });
+
+        $rootScope.$on('$stateChangeStart', function() {
+            if(asideNav){
+                asideNav.close();
+            }
+        });
+    };
+
+    angular.extend(ctrl,{
+        toggleAsideNav : toggleAsideNav
+    });
+
+
 
 };
 

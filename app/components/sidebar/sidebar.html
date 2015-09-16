@@ -1,0 +1,50 @@
+<nav role="navigation" id="sidebar-wrapper" ng-class="{'open' : ctrl.rootScope.toggle}">
+    <ul class="menu">
+        <perfect-scrollbar class="scroller" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+            <div  id="accordion">
+                <li class="sidebar-main">
+                    <a ng-click="ctrl.toggleSidebar()">
+                        Poldersoft web
+                        <i class="menu-icon glyphicon glyphicon-transfer"></i>
+                    </a>
+                </li>
+
+                <li ui-sref-active="active" data-title="Dashboard" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle">
+                    <a ui-sref="home.init"><span><div class="img-link"><i class="fa fa-tachometer"></i></div>Dashboard</span></a>
+                </li>
+
+                <li class="panel" data-title="Administratie" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle" ng-class="{active:$state.includes('admin')}">
+                    <span data-toggle="collapse" data-parent="#accordion" data-target="#admin" aria-expanded="true" aria-controls="products" ng-class="{collapsed:$state.includes('admin')}"><div class="img-link"><i class="fa fa-th-large"></i></div>Administratie<i class="fa fa-angle-down"></i></span>
+                    <ul class="collapse" id="admin" class="collapse" aria-labelledby="products" ng-class="{in:$state.includes('admin')}">
+                        <li><a ui-sref="adminLidsoorten">Soort Lid</a></li>
+                        <li><a ui-sref="adminGroep">Tariefgroepen</a></li>
+                        <li><a ui-sref="adminSoortBetaling">Tariefsoorten</a></li>
+                        <li><a ui-sref="aanhef.list">Aanhef</a></li>
+                        <li><a ui-sref="adminKenmerk">Kenmerken</a></li>
+                        <li><a ui-sref="adminKenmKode">Waardes per Kenmerk</a></li>
+                        <li><a ui-sref="adminRegio">Regio's</a></li>
+                        <li><a ui-sref="adminTitel">Titels</a></li>
+                        <li><a ui-sref="adminCategorie">Categoriën</a></li>
+                        <li><a ui-sref="adminMutReden">Mutatieredenen</a></li>
+                        <li><a ui-sref="adminFunctie">Functies</a></li>
+                        <li><a ui-sref="adminPersoon">Persoon</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="panel" style="border:none">
+                    <div class="sidebar-footer">
+                        <div class="col-xs-12">
+                            <a ng-click="ctrl.logOut();">
+                                Logout <i class="fa fa-sign-out"></i>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+            </div><!-- /#accordion -->
+
+        </perfect-scrollbar>
+
+    </ul>
+</nav>

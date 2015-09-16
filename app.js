@@ -1,8 +1,8 @@
 angular.module('polderweb', [
     'ui.utils',
     'ui.router',
-    'ngAnimate',
     'ui.bootstrap',
+    'ngAnimate',
     'ngCookies',
     'ngSanitize',
     'ngMessages',
@@ -14,6 +14,9 @@ angular.module('polderweb', [
     //our components
     'ceibo.components.table.export',
     'ceibo.components.commons.elements',
+    'pldr.components.header',
+    'ceibo.components.sideBar',
+
     //our modules
     'polderweb.auth',
     'polderweb.admin'
