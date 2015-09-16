@@ -4,7 +4,7 @@
             <div  id="accordion">
                 <li class="sidebar-main">
                     <a ng-click="ctrl.toggleSidebar()">
-                        Poldersoft web
+                        PolderSoft web
                         <i class="menu-icon glyphicon glyphicon-transfer"></i>
                     </a>
                 </li>
@@ -12,7 +12,50 @@
                 <li ui-sref-active="active" data-title="Dashboard" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle">
                     <a ui-sref="home.init"><span><div class="img-link"><i class="fa fa-tachometer"></i></div>Dashboard</span></a>
                 </li>
-
+                <li class="panel" data-title="Leden" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle" ng-class="{active:$state.includes('leden')}">
+                    <span data-toggle="collapse" data-parent="#accordion" data-target="#leden" aria-expanded="true" aria-controls="products" ng-class="{collapsed:$state.includes('leden')}"><div class="img-link"><i class="fa fa-th-large"></i></div>Leden<i class="fa fa-angle-down"></i></span>
+                    <ul class="collapse" id="leden" class="collapse" aria-labelledby="products" ng-class="{in:$state.includes('leden')}">
+                        <li><a ui-sref="aanhef.list">Ledenlijst</a></li>
+                        <li><a ui-sref="aanhef.list">Nieuw lid</a></li>
+                    </ul>
+                </li>
+                <li class="panel" data-title="Organisatie" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle" ng-class="{active:$state.includes('orga')}">
+                    <span data-toggle="collapse" data-parent="#accordion" data-target="#orga" aria-expanded="true" aria-controls="products" ng-class="{collapsed:$state.includes('orga')}"><div class="img-link"><i class="fa fa-th-large"></i></div>Organisatie<i class="fa fa-angle-down"></i></span>
+                    <ul class="collapse" id="orga" class="collapse" aria-labelledby="products" ng-class="{in:$state.includes('orga')}">
+                        <li><a ui-sref="aanhef.list">Details</a></li>
+                        <li><a ui-sref="aanhef.list">Contactpersonen</a></li>
+                        <li><a ui-sref="aanhef.list">Functies</a></li>
+                    </ul>
+                </li>
+                <li class="panel" data-title="Financiëel" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle" ng-class="{active:$state.includes('fina')}">
+                    <span data-toggle="collapse" data-parent="#accordion" data-target="#fina" aria-expanded="true" aria-controls="products" ng-class="{collapsed:$state.includes('fina')}"><div class="img-link"><i class="fa fa-th-large"></i></div>Financiëel<i class="fa fa-angle-down"></i></span>
+                    <ul class="collapse" id="fina" class="collapse" aria-labelledby="products" ng-class="{in:$state.includes('fina')}">
+                        <li><a ui-sref="aanhef.list">Inningen</a></li>
+                        <li><a ui-sref="aanhef.list">In behandeling</a></li>
+                        <li><a ui-sref="aanhef.list">Openstaande posten</a></li>
+                        <li><a ui-sref="aanhef.list">Weigeringen</a></li>
+                        <li><a ui-sref="aanhef.list">Betalingsarchief</a></li>
+                    </ul>
+                </li>
+                <li class="panel" data-title="Rapportage" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle" ng-class="{active:$state.includes('rapp')}">
+                    <span data-toggle="collapse" data-parent="#accordion" data-target="#rapp" aria-expanded="true" aria-controls="products" ng-class="{collapsed:$state.includes('rapp')}"><div class="img-link"><i class="fa fa-th-large"></i></div>Rapportage<i class="fa fa-angle-down"></i></span>
+                    <ul class="collapse" id="rapp" class="collapse" aria-labelledby="products" ng-class="{in:$state.includes('rapp')}">
+                        <li><a ui-sref="aanhef.list">Persoonsgeg. PDF</a></li>
+                        <li><a ui-sref="aanhef.list">Overzicht 18 jr</a></li>
+                        <li><a ui-sref="aanhef.list">Beëindigingen</a></li>
+                        <li><a ui-sref="aanhef.list">Verjaardagslijst</a></li>
+                        <li><a ui-sref="aanhef.list">Groepslijst 1</a></li>
+                        <li><a ui-sref="aanhef.list">Groepslijst 2</a></li>
+                        <li><a ui-sref="aanhef.list">Gezinsoverzicht 1</a></li>
+                        <li><a ui-sref="aanhef.list">Gezinsoverzicht 2</a></li>
+                        <li><a ui-sref="aanhef.list">Jubilarissen 1 PDF</a></li>
+                        <li><a ui-sref="aanhef.list">Jubilarissen 2 PDF</a></li>
+                        <li><a ui-sref="aanhef.list">Betalingen</a></li>
+                        <li><a ui-sref="aanhef.list">Actuarieel Rapp PDF</a></li>
+                        <li><a ui-sref="aanhef.list">Actuarieel Rapp XLS</a></li>
+                        <li><a ui-sref="aanhef.list">Ledenkaart</a></li>
+                    </ul>
+                </li>
                 <li class="panel" data-title="Administratie" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle" ng-class="{active:$state.includes('admin')}">
                     <span data-toggle="collapse" data-parent="#accordion" data-target="#admin" aria-expanded="true" aria-controls="products" ng-class="{collapsed:$state.includes('admin')}"><div class="img-link"><i class="fa fa-th-large"></i></div>Administratie<i class="fa fa-angle-down"></i></span>
                     <ul class="collapse" id="admin" class="collapse" aria-labelledby="products" ng-class="{in:$state.includes('admin')}">
@@ -30,7 +73,9 @@
                         <li><a ui-sref="adminPersoon">Persoon</a></li>
                     </ul>
                 </li>
-
+                <li ui-sref-active="active" data-title="Gebruikers" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle">
+                    <a ui-sref="home.init"><span><div class="img-link"><i class="fa fa-tachometer"></i></div>Gebruikers</span></a>
+                </li>
 
                 <li class="panel" style="border:none">
                     <div class="sidebar-footer">
