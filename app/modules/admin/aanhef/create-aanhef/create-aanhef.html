@@ -1,20 +1,25 @@
 <div>
+  <h3>Nieuwe aanhef</h3>
+  <hr/>
+  <form ng-submit="addAanhef(form)" name="form" novalidate>
+  <a ui-sref="aanhef.list"                        class="btn btn-lg btn-success">Terug</a>
+  <br/>
+  <div class="clearfix"></div>
+  <br/>
   <div class="jumbotron">
-    <h1>Nieuwe aanhef toevoegen</h1>
-    <form ng-submit="addAanhef(form)" name="form" novalidate>
       <div class="row">
         <div class="col-xs-4">
           <div class="form-group" ng-class="{'has-error':form.aanhef.$invalid && submitted}">
             <input type="text" ng-model="aanhefs.Aanhef" name="aanhef"
                    class="form-control input-lg"
-                   placeholder="aanhefs" required />
+                   placeholder="Aanhef" required />
             <p class="help-block" ng-show="form.aanhefs.$error.required && submitted">
               This input is required
             </p>
           </div>
           <div class="form-group" ng-class="{'has-error':form.omschrijving.$invalid && submitted}">
             <input type="text" ng-model="aanhefs.Omschrijving" name="omschrijving"
-                   class="form-control input-lg" placeholder="omschrijving" required/>
+                   class="form-control input-lg" placeholder="Omschrijving" required/>
             <p class="help-block" ng-show="form.omschrijving.$error.required && submitted">
               This input is required
             </p>
@@ -24,11 +29,11 @@
                 <select ng-model="aanhefs.Geslacht" class="form-control input-lg" name="Geslacht" ng-options="geslacht.value as geslacht.label for geslacht in geslachtOptions"></select>
                 <p class="help-block" ng-show="form.Geslacht.$error.required && submitted">This input is required</p>
             </div>
-          <button class="btn btn-lg btn-primary" type="submit">Toevoegen</button>
+			<button class="btn btn-lg btn-primary" type="submit">Toevoegen</button>
+			<a ui-sref="aanhef.list" class="btn btn-lg btn-warning">Annuleren</a>
         </div>
       </div>
     </form>
   </div>
   <hr/>
-  <a ui-sref="aanhef.list" class="btn btn-lg btn-warning">Annuleren</a>
 </div>
