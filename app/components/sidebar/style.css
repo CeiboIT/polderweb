@@ -22,9 +22,6 @@ nav#sidebar-wrapper {
   left: 150px;
   margin-left: -150px;
   width: 250px;
-/*  background: #d98401; */
-/*  background: #f0ad4e; */
-/* like slack */
   background: #3e313c;
   position: fixed;
   height: 100%;
@@ -56,11 +53,6 @@ nav#sidebar-wrapper ul.menu li.sidebar-main a {
   display: block;
   font-size: 18px;
   line-height: 60px;
-/*
-  Left Top bar
-  background: #f0ad4e;
-  background: #4D394B;
-*/
   background: #ca7b01;
   text-indent: 20px;
   font-weight: 500;
@@ -152,8 +144,7 @@ nav#sidebar-wrapper ul.menu div > li.active a {
 }
 nav#sidebar-wrapper ul.menu div > li.active span,
 nav#sidebar-wrapper ul.menu div > li:hover span {
-/*  background: #cf7e01; */
-  background: #f0ad4e; 
+  background: #cf7e01;
 }
 nav#sidebar-wrapper ul.menu div > li.panel {
   margin-bottom: 0;
