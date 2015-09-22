@@ -11,19 +11,89 @@
   <div class="jumbotron">
 <!--    <table class="table table-bordered table-striped table-hover"> -->
     <table>
-      <tr><td> Lidnr </td>               <td><input type="text" readonly ng-model="pers.LidNr"          name="lidnr"          class="form-control input-lg" placeholder="Lidnr"         required/><p class="help-block" ng-show="form.lidnr.$error.required && submitted">This input is required</p></td></tr>
-      <tr><td> Naam </td>                <td><input type="text"          ng-model="pers.Naam"           name="naam"           class="form-control input-lg" placeholder="Naam"          required/><p class="help-block" ng-show="form.naam.$error.required && submitted">This input is required</p></td></tr>
-      <tr><td> Voornaam </td>            <td><input type="text"          ng-model="pers.Voornaam"       name="voornaam"       class="form-control input-lg" placeholder="Voornaam" />             <p class="help-block" ng-show="form.voornaam.$error.required && submitted">This input is required</p></td></tr>
-      <tr><td> Voorletters </td>         <td><input type="text"          ng-model="pers.Voorletters"    name="voorletters"    class="form-control input-lg" placeholder="Voorletters" />          <p class="help-block" ng-show="form.voorletters.$error.required && submitted">This input is required</p></td></tr>
-      <tr><td> Tussenvoegsel&nbsp;&nbsp;</td><td><input type="text"      ng-model="pers.Tussenvoegsel"  name="tussenvoegsel"  class="form-control input-lg" placeholder="Tussenvoegsel" />        <p class="help-block" ng-show="form.tussenvoegsel.$error.required && submitted">This input is required</p></td></tr>
-      <tr><td> Straat </td>              <td><input type="text"          ng-model="pers.Straat"         name="straat"         class="form-control input-lg" placeholder="Straat"   />             <p class="help-block" ng-show="form.straat.$error.required && submitted">This input is required</p></td></tr>
-      <tr><td> HuisNr </td>              <td><input type="text"          ng-model="pers.HuisNr"         name="huisnr"         class="form-control input-lg" placeholder="Huisnr"   />             <p class="help-block" ng-show="form.huisnr.$error.required && submitted">This input is required</p></td></tr>
-      <tr><td> Postcode </td>            <td><input type="text"          ng-model="pers.Postcode"       name="postcode"       class="form-control input-lg" placeholder="Postcode" />             <p class="help-block" ng-show="form.postcode.$error.required && submitted">This input is required</p></td></tr>
-      <tr><td> Plaats </td>              <td><input type="text"          ng-model="pers.Plaats"         name="plaats"         class="form-control input-lg" placeholder="Plaats"   />             <p class="help-block" ng-show="form.plaats.$error.required && submitted">This input is required</p></td></tr>
-      <tr><td> DatumGeb </td>            <td><input type="text"          ng-model="pers.DatumGeb"       name="datumgeb"       class="form-control input-lg" placeholder="Datum geboren" />        <p class="help-block" ng-show="form.datumgeb.$error.required && submitted">This input is required</p></td></tr>
-      <tr><td> Leeftijd </td>            <td><input type="text" readonly ng-model="pers.Leeftijd"       name="leeftijd"       class="form-control input-lg" placeholder="Leeftijd" />             <p class="help-block" ng-show="form.leeftijd.$error.required && submitted">This input is required</p></td></tr>
+      <tr>
+        <td> Lidnr </td>
+        <td>
+          <input type="text" readonly ng-model="pers.LidNr" name="lidnr" class="form-control input-lg" placeholder="Lidnr" required/><p class="help-block" ng-show="form.lidnr.$error.required && submitted">This input is required</p>
+        </td>
+        <td> &nbsp;&nbsp;Voorl.&nbsp; </td>
+        <td>
+          <input type="text" ng-model="pers.Voorletters" name="voorletters" class="form-control input-lg" placeholder="Voorletters" size="3" maxlength="3" /> <p class="help-block" ng-show="form.voorletters.$error.required && submitted">This input is required</p>
+        </td>
+        <td> &nbsp;&nbsp;Voornaam&nbsp; </td>
+        <td><input type="text" ng-model="pers.Voornaam" name="voornaam" class="form-control input-lg" placeholder="Voornaam" /> <p class="help-block" ng-show="form.voornaam.$error.required && submitted">This input is required</p></td>
+        <td> &nbsp;&nbsp;Tussenv&nbsp;</td><td><input type="text"      ng-model="pers.Tussenvoegsel"  name="tussenvoegsel"  class="form-control input-lg" placeholder="Tussenvoegsel" />        <p class="help-block" ng-show="form.tussenvoegsel.$error.required && submitted">This input is required</p></td>
+      </tr>
+      <tr>
+        <td> Naam </td>
+        <td><input type="text" ng-model="pers.Naam" name="naam" class="form-control input-lg" placeholder="Naam" required/><p class="help-block" ng-show="form.naam.$error.required && submitted">This input is required</p></td>
+        <td></td>
+        <td><select type="text" ng-model="pers.Sex" ng-options="item.name for item in sexList" name="naam" class="form-control input-lg" required/><p class="help-block" ng-show="form.naam.$error.required && submitted">This select is required</p></td>
+        <td>&nbsp;&nbsp;Inschrijving&nbsp;</td>
+        <td><input type="text" ng-model="pers.Inschrijving" name="inschrijving" class="form-control input-lg" placeholder="Inschrijving" /> <p class="help-block" ng-show="form.inschrijving.$error.required && submitted">This input is required</p></td>
+      </tr>
+
+      <tr>
+        <td> Aanhef </td>
+        <td><select type="text" ng-model="pers.Aanhef" ng-options="item.Omschrijving for item in aanhef" name="aanhef" class="form-control input-lg" required/><p class="help-block" ng-show="form.aanhef.$error.required && submitted">This select is required</p></td>
+        <td></td>
+        <td></td>
+        <td>&nbsp;&nbsp;Geboren&nbsp;</td>
+        <td><input type="text" ng-model="pers.DatumGeb" name="datumgeb" class="form-control input-lg" placeholder="Datum Geboren" /> <p class="help-block" ng-show="form.datumgeb.$error.required && submitted">This input is required</p></td>
+      </tr>
+
+      <tr>
+        <td> Straat </td> <td><input type="text" ng-model="pers.Straat" name="straat" class="form-control input-lg" placeholder="Straat" /> <p class="help-block" ng-show="form.straat.$error.required && submitted">This input is required</p></td>
+        <td> &nbsp;&nbsp;HuisNr&nbsp; </td> <td><input type="text" ng-model="pers.HuisNr" name="huisnr" class="form-control input-lg" placeholder="Huisnr" /> <p class="help-block" ng-show="form.huisnr.$error.required && submitted">This input is required</p></td>
+        <td> &nbsp;&nbsp;Aanv.&nbsp; </td> <td><input type="text" ng-model="pers.Aanv" name="aanv" class="form-control input-lg" placeholder="Aanv" /> <p class="help-block" ng-show="form.aanv.$error.required && submitted">This input is required</p></td>
+      </tr>
+
+      <tr>
+        <td> Postcode </td> <td><input type="text" ng-model="pers.Postcode" name="postcode" class="form-control input-lg" placeholder="Postcode" /> <p class="help-block" ng-show="form.postcode.$error.required && submitted">This input is required</p></td>
+        <td> &nbsp;&nbsp;Plaats&nbsp; </td> <td><input type="text" ng-model="pers.Plaats" name="plaats" class="form-control input-lg" placeholder="Plaats" /> <p class="help-block" ng-show="form.plaats.$error.required && submitted">This input is required</p></td>
+        <td style="padding-left: 40px;"><input type="checkbox" ng-model="pers.Hoofdbew" name="hoofdbew" class="form-control input-lg" placeholder="Hoofdbew"/> <p class="help-block" ng-show="form.hoofdbew.$error.required && submitted">This input is required</p></td>
+        <td> &nbsp;&nbsp;Hoofdbew&nbsp; </td>
+      </tr>
+
+      <tr>
+        <td> Leeftijd </td> <td><input type="text" readonly ng-model="pers.Leeftijd" name="leeftijd" class="form-control input-lg" placeholder="Leeftijd" /> <p class="help-block" ng-show="form.leeftijd.$error.required && submitted">This input is required</p></td>
+      </tr>
+
+      <tr>
+        <td>Land</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>Regio</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>SoortLid</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>Aantal Term.</td>
+        <td></td>
+      </tr>
     </table>
+
+<br>
+  <tabset>
+    <tab heading="Postadres">Static content</tab>
+    <tab heading="Bankgegevens">Static content</tab>
+    <tab heading="Lidmaatschap">Static content</tab>
+    <tab heading="Opmerking">Static content</tab>
+    <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
+      {{tab.content}}
+    </tab>
+  </tabset>
   </div>
+
+
+
   <hr/>
   <!-- <a href="#/home" class="btn btn-lg btn-success">Home</a> -->
   <button type="submit"                          class="btn btn-lg btn-primary"> Opslaan </button>

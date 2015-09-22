@@ -63,9 +63,7 @@
 		  </tr>
         </thead>
         <tbody>
-     <!-- <tr ng-repeat="pe in pers | orderBy: mySort : reverse | filter : { LidNr: filter.lidnr, Naam: filter.naam } as numResults" ng-click="goViewPersoon(pe.LidNr)"> -->
-          <tr ng-repeat="pe in pers | orderBy: mySort : reverse | filter : {Naam: filter.naam, Plaats: filter.plaats, LidNr: filter.lidnr, SoortLid: filter.soortlid?filter.soortlid:'', Regio: filter.regio?filter.regio:'' } as numResults" >
-		  <!-- <td style="width:100px"><center><input type="checkbox" ng-checked="selection.indexOf(pe.lidnr) > -1" ng-click="toggleSelection(pe.lidnr)" ng-model="selected" value="{{pe.lidnr}}"  /></center></td> -->
+          <tr ng-repeat="pe in ctrl.model.persoon | orderBy: mySort : reverse | filter : {Naam: filter.naam, Plaats: filter.plaats, LidNr: filter.lidnr, SoortLid: filter.soortlid?filter.soortlid:'', Regio: filter.regio?filter.regio:'' } as numResults" >
             <td ng-if="display.persoonLidNr">{{ pe.LidNr }}</td>
             <td ng-if="display.persoonNaam">{{ pe.Naam }}</td>
             <td ng-if="display.persoonStraat">{{ pe.Straat }}</td>

@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('viewPersoonCtrl',
-    function ($scope, Persoon, $state, $stateParams, Person, authService) {
+    function ($scope, Persoon, Aanhef, $state, $stateParams, Person, authService) {
 /*
       if(authService.getToken()==null){
              $state.go('login');
@@ -14,6 +14,17 @@ angular.module('polderweb')
 //		    + JSON.stringify($scope.pers[0].Email)
 //			);
       });
+
+      Aanhef.findAll().then(function(res) {
+        console.log(res);
+        $scope.aanhef = res;
+      });
+
+      $scope.sexList = [
+        {"name": "Male"},
+        {"name": "Female"},
+        {"name": "Other"}
+      ];
 
           $scope.clickSave = function (form) {
             $scope.submitted = true;

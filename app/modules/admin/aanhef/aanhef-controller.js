@@ -7,7 +7,6 @@ angular.module('polderweb')
            aanhefs: aanhefs
        };
 
-
      function clickSave (form) {
         $scope.submitted = true;
         if (form.$valid) {
@@ -17,7 +16,6 @@ angular.module('polderweb')
       }
 
       function clickDel(aanhef) {
-
           Aanhef.nextAanhef(aanhef, function (aanhefId) {
               if (aanhefId) {
                   Aanhef.delAanhef(aanhef);
@@ -26,13 +24,11 @@ angular.module('polderweb')
           });
       }
 
-
-        angular.extend(this,{
-            model: model,
-            aanhefService: Aanhef,
-            clickSave: clickSave,
-            clickDel: clickDel
-
-        })
+      angular.extend(this,{
+          model: model,
+          aanhefService: Aanhef,
+          clickSave: clickSave,
+          clickDel: clickDel
+      })
 
     });
