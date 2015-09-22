@@ -60,35 +60,28 @@
       </tr>
 
       <tr>
-        <td>Land</td>
-        <td></td>
+        <td> &nbsp;&nbsp;Land&nbsp; </td> <td><select type="text" ng-model="pers.Land" ng-options="item for item in land" name="land" class="form-control input-lg" required/><p class="help-block" ng-show="form.land.$error.required && submitted">This select is required</p></td>
       </tr>
 
       <tr>
-        <td>Regio</td>
-        <td></td>
+        <td> &nbsp;&nbsp;Regio&nbsp; </td> <td><select type="text" ng-model="pers.Regio" ng-options="item for item in regio" name="regio" class="form-control input-lg" required/><p class="help-block" ng-show="form.regio.$error.required && submitted">This select is required</p></td>
       </tr>
 
       <tr>
-        <td>SoortLid</td>
-        <td></td>
+        <td> &nbsp;&nbsp;SoortLid&nbsp; </td> <td><select type="text" ng-model="pers.SoortLid" ng-options="item for item in soortlid" name="soortlid" class="form-control input-lg" required/><p class="help-block" ng-show="form.soortlid.$error.required && submitted">This select is required</p></td>
       </tr>
 
       <tr>
-        <td>Aantal Term.</td>
-        <td></td>
+        <td> &nbsp;&nbsp;Aantal Term.&nbsp; </td> <td><select type="text" ng-model="pers.AantalTerm" ng-options="item for item in aantalterm" name="aantalterm" class="form-control input-lg" required/><p class="help-block" ng-show="form.aantalterm.$error.required && submitted">This select is required</p></td>
       </tr>
     </table>
 
 <br>
   <tabset>
-    <tab heading="Postadres">Static content</tab>
-    <tab heading="Bankgegevens">Static content</tab>
-    <tab heading="Lidmaatschap">Static content</tab>
-    <tab heading="Opmerking">Static content</tab>
-    <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
-      {{tab.content}}
-    </tab>
+    <tab heading="Postadres">...</tab>
+    <tab heading="Bankgegevens">...</tab>
+    <tab heading="Lidmaatschap">...</tab>
+    <tab heading="Opmerking">...</tab>
   </tabset>
   </div>
 
