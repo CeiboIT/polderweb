@@ -5,8 +5,8 @@
 <h3>Overzicht Leden</h3>
 <hr/>
 <div>
-  <a ui-sref="home"               class="btn btn-lg btn-success">Terug</a>
-  <a ui-sref="createPersoon"      class="btn btn-lg btn-primary">Nieuw</a>
+  <a ui-sref="home.init"               class="btn btn-lg btn-success">Terug</a>
+  <a ui-sref="persoon.create"      class="btn btn-lg btn-primary">Nieuw</a>
   <!-- <button ng-click="clickGet()"  class="btn btn-lg btn-primary">Zoeken</button> -->
   <!-- <button ng-click="clickCancel()" class="btn btn-lg btn-primary">Doe iets</button> -->
   <!-- <button ng-click="delPersoon()" class="btn btn-lg btn-primary">Verwijder</button> -->
@@ -17,17 +17,19 @@
     <input type="text" size="10" ng-model="filter.naam" class="input-lg" placeholder="Naam..." />
     <button class="btn btn-lg btn-primary" ng-click="clearFilter();">Clear</button>
   </p>
--->  
+-->
   <p>
-    Filter : 
-	<input type="text" size="10" height="28" ng-model="filter.lidnr"                                                                                         class="input-lg" placeholder="Nummer..."/>
+    Filter :
+	<input type="text" size="10" height="28"   ng-model="filter.lidnr"                                                                                         class="input-lg" placeholder="Nummer..."/>
     <input type="text" size="10"             ng-model="filter.naam"                                                                                          class="input-lg" placeholder="Naam..." />
     <input type="text" size="10"             ng-model="filter.plaats"                                                                                        class="input-lg" placeholder="Plaats..." />
-    <select                                  ng-model="filter.soortlid" name="soortlid" ng-options="item.SoortLid as item.Omschrijving for item in soortlid" class="input-lg"><option value="">soortlid</option></select>
+    <select                                  ng-model="filter.soortlid" name="soortlid" ng-options="item.SoortLid as item.Omschrijving for item in soortlid" class="input-lg">
+      <option value="">soortlid</option>
+    </select>
     <select                                  ng-model="filter.regio"    name="regio"    ng-options="item.Regio as item.Omschrijving for item in regio"       class="input-lg"><option value="">regio</option></select>
     <button class="btn btn-lg btn-primary" ng-click="clearFilter();">Clear</button>
   </p>
-  
+
   <p>
     Toon:
     <label><input type="checkbox" ng-model="display.persoonLidNr"    /> LidNr </label>
@@ -40,7 +42,7 @@
     <label><input type="checkbox" ng-model="display.persoonLeeftijd" /> Leeftijd </label>
     <label><input type="checkbox" ng-model="display.persoonSoortLid" /> SoortLid </label>
     <label><input type="checkbox" ng-model="display.persoonRegio"    /> Regio </label>
-  </p> 
+  </p>
   <div class="person-grid">
     <scrollable-table watch="pers" watch-cols="display">
       <table class="table table-bordered table-striped table-hover">
@@ -57,22 +59,38 @@
             <th ng-if="display.persoonLeeftijd"><a href="javascript:void(0);" ng-click="clickSort('Leeftijd',     !reverse)">Leeftijd</a></th>
             <th ng-if="display.persoonSoortLid"><a href="javascript:void(0);" ng-click="clickSort('SoortLid',     !reverse)">Soortlid</a></th>
             <th ng-if="display.persoonRegio"><a href="javascript:void(0);"    ng-click="clickSort('Regio',        !reverse)">Regio</a></th>
+            <th class="col-md-1"></th>
 		  </tr>
         </thead>
         <tbody>
      <!-- <tr ng-repeat="pe in pers | orderBy: mySort : reverse | filter : { LidNr: filter.lidnr, Naam: filter.naam } as numResults" ng-click="goViewPersoon(pe.LidNr)"> -->
-          <tr ng-repeat="pe in pers | orderBy: mySort : reverse | filter : {Naam: filter.naam, Plaats: filter.plaats, LidNr: filter.lidnr, SoortLid: filter.soortlid?filter.soortlid:'', Regio: filter.regio?filter.regio:'' } as numResults" ng-click="goViewPersoon(pe.LidNr)" >
+          <tr ng-repeat="pe in pers | orderBy: mySort : reverse | filter : {Naam: filter.naam, Plaats: filter.plaats, LidNr: filter.lidnr, SoortLid: filter.soortlid?filter.soortlid:'', Regio: filter.regio?filter.regio:'' } as numResults" >
 		  <!-- <td style="width:100px"><center><input type="checkbox" ng-checked="selection.indexOf(pe.lidnr) > -1" ng-click="toggleSelection(pe.lidnr)" ng-model="selected" value="{{pe.lidnr}}"  /></center></td> -->
             <td ng-if="display.persoonLidNr">{{ pe.LidNr }}</td>
             <td ng-if="display.persoonNaam">{{ pe.Naam }}</td>
-            <td ng-if="display.persoonStraat">{{ pe.Straat }}</td> 
-            <td ng-if="display.persoonHuisNr">{{ pe.HuisNr }}</td> 
-            <td ng-if="display.persoonPostcode">{{ pe.Postcode }}</td> 
-            <td ng-if="display.persoonPlaats">{{ pe.Plaats }}</td> 
-            <td ng-if="display.persoonDatumGeb">{{ pe.DatumGeb }}</td> 
-            <td ng-if="display.persoonLeeftijd">{{ pe.Leeftijd }}</td> 
+            <td ng-if="display.persoonStraat">{{ pe.Straat }}</td>
+            <td ng-if="display.persoonHuisNr">{{ pe.HuisNr }}</td>
+            <td ng-if="display.persoonPostcode">{{ pe.Postcode }}</td>
+            <td ng-if="display.persoonPlaats">{{ pe.Plaats }}</td>
+            <td ng-if="display.persoonDatumGeb">{{ pe.DatumGeb }}</td>
+            <td ng-if="display.persoonLeeftijd">{{ pe.Leeftijd }}</td>
             <td ng-if="display.persoonSoortLid"><p title="{{persoon.soortlidoms}}">{{ pe.SoortLidOms}}</p></td>
             <td ng-if="display.persoonRegio"><p title="{{persoon.regiooms}}">{{ pe.RegioOms}}</p></td>
+             <td>
+                 <a class="btn btn-sm btn-primary" ui-sref="persoon.view({persoonId: pe.LidNr})"><i class="fa fa-pencil"></i></a>
+                 <button type="button" element-deletion
+                         collection="pers"
+                         options="{liveUpdate: true,
+                            compareBy : 'LidNr',
+                            usePromise: true,
+                            askBeforeDelete: true}"
+                         ng-model="pe.LidNr"
+                         deletion-service="ctrl.persoonService.delPersoon"
+                         class="btn btn-sm btn-danger
+                         ">
+                     <i class="fa fa-trash-o"></i>
+                 </button>
+             </td>
           </tr>
         </tbody>
       </table>

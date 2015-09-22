@@ -1,9 +1,41 @@
 angular.module('polderweb')
   .controller('PersoonController',
-    function ($rootScope, $scope, $state, Persoon, persoon
-	                                    , Regio, regio
-										, Soortlid, soortlid
-										, authService) {
+    function ($rootScope, $scope, $state, Persoon, persoon, Regio, regio, Soortlid, soortlid, authService) {
+
+       var model = {
+           selection : [],
+           persoon: persoon,
+           regio: regio,
+           soortlid: soortlid
+       };
+
+     function clickSave (form) {
+        $scope.submitted = true;
+        if (form.$valid) {
+          Persoon.updatePersoon($scope.ah.persoon, $scope.reg);
+         // $state.go('home');
+        }
+      }
+
+      function clickDel(persoon) {
+          Persoon.nextPersoon(persoon, function (persoonId) {
+              if (persoonId) {
+                  Persoon.delPersoon(persoon);
+                  $state.go(homeState);
+              }
+          });
+      }
+
+
+        angular.extend(this,{
+            model: model,
+            persoonService: Persoon,
+            clickSave: clickSave,
+            clickDel: clickDel
+
+        })
+
+
     if(authService.getToken()==null){
         $state.go('login');
      }else{
@@ -37,7 +69,7 @@ angular.module('polderweb')
       $scope.clickNew = function () {
         alert('Er is op nieuw geklikt!');
       };
-	  
+
       $scope.clickCancel = function () {
         alert('Er is op Doe Iets geklikt!');
       };
@@ -51,10 +83,10 @@ angular.module('polderweb')
       $scope.goViewPersoon = function (persoonId) {
 // console.log('persoon1 ' + persoonId);
         $scope.detail = true;
-        $state.go('viewPersoon', {persoonId: persoonId});
+        $state.go('persoon.view', {persoonId: persoonId});
 // console.log('persoon2 ' + persoonId);
 		// $scope.pe=Persoon.getPersoon(persoon);
-        // niet direct opstarten : dan wordt scherm niet leeg gemaakt 
+        // niet direct opstarten : dan wordt scherm niet leeg gemaakt
 	  };
 
       $scope.viewPersoon=function(persoonId){

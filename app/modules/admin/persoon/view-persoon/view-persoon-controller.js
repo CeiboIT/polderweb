@@ -1,17 +1,19 @@
 angular.module('polderweb')
   .controller('viewPersoonCtrl',
     function ($scope, Persoon, $state, $stateParams, Person, authService) {
+/*
       if(authService.getToken()==null){
              $state.go('login');
       }else{
+*/
 		  Persoon.getPersoon($stateParams.persoonId).then(function(res){
-		  $scope.pers = res;
-//		console.log('resultaat na getPersoon : ' 
-//		    + JSON.stringify($scope.pers[0].LidNr) + ' ' 
+		    $scope.pers = res;
+//		console.log('resultaat na getPersoon : '
+//		    + JSON.stringify($scope.pers[0].LidNr) + ' '
 //		    + JSON.stringify($scope.pers[0].Naam) + ' '
 //		    + JSON.stringify($scope.pers[0].Email)
 //			);
-          });
+      });
 
           $scope.clickSave = function (form) {
             $scope.submitted = true;
@@ -19,7 +21,7 @@ angular.module('polderweb')
                 Persoon.updatePersoon($scope.pers.LidNr
 //				                    , $scope.pers.Naam);
 				                    , $scope.pers);
-                $state.go('adminPersoon');
+                $state.go('persoon.list');
             }
           };
 
@@ -29,14 +31,16 @@ angular.module('polderweb')
                 Persoon.delPersoon($scope.pers.LidNr
 //				                 , $scope.pers.Naam
 								 , $scope.pers);
-                 $state.go('adminPersoon'); // Terug naar homepage
+                 $state.go('persoon.list'); // Terug naar homepage
               }
           };
 
           $scope.clickCancel = function () {
-            Persoon.getPersoon($stateParams.persoon).then(function(res){
-            $scope.pers = res;
+            $state.go('persoon.list');
+/*          Persoon.getPersoon($stateParams.persoonId).then(function(res){
+              $scope.pers = res;
             });
+*/
           };
 
           $scope.clickNext = function () {
@@ -56,5 +60,5 @@ angular.module('polderweb')
 				}
             });
           };
-      }
+//      }
     });

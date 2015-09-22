@@ -117,7 +117,7 @@ var elementDeletionCtrl = function($scope, $element, $attrs, $modal) {
                  modalInstance.result.then(function(){
                     executeDeletion();
                 }, function(){
-                    console.log('Dismissed')
+                    //console.log('Dismissed')
                 });
 
             } else {

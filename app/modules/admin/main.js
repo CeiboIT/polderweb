@@ -1,7 +1,8 @@
 angular.module('polderweb.admin', [
     //submodules of admin modules
     'polderweb.user',
-    'polderweb.aanhef'
+    'polderweb.aanhef',
+    'polderweb.persoon'
 
 ])
     //configure the parent state for this module here
@@ -46,13 +47,6 @@ angular.module('polderweb.admin', [
  .state('adminFunctie' ,{ url:'/admin/functie', templateUrl:'app/modules/admin/functie/functie.html', controller:'FunctieController', resolve: { functie: function (Functie) { return Functie.findAll(); }}})
  .state('createFunctie',{ url:'/admin/functie/create', templateUrl:'app/modules/admin/functie/create-functie/create-functie.html', controller:'createFunctieCtrl'})
  .state('viewFunctie' ,{ url:'/admin/functie/:functieId', templateUrl:'app/modules/admin/functie/view-functie/view-functie.html', controller:'viewFunctieCtrl'})
- // ---------------------------------------------------------------------------------
- .state('adminPersoon' ,{ url:'/admin/persoon', templateUrl:'app/modules/admin/persoon/persoon.html', controller:'PersoonController'
-	 , resolve: { persoon: function (Persoon) { return Persoon.findAll(); },
-                  regio: function (Regio) {return Regio.findAll(); },
-                  soortlid: function (Soortlid) {return Soortlid.findAll();}}})
- .state('createPersoon',{ url:'/admin/persoon/create', templateUrl:'app/modules/admin/persoon/create-persoon/create-persoon.html', controller:'createPersoonCtrl'})
- .state('viewPersoon' , { url:'/admin/persoon/:persoonId', templateUrl:'app/modules/admin/persoon/view-persoon/view-persoon.html', controller:'viewPersoonCtrl'})
  // ---------------------------------------------------------------------------------
  .state('adminMutReden' ,{ url: '/admin/mutreden', templateUrl: 'app/modules/admin/mutreden/mutreden.html', controller: 'MutRedenController', resolve: { mutreden: function (MutReden) { return MutReden.findAll(); } } })
  .state('createMutReden',{ url:'/admin/mutreden/create', templateUrl:'app/modules/admin/mutreden/create-mutreden/create-mutreden.html', controller:'createMutRedenCtrl'})
