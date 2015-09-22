@@ -7,6 +7,8 @@ angular.module('polderweb')
            aanhefs: aanhefs
        };
 
+       $rootScope.aanhef = aanhefs;
+
 
      function clickSave (form) {
         $scope.submitted = true;
@@ -15,6 +17,22 @@ angular.module('polderweb')
          // $state.go('home');
         }
       }
+
+       function clickNext () {
+           Aanhef.nextAanhef($scope.ah.aanhef,function (aanhefId) {
+               if (aanhefId) {
+                   $scope.reg = aanhefId;
+               }
+           });
+       };
+
+       function clickPre () {
+           Aanhef.preAanhef($scope.ah.aanhef, function (aanhefId) {
+               if (aanhefId) {
+                   $scope.per = aanhefId;
+               }
+           });
+       };
 
       function clickDel(aanhef) {
 
@@ -31,8 +49,9 @@ angular.module('polderweb')
             model: model,
             aanhefService: Aanhef,
             clickSave: clickSave,
-            clickDel: clickDel
-
+            clickDel: clickDel,
+            clickNext: clickNext,
+            clickPre: clickPre
         })
 
     });
