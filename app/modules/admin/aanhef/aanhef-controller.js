@@ -18,22 +18,6 @@ angular.module('polderweb')
         }
       }
 
-       function clickNext () {
-           Aanhef.nextAanhef($scope.ah.aanhef,function (aanhefId) {
-               if (aanhefId) {
-                   $scope.reg = aanhefId;
-               }
-           });
-       };
-
-       function clickPre () {
-           Aanhef.preAanhef($scope.ah.aanhef, function (aanhefId) {
-               if (aanhefId) {
-                   $scope.per = aanhefId;
-               }
-           });
-       };
-
       function clickDel(aanhef) {
 
           Aanhef.nextAanhef(aanhef, function (aanhefId) {
@@ -49,9 +33,8 @@ angular.module('polderweb')
             model: model,
             aanhefService: Aanhef,
             clickSave: clickSave,
-            clickDel: clickDel,
-            clickNext: clickNext,
-            clickPre: clickPre
+            clickDel: clickDel
+
         })
 
     });

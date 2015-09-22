@@ -4936,10 +4936,9 @@ p.title {
 .nav-tabs > li > a:focus {
   border: none;
   background-color: #ffffff;
-  color: #fff;
+  color: #aaa;
   width: 140px;
   text-align: center;
-  font-weight: bold;
   padding: 5px 10px;
 }
 .nav-tabs > li.active > a,

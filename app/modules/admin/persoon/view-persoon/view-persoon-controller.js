@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('viewPersoonCtrl',
-    function ($scope, Persoon, $state, $stateParams, Person, authService) {
+    function ($scope, Persoon, Aanhef, $state, $stateParams, Person, authService) {
 /*
       if(authService.getToken()==null){
              $state.go('login');
@@ -14,6 +14,17 @@ angular.module('polderweb')
 //		    + JSON.stringify($scope.pers[0].Email)
 //			);
       });
+
+      Aanhef.findAll().then(function(res) {
+        console.log(res);
+        $scope.aanhef = res;
+      });
+
+      $scope.sexList = [
+        {"name": "Male"},
+        {"name": "Female"},
+        {"name": "Other"}
+      ];
 
           $scope.clickSave = function (form) {
             $scope.submitted = true;
@@ -57,8 +68,26 @@ angular.module('polderweb')
               if (persoon) {
                 $scope.pers = persoon;
 //		console.log('Pre : ' + JSON.stringify($scope.pers.LidNr) );
-				}
+				      }
             });
           };
+
+
+  $scope.open1 = function($event) { $scope.status.opened1 = true; };
+  $scope.open2 = function($event) { $scope.status.opened2 = true; };
+  $scope.open3 = function($event) { $scope.status.opened3 = true; };
+  $scope.open4 = function($event) { $scope.status.opened4 = true; };
+
+  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+
+  $scope.status = {
+    opened1: false,
+    opened2: false,
+    opened3: false,
+    opened4: false
+  };
+
+
 //      }
     });
