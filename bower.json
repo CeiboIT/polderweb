@@ -19,7 +19,7 @@
     "angular-mocks": "^1.4.0",
     "angular-ui-utils": "~0.1",
     "moment": "~2.5",
-    "font-awesome": "~4.0",
+    "font-awesome": "~4.4",
     "angular-bootstrap": "0.12.1",
     "angular-file-upload": "~1.1.5",
     "angular-sanitize": "^1.4.0",
