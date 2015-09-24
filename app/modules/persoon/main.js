@@ -34,7 +34,7 @@ angular.module('polderweb.persoon', [])
 
             .state('persoon.list', {
                 url:'/list',
-                templateUrl:'app/modules/admin/persoon/persoon.html',
+                templateUrl:'app/modules/persoon/persoon.html',
                 controller:'PersoonController as ctrl',
                 resolve: {
                     persoon: function (Persoon) { return Persoon.findAll(); },
@@ -45,14 +45,14 @@ angular.module('polderweb.persoon', [])
             .state('persoon.create',
             {
                 url:'/create',
-                templateUrl:'app/modules/admin/persoon/create-persoon/create-persoon.html',
+                templateUrl:'app/modules/persoon/create-persoon/create-persoon.html',
                 controller:'createPersoonCtrl'
             })
 
             .state('persoon.view',
             {
                 url:'/:persoonId',
-                templateUrl:'app/modules/admin/persoon/view-persoon/view-persoon.html',
+                templateUrl:'app/modules/persoon/view-persoon/view-persoon.html',
                 controller:'viewPersoonCtrl'
             });
 

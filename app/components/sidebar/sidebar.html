@@ -27,6 +27,14 @@
                         <li class="collapse-subitem"><a ui-sref="aanhef.list">Functies</a></li>
                     </ul>
                 </li>
+
+                <li ui-sref-active="active" data-title="Persoon" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle">
+                    <a ui-sref="persoon.list"><span><div class="img-link"><i class="fa fa-users"></i></div>Persoon</span></a>
+                </li>
+
+
+
+
                 <li class="panel" data-title="Financiëel" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle" ng-class="{active:$state.includes('fina')}">
                     <span data-toggle="collapse" data-parent="#accordion" data-target="#fina" aria-expanded="true" aria-controls="products" ng-class="{collapsed:$state.includes('fina')}"><div class="img-link"><i class="fa fa-money"></i></div>Financiëel<i class="fa fa-angle-down"></i></span>
                     <ul class="collapse" id="fina" class="collapse" aria-labelledby="products" ng-class="{in:$state.includes('fina')}">
@@ -70,7 +78,6 @@
                         <li><a ui-sref="adminCategorie">Categoriën</a></li>
                         <li><a ui-sref="adminMutReden">Mutatieredenen</a></li>
                         <li><a ui-sref="adminFunctie">Functies</a></li>
-                        <li><a ui-sref="persoon.list">Persoon</a></li>
                     </ul>
                 </li>
                 <li ui-sref-active="active" data-title="Gebruikers" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle">
