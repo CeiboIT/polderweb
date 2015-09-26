@@ -48,20 +48,26 @@
                 <li class="panel" data-title="Rapportage" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle" ng-class="{active:$state.includes('rapp')}">
                     <span data-toggle="collapse" data-parent="#accordion" data-target="#rapp" aria-expanded="true" aria-controls="products" ng-class="{collapsed:$state.includes('rapp')}"><div class="img-link"><i class="fa fa-line-chart"></i></div>Rapportage<i class="fa fa-angle-down"></i></span>
                     <ul class="collapse" id="rapp" class="collapse" aria-labelledby="products" ng-class="{in:$state.includes('rapp')}">
-                        <li><a ui-sref="aanhef.list">Persoonsgeg. PDF</a></li>
-                        <li><a ui-sref="aanhef.list">Overzicht 18 jr</a></li>
-                        <li><a ui-sref="aanhef.list">Beëindigingen</a></li>
-                        <li><a ui-sref="aanhef.list">Verjaardagslijst</a></li>
-                        <li><a ui-sref="aanhef.list">Groepslijst 1</a></li>
-                        <li><a ui-sref="aanhef.list">Groepslijst 2</a></li>
-                        <li><a ui-sref="aanhef.list">Gezinsoverzicht 1</a></li>
-                        <li><a ui-sref="aanhef.list">Gezinsoverzicht 2</a></li>
-                        <li><a ui-sref="aanhef.list">Jubilarissen 1 PDF</a></li>
-                        <li><a ui-sref="aanhef.list">Jubilarissen 2 PDF</a></li>
-                        <li><a ui-sref="aanhef.list">Betalingen</a></li>
-                        <li><a ui-sref="aanhef.list">Actuarieel Rapp PDF</a></li>
-                        <li><a ui-sref="aanhef.list">Actuarieel Rapp XLS</a></li>
-                        <li><a ui-sref="aanhef.list">Ledenkaart</a></li>
+						<!-- <li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=pers.fr3&multipage=0&pagenav=1&format=PDF&bedrijfin=313">Persoonsgegevens</a></li> -->
+						<li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=jr18.fr3&multipage=0&pagenav=1&format=PDF&bedrijfin=313">Overzicht 18-jr</a></li>
+						<li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=eind.fr3&multipage=0&pagenav=1&format=PDF&bedrijfin=313">Beëindigingen</a></li>
+						<li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=verj.fr3&multipage=0&pagenav=1&format=PDF&bedrijfin=313">Verjaardagslijst</a></li>
+						<li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=grpn.fr3&multipage=0&pagenav=1&format=PDF&bedrijfin=313">Groepslijst</a></li>
+						<!-- <li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=groep.fr3&multipage=0&pagenav=1&format=PDF&bedrijfin=313">Groepslijst 2</a></li> -->
+						<li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=gzin.fr3&multipage=0&pagenav=1&format=PDF&bedrijfin=313">Gezinsoverzicht 1</a></li>
+						<li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=gzn2.fr3&multipage=0&pagenav=1&format=PDF&bedrijfin=313">Gezinsoverzicht 2</a></li>
+						<li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=jbl1.fr3&multipage=0&pagenav=1&format=PDF&bedrijfin=313">Jubilarissen</a></li>
+						<!-- <li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=jbl2.fr3&multipage=0&pagenav=1&format=PDF&bedrijfin=313">Jubilarissen 2</a></li> -->
+						<li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=beta.fr3&multipage=0&pagenav=1&format=PDF&bedrijfin=313">Betalingen</a></li>
+						<!--		  <li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=inbh.fr3&multipage=0&pagenav=1&bedrijfin=313">In Behandeling</a></li>
+								  <li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=open.fr3&multipage=0&pagenav=1&bedrijfin=313">Openstaande posten</a></li>
+								  <li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=verenig.fr3&multipage=0&pagenav=1&format=PDF&bedrijfin=313">Vereniging PDF</a></li>
+								  <li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=verenig.fr3&multipage=0&pagenav=1&bedrijfin=313">Vereniging</a></li>
+						-->
+						<li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=t001.fr3&multipage=0&pagenav=1&format=PDF&bedrijfin=313">Actuarieel Rapport</a></li>
+						<li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=actuxls.fr3&multipage=0&pagenav=1&format=XLS&bedrijfin=313">Actuariëel XLS</a></li>
+						<li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=lemu.fr3&multipage=0&pagenav=1&format=PDF&bedrijfin=313">Ledenkaart</a></li>
+							
                     </ul>
                 </li>
                 <li class="panel" data-title="Administratie" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle" ng-class="{active:$state.includes('admin')}">
