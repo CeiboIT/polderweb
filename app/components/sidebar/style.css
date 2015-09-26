@@ -118,7 +118,6 @@ nav#sidebar-wrapper ul.menu div > li ul li > a {
   transition: all 0.4s ease 0s;
 }
 nav#sidebar-wrapper ul.menu div > li ul li > a:hover {
-  background-color: #4c9689;
   text-decoration: none;
 }
 nav#sidebar-wrapper ul.menu div > li ul li a.active {
@@ -138,6 +137,7 @@ nav#sidebar-wrapper ul.menu div > li a {
   color: #fff;
 }
 nav#sidebar-wrapper ul.menu div > li a:hover {
+  background-color: #4c9689;
   text-decoration: none;
 }
 nav#sidebar-wrapper ul.menu div > li.active a {
@@ -145,7 +145,7 @@ nav#sidebar-wrapper ul.menu div > li.active a {
 }
 nav#sidebar-wrapper ul.menu div > li.active span,
 nav#sidebar-wrapper ul.menu div > li:hover span {
-  background: #cf7e01;
+  background-color: #4c9689;
 }
 nav#sidebar-wrapper ul.menu div > li.panel {
   margin-bottom: 0;

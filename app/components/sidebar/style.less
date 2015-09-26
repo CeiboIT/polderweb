@@ -1,12 +1,12 @@
 @import url("../commons/ceibo.functions.less");
 @import url("../commons/poldersoft_variables.less");
 
-
 @sidebarColor: darken(@menuColorDarker, 10%);
 @mainColor: @poldersoftMainColor;
 
-@wrapperColor: #3e313c;
-
+//achtergrond sidebar donkerbruin
+@wrapperColor: #3e313c; 
+@hoverColor: #4c9689;
 
 .panel i.fa-angle-down{
     line-height: 20px;
@@ -44,6 +44,7 @@ nav#sidebar-wrapper{
         list-style: none;
         overflow-x: hidden;
 
+        //Links-boven
         li.sidebar-main {
             height: 65px;
             border:none;
@@ -144,7 +145,8 @@ nav#sidebar-wrapper{
                 a{
                     color: #fff;
                     &:hover {
-                        background-color: #4c9689;
+                        // background-color: #4c9689;
+                        background-color: @hoverColor;
                         text-decoration: none;
                     }
                 }
@@ -155,7 +157,8 @@ nav#sidebar-wrapper{
 
                 &.active, &:hover{
                     span{
-                        background: darken(@sidebarColor, 2%);
+                        // background: darken(@sidebarColor, 2%);
+                        background-color: @hoverColor;
                     }
                 }
 
