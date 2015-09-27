@@ -308,10 +308,10 @@ RemObjects.SDK.RTTI["TPersoonDetail"] = __namespace.TPersoonDetail;
 __namespace.TUser = function TUser() {
     this.Bedrijf = {dataType : "Integer", value : null};
     this.Email = {dataType : "AnsiString", value : null};
+    this.Name = {dataType : "AnsiString", value : null};
     this.Passwrd = {dataType : "AnsiString", value : null};
     this.Token = {dataType : "AnsiString", value : null};
     this.Username = {dataType : "AnsiString", value : null};
-    this.Name = {dataType : "AnsiString", value : null};
 };
 __namespace.TUser.prototype = new RemObjects.SDK.ROStructType();
 __namespace.TUser.prototype.constructor = __namespace.TUser;
@@ -326,6 +326,26 @@ __namespace.TSoortLid = function TSoortLid() {
 __namespace.TSoortLid.prototype = new RemObjects.SDK.ROStructType();
 __namespace.TSoortLid.prototype.constructor = __namespace.TSoortLid;
 RemObjects.SDK.RTTI["TSoortLid"] = __namespace.TSoortLid;
+
+// Struct: TDashBoard
+__namespace.TDashBoard = function TDashBoard() {
+    this.Aantal = {dataType : "Integer", value : null};
+    this.Bedrag = {dataType : "Currency", value : null};
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.DatumTotMet = {dataType : "AnsiString", value : null};
+    this.DatumVan = {dataType : "AnsiString", value : null};
+    this.Item = {dataType : "AnsiString", value : null};
+    this.Omschrijving = {dataType : "AnsiString", value : null};
+    this.Opmerking = {dataType : "AnsiString", value : null};
+    this.Periode = {dataType : "Integer", value : null};
+    this.Vlag1 = {dataType : "Boolean", value : null};
+    this.Vlag2 = {dataType : "Boolean", value : null};
+    this.Vlag3 = {dataType : "Boolean", value : null};
+    this.Vlag4 = {dataType : "Boolean", value : null};
+};
+__namespace.TDashBoard.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TDashBoard.prototype.constructor = __namespace.TDashBoard;
+RemObjects.SDK.RTTI["TDashBoard"] = __namespace.TDashBoard;
 
 // Struct: TMutReden
 __namespace.TMutReden = function TMutReden() {
@@ -348,6 +368,208 @@ __namespace.TFunctie = function TFunctie() {
 __namespace.TFunctie.prototype = new RemObjects.SDK.ROStructType();
 __namespace.TFunctie.prototype.constructor = __namespace.TFunctie;
 RemObjects.SDK.RTTI["TFunctie"] = __namespace.TFunctie;
+
+// Struct: TOpenstaandIn
+__namespace.TOpenstaandIn = function TOpenstaandIn() {
+    this.Bedrag = {dataType : "Currency", value : null};
+    this.BedragBetaald = {dataType : "Currency", value : null};
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.BetaalWijze = {dataType : "AnsiString", value : null};
+    this.DatumTotMet = {dataType : "AnsiString", value : null};
+    this.DatumVan = {dataType : "AnsiString", value : null};
+    this.LidNr = {dataType : "Integer", value : null};
+    this.Naam = {dataType : "AnsiString", value : null};
+};
+__namespace.TOpenstaandIn.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TOpenstaandIn.prototype.constructor = __namespace.TOpenstaandIn;
+RemObjects.SDK.RTTI["TOpenstaandIn"] = __namespace.TOpenstaandIn;
+
+// Struct: TOpenstaand
+__namespace.TOpenstaand = function TOpenstaand() {
+    this.AantalTermijnen = {dataType : "Integer", value : null};
+    this.Bedrag = {dataType : "Currency", value : null};
+    this.BedragBetaald = {dataType : "Currency", value : null};
+    this.BedragOpenstaand = {dataType : "Currency", value : null};
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.BetaalWijze = {dataType : "AnsiString", value : null};
+    this.DatumBetaald = {dataType : "AnsiString", value : null};
+    this.Huisnr = {dataType : "AnsiString", value : null};
+    this.HuisnrAanv = {dataType : "AnsiString", value : null};
+    this.LidNr = {dataType : "Integer", value : null};
+    this.Naam = {dataType : "AnsiString", value : null};
+    this.Plaats = {dataType : "AnsiString", value : null};
+    this.Postcode = {dataType : "AnsiString", value : null};
+    this.Straat = {dataType : "AnsiString", value : null};
+    this.Tussenvoegsel = {dataType : "AnsiString", value : null};
+    this.Voorletters = {dataType : "AnsiString", value : null};
+};
+__namespace.TOpenstaand.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TOpenstaand.prototype.constructor = __namespace.TOpenstaand;
+RemObjects.SDK.RTTI["TOpenstaand"] = __namespace.TOpenstaand;
+
+// Struct: TStorneringIn
+__namespace.TStorneringIn = function TStorneringIn() {
+    this.BankRekNr = {dataType : "AnsiString", value : null};
+    this.Bedrag = {dataType : "Currency", value : null};
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.BetalingsKenmerk = {dataType : "AnsiString", value : null};
+    this.DatumTotMet = {dataType : "AnsiString", value : null};
+    this.DatumVan = {dataType : "AnsiString", value : null};
+    this.LidNr = {dataType : "Integer", value : null};
+};
+__namespace.TStorneringIn.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TStorneringIn.prototype.constructor = __namespace.TStorneringIn;
+RemObjects.SDK.RTTI["TStorneringIn"] = __namespace.TStorneringIn;
+
+// Struct: TStornering
+__namespace.TStornering = function TStornering() {
+    this.BankRekNr = {dataType : "AnsiString", value : null};
+    this.Bedrag = {dataType : "Currency", value : null};
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.BetalingsKenmerk = {dataType : "AnsiString", value : null};
+    this.Datum = {dataType : "AnsiString", value : null};
+    this.LidNr = {dataType : "Integer", value : null};
+    this.Naam = {dataType : "AnsiString", value : null};
+    this.Omschrijving = {dataType : "AnsiString", value : null};
+    this.Omschrijving2 = {dataType : "AnsiString", value : null};
+    this.RunNr = {dataType : "AnsiString", value : null};
+    this.SignaalCode = {dataType : "AnsiString", value : null};
+    this.SignaalTekst = {dataType : "AnsiString", value : null};
+};
+__namespace.TStornering.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TStornering.prototype.constructor = __namespace.TStornering;
+RemObjects.SDK.RTTI["TStornering"] = __namespace.TStornering;
+
+// Struct: TInBehandelingIn
+__namespace.TInBehandelingIn = function TInBehandelingIn() {
+    this.BankRekNr = {dataType : "AnsiString", value : null};
+    this.Bedrag = {dataType : "Currency", value : null};
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.Betaalwijze = {dataType : "AnsiString", value : null};
+    this.BetalingsKenmerk = {dataType : "AnsiString", value : null};
+    this.DatumTotMet = {dataType : "AnsiString", value : null};
+    this.DatumVan = {dataType : "AnsiString", value : null};
+    this.LidNr = {dataType : "Integer", value : null};
+    this.Naam = {dataType : "AnsiString", value : null};
+};
+__namespace.TInBehandelingIn.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TInBehandelingIn.prototype.constructor = __namespace.TInBehandelingIn;
+RemObjects.SDK.RTTI["TInBehandelingIn"] = __namespace.TInBehandelingIn;
+
+// Struct: TInBehandeling
+__namespace.TInBehandeling = function TInBehandeling() {
+    this.BankRekNr = {dataType : "AnsiString", value : null};
+    this.Bedrag = {dataType : "Currency", value : null};
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.Betaalwijze = {dataType : "AnsiString", value : null};
+    this.BetalingsKenmerk = {dataType : "AnsiString", value : null};
+    this.Datum = {dataType : "AnsiString", value : null};
+    this.Groep = {dataType : "AnsiString", value : null};
+    this.LidNr = {dataType : "Integer", value : null};
+    this.Naam = {dataType : "AnsiString", value : null};
+    this.Omschrijving = {dataType : "AnsiString", value : null};
+    this.Opmerking = {dataType : "AnsiString", value : null};
+};
+__namespace.TInBehandeling.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TInBehandeling.prototype.constructor = __namespace.TInBehandeling;
+RemObjects.SDK.RTTI["TInBehandeling"] = __namespace.TInBehandeling;
+
+// Struct: TTeVersturenIn
+__namespace.TTeVersturenIn = function TTeVersturenIn() {
+    this.Bankreknr = {dataType : "AnsiString", value : null};
+    this.Bedrag = {dataType : "Currency", value : null};
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.Betaalwijze = {dataType : "AnsiString", value : null};
+    this.BetalingsKenmerk = {dataType : "AnsiString", value : null};
+    this.DatumTotMet = {dataType : "AnsiString", value : null};
+    this.DatumVan = {dataType : "AnsiString", value : null};
+    this.LidNr = {dataType : "Integer", value : null};
+    this.Naam = {dataType : "AnsiString", value : null};
+};
+__namespace.TTeVersturenIn.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TTeVersturenIn.prototype.constructor = __namespace.TTeVersturenIn;
+RemObjects.SDK.RTTI["TTeVersturenIn"] = __namespace.TTeVersturenIn;
+
+// Struct: TTeVersturen
+__namespace.TTeVersturen = function TTeVersturen() {
+    this.Bankreknr = {dataType : "AnsiString", value : null};
+    this.Bedrag = {dataType : "Currency", value : null};
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.Betaalwijze = {dataType : "AnsiString", value : null};
+    this.BetalingsKenmerk = {dataType : "AnsiString", value : null};
+    this.Datum = {dataType : "AnsiString", value : null};
+    this.Groep = {dataType : "AnsiString", value : null};
+    this.LidNr = {dataType : "Integer", value : null};
+    this.Naam = {dataType : "AnsiString", value : null};
+    this.Omschrijving = {dataType : "AnsiString", value : null};
+    this.Opmerking = {dataType : "AnsiString", value : null};
+};
+__namespace.TTeVersturen.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TTeVersturen.prototype.constructor = __namespace.TTeVersturen;
+RemObjects.SDK.RTTI["TTeVersturen"] = __namespace.TTeVersturen;
+
+// Struct: TBetalingsarchiefIn
+__namespace.TBetalingsarchiefIn = function TBetalingsarchiefIn() {
+    this.Bankreknr = {dataType : "AnsiString", value : null};
+    this.Bedrag = {dataType : "Currency", value : null};
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.Betaalwijze = {dataType : "AnsiString", value : null};
+    this.BetalingsKenmerk = {dataType : "AnsiString", value : null};
+    this.DatumTotMet = {dataType : "AnsiString", value : null};
+    this.DatumVan = {dataType : "AnsiString", value : null};
+    this.LidNr = {dataType : "Integer", value : null};
+    this.Naam = {dataType : "AnsiString", value : null};
+};
+__namespace.TBetalingsarchiefIn.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TBetalingsarchiefIn.prototype.constructor = __namespace.TBetalingsarchiefIn;
+RemObjects.SDK.RTTI["TBetalingsarchiefIn"] = __namespace.TBetalingsarchiefIn;
+
+// Struct: TBetalingsarchief
+__namespace.TBetalingsarchief = function TBetalingsarchief() {
+    this.AfschriftNr = {dataType : "Integer", value : null};
+    this.Bankreknr = {dataType : "AnsiString", value : null};
+    this.Bedrag = {dataType : "Currency", value : null};
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.Betaalwijze = {dataType : "AnsiString", value : null};
+    this.BetalingNr = {dataType : "Integer", value : null};
+    this.BetalingsKenmerk = {dataType : "AnsiString", value : null};
+    this.Datum = {dataType : "AnsiString", value : null};
+    this.Groep = {dataType : "AnsiString", value : null};
+    this.LidNr = {dataType : "Integer", value : null};
+    this.Naam = {dataType : "AnsiString", value : null};
+    this.Omschrijving = {dataType : "AnsiString", value : null};
+    this.Opmerking = {dataType : "AnsiString", value : null};
+};
+__namespace.TBetalingsarchief.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TBetalingsarchief.prototype.constructor = __namespace.TBetalingsarchief;
+RemObjects.SDK.RTTI["TBetalingsarchief"] = __namespace.TBetalingsarchief;
+
+// Struct: TInningenIn
+__namespace.TInningenIn = function TInningenIn() {
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.Betaalwijze = {dataType : "AnsiString", value : null};
+    this.DatumTotMet = {dataType : "AnsiString", value : null};
+    this.DatumVan = {dataType : "AnsiString", value : null};
+};
+__namespace.TInningenIn.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TInningenIn.prototype.constructor = __namespace.TInningenIn;
+RemObjects.SDK.RTTI["TInningenIn"] = __namespace.TInningenIn;
+
+// Struct: TInningen
+__namespace.TInningen = function TInningen() {
+    this.AantalRegels = {dataType : "Integer", value : null};
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.Betaalwijze = {dataType : "AnsiString", value : null};
+    this.DatumVerwerking = {dataType : "AnsiString", value : null};
+    this.Nr = {dataType : "Integer", value : null};
+    this.Omschrijving = {dataType : "AnsiString", value : null};
+    this.Saldo = {dataType : "Currency", value : null};
+    this.Verstuurd = {dataType : "AnsiString", value : null};
+    this.Verwerkt = {dataType : "AnsiString", value : null};
+};
+__namespace.TInningen.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TInningen.prototype.constructor = __namespace.TInningen;
+RemObjects.SDK.RTTI["TInningen"] = __namespace.TInningen;
 
 // Struct: TSoortBetaling
 __namespace.TSoortBetaling = function TSoortBetaling() {
@@ -805,6 +1027,15 @@ __namespace.TBetalingArray.prototype = new RemObjects.SDK.ROArrayType();
 __namespace.TBetalingArray.prototype.constructor = __namespace.TBetalingArray;
 RemObjects.SDK.RTTI["TBetalingArray"] = __namespace.TBetalingArray;
 
+// Array: TBetalingsArchiefArray
+__namespace.TBetalingsArchiefArray = function TBetalingsArchiefArray() {
+  RemObjects.SDK.ROArrayType.call(this);
+  this.elementType = "TBetalingsArchief";
+};
+__namespace.TBetalingsArchiefArray.prototype = new RemObjects.SDK.ROArrayType();
+__namespace.TBetalingsArchiefArray.prototype.constructor = __namespace.TBetalingsArchiefArray;
+RemObjects.SDK.RTTI["TBetalingsArchiefArray"] = __namespace.TBetalingsArchiefArray;
+
 // Array: TCategorieArray
 __namespace.TCategorieArray = function TCategorieArray() {
   RemObjects.SDK.ROArrayType.call(this);
@@ -813,6 +1044,15 @@ __namespace.TCategorieArray = function TCategorieArray() {
 __namespace.TCategorieArray.prototype = new RemObjects.SDK.ROArrayType();
 __namespace.TCategorieArray.prototype.constructor = __namespace.TCategorieArray;
 RemObjects.SDK.RTTI["TCategorieArray"] = __namespace.TCategorieArray;
+
+// Array: TDashBoardArray
+__namespace.TDashBoardArray = function TDashBoardArray() {
+  RemObjects.SDK.ROArrayType.call(this);
+  this.elementType = "TDashBoard";
+};
+__namespace.TDashBoardArray.prototype = new RemObjects.SDK.ROArrayType();
+__namespace.TDashBoardArray.prototype.constructor = __namespace.TDashBoardArray;
+RemObjects.SDK.RTTI["TDashBoardArray"] = __namespace.TDashBoardArray;
 
 // Array: TFunctieArray
 __namespace.TFunctieArray = function TFunctieArray() {
@@ -850,6 +1090,24 @@ __namespace.TGrpBetArray.prototype = new RemObjects.SDK.ROArrayType();
 __namespace.TGrpBetArray.prototype.constructor = __namespace.TGrpBetArray;
 RemObjects.SDK.RTTI["TGrpBetArray"] = __namespace.TGrpBetArray;
 
+// Array: TInBehandelingArray
+__namespace.TInBehandelingArray = function TInBehandelingArray() {
+  RemObjects.SDK.ROArrayType.call(this);
+  this.elementType = "TInBehandeling";
+};
+__namespace.TInBehandelingArray.prototype = new RemObjects.SDK.ROArrayType();
+__namespace.TInBehandelingArray.prototype.constructor = __namespace.TInBehandelingArray;
+RemObjects.SDK.RTTI["TInBehandelingArray"] = __namespace.TInBehandelingArray;
+
+// Array: TInningenArray
+__namespace.TInningenArray = function TInningenArray() {
+  RemObjects.SDK.ROArrayType.call(this);
+  this.elementType = "TInningen";
+};
+__namespace.TInningenArray.prototype = new RemObjects.SDK.ROArrayType();
+__namespace.TInningenArray.prototype.constructor = __namespace.TInningenArray;
+RemObjects.SDK.RTTI["TInningenArray"] = __namespace.TInningenArray;
+
 // Array: TIntegerArray
 __namespace.TIntegerArray = function TIntegerArray() {
   RemObjects.SDK.ROArrayType.call(this);
@@ -885,6 +1143,15 @@ __namespace.TMutRedenArray = function TMutRedenArray() {
 __namespace.TMutRedenArray.prototype = new RemObjects.SDK.ROArrayType();
 __namespace.TMutRedenArray.prototype.constructor = __namespace.TMutRedenArray;
 RemObjects.SDK.RTTI["TMutRedenArray"] = __namespace.TMutRedenArray;
+
+// Array: TOpenstaandArray
+__namespace.TOpenstaandArray = function TOpenstaandArray() {
+  RemObjects.SDK.ROArrayType.call(this);
+  this.elementType = "TOpenstaand";
+};
+__namespace.TOpenstaandArray.prototype = new RemObjects.SDK.ROArrayType();
+__namespace.TOpenstaandArray.prototype.constructor = __namespace.TOpenstaandArray;
+RemObjects.SDK.RTTI["TOpenstaandArray"] = __namespace.TOpenstaandArray;
 
 // Array: TPersBetArray
 __namespace.TPersBetArray = function TPersBetArray() {
@@ -940,6 +1207,15 @@ __namespace.TSoortLidArray.prototype = new RemObjects.SDK.ROArrayType();
 __namespace.TSoortLidArray.prototype.constructor = __namespace.TSoortLidArray;
 RemObjects.SDK.RTTI["TSoortLidArray"] = __namespace.TSoortLidArray;
 
+// Array: TStorneringArray
+__namespace.TStorneringArray = function TStorneringArray() {
+  RemObjects.SDK.ROArrayType.call(this);
+  this.elementType = "TStornering";
+};
+__namespace.TStorneringArray.prototype = new RemObjects.SDK.ROArrayType();
+__namespace.TStorneringArray.prototype.constructor = __namespace.TStorneringArray;
+RemObjects.SDK.RTTI["TStorneringArray"] = __namespace.TStorneringArray;
+
 // Array: TStringArray
 __namespace.TStringArray = function TStringArray() {
   RemObjects.SDK.ROArrayType.call(this);
@@ -948,6 +1224,15 @@ __namespace.TStringArray = function TStringArray() {
 __namespace.TStringArray.prototype = new RemObjects.SDK.ROArrayType();
 __namespace.TStringArray.prototype.constructor = __namespace.TStringArray;
 RemObjects.SDK.RTTI["TStringArray"] = __namespace.TStringArray;
+
+// Array: TTeVersturenArray
+__namespace.TTeVersturenArray = function TTeVersturenArray() {
+  RemObjects.SDK.ROArrayType.call(this);
+  this.elementType = "TTeVersturen";
+};
+__namespace.TTeVersturenArray.prototype = new RemObjects.SDK.ROArrayType();
+__namespace.TTeVersturenArray.prototype.constructor = __namespace.TTeVersturenArray;
+RemObjects.SDK.RTTI["TTeVersturenArray"] = __namespace.TTeVersturenArray;
 
 // Array: TTitelArray
 __namespace.TTitelArray = function TTitelArray() {
@@ -1036,6 +1321,34 @@ __namespace.PolderJSONService.prototype.SvcSoortLid = function(
         }
         __success(
 		__SoortLidOut,
+		__Rslt,
+		__Mess
+		);
+        }, __error);
+
+    } catch (e) {
+        __error(msg, e);
+    };
+};
+
+__namespace.PolderJSONService.prototype.SvcDashBoard = function(
+	Actie,
+	Username,
+	DashBoardIn,
+	__success, __error) {
+    try {
+        var msg = this.fMessage.clone();
+        msg.initialize(this.fServiceName, "SvcDashBoard");
+        msg.write("Actie", "AnsiString", Actie);
+        msg.write("Username", "AnsiString", Username);
+        msg.write("DashBoardIn", "TDashBoard", DashBoardIn);
+        msg.finalize();
+        this.fChannel.dispatch(msg, function (__message) {
+		var __DashBoardOut = __message.read("DashBoardOut", "TDashBoardArray");
+		var __Rslt = __message.read("Rslt", "Boolean");
+		var __Mess = __message.read("Mess", "AnsiString");
+	        __success(
+		__DashBoardOut,
 		__Rslt,
 		__Mess
 		);
@@ -1160,6 +1473,174 @@ __namespace.PolderJSONService.prototype.SvcFunctie = function(
         }
         __success(
 		__FunctieOut,
+		__Rslt,
+		__Mess
+		);
+        }, __error);
+
+    } catch (e) {
+        __error(msg, e);
+    };
+};
+
+__namespace.PolderJSONService.prototype.SvcOpenstaand = function(
+	Actie,
+	Username,
+	OpenstaandIn,
+	__success, __error) {
+    try {
+        var msg = this.fMessage.clone();
+        msg.initialize(this.fServiceName, "SvcOpenstaand");
+        msg.write("Actie", "AnsiString", Actie);
+        msg.write("Username", "AnsiString", Username);
+        msg.write("OpenstaandIn", "TOpenstaandIn", OpenstaandIn);
+        msg.finalize();
+        this.fChannel.dispatch(msg, function (__message) {
+		var __OpenstaandOut = __message.read("OpenstaandOut", "TOpenstaandArray");
+		var __Rslt = __message.read("Rslt", "Boolean");
+		var __Mess = __message.read("Mess", "AnsiString");
+	        __success(
+		__OpenstaandOut,
+		__Rslt,
+		__Mess
+		);
+        }, __error);
+
+    } catch (e) {
+        __error(msg, e);
+    };
+};
+
+__namespace.PolderJSONService.prototype.SvcStornering = function(
+	Actie,
+	Username,
+	StorneringIn,
+	__success, __error) {
+    try {
+        var msg = this.fMessage.clone();
+        msg.initialize(this.fServiceName, "SvcStornering");
+        msg.write("Actie", "AnsiString", Actie);
+        msg.write("Username", "AnsiString", Username);
+        msg.write("StorneringIn", "TStorneringIn", StorneringIn);
+        msg.finalize();
+        this.fChannel.dispatch(msg, function (__message) {
+		var __StorneringOut = __message.read("StorneringOut", "TStorneringArray");
+		var __Rslt = __message.read("Rslt", "Boolean");
+		var __Mess = __message.read("Mess", "AnsiString");
+	        __success(
+		__StorneringOut,
+		__Rslt,
+		__Mess
+		);
+        }, __error);
+
+    } catch (e) {
+        __error(msg, e);
+    };
+};
+
+__namespace.PolderJSONService.prototype.SvcInBehandeling = function(
+	Actie,
+	Username,
+	InBehandelingIn,
+	__success, __error) {
+    try {
+        var msg = this.fMessage.clone();
+        msg.initialize(this.fServiceName, "SvcInBehandeling");
+        msg.write("Actie", "AnsiString", Actie);
+        msg.write("Username", "AnsiString", Username);
+        msg.write("InBehandelingIn", "TInBehandelingIn", InBehandelingIn);
+        msg.finalize();
+        this.fChannel.dispatch(msg, function (__message) {
+		var __InBehandelingOut = __message.read("InBehandelingOut", "TInBehandelingArray");
+		var __Rslt = __message.read("Rslt", "Boolean");
+		var __Mess = __message.read("Mess", "AnsiString");
+	        __success(
+		__InBehandelingOut,
+		__Rslt,
+		__Mess
+		);
+        }, __error);
+
+    } catch (e) {
+        __error(msg, e);
+    };
+};
+
+__namespace.PolderJSONService.prototype.SvcTeVersturen = function(
+	Actie,
+	Username,
+	TeVersturenIn,
+	__success, __error) {
+    try {
+        var msg = this.fMessage.clone();
+        msg.initialize(this.fServiceName, "SvcTeVersturen");
+        msg.write("Actie", "AnsiString", Actie);
+        msg.write("Username", "AnsiString", Username);
+        msg.write("TeVersturenIn", "TTeVersturenIn", TeVersturenIn);
+        msg.finalize();
+        this.fChannel.dispatch(msg, function (__message) {
+		var __TeVersturenOut = __message.read("TeVersturenOut", "TTeVersturenArray");
+		var __Rslt = __message.read("Rslt", "Boolean");
+		var __Mess = __message.read("Mess", "AnsiString");
+	        __success(
+		__TeVersturenOut,
+		__Rslt,
+		__Mess
+		);
+        }, __error);
+
+    } catch (e) {
+        __error(msg, e);
+    };
+};
+
+__namespace.PolderJSONService.prototype.SvcBetalingsArchief = function(
+	Actie,
+	Username,
+	BetalingsArchiefIn,
+	__success, __error) {
+    try {
+        var msg = this.fMessage.clone();
+        msg.initialize(this.fServiceName, "SvcBetalingsArchief");
+        msg.write("Actie", "AnsiString", Actie);
+        msg.write("Username", "AnsiString", Username);
+        msg.write("BetalingsArchiefIn", "TBetalingsArchiefIn", BetalingsArchiefIn);
+        msg.finalize();
+        this.fChannel.dispatch(msg, function (__message) {
+		var __BetalingsArchiefOut = __message.read("BetalingsArchiefOut", "TBetalingsArchiefArray");
+		var __Rslt = __message.read("Rslt", "Boolean");
+		var __Mess = __message.read("Mess", "AnsiString");
+	        __success(
+		__BetalingsArchiefOut,
+		__Rslt,
+		__Mess
+		);
+        }, __error);
+
+    } catch (e) {
+        __error(msg, e);
+    };
+};
+
+__namespace.PolderJSONService.prototype.SvcInningen = function(
+	Actie,
+	Username,
+	InningenIn,
+	__success, __error) {
+    try {
+        var msg = this.fMessage.clone();
+        msg.initialize(this.fServiceName, "SvcInningen");
+        msg.write("Actie", "AnsiString", Actie);
+        msg.write("Username", "AnsiString", Username);
+        msg.write("InningenIn", "TInningenIn", InningenIn);
+        msg.finalize();
+        this.fChannel.dispatch(msg, function (__message) {
+		var __InningenOut = __message.read("InningenOut", "TInningenArray");
+		var __Rslt = __message.read("Rslt", "Boolean");
+		var __Mess = __message.read("Mess", "AnsiString");
+	        __success(
+		__InningenOut,
 		__Rslt,
 		__Mess
 		);
