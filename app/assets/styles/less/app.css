@@ -521,10 +521,10 @@ a.list-group-item.hover {
 }
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
-  background-color: #fdfefe;
+  background-color: #f0f3f4;
 }
 .table-striped > thead > th {
-  background-color: #fdfefe;
+  background-color: #f0f3f4;
   border-right: 1px solid #d6d6d6;
 }
 .table-striped > thead > th:last-child {
@@ -1788,8 +1788,8 @@ fieldset[disabled] .btn-back.active {
 }
 .btn-export {
   color: #ffffff !important;
-  background-color: #999999;
-  border-color: #999999;
+  background-color: #586f87;
+  border-color: #586f87;
   margin-right: 14px;
 }
 .btn-export:hover,
@@ -1798,8 +1798,8 @@ fieldset[disabled] .btn-back.active {
 .btn-export.active,
 .open .dropdown-toggle.btn-export {
   color: #ffffff !important;
-  background-color: #8c8c8c;
-  border-color: #858585;
+  background-color: #4e6278;
+  border-color: #485b6e;
 }
 .btn-export:active,
 .btn-export.active,
@@ -1821,8 +1821,8 @@ fieldset[disabled] .btn-export:active,
 .btn-export.disabled.active,
 .btn-export[disabled].active,
 fieldset[disabled] .btn-export.active {
-  background-color: #999999;
-  border-color: #999999;
+  background-color: #586f87;
+  border-color: #586f87;
 }
 .btn-new {
   color: #ffffff !important;
@@ -1900,8 +1900,8 @@ fieldset[disabled] .btn-edit.active {
 }
 .btn-delete {
   color: #ffffff !important;
-  background-color: #fad733;
-  border-color: #fad733;
+  background-color: #f05050;
+  border-color: #f05050;
 }
 .btn-delete:hover,
 .btn-delete:focus,
@@ -1909,8 +1909,8 @@ fieldset[disabled] .btn-edit.active {
 .btn-delete.active,
 .open .dropdown-toggle.btn-delete {
   color: #ffffff !important;
-  background-color: #f9d21a;
-  border-color: #f9cf0b;
+  background-color: #ee3939;
+  border-color: #ed2a2a;
 }
 .btn-delete:active,
 .btn-delete.active,
@@ -1932,8 +1932,45 @@ fieldset[disabled] .btn-delete:active,
 .btn-delete.disabled.active,
 .btn-delete[disabled].active,
 fieldset[disabled] .btn-delete.active {
-  background-color: #fad733;
-  border-color: #fad733;
+  background-color: #f05050;
+  border-color: #f05050;
+}
+.btn-cancel {
+  color: #ffffff !important;
+  background-color: #586f87;
+  border-color: #586f87;
+}
+.btn-cancel:hover,
+.btn-cancel:focus,
+.btn-cancel:active,
+.btn-cancel.active,
+.open .dropdown-toggle.btn-cancel {
+  color: #ffffff !important;
+  background-color: #4e6278;
+  border-color: #485b6e;
+}
+.btn-cancel:active,
+.btn-cancel.active,
+.open .dropdown-toggle.btn-cancel {
+  background-image: none;
+}
+.btn-cancel.disabled,
+.btn-cancel[disabled],
+fieldset[disabled] .btn-cancel,
+.btn-cancel.disabled:hover,
+.btn-cancel[disabled]:hover,
+fieldset[disabled] .btn-cancel:hover,
+.btn-cancel.disabled:focus,
+.btn-cancel[disabled]:focus,
+fieldset[disabled] .btn-cancel:focus,
+.btn-cancel.disabled:active,
+.btn-cancel[disabled]:active,
+fieldset[disabled] .btn-cancel:active,
+.btn-cancel.disabled.active,
+.btn-cancel[disabled].active,
+fieldset[disabled] .btn-cancel.active {
+  background-color: #586f87;
+  border-color: #586f87;
 }
 .btn-primary {
   color: #ffffff !important;

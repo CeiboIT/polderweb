@@ -560,8 +560,10 @@ blockquote{
   > li{
     > a{
       border-color: @border-color;
+      //doesn't work border-radius: 0px;
       &:hover,
       &:focus{
+        //works border-radius: 0px; 
         border-color: @border-color;
         background-color: @brand-light;
       }

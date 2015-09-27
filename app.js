@@ -28,7 +28,7 @@ angular.module('polderweb').config(function ($urlRouterProvider, loginUrl) {
   $urlRouterProvider.otherwise(loginUrl);
 
 })
-  .run(function ($rootScope, Person,Soortlid,Regio) {
+  .run(function ($rootScope, Person,SoortLid,Regio) {
     $rootScope.persons = [];
     $rootScope.soortl=[];
     $rootScope.regio=[];

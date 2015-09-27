@@ -1,12 +1,14 @@
 <div>
-  <h3>Nieuwe aanhef</h3>
+  <h3><b>Nieuwe aanhef</b></h3>
   <hr/>
   <form ng-submit="addAanhef(form)" name="form" novalidate>
   <a ui-sref="aanhef.list"                        class="btn btn-lg btn-success">Terug</a>
   <br/>
   <div class="clearfix"></div>
   <br/>
-  <div class="jumbotron">
+  <!--  <div class="jumbotron"> 
+  Override rounded corners in jumbotron -->
+    <div style="border-radius: 0px !important" class="jumbotron"> 
       <div class="row">
         <div class="col-xs-4">
           <div class="form-group" ng-class="{'has-error':form.aanhef.$invalid && submitted}">
@@ -29,8 +31,8 @@
                 <select ng-model="aanhefs.Geslacht" class="form-control input-lg" name="Geslacht" ng-options="geslacht.value as geslacht.label for geslacht in geslachtOptions"></select>
                 <p class="help-block" ng-show="form.Geslacht.$error.required && submitted">This input is required</p>
             </div>
-			<button class="btn btn-lg btn-primary" type="submit">Toevoegen</button>
-			<a ui-sref="aanhef.list" class="btn btn-lg btn-warning">Annuleren</a>
+			<button class="btn btn-lg btn-new" type="submit">Toevoegen</button>
+			<a ui-sref="aanhef.list" class="btn btn-lg btn-cancel">Annuleren</a>
         </div>
       </div>
     </form>

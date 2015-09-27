@@ -1,8 +1,8 @@
 <div>
-  <h3><b>Nieuwe functie</b></h3>
+  <h3><b>Nieuwe soortlid</b></h3>
   <hr/>
-  <form ng-submit="addFunctie(form)" name="form" novalidate>
-  <a ui-sref="functie.list"                        class="btn btn-lg btn-success">Terug</a>
+  <form ng-submit="addSoortLid(form)" name="form" novalidate>
+  <a ui-sref="soortlid.list"                        class="btn btn-lg btn-success">Terug</a>
   <br/>
   <div class="clearfix"></div>
   <br/>
@@ -11,16 +11,16 @@
     <div style="border-radius: 0px !important" class="jumbotron"> 
       <div class="row">
         <div class="col-xs-4">
-          <div class="form-group" ng-class="{'has-error':form.functie.$invalid && submitted}">
-            <input type="text" ng-model="functies.Functie" name="functie"
+          <div class="form-group" ng-class="{'has-error':form.soortlid.$invalid && submitted}">
+            <input type="text" ng-model="soortlids.SoortLid" name="soortlid"
                    class="form-control input-lg"
-                   placeholder="Functie" required />
-            <p class="help-block" ng-show="form.functies.$error.required && submitted">
+                   placeholder="SoortLid" required />
+            <p class="help-block" ng-show="form.soortlids.$error.required && submitted">
               This input is required
             </p>
           </div>
           <div class="form-group" ng-class="{'has-error':form.omschrijving.$invalid && submitted}">
-            <input type="text" ng-model="functies.Omschrijving" name="omschrijving"
+            <input type="text" ng-model="soortlids.Omschrijving" name="omschrijving"
                    class="form-control input-lg" placeholder="Omschrijving" required/>
             <p class="help-block" ng-show="form.omschrijving.$error.required && submitted">
               This input is required
@@ -28,7 +28,7 @@
           </div>
 
 			<button class="btn btn-lg btn-new" type="submit">Toevoegen</button>
-			<a ui-sref="functie.list" class="btn btn-lg btn-cancel">Annuleren</a>
+			<a ui-sref="soortlid.list" class="btn btn-lg btn-cancel">Annuleren</a>
         </div>
       </div>
     </form>

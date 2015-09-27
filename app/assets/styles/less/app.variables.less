@@ -1,4 +1,4 @@
-//Versie 20150926
+//Versie 20150927
 //
 //@brand-primary:         #fec54d;
 //@brand-primary:         #439fe0;
@@ -8,11 +8,15 @@
 
 @brand-back:            #4c9689;
 //@brand-export:          #4c9689;
-@brand-export:          #999999;
+//@brand-export:          #999999;
+@brand-export:          #586f87;
+//@brand-cancel:          #8a74b9;
+@brand-cancel:          #586f87;
 @brand-new:             #fec54d;
 //@brand-edit:            #439fe0;
 @brand-edit:            #428bca;
-@brand-delete:          #fad733;
+//@brand-delete:          #fad733;
+@brand-delete:          #f05050;
 @brand-info:            #23b7e5;  
 //@brand-success:         #41A85F;
 @brand-success:         #4C9689;
@@ -41,6 +45,11 @@
 @link-hover-color:        @brand-primary;
 
 @border-radius-base:      0px;
+//@border-radius-large:     6px;
+@border-radius-large:     0px;
+//@border-radius-small:     3px;
+@border-radius-small:     0px;
+
 @border-color:		  	  #cccccc;
 
 @line-height-base:        1.42857143; // 20/14
@@ -76,7 +85,8 @@
 @list-group-active-color:        @brand-info;
 
 @table-border-color:             lighten(@border-color, 4%);
-@table-striped-color:            lighten(@brand-light, 4.5%);;
+//20150927 @table-striped-color:            lighten(@brand-light, 4.5%);
+@table-striped-color:            @brand-light;
 
 @arrow-width:         			     8px;
 @arrow-color:         			     #fff;
@@ -111,4 +121,20 @@
 .st-sort-descent:after{
   content: '\25BC';
 }
+
+////== Jumbotron
+//// toegevoegd 20150927
+//@gray-darker:            lighten(#000, 13.5%); // #222
+//@gray-dark:              lighten(#000, 20%);   // #333
+//@gray:                   lighten(#000, 33.5%); // #555
+//@gray-light:             lighten(#000, 60%);   // #999
+//@gray-lighter:           lighten(#000, 93.5%); // #eee
+//
+//@jumbotron-padding:              30px;
+//@jumbotron-color:                @gray;//inherit;
+//@jumbotron-bg:                   @gray-lighter;
+//@jumbotron-heading-color:        @gray;//inherit;
+//@jumbotron-font-size:            ceil((@font-size-base * 1.5));
+
+
 

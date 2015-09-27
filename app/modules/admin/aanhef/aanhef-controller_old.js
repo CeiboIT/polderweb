@@ -1,28 +1,26 @@
 angular.module('polderweb')
-  .controller('RegioController',
-   function ($rootScope, $scope, $state, Regio, regios, authService, homeState) {
+  .controller('AanhefController',
+   function ($rootScope, $scope, $state, Aanhef, aanhefs, authService, homeState) {
 
        var model = {
            selection : [],
-           regios: regios
+           aanhefs: aanhefs
        };
-
-       $rootScope.regio = regios;
 
 
      function clickSave (form) {
         $scope.submitted = true;
         if (form.$valid) {
-          Regio.updateRegio($scope.ah.regio, $scope.reg);
+          Aanhef.updateAanhef($scope.ah.aanhef, $scope.reg);
          // $state.go('home');
         }
       }
 
-      function clickDel(regio) {
+      function clickDel(aanhef) {
 
-          Regio.nextRegio(regio, function (regioId) {
-              if (regioId) {
-                  Regio.delRegio(regio);
+          Aanhef.nextAanhef(aanhef, function (aanhefId) {
+              if (aanhefId) {
+                  Aanhef.delAanhef(aanhef);
                   $state.go(homeState);
               }
           });
@@ -31,7 +29,7 @@ angular.module('polderweb')
 
         angular.extend(this,{
             model: model,
-            regioService: Regio,
+            aanhefService: Aanhef,
             clickSave: clickSave,
             clickDel: clickDel
 

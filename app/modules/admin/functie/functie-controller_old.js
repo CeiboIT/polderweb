@@ -7,8 +7,6 @@ angular.module('polderweb')
            functies: functies
        };
 
-       $rootScope.functie = functies;
-
 
      function clickSave (form) {
         $scope.submitted = true;

@@ -1,12 +1,12 @@
 <!--                                     -->
-<!-- Details Aanhef                      -->
+<!-- Details SoortLid                      -->
 <!-- 20150816 layout                     -->
 <!-- 20150914 Tekstueel                  -->
 <!--                                     -->
-<h3><b>Details Aanhef</b></h3>
+<h3><b>Details SoortLid</b></h3>
 <hr/>
 <form ng-submit="clickSave(form)" name="form" novalidate>
-  <a ui-sref="aanhef.list"                        class="btn btn-lg btn-success">Terug</a>
+  <a ui-sref="soortlid.list"                        class="btn btn-lg btn-success">Terug</a>
   <div class='pull-right mb10'>
      <button type="button" ng-click="clickPre()"  class="btn btn-lg btn-success">Vorige</button>
      <button type="button" ng-click="clickNext()" class="btn btn-lg btn-success">Volgende</button>
@@ -17,23 +17,16 @@
   Override rounded corners in jumbotron -->
   <div style="border-radius: 0px !important" class="jumbotron"> 
     <table class="table table-bordered"> <!--" table-striped table-hover" -->
-      <tr><td><b>Aanhef</b></td>
+      <tr><td><b>SoortLid</b></td>
       <td>
-          <input type="text" readonly ng-model="aanhef.Aanhef" name="aanhef" class="form-control input-lg" placeholder="Aanhef" required/><p class="help-block" ng-show="form.aanhef.$error.required && submitted">Dit veld is verplicht</p>
+          <input type="text" readonly ng-model="soortlid.SoortLid" name="soortlid" class="form-control input-lg" placeholder="SoortLid" required/><p class="help-block" ng-show="form.soortlid.$error.required && submitted">Dit veld is verplicht</p>
       </td>
       </tr>
       <tr>
           <td><b>Omschrijving</b></td>
           <td>
-            <input type="text" ng-model="aanhef.Omschrijving" name="omschrijving" class="form-control input-lg" placeholder="Omschrijving" required/>
+            <input type="text" ng-model="soortlid.Omschrijving" name="omschrijving" class="form-control input-lg" placeholder="Omschrijving" required/>
             <p class="help-block" ng-show="form.omschrijving.$error.required && submitted">Dit veld is verplicht</p>
-          </td>
-      </tr>
-      <tr>
-          <td><b>Geslacht</b></td>
-          <td>
-              <select ng-model="aanhef.Geslacht" class="form-control input-lg" ng-options="geslacht.value as geslacht.label for geslacht in geslachtOptions"></select>
-              <p class="help-block" ng-show="form.omschrijving.$error.required && submitted">Dit veld is verplicht</p>
           </td>
       </tr>
     </table>
@@ -45,7 +38,7 @@
   <button type="button"    class="btn btn-lg btn-delete" element-deletion
           options="{askBeforeDelete: true, usePromise: true}"
           deletion-on-success="deletionOnSuccess"
-          ng-model="aanhef.Aanhef"
-          deletion-service="aanhefService.delAanhef">Verwijder</button>
+          ng-model="soortlid.SoortLid"
+          deletion-service="soortlidService.delSoortLid">Verwijder</button>
   <hr/>
 </form>

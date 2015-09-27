@@ -1,25 +1,33 @@
 angular.module('polderweb')
   .controller('viewRegioCtrl',
-    function ($scope, Regio, $state, $stateParams,authService) {
-      if(authService.getToken()==null){
-           $state.go('login');
-         }else{
-      Regio.getRegio($stateParams.regioId).then(function(res){
+    function ($scope, Regio, $state, $stateParams) {
+//      if(authService.getToken()==null){
+//           $state.go('login');
+//         }else{
+
+	  Regio.getRegio($stateParams.regioId).then(function(res){
         $scope.regio = res;
       });
-      $scope.clickSave = function (form) {
+
+        $scope.regioService = Regio;
+
+	  $scope.clickSave = function (form) {
         $scope.submitted = true;
         if (form.$valid) {
-            Regio.updateRegio($scope.regio.Regio,$scope.regio.Omschrijving);
-             $state.go('adminRegio');
+            Regio.updateRegio($scope.regio);
+             $state.go('regio.list');
         }
       };
+
+        $scope.deletionOnSuccess = function() {
+            $state.go('regio.list')
+        };
 
       $scope.clickDel = function () {
          var msg = confirm("Verwijderen ? J/N");
           if (msg == true) {
             Regio.delRegio($scope.regio.Regio,$scope.regio.Omschrijving);
-            $state.go('adminRegio'); // Terug naar homepage
+            $state.go('regio.list'); // Terug naar homepage
           }
       };
 
@@ -44,5 +52,5 @@ angular.module('polderweb')
           }
         });
       };
-  }
+//  }
     });
