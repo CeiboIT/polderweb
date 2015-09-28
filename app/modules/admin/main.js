@@ -4,6 +4,9 @@ angular.module('polderweb.admin', [
     'polderweb.aanhef',
     'polderweb.functie',
     'polderweb.regio',
+    'polderweb.titel',
+    'polderweb.mutreden',
+    'polderweb.categorie',
     'polderweb.soortlid',
     'polderweb.persoon'
 ])
@@ -37,14 +40,6 @@ angular.module('polderweb.admin', [
  .state('createGroep',{ url:'/admin/groep/create',                           templateUrl:'app/modules/admin/groep/create-groep/create-groep.html',                         controller:'createGroepCtrl' })
  .state('viewGroep',  { url:'/admin/groep/:groepId',                         templateUrl:'app/modules/admin/groep/view-groep/view-groep.html',                             controller:'viewGroepCtrl' })
  // ---------------------------------------------------------------------------------
- .state('adminTitel' , { url:'/admin/titel', templateUrl:'app/modules/admin/titel/titel.html', controller:'TitelController',resolve: { titel: function (Titel) { return Titel.findAll(); }}})
- .state('createTitel' ,{ url:'/admin/titel/create', templateUrl:'app/modules/admin/titel/create-titel/create-titel.html', controller:'createTitelCtrl' })
- .state('viewTitel' ,  { url:'/admin/titel/:titelId', templateUrl:'app/modules/admin/titel/view-titel/view-titel.html', controller:'viewTitelCtrl' })
- // ---------------------------------------------------------------------------------
- .state('adminMutReden' ,{ url: '/admin/mutreden', templateUrl: 'app/modules/admin/mutreden/mutreden.html', controller: 'MutRedenController', resolve: { mutreden: function (MutReden) { return MutReden.findAll(); } } })
- .state('createMutReden',{ url:'/admin/mutreden/create', templateUrl:'app/modules/admin/mutreden/create-mutreden/create-mutreden.html', controller:'createMutRedenCtrl'})
- .state('viewMutReden' , { url:'/admin/mutreden/:mutredenId', templateUrl:'app/modules/admin/mutreden/view-mutreden/view-mutreden.html', controller:'viewMutRedenCtrl'})
-  // ---------------------------------------------------------------------------------
 // .state('adminLidsoorten', { url: '/admin/lidsoorten', templateUrl: 'app/modules/admin/lidsoorten/lidsoorten.html', controller: 'LidsoortenController', resolve: { soortlid: function (SoortLid) { return SoortLid.findAll(); } } })
 // .state('createSoortLid',  { url:'/admin/lidsoorten/create', templateUrl:'app/modules/admin/lidsoorten/create-lidsoorten/create-lidsoorten.html', controller: 'createSoortLidCtrl' })
 // .state('viewSoortLid',    { url:'/admin/lidsoorten/:soortlid', templateUrl:'app/modules/admin/lidsoorten/view-lidsoorten/view-lidsoorten.html', controller: 'viewSoortLidCtrl' })

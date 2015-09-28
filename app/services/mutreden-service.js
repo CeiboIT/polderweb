@@ -4,38 +4,28 @@ angular.module('polderweb')
     function (GLOBALS, $http, $rootScope,$q,userService)
      {
       var currentUser = userService.get(); //20150801
-  	  var lastId="";
+      var lastId="";
       var myMutReden = new TMutReden();
       return {
         findAll: function () {
-			$rootScope.display.mutredenMutReden=true;       //20150801 always display
-			$rootScope.display.mutredenOmschrijving=true;
-			$rootScope.display.mutredenSoortMut=true;
-			$rootScope.display.mutredenStopFactureren=true;
-           var defer = $q.defer();
+//			$rootScope.display.mutredenMutReden=true;       //20150801 always display
+//			$rootScope.display.mutredenOmschrijving=true;
+			var defer = $q.defer();
             userService.get().$promise.then(function(res){
-                myMutReden.fromObject({Bedrijf : res.bedrijf
-				                     , SoortMut : ''
-				                     , MutReden : ''
-									 , Omschrijving : ''
-									 , StopFactureren : false
-									 });
-                Service.SvcMutReden("R", currentUser.username, myMutReden, function(result) { 
+                myMutReden.fromObject({Bedrijf : res.bedrijf,MutReden : '', Omschrijving : ''});
+                Service.SvcMutReden("R", currentUser.username, myMutReden, function(result) {
                     defer.resolve(result.toObject());
-                }); //20150801
+//          alert(JSON.stringify(myMutReden));
+//          alert(JSON.stringify(result.toObject()));
+                });
             });
              return defer.promise;
         },
-
         getMutReden: function (mutredenId) {
             var defer = $q.defer();
              userService.get().$promise.then(function(res){
-             myMutReden.fromObject({Bedrijf : res.bedrijf
-				                     , SoortMut : ''
-				                     , MutReden : ''
-									 , Omschrijving : ''
-									 , StopFactureren : false
-								  });
+             myMutReden.fromObject({Bedrijf : res.bedrijf,MutReden : mutredenId, Omschrijving : ''});
+             //myMutReden.fromObject({Bedrijf : res.bedrijf,MutReden : '', Omschrijving : ''});
              Service.SvcMutReden("R", currentUser.username, myMutReden, function(result) {
                 var data = _.find(result.toObject(), {'MutReden':mutredenId});
                 defer.resolve(data);
@@ -43,48 +33,41 @@ angular.module('polderweb')
             });
             return defer.promise;
         },
-
-        addMutReden: function (MutReden,Omschrijving) {
+        addMutReden: function (mutredenData) {
            userService.get().$promise.then(function(res){
-                myMutReden.fromObject({Bedrijf : res.bedrijf
-				                     , SoortMut : SoortMut
-				                     , MutReden : MutReden
-									 , Omschrijving : Omschrijving
-									 , StopFactureren : false
-								  });
+                myMutReden.fromObject({Bedrijf : res.bedrijf,MutReden : mutredenData.MutReden, Omschrijving : mutredenData.Omschrijving});
                 Service.SvcMutReden("C", currentUser.username, myMutReden);
             });
 
         },
-
-        updateMutReden:function(MutReden,Omschrijving){
+        updateMutReden:function(mutredenData){
            userService.get().$promise.then(function(res){
-                myMutReden.fromObject({Bedrijf : res.bedrijf
-				                     , SoortMut : SoortMut
-				                     , MutReden : MutReden
-									 , Omschrijving : Omschrijving
-									 , StopFactureren : false
-								  });
+                myMutReden.fromObject({Bedrijf : res.bedrijf,MutReden : mutredenData.MutReden, Omschrijving : mutredenData.Omschrijving});
                 Service.SvcMutReden("U", currentUser.username, myMutReden);
             });
         },
 
-        delMutReden:function(MutReden,Omschrijving){
-         userService.get().$promise.then(function(res){
-                myMutReden.fromObject({Bedrijf : res.bedrijf
-				                     , SoortMut : SoortMut
-				                     , MutReden : MutReden
-									 , Omschrijving : Omschrijving
-									 , StopFactureren : false
-								  });
-             Service.SvcMutReden("D", currentUser.username, myMutReden);
-         });
+        delMutReden: function(MutReden,Omschrijving){
+
+            var delMutRedenPromise = $q.defer();
+
+            userService.get().$promise.then(function(res){
+                myMutReden.fromObject({Bedrijf : res.bedrijf,MutReden : MutReden, Omschrijving : Omschrijving});
+                Service.SvcMutReden("D", currentUser.username, myMutReden, function(result){
+                    console.log(result);
+
+                    delMutRedenPromise.resolve(result)
+                });
+            });
+
+            return delMutRedenPromise.promise;
+
+
 
           // _.remove($rootScope.mutreden,function(mutredens){
           //   return mutredens.mutreden===mutredenId;
           // });
         },
-
         nextMutReden:function(mutredenId, cb){
           var index=_.findIndex($rootScope.mutreden, function(mutredens){
             return mutredens.MutReden===mutredenId;
@@ -95,7 +78,6 @@ angular.module('polderweb')
           }
           return cb($rootScope.mutreden[index+1]);
         },
-
         preMutReden:function(mutredenId, cb){
           var index=_.findIndex($rootScope.mutreden, function(mutredens){
             return mutredens.MutReden===mutredenId;

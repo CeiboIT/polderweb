@@ -2,13 +2,14 @@ angular.module('polderweb')
 	.controller('createMutRedenCtrl',
 		function($scope, $state,MutReden,authService){
          if(authService.getToken()==null){
-           $state.go('login');
+           $state.go('auth.login');
          }else{
+
 		 $scope.addMutReden = function (form) {
 	        $scope.submitted = true;
 	        if (form.$valid) {
-                MutReden.addMutReden( $scope.mutredens.mutreden, $scope.mutredens.omschrijving);
-	          $state.go('adminMutReden'); // Terug naar homepage
+                MutReden.addMutReden($scope.mutredens);
+	          $state.go('mutreden.list'); // Terug naar homepage
 	        }
     	}
          }
