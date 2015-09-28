@@ -17,7 +17,7 @@ var LoginCtrl = ['User', '$state','$stateParams', '$cookies', 'flash', 'homeStat
 //        } else {
 
             User.getUser(ctrl.auth.username).then(function(data){
-                console.log(data);
+                //console.log(data);
                 if(!data) {
                     flash.error = 'Invalid username';
                     ctrl.suggestions = {
@@ -25,14 +25,21 @@ var LoginCtrl = ['User', '$state','$stateParams', '$cookies', 'flash', 'homeStat
                     };
                 } else {
                     if(data.Passwrd === ctrl.auth.password) {
+
                         //save cookies
                         $cookies.put('username', data.Username);
                         $cookies.put('bedrijf', data.Bedrijf);
                         $cookies.put('token', data.Token);
 
-                        console.log('Cookie username: ', $cookies.get('username'));
-                        console.log('Cookie bedrijf: ', $cookies.get('bedrijf'));
-                        console.log('Cookie token: ', $cookies.get('token'));
+                        //*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
+                        // TESTING
+                        //*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
+
+                        // save these values as constants across app
+                        angular.module('polderweb')
+                            .constant('userData', data)
+                        ;
+
                         $state.go(homeState);
                     } else {
                         flash.error = 'Invalid password';

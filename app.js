@@ -19,7 +19,8 @@ angular.module('polderweb', [
 
     //our modules
     'polderweb.auth',
-    'polderweb.admin'
+    'polderweb.admin',
+    'polderweb.user'
 
 ]);
 angular.module('polderweb').config(function ($urlRouterProvider, loginUrl) {

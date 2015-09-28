@@ -1,9 +1,10 @@
-var pHeaderCtrl = function($state, $cookies, $element, $rootScope ) {
+var pHeaderCtrl = function($state, $cookies, $element, $rootScope, userData) {
   var ctrl = this;
 
-    ctrl.user = {
-      "username": $cookies.get("username")
-    };
+    //*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
+    // TESTING
+    //*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
+    ctrl.user = userData;
 
     var toggleAsideNav = function(){
         var asideNav = $aside.open({

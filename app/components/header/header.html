@@ -6,17 +6,17 @@
                 <li class="hidden-xs">
                     <a data-toggle="dropdown" class="dropdown-toggle clear">
                 <span class="thumb-sm avatar">
-                  <img ng-src="{{nav.user.avatar || 'app/assets/images/avatar_grey.png'}}" alt="...">
+                  <img ng-src="{{ctrl.user.avatar || 'app/assets/images/avatar_grey.png'}}" alt="...">
                 </span>
                     <span class="hidden-sm hidden-md">&nbsp;{{ ctrl.user.username }}</span> <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu animated fadeIn w">
                         <li>
-                            <a ui-sref="landing.user.profile" translate>Edit Profile</a>
+                            <a ui-sref="user.profile" translate>Edit Profile</a>
                         </li>
 
                         <li>
-                            <a ng-click="nav.requestLogOut()" translate>Logout</a>
+                            <a ui-sref="auth.logout" translate>Logout</a>
                         </li>
                     </ul>
                 </li>

@@ -2,7 +2,7 @@ angular.module('polderweb')
 	.controller('createPersoonCtrl',
 		function($scope, $state, Persoon, authService){
         if(authService.getToken()==null){
-             $state.go('login');
+             $state.go('auth.login');
          }else{
     		$scope.addPersoon = function (form) {
     	         $scope.submitted = true;
