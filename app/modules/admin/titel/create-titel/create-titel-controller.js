@@ -2,13 +2,14 @@ angular.module('polderweb')
 	.controller('createTitelCtrl',
 		function($scope, $state,Titel,authService){
          if(authService.getToken()==null){
-           $state.go('login');
+           $state.go('auth.login');
          }else{
+
 		 $scope.addTitel = function (form) {
 	        $scope.submitted = true;
 	        if (form.$valid) {
-                Titel.addTitel( $scope.titels.titel, $scope.titels.omschrijving);
-	          $state.go('adminTitel'); // Terug naar homepage
+                Titel.addTitel($scope.titels);
+	          $state.go('titel.list'); // Terug naar homepage
 	        }
     	}
          }

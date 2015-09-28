@@ -1,29 +1,37 @@
 <div>
-  <div class="jumbotron">
-    <h1>Nieuwe mutreden toevoegen</h1>
-    <form ng-submit="addMutReden(form)" name="form" novalidate>
+  <h3><b>Nieuwe mutreden</b></h3>
+  <hr/>
+  <form ng-submit="addMutReden(form)" name="form" novalidate>
+  <a ui-sref="mutreden.list"                        class="btn btn-lg btn-success">Terug</a>
+  <br/>
+  <div class="clearfix"></div>
+  <br/>
+  <!--  <div class="jumbotron"> 
+  Override rounded corners in jumbotron -->
+    <div style="border-radius: 0px !important" class="jumbotron"> 
       <div class="row">
         <div class="col-xs-4">
           <div class="form-group" ng-class="{'has-error':form.mutreden.$invalid && submitted}">
-            <input type="text" ng-model="mutredens.mutreden" name="mutreden"
+            <input type="text" ng-model="mutredens.MutReden" name="mutreden"
                    class="form-control input-lg"
-                   placeholder="mutredens" required />
+                   placeholder="MutReden" required />
             <p class="help-block" ng-show="form.mutredens.$error.required && submitted">
               This input is required
             </p>
           </div>
           <div class="form-group" ng-class="{'has-error':form.omschrijving.$invalid && submitted}">
-            <input type="text" ng-model="mutredens.omschrijving" name="omschrijving"
-                   class="form-control input-lg" placeholder="omschrijving" required/>
+            <input type="text" ng-model="mutredens.Omschrijving" name="omschrijving"
+                   class="form-control input-lg" placeholder="Omschrijving" required/>
             <p class="help-block" ng-show="form.omschrijving.$error.required && submitted">
               This input is required
             </p>
           </div>
-          <button class="btn btn-lg btn-primary" type="submit">Toevoegen</button>
+
+			<button class="btn btn-lg btn-new" type="submit">Toevoegen</button>
+			<a ui-sref="mutreden.list" class="btn btn-lg btn-cancel">Annuleren</a>
         </div>
       </div>
     </form>
   </div>
   <hr/>
-  <a ui-sref="adminMutReden" class="btn btn-lg btn-warning">Annuleren</a>
 </div>

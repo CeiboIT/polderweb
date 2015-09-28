@@ -8,13 +8,15 @@ angular.module('polderweb')
       var myTitel = new TTitel();
       return {
         findAll: function () {
-			$rootScope.display.titelTitel=true;       //20150801 always display
-			$rootScope.display.titelOmschrijving=true;
-           var defer = $q.defer();
+//			$rootScope.display.titelTitel=true;       //20150801 always display
+//			$rootScope.display.titelOmschrijving=true;
+			var defer = $q.defer();
             userService.get().$promise.then(function(res){
                 myTitel.fromObject({Bedrijf : res.bedrijf,Titel : '', Omschrijving : ''});
                 Service.SvcTitel("R", currentUser.username, myTitel, function(result) {
                     defer.resolve(result.toObject());
+//          alert(JSON.stringify(myTitel));
+//          alert(JSON.stringify(result.toObject()));
                 });
             });
              return defer.promise;
@@ -22,7 +24,8 @@ angular.module('polderweb')
         getTitel: function (titelId) {
             var defer = $q.defer();
              userService.get().$promise.then(function(res){
-             myTitel.fromObject({Bedrijf : res.bedrijf,Titel : '', Omschrijving : ''});
+             myTitel.fromObject({Bedrijf : res.bedrijf,Titel : titelId, Omschrijving : ''});
+             //myTitel.fromObject({Bedrijf : res.bedrijf,Titel : '', Omschrijving : ''});
              Service.SvcTitel("R", currentUser.username, myTitel, function(result) {
                 var data = _.find(result.toObject(), {'Titel':titelId});
                 defer.resolve(data);
@@ -30,24 +33,36 @@ angular.module('polderweb')
             });
             return defer.promise;
         },
-        addTitel: function (Titel,Omschrijving) {
+        addTitel: function (titelData) {
            userService.get().$promise.then(function(res){
-                myTitel.fromObject({Bedrijf : res.bedrijf,Titel : Titel, Omschrijving : Omschrijving});
+                myTitel.fromObject({Bedrijf : res.bedrijf,Titel : titelData.Titel, Omschrijving : titelData.Omschrijving});
                 Service.SvcTitel("C", currentUser.username, myTitel);
             });
 
         },
-        updateTitel:function(Titel,Omschrijving){
+        updateTitel:function(titelData){
            userService.get().$promise.then(function(res){
-                myTitel.fromObject({Bedrijf : res.bedrijf,Titel : Titel, Omschrijving : Omschrijving});
+                myTitel.fromObject({Bedrijf : res.bedrijf,Titel : titelData.Titel, Omschrijving : titelData.Omschrijving});
                 Service.SvcTitel("U", currentUser.username, myTitel);
             });
         },
-        delTitel:function(Titel,Omschrijving){
-         userService.get().$promise.then(function(res){
+
+        delTitel: function(Titel,Omschrijving){
+
+            var delTitelPromise = $q.defer();
+
+            userService.get().$promise.then(function(res){
                 myTitel.fromObject({Bedrijf : res.bedrijf,Titel : Titel, Omschrijving : Omschrijving});
-             Service.SvcTitel("D", currentUser.username, myTitel);
-         });
+                Service.SvcTitel("D", currentUser.username, myTitel, function(result){
+                    console.log(result);
+
+                    delTitelPromise.resolve(result)
+                });
+            });
+
+            return delTitelPromise.promise;
+
+
 
           // _.remove($rootScope.titel,function(titels){
           //   return titels.titel===titelId;

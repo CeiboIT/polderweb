@@ -1,25 +1,33 @@
 angular.module('polderweb')
   .controller('viewCategorieCtrl',
-    function ($scope, Categorie, $state, $stateParams,authService) {
-      if(authService.getToken()==null){
-           $state.go('login');
-         }else{
-      Categorie.getCategorie($stateParams.categorieId).then(function(res){
+    function ($scope, Categorie, $state, $stateParams) {
+//      if(authService.getToken()==null){
+//           $state.go('login');
+//         }else{
+
+	  Categorie.getCategorie($stateParams.categorieId).then(function(res){
         $scope.categorie = res;
       });
-      $scope.clickSave = function (form) {
+
+        $scope.categorieService = Categorie;
+
+	  $scope.clickSave = function (form) {
         $scope.submitted = true;
         if (form.$valid) {
-            Categorie.updateCategorie($scope.categorie.Categorie,$scope.categorie.Omschrijving);
-             $state.go('adminCategorie');
+            Categorie.updateCategorie($scope.categorie);
+             $state.go('categorie.list');
         }
       };
+
+        $scope.deletionOnSuccess = function() {
+            $state.go('categorie.list')
+        };
 
       $scope.clickDel = function () {
          var msg = confirm("Verwijderen ? J/N");
           if (msg == true) {
             Categorie.delCategorie($scope.categorie.Categorie,$scope.categorie.Omschrijving);
-            $state.go('adminCategorie'); // Terug naar homepage
+            $state.go('categorie.list'); // Terug naar homepage
           }
       };
 
@@ -44,5 +52,5 @@ angular.module('polderweb')
           }
         });
       };
-  }
+//  }
     });
