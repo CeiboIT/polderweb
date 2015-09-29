@@ -1,25 +1,33 @@
 angular.module('polderweb')
   .controller('viewGroepCtrl',
-    function ($scope, Groep, $state, $stateParams,authService) {
-      if(authService.getToken()==null){
-           $state.go('login');
-         }else{
-      Groep.getGroep($stateParams.groepId).then(function(res){
+    function ($scope, Groep, $state, $stateParams) {
+//      if(authService.getToken()==null){
+//           $state.go('login');
+//         }else{
+
+	  Groep.getGroep($stateParams.groepId).then(function(res){
         $scope.groep = res;
       });
-      $scope.clickSave = function (form) {
+
+        $scope.groepService = Groep;
+
+	  $scope.clickSave = function (form) {
         $scope.submitted = true;
         if (form.$valid) {
-            Groep.updateGroep($scope.groep.Groep,$scope.groep.Omschrijving);
-             $state.go('adminGroep');
+            Groep.updateGroep($scope.groep);
+             $state.go('groep.list');
         }
       };
+
+        $scope.deletionOnSuccess = function() {
+            $state.go('groep.list')
+        };
 
       $scope.clickDel = function () {
          var msg = confirm("Verwijderen ? J/N");
           if (msg == true) {
             Groep.delGroep($scope.groep.Groep,$scope.groep.Omschrijving);
-            $state.go('adminGroep'); // Terug naar homepage
+            $state.go('groep.list'); // Terug naar homepage
           }
       };
 
@@ -44,5 +52,5 @@ angular.module('polderweb')
           }
         });
       };
-  }
+//  }
     });

@@ -3,61 +3,101 @@ angular.module('polderweb')
   ['GLOBALS', '$http', '$rootScope','$q','userService',
     function (GLOBALS, $http, $rootScope,$q,userService)
      {
-      var currentUser = userService.get(); 
-  	  var lastId="";
+      var currentUser = userService.get(); //20150801
+      var lastId="";
       var myKenmKode = new TKenmKode();
       return {
         findAll: function () {
-			$rootScope.display.kenmkodeKenmerk=true; 
-			$rootScope.display.kenmkodeKode=true; 
-			$rootScope.display.kenmkodeOmschrijving=true;
-            var defer = $q.defer();
+//			$rootScope.display.kenmkodeKenmKode=true;       //20150801 always display
+//			$rootScope.display.kenmkodeOmschrijving=true;
+			var defer = $q.defer();
             userService.get().$promise.then(function(res){
-                myKenmKode.fromObject({Bedrijf : res.bedrijf, Kenmerk : '', Kode : '', Omschrijving : '', Extra1 : '', Extra2: '', Extra3: ''});
-                Service.SvcKenmKode("R", currentUser.username, myKenmKode, function(result) { defer.resolve(result.toObject()); }); 
+                myKenmKode.fromObject({Bedrijf : res.bedrijf
+				                     , Kenmerk : 'TEST'
+									 , Kode : ''
+									 , Omschrijving : ''
+									 , Extra1 : ''
+									 , Extra2 : ''
+									 , Extra3 : ''});
+                Service.SvcKenmKode("R", currentUser.username, myKenmKode, function(result) {
+                    defer.resolve(result.toObject());
+//          alert(JSON.stringify(myKenmKode));
+//          alert(JSON.stringify(result.toObject()));
+                });
             });
-            return defer.promise;
+             return defer.promise;
         },
 
-        getKenmKode: function (kenmerkId, kodeId) { //master-detail
+        getKenmKode: function (kenmkodeId) {
             var defer = $q.defer();
              userService.get().$promise.then(function(res){
-             myKenmKode.fromObject({Bedrijf : res.bedrijf, Kenmerk : '', Kode : '', Omschrijving : '', Extra1 : '', Extra2: '', Extra3: ''});
+             myKenmKode.fromObject({Bedrijf : res.bedrijf
+			                      , Kenmerk : 'TEST'
+								  , Kode : kenmkodeId
+								  , Omschrijving : ''
+								  , Extra1 : ''
+								  , Extra2 : ''
+								  , Extra3 : ''});
+             //myKenmKode.fromObject({Bedrijf : res.bedrijf, Kode : '', Omschrijving : ''});
              Service.SvcKenmKode("R", currentUser.username, myKenmKode, function(result) {
-                var data = _.find(result.toObject(), {'Kenmerk':kenmerkId, 'Kode':kodeId});
+                var data = _.find(result.toObject(), {'Kode':kenmkodeId});
                 defer.resolve(data);
              });
             });
             return defer.promise;
         },
 
-        addKenmKode: function (KenmKode, Omschrijving) {
+        addKenmKode: function (kenmkodeData) {
            userService.get().$promise.then(function(res){
-				myKenmKode.fromObject({Bedrijf : res.bedrijf, Kenmerk : Kenmerk, Kode : Kode, Omschrijving : Omschrijving, Extra1 : '', Extra2: '', Extra3: ''});
+                myKenmKode.fromObject({Bedrijf : res.bedrijf
+				                     , Kenmerk : 'TEST' //kenmkodeData.Kenmerk
+									 , Kode : kenmkodeData.Kode
+									 , Omschrijving : kenmkodeData.Omschrijving
+									 , Extra1 : kenmkodeData.Extra1
+									 , Extra2 : kenmkodeData.Extra2
+									 , Extra3 : kenmkodeData.Extra3});
                 Service.SvcKenmKode("C", currentUser.username, myKenmKode);
-			});
+            });
+
         },
 
-        updateKenmKode:function(KenmKode, Omschrijving){
+        updateKenmKode:function(kenmkodeData){
            userService.get().$promise.then(function(res){
-				myKenmKode.fromObject({Bedrijf : res.bedrijf, Kenmerk : Kenmerk, Kode : Kode, Omschrijving : Omschrijving, Extra1 : '', Extra2: '', Extra3: ''});
+                myKenmKode.fromObject({Bedrijf : res.bedrijf
+				                     , Kenmerk : 'TEST' //kenmkodeData.Kenmerk
+									 , Kode : kenmkodeData.Kode
+									 , Omschrijving : kenmkodeData.Omschrijving
+									 , Extra1 : kenmkodeData.Extra1
+									 , Extra2 : kenmkodeData.Extra2
+									 , Extra3 : kenmkodeData.Extra3});
                 Service.SvcKenmKode("U", currentUser.username, myKenmKode);
             });
         },
 
-        delKenmKode:function(KenmKode, Omschrijving){
-         userService.get().$promise.then(function(res){
-				myKenmKode.fromObject({Bedrijf : res.bedrijf, Kenmerk : Kenmerk, Kode : Kode, Omschrijving : Omschrijving, Extra1 : '', Extra2: '', Extra3: ''});
-             Service.SvcKenmKode("D", currentUser.username, myKenmKode);
-         });
-         // _.remove($rootScope.kenmkode,function(kenmkodes){
-         //   return kenmkodes.kenmkode===kenmkodeId;
-         // });
+        delKenmKode: function(Kode, Omschrijving){
+            var delKenmKodePromise = $q.defer();
+            userService.get().$promise.then(function(res){
+                myKenmKode.fromObject({Bedrijf : res.bedrijf
+				                     , Kenmerk : 'TEST'
+									 , Kode : Kode
+									 , Omschrijving : Omschrijving
+									 , Extra1 : ''
+									 , Extra2 : ''
+									 , Extra3 : ''});
+                Service.SvcKenmKode("D", currentUser.username, myKenmKode, function(result){
+                    console.log(result);
+                    delKenmKodePromise.resolve(result)
+                });
+            });
+            return delKenmKodePromise.promise;
+          // _.remove($rootScope.kenmkode,function(kenmkodes){
+          //   return kenmkodes.kenmkode===kenmkodeId;
+          // });
         },
 
         nextKenmKode:function(kenmkodeId, cb){
           var index=_.findIndex($rootScope.kenmkode, function(kenmkodes){
-            return kenmkodes.Kode===kode;
+            return kenmkodes.KenmKode===kenmkodeId;
           });
           if(index===-1 || index+1 >= $rootScope.kenmkode.length){
            // return cb();
@@ -68,7 +108,7 @@ angular.module('polderweb')
 
         preKenmKode:function(kenmkodeId, cb){
           var index=_.findIndex($rootScope.kenmkode, function(kenmkodes){
-            return kenmkodes.Kode===kode;
+            return kenmkodes.KenmKode===kenmkodeId;
           });
           if(index===-1 || index===0){
            // return cb();

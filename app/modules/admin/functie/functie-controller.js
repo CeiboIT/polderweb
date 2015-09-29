@@ -1,14 +1,11 @@
 angular.module('polderweb')
   .controller('FunctieController',
-   function ($rootScope, $scope, $state, Functie, functies, authService, homeState) {
-
-       var model = {
+  function ($rootScope, $scope, $state, Functie, functies, authService, homeState) {
+     var model = {
            selection : [],
            functies: functies
        };
-
        $rootScope.functie = functies;
-
 
      function clickSave (form) {
         $scope.submitted = true;
@@ -16,25 +13,22 @@ angular.module('polderweb')
           Functie.updateFunctie($scope.ah.functie, $scope.reg);
          // $state.go('home');
         }
-      }
+     }
 
-      function clickDel(functie) {
-
-          Functie.nextFunctie(functie, function (functieId) {
+     function clickDel(functie) {
+        Functie.nextFunctie(functie, function (functieId) {
               if (functieId) {
                   Functie.delFunctie(functie);
                   $state.go(homeState);
               }
           });
-      }
+     }
 
-
-        angular.extend(this,{
+     angular.extend(this,{
             model: model,
             functieService: Functie,
             clickSave: clickSave,
             clickDel: clickDel
 
-        })
-
+      })
     });

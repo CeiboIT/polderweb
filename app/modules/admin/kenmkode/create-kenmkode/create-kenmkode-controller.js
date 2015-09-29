@@ -1,14 +1,15 @@
 angular.module('polderweb')
 	.controller('createKenmKodeCtrl',
-		function($scope, $state, KenmKode, authService){
+		function($scope, $state,KenmKode,authService){
          if(authService.getToken()==null){
-           $state.go('login');
+           $state.go('auth.login');
          }else{
+
 		 $scope.addKenmKode = function (form) {
 	        $scope.submitted = true;
 	        if (form.$valid) {
-                KenmKode.addKenmKode( $scope.kenmkodes.kode, $scope.kenmkodes.omschrijving);
-	          $state.go('adminKenmKode'); // Terug naar homepage
+                KenmKode.addKenmKode($scope.kenmkodes);
+	          $state.go('kenmkode.list'); // Terug naar homepage
 	        }
     	}
          }

@@ -8,8 +8,8 @@ angular.module('polderweb')
       var myCategorie = new TCategorie();
       return {
         findAll: function () {
-//			$rootScope.display.CategorieCategorie=true;       //20150801 always display
-//			$rootScope.display.CategorieOmschrijving=true;
+//			$rootScope.display.categorieCategorie=true;       //20150801 always display
+//			$rootScope.display.categorieOmschrijving=true;
 			var defer = $q.defer();
             userService.get().$promise.then(function(res){
                 myCategorie.fromObject({Bedrijf : res.bedrijf,Categorie : '', Omschrijving : ''});
@@ -21,28 +21,28 @@ angular.module('polderweb')
             });
              return defer.promise;
         },
-        getCategorie: function (CategorieId) {
+        getCategorie: function (categorieId) {
             var defer = $q.defer();
              userService.get().$promise.then(function(res){
-             myCategorie.fromObject({Bedrijf : res.bedrijf,Categorie : CategorieId, Omschrijving : ''});
+             myCategorie.fromObject({Bedrijf : res.bedrijf,Categorie : categorieId, Omschrijving : ''});
              //myCategorie.fromObject({Bedrijf : res.bedrijf,Categorie : '', Omschrijving : ''});
              Service.SvcCategorie("R", currentUser.username, myCategorie, function(result) {
-                var data = _.find(result.toObject(), {'Categorie':CategorieId});
+                var data = _.find(result.toObject(), {'Categorie':categorieId});
                 defer.resolve(data);
              });
             });
             return defer.promise;
         },
-        addCategorie: function (CategorieData) {
+        addCategorie: function (categorieData) {
            userService.get().$promise.then(function(res){
-                myCategorie.fromObject({Bedrijf : res.bedrijf,Categorie : CategorieData.Categorie, Omschrijving : CategorieData.Omschrijving});
+                myCategorie.fromObject({Bedrijf : res.bedrijf,Categorie : categorieData.Categorie, Omschrijving : categorieData.Omschrijving});
                 Service.SvcCategorie("C", currentUser.username, myCategorie);
             });
 
         },
-        updateCategorie:function(CategorieData){
+        updateCategorie:function(categorieData){
            userService.get().$promise.then(function(res){
-                myCategorie.fromObject({Bedrijf : res.bedrijf,Categorie : CategorieData.Categorie, Omschrijving : CategorieData.Omschrijving});
+                myCategorie.fromObject({Bedrijf : res.bedrijf,Categorie : categorieData.Categorie, Omschrijving : categorieData.Omschrijving});
                 Service.SvcCategorie("U", currentUser.username, myCategorie);
             });
         },
@@ -64,29 +64,29 @@ angular.module('polderweb')
 
 
 
-          // _.remove($rootScope.Categorie,function(Categories){
-          //   return Categories.Categorie===CategorieId;
+          // _.remove($rootScope.categorie,function(categories){
+          //   return categories.categorie===categorieId;
           // });
         },
-        nextCategorie:function(CategorieId, cb){
-          var index=_.findIndex($rootScope.Categorie, function(Categories){
-            return Categories.Categorie===CategorieId;
+        nextCategorie:function(categorieId, cb){
+          var index=_.findIndex($rootScope.categorie, function(categories){
+            return categories.Categorie===categorieId;
           });
-          if(index===-1 || index+1 >= $rootScope.Categorie.length){
+          if(index===-1 || index+1 >= $rootScope.categorie.length){
            // return cb();
-           return cb($rootScope.Categorie[0]);
+           return cb($rootScope.categorie[0]);
           }
-          return cb($rootScope.Categorie[index+1]);
+          return cb($rootScope.categorie[index+1]);
         },
-        preCategorie:function(CategorieId, cb){
-          var index=_.findIndex($rootScope.Categorie, function(Categories){
-            return Categories.Categorie===CategorieId;
+        preCategorie:function(categorieId, cb){
+          var index=_.findIndex($rootScope.categorie, function(categories){
+            return categories.Categorie===categorieId;
           });
           if(index===-1 || index===0){
            // return cb();
-           return cb($rootScope.Categorie[0]);
+           return cb($rootScope.categorie[0]);
           }
-          return cb($rootScope.Categorie[index-1]);
+          return cb($rootScope.categorie[index-1]);
         }
       };
     }]);

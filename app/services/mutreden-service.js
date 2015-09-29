@@ -8,12 +8,19 @@ angular.module('polderweb')
       var myMutReden = new TMutReden();
       return {
         findAll: function () {
-//			$rootScope.display.mutredenMutReden=true;       //20150801 always display
-//			$rootScope.display.mutredenOmschrijving=true;
-			var defer = $q.defer();
+			$rootScope.display.mutredenMutReden=true;       //20150801 always display
+			$rootScope.display.mutredenOmschrijving=true;
+			$rootScope.display.mutredenSoortMut=true;
+			$rootScope.display.mutredenStopFactureren=true;
+           var defer = $q.defer();
             userService.get().$promise.then(function(res){
-                myMutReden.fromObject({Bedrijf : res.bedrijf,MutReden : '', Omschrijving : ''});
-                Service.SvcMutReden("R", currentUser.username, myMutReden, function(result) {
+                myMutReden.fromObject({Bedrijf : res.bedrijf
+		                     , SoortMut : ''
+		                     , MutReden : ''
+				     , Omschrijving : ''
+				     , StopFactureren : false
+				 });
+                Service.SvcMutReden("R", currentUser.username, myMutReden, function(result) { 
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(myMutReden));
 //          alert(JSON.stringify(result.toObject()));
@@ -24,7 +31,11 @@ angular.module('polderweb')
         getMutReden: function (mutredenId) {
             var defer = $q.defer();
              userService.get().$promise.then(function(res){
-             myMutReden.fromObject({Bedrijf : res.bedrijf,MutReden : mutredenId, Omschrijving : ''});
+             myMutReden.fromObject({Bedrijf : res.bedrijf
+	                          , SoortMut : 'INS'
+				  , MutReden : mutredenId
+				  , Omschrijving : ''
+				  });
              //myMutReden.fromObject({Bedrijf : res.bedrijf,MutReden : '', Omschrijving : ''});
              Service.SvcMutReden("R", currentUser.username, myMutReden, function(result) {
                 var data = _.find(result.toObject(), {'MutReden':mutredenId});
@@ -35,14 +46,24 @@ angular.module('polderweb')
         },
         addMutReden: function (mutredenData) {
            userService.get().$promise.then(function(res){
-                myMutReden.fromObject({Bedrijf : res.bedrijf,MutReden : mutredenData.MutReden, Omschrijving : mutredenData.Omschrijving});
+                myMutReden.fromObject({Bedrijf : res.bedrijf
+		                     , SoortMut : mutredenData.SoortMut
+		                     , MutReden : mutredenData.MutReden
+		                     , Omschrijving : mutredenData.Omschrijving
+ 				     , StopFactureren : mutredenData.StopFactureren
+				     });
                 Service.SvcMutReden("C", currentUser.username, myMutReden);
             });
 
         },
         updateMutReden:function(mutredenData){
            userService.get().$promise.then(function(res){
-                myMutReden.fromObject({Bedrijf : res.bedrijf,MutReden : mutredenData.MutReden, Omschrijving : mutredenData.Omschrijving});
+                myMutReden.fromObject({Bedrijf : res.bedrijf
+		                     , SoortMut : mutredenData.SoortMut
+		                     , MutReden : mutredenData.MutReden
+				     , Omschrijving : mutredenData.Omschrijving
+ 				     , StopFactureren : mutredenData.StopFactureren
+				     });
                 Service.SvcMutReden("U", currentUser.username, myMutReden);
             });
         },
@@ -52,7 +73,12 @@ angular.module('polderweb')
             var delMutRedenPromise = $q.defer();
 
             userService.get().$promise.then(function(res){
-                myMutReden.fromObject({Bedrijf : res.bedrijf,MutReden : MutReden, Omschrijving : Omschrijving});
+                myMutReden.fromObject({Bedrijf : res.bedrijf
+		                     , SoortMut : SoortMut
+		                     , MutReden : MutReden
+				     , Omschrijving : Omschrijving
+ 				     , StopFactureren : false
+				     });
                 Service.SvcMutReden("D", currentUser.username, myMutReden, function(result){
                     console.log(result);
 

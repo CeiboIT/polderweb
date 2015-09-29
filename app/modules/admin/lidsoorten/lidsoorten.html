@@ -6,10 +6,10 @@
 <hr/>
 <div>
   <a ui-sref="home"                class="btn btn-lg btn-success">Terug</a>
-  <a ui-sref="createSoortlid"      class="btn btn-lg btn-primary">Nieuw</a>
+  <a ui-sref="createSoortLid"      class="btn btn-lg btn-primary">Nieuw</a>
   <!-- <button ng-click="clickGet()"  class="btn btn-lg btn-primary">Zoeken</button> -->
   <!-- <button ng-click="clickCancel()" class="btn btn-lg btn-primary">Doe iets</button> -->
-  <!-- <button ng-click="delSoortlid()" class="btn btn-lg btn-primary">Verwijder</button> -->
+  <!-- <button ng-click="delSoortLid()" class="btn btn-lg btn-primary">Verwijder</button> -->
   <br><br>
   <p>
     Filter : <input type="text" size="10" height="28" ng-model="filter.soortlid" class="input-lg" placeholder="SoortLid..."/>
@@ -34,7 +34,7 @@
         <tbody>
           <!-- orderBy kan op meerdere velden -->
           <tr ng-repeat="so in soortl | orderBy: mySort : reverse
-          | filter : { SoortLid: filter.soortlid, Omschrijving: filter.omschrijving } as numResults" ng-click="goViewSoortlid(so.SoortLid)">
+          | filter : { SoortLid: filter.soortlid, Omschrijving: filter.omschrijving } as numResults" ng-click="goViewSoortLid(so.SoortLid)">
            <!-- <td style="width:100px"><center><input type="checkbox" ng-checked="selection.indexOf(so.soortlid) > -1" ng-click="toggleSelection(so.soortlid)" ng-model="selected" value="{{so.soortlid}}"  /></center></td> -->
             <td ng-if="display.soortlidSoortLid">{{ so.SoortLid }}</td>
             <td ng-if="display.soortlidOmschrijving">{{ so.Omschrijving }}</td>

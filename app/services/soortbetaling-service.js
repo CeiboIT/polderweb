@@ -4,10 +4,12 @@ angular.module('polderweb')
     function (GLOBALS, $http, $rootScope,$q,userService)
      {
       var currentUser = userService.get(); //20150801
-  	  var lastId="";
+      var lastId="";
       var mySoortBetaling = new TSoortBetaling();
       return {
         findAll: function () {
+//			$rootScope.display.soortbetalingSoortBetaling=true;       //20150801 always display
+//			$rootScope.display.soortbetalingOmschrijving=true;
 			$rootScope.display.soortbetalingSoortBetaling=true;
 			$rootScope.display.soortbetalingOmschrijving=true;
 			$rootScope.display.soortbetalingNegatief=true;
@@ -35,17 +37,20 @@ angular.module('polderweb')
     									  , BTWCode : '' 
     									  , IndProlongeren : false
 										  });
-                Service.SvcSoortBetaling("R", currentUser.username, mySoortBetaling, function(result) { 
+                Service.SvcSoortBetaling("R", currentUser.username, mySoortBetaling, function(result) {
                     defer.resolve(result.toObject());
-                }); //20150801
+//          alert(JSON.stringify(mySoortBetaling));
+//          alert(JSON.stringify(result.toObject()));
+                });
             });
              return defer.promise;
         },
+
         getSoortBetaling: function (soortbetalingId) {
             var defer = $q.defer();
              userService.get().$promise.then(function(res){
              mySoortBetaling.fromObject({Bedrijf : res.bedrijf
-				                          , SoortBetaling : ''
+				                          , SoortBetaling : soortbetalingId
 										  , Omschrijving : ''
     									  , Negatief : false
     									  , Eenmalig : false
@@ -64,11 +69,12 @@ angular.module('polderweb')
             });
             return defer.promise;
         },
-        addSoortBetaling: function (SoortBetaling,Omschrijving) {
+
+        addSoortBetaling: function (soortbetalingData) {
            userService.get().$promise.then(function(res){
                 mySoortBetaling.fromObject({Bedrijf : res.bedrijf
-				                          , SoortBetaling : SoortBetaling
-										  , Omschrijving : Omschrijving
+ 	 			                          , SoortBetaling : soortbetalingData.SoortBetaling
+										  , Omschrijving : soortbetalingData.Omschrijving
     									  , Negatief : false
     									  , Eenmalig : false
     									  , Bedrag : Bedrag
@@ -82,11 +88,12 @@ angular.module('polderweb')
                 Service.SvcSoortBetaling("C", currentUser.username, mySoortBetaling);
             });
         },
-        updateSoortBetaling:function(SoortBetaling,Omschrijving){
+
+        updateSoortBetaling:function(soortbetalingData){
            userService.get().$promise.then(function(res){
                 mySoortBetaling.fromObject({Bedrijf : res.bedrijf
-				                          , SoortBetaling : SoortBetaling
-										  , Omschrijving : Omschrijving
+ 	 			                          , SoortBetaling : soortbetalingData.SoortBetaling
+										  , Omschrijving : soortbetalingData.Omschrijving
     									  , Negatief : false
     									  , Eenmalig : false
     									  , Bedrag : Bedrag
@@ -100,10 +107,12 @@ angular.module('polderweb')
                 Service.SvcSoortBetaling("U", currentUser.username, mySoortBetaling);
             });
         },
-        delSoortBetaling:function(SoortBetaling,Omschrijving){
-         userService.get().$promise.then(function(res){
+
+        delSoortBetaling: function(SoortBetaling, Omschrijving){
+            var delSoortBetalingPromise = $q.defer();
+            userService.get().$promise.then(function(res){
                 mySoortBetaling.fromObject({Bedrijf : res.bedrijf
-				                          , SoortBetaling : SoortBetaling
+ 	 			                          , SoortBetaling : SoortBetaling
 										  , Omschrijving : Omschrijving
     									  , Negatief : false
     									  , Eenmalig : false
@@ -115,8 +124,16 @@ angular.module('polderweb')
     									  , BTWCode : '' 
     									  , IndProlongeren : false
 										  });
-             Service.SvcSoortBetaling("D", currentUser.username, mySoortBetaling);
-         });
+                Service.SvcSoortBetaling("D", currentUser.username, mySoortBetaling, function(result){
+                    console.log(result);
+
+                    delSoortBetalingPromise.resolve(result)
+                });
+            });
+
+            return delSoortBetalingPromise.promise;
+
+
 
           // _.remove($rootScope.soortbetaling,function(soortbetalings){
           //   return soortbetalings.soortbetaling===soortbetalingId;

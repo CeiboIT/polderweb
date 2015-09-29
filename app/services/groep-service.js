@@ -4,89 +4,80 @@ angular.module('polderweb')
     function (GLOBALS, $http, $rootScope,$q,userService)
      {
       var currentUser = userService.get(); //20150801
-  	  var lastId="";
+      var lastId="";
       var myGroep = new TGroep();
       return {
         findAll: function () {
-			$rootScope.display.groepGroep=true;       //20150801
-			$rootScope.display.groepOmschrijving=true;
-			$rootScope.display.groepPeriode=true;     //20150803
+//			$rootScope.display.groepGroep=true;       //20150801 always display
+//			$rootScope.display.groepOmschrijving=true;
 			var defer = $q.defer();
             userService.get().$promise.then(function(res){
-                myGroep.fromObject({Bedrijf : res.bedrijf, Groep : '', Omschrijving : '', Periode : 0});
-//          alert(JSON.stringify(myGroep));
-                Service.SvcGroep("R", currentUser.username, myGroep, function(result) { 
+                myGroep.fromObject({Bedrijf : res.bedrijf,Groep : '', Omschrijving : '', Periode : 0});
+                Service.SvcGroep("R", currentUser.username, myGroep, function(result) {
                     defer.resolve(result.toObject());
-                }); //20150801
+//          alert(JSON.stringify(myGroep));
+//          alert(JSON.stringify(result.toObject()));
+                });
             });
              return defer.promise;
         },
+
         getGroep: function (groepId) {
             var defer = $q.defer();
              userService.get().$promise.then(function(res){
-             myGroep.fromObject({Bedrijf : res.bedrijf, Groep : '', Omschrijving : '', Periode : 0});
+             myGroep.fromObject({Bedrijf : res.bedrijf
+			                   , Groep : groepId
+							   , Omschrijving : ''
+							   , Periode : 0});
+             //myGroep.fromObject({Bedrijf : res.bedrijf,Groep : '', Omschrijving : ''});
              Service.SvcGroep("R", currentUser.username, myGroep, function(result) {
-			 var data = _.find(result.toObject(), {'Groep':groepId});
+                var data = _.find(result.toObject(), {'Groep':groepId});
                 defer.resolve(data);
              });
             });
             return defer.promise;
         },
-        addGroep: function (Groep,Omschrijving) {
+
+        addGroep: function (groepData) {
            userService.get().$promise.then(function(res){
                 myGroep.fromObject({Bedrijf : res.bedrijf
-                             , Groep : Groep 
-                             , Omschrijving : Omschrijving 
-                             , Periode : Periode 
-							   });
+				                  , Groep : groepData.Groep
+								  , Omschrijving : groepData.Omschrijving
+				                  , Periode : groepData.Periode
+								  });
                 Service.SvcGroep("C", currentUser.username, myGroep);
             });
-
         },
-        updateGroep:function(Groep,Omschrijving){
+
+        updateGroep:function(groepData){
            userService.get().$promise.then(function(res){
                 myGroep.fromObject({Bedrijf : res.bedrijf
-                             , Groep : Groep 
-                             , Omschrijving : Omschrijving 
-                             , Periode : Periode 
-							   });
+				                  , Groep : groepData.Groep
+								  , Omschrijving : groepData.Omschrijving
+				                  , Periode : groepData.Periode
+								  });
                 Service.SvcGroep("U", currentUser.username, myGroep);
             });
         },
-        delGroep:function(Groep,Omschrijving){
-         userService.get().$promise.then(function(res){
+
+        delGroep: function(Groep,Omschrijving){
+            var delGroepPromise = $q.defer();
+            userService.get().$promise.then(function(res){
                 myGroep.fromObject({Bedrijf : res.bedrijf
-                             , Groep : Groep 
-                             , Omschrijving : Omschrijving 
-                             , Periode : Periode 
-							   });
-				Service.SvcGroep("D", currentUser.username, myGroep);
-         });
-        },
-//                             , AantalMaanden : 0 //{dataType : "Integer", value : null};
-//                             , Actief : false //{dataType : "Boolean", value : null};
-//                             , Brief : '' 
-//                             , BTWCode : '' 
-//                             , Categorie : '' 
-                             //, DatumGebNa : null //{dataType : "DateTime", value : null};
-                             //, DatumGebTotMet : null //{dataType : "DateTime", value : null};
-                             //, DatumGebVoor : null //{dataType : "DateTime", value : null};
-//                             , Duur : '' 
-//                             , ExternNr : '' 
-//							 , GroepsVolgorde : 0 //{dataType : "Integer", value : null};
-//                             , IndBundelen : false //{dataType : "Boolean", value : null};
-//                             , IndProlongeren : false //{dataType : "Boolean", value : null};
-//                             , JaarBedrag : 0 //{dataType : "Currency", value : null};
-//                             , KostenVerzend : 0 //{dataType : "Currency", value : null};
-//                             , NieuweGroep : '' 
-//                             , NieuwePeriode : 0 //{dataType : "Integer", value : null};
-//                             , Opmerking : '' //{dataType : "WideString", value : null};
-//                             , RelNr : 0 //{dataType : "Integer", value : null};
-//                             , Sortering : 0 //{dataType : "Integer", value : null};
+				                  , Groep : Groep
+								  , Omschrijving : Omschrijving
+								  , Periode : 0});
+                Service.SvcGroep("D", currentUser.username, myGroep, function(result){
+                    console.log(result);
+                    delGroepPromise.resolve(result)
+                });
+            });
+            return delGroepPromise.promise;
 
           // _.remove($rootScope.groep,function(groeps){
           //   return groeps.groep===groepId;
           // });
+        },
         nextGroep:function(groepId, cb){
           var index=_.findIndex($rootScope.groep, function(groeps){
             return groeps.Groep===groepId;

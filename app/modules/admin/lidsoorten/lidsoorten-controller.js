@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('LidsoortenController',
-     function ($rootScope, $scope, $state, Soortlid, soortlid, authService) {
+     function ($rootScope, $scope, $state, SoortLid, soortlid, authService) {
       if(authService.getToken()==null){
         $state.go('login');
      }else{
@@ -33,25 +33,25 @@ angular.module('polderweb')
       };
 
       $scope.clickGet = function () {
-        Soortlid.findAll();
+        SoortLid.findAll();
       };
 
-      $scope.goViewSoortlid = function (soortlid) {
+      $scope.goViewSoortLid = function (soortlid) {
 		// console.log('soortlid1 ' + soortlid);
         $scope.detail = true;
 		// console.log('soortlid2 ' + soortlid);
-        $state.go('viewSoortlid', {soortlid: soortlid});
-		// $scope.so=Soortlid.getSoortlid(soortlid);
+        $state.go('viewSoortLid', {soortlid: soortlid});
+		// $scope.so=SoortLid.getSoortLid(soortlid);
         // niet direct opstarten : dan wordt scherm niet leeg gemaakt 
 	  };
 
-      $scope.viewSoortlid=function(soortlid){
+      $scope.viewSoortLid=function(soortlid){
         $scope.detail = true;
         // Deze verschijnt niet : console.log('soortlid3 ' + soortlid);
-        $scope.so=Soortlid.getSoortlid(soortlid);
+        $scope.so=SoortLid.getSoortLid(soortlid);
       }
 
-      $scope.delSoortlid=function(){
+      $scope.delSoortLid=function(){
         angular.forEach($scope.selection, function (soortlid) {
 
           _.remove($rootScope.soortl,function(soortl){
@@ -83,15 +83,15 @@ angular.module('polderweb')
        $scope.clickSave = function (form) {
         $scope.submitted = true;
         if (form.$valid) {
-          Soortlid.updateSoortlid($scope.so.soortlid, $scope.so);
+          SoortLid.updateSoortLid($scope.so.soortlid, $scope.so);
          // $state.go('home');
         }
       };
 
       $scope.clickDel = function () {
-        Soortlid.nextSoortlid($scope.so.soortlid,function (soortlid) {
+        SoortLid.nextSoortLid($scope.so.soortlid,function (soortlid) {
           if (soortlid) {
-            Soortlid.delSoortlid($scope.so.soortlid);
+            SoortLid.delSoortLid($scope.so.soortlid);
             $scope.so = soortlid;
           }
         });
@@ -104,7 +104,7 @@ angular.module('polderweb')
       };
 
       $scope.clickNext = function () {
-        Soortlid.nextSoortlid($scope.so.soortlid,function (soortlid) {
+        SoortLid.nextSoortLid($scope.so.soortlid,function (soortlid) {
           if (soortlid) {
             $scope.so = soortlid;
           }
@@ -112,7 +112,7 @@ angular.module('polderweb')
       };
 
       $scope.clickPre = function () {
-        Soortlid.preSoortlid($scope.so.soortlid, function (soortlid) {
+        SoortLid.preSoortLid($scope.so.soortlid, function (soortlid) {
           if (soortlid) {
             $scope.so = soortlid;
           }

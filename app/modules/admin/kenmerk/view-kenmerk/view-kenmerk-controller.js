@@ -1,33 +1,34 @@
 angular.module('polderweb')
   .controller('viewKenmerkCtrl',
-    function ($scope, Kenmerk, $state, $stateParams, authService) {
-      if(authService.getToken()==null){
-           $state.go('login');
-         }else{
-      Kenmerk.getKenmerk($stateParams.kenmerkId).then(function(res){
+    function ($scope, Kenmerk, $state, $stateParams) {
+//      if(authService.getToken()==null){
+//           $state.go('login');
+//         }else{
+
+	  Kenmerk.getKenmerk($stateParams.kenmerkId).then(function(res){
         $scope.kenmerk = res;
       });
-      $scope.clickSave = function (form) {
+
+        $scope.kenmerkService = Kenmerk;
+
+	  $scope.clickSave = function (form) {
         $scope.submitted = true;
         if (form.$valid) {
-            Kenmerk.updateKenmerk($scope.kenmerk.Kenmerk,$scope.kenmerk.Omschrijving);
-             $state.go('adminKenmerk');
+            Kenmerk.updateKenmerk($scope.kenmerk);
+             $state.go('kenmerk.list');
         }
       };
+
+        $scope.deletionOnSuccess = function() {
+            $state.go('kenmerk.list')
+        };
 
       $scope.clickDel = function () {
          var msg = confirm("Verwijderen ? J/N");
           if (msg == true) {
-            Kenmerk.delKenmerk($scope.kenmerk.Kenmerk, $scope.kenmerk.Omschrijving);
-            $state.go('adminKenmerk'); // Terug naar homepage
+            Kenmerk.delKenmerk($scope.kenmerk.Kenmerk,$scope.kenmerk.Omschrijving);
+            $state.go('kenmerk.list'); // Terug naar homepage
           }
-      };
-
-      $scope.clickDetails = function (kenmerk) { //master-detail
-        //Kenmerk.delKenmerk($scope.kenmerk.Kenmerk,$scope.kenmerk.Omschrijving);
-        //$scope.kenmerk = kenmerk.Kenmerk;
-        $scope.kenmerk = $stateParams.kenmerkId;
-        $state.go('adminKenmKode'); 
       };
 
       $scope.clickCancel = function () {
@@ -51,5 +52,5 @@ angular.module('polderweb')
           }
         });
       };
-  }
+//  }
     });

@@ -1,48 +1,92 @@
 <!--                                     -->
-<!-- Overzicht Waarden                   -->
+<!-- Overzicht KenmKode                    -->
 <!-- 20150816 onnodige div verwijderd    -->
 <!--                                     -->
-<h3>Overzicht Waardes per Kenmerk</h3>
+<h3><b>Overzicht Waarden per Kenmerk</b></h3>
 <hr/>
-<div>
-  <a ui-sref="adminKenmerk"      class="btn btn-lg btn-success">Terug</a>
-  <a ui-sref="createKenmKode"    class="btn btn-lg btn-primary">Nieuw</a>
-  <!-- <button ng-click="clickGet()"  class="btn btn-lg btn-primary">Zoeken</button> -->
-  <!-- <button ng-click="clickCancel()" class="btn btn-lg btn-primary">Doe iets</button> -->
-  <!-- <button ng-click="delKenmKode()" class="btn btn-lg btn-primary">Verwijder</button> -->
-  <br><br>
-<!--
-  <p>
-    Filter : <input type="text" size="10" height="28" ng-model="filter.kenmkode" class="input-lg" placeholder="KenmKode..."/>
-    <input type="text" size="10" ng-model="filter.omschrijving" class="input-lg" placeholder="Omschrijving..." />
-    <button class="btn btn-lg btn-primary" ng-click="clearFilter();">Clear</button>
-  </p>
--->
-  <h2>Kenmerk: {{kenmerk.Kenmerk}}</h2>
-  <hr/>
-  <div class="person-grid">
-    <scrollable-table watch="kenmkode" watch-cols="display">
-      <table class="table table-bordered table-striped table-hover">
-        <thead>
-          <tr>
-            <!-- <th><center><input type="checkbox" ng-change="checkAll(selectedAll);" ng-model="selectedAll" ng-true-value="true" ng-false-value="false" /></center></th> -->
-            <th col="kode"         ng-if="display.kenmkodeKode">        <a href="javascript:void(0);" ng-click="clickSort('Kode', !reverse)">Kode</a></th>
-            <th col="omschrijving" ng-if="display.kenmkodeOmschrijving"><a href="javascript:void(0);" ng-click="clickSort('Omschrijving', !reverse)">Omschrijving</a></th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- orderBy kan op meerdere velden -->
-          <tr ng-repeat="kenmkodes in kenmkode | orderBy: mySort : reverse
-          | filter : { Kode: filter.kode, Omschrijving: filter.omschrijving } as numResults" ng-click="goViewKenmKode(kenmkodes.Kenmerk, kenmkodes.Kode)">
-          <td ng-if="display.kenmkodeKode">{{ kenmkodes.Kode }}</td>
-          <td ng-if="display.kenmkodeOmschrijving">{{ kenmkodes.Omschrijving }}</td> 
-          </tr>
-        </tbody>
-      </table>
-    </scrollable-table>
-  </div>
-  <div ng-if="numResults.length === 0">
+ <div>
+  <div class="row">
+         <div class="col-md-12">
+             <a ui-sref="home.init"              class="btn btn-lg btn-back">Terug</a>
+             <!-- <button ng-click="clickGet()"  class="btn btn-lg btn-primary">Zoeken</button> -->
+             <a ui-sref="kenmkode.create"      class="btn btn-lg btn-new">Nieuw</a>
+             <!-- <button ng-click="clickCancel()" class="btn btn-lg btn-primary">Doe iets</button> -->
+             <!-- <button ng-click="delKenmKode()" class="btn btn-lg btn-primary">Verwijder</button> -->
+             <div class="row pull-right">
+                 <div class="dropdown">
+                     <button class="btn btn-lg btn-export dropdown-toggle" margin-right=46px type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                         <i class=""></i>Export
+                         <span class="caret"></span>
+                     </button>
+                     <ul class="table-export dropdown-menu" table-selector="'table'" export-options="{type: 'pdf', escape: true, ignoreColumn : '[4]', tableName: 'KenmKodes' }" aria-labelledby="dropdownMenu1">
+                         <li te-option te-value="'pdf'" te-param="'type'">
+                             <a href="#">PDF</a>
+                         </li>
+
+                         <li te-option te-value="'excel'" te-param="'type'">
+                             <a href="#">Excel</a>
+                         </li>
+
+                         <li te-option te-value="'csv'" te-param="'type'">
+                             <a href="#">CSV</a>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+		 </div>
+         <div class="col-md-12">
+			<hr/>
+
+             <!--<select name="exportbutton" id="" class="table-export" table-selector="'table'" export-options="{'escape': false}">
+                 <option te-option te-value="'pdf'" te-param="'type'">PDF</option>
+                 <option te-option te-value="'xls'" te-param="'type'">XLS</option>
+             </select>-->
+
+<!-- 			 <table st-table="ctrl.model.kenmkodes" class="table table-striped"> -->
+			<h3><b>Kenmerk: {{kenmerk.Kenmerk}}</b></h3>
+			<hr/>
+			 <table st-table="ctrl.model.kenmkodes" class="table table-striped">
+                 <thead>
+                     <tr>
+                         <th st-sort="Kode">Kode</th>
+                         <th st-sort="Omschrijving">Omschrijving</th>
+                         <th class="col-md-1"></th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <tr ng-repeat="row in ctrl.model.kenmkodes">
+                         <td>{{row.Kode}}</td>
+                         <td>{{row.Omschrijving}}</td>
+                         <td>
+<!--                         <a class="btn btn-sm btn-primary" ui-sref="kenmkode.view({kenmkodeId: row.Kode})"><i class="fa fa-pencil"></i></a> -->
+                             <a class="btn btn-sm btn-edit" ui-sref="kenmkode.view({kenmkodeId: row.Kode})"><i class="fa fa-pencil"></i></a>
+                             <button type="button" element-deletion
+                                     collection="ctrl.model.kenmkodes"
+                                     options="{liveUpdate: true,
+                                        compareBy : 'Kode',
+                                        usePromise: true,
+                                        askBeforeDelete: true}"
+                                     ng-model="row.Kode"
+                                     deletion-service="ctrl.kenmkodeService.delKenmKode"
+<!--                                     class="btn btn-sm btn-danger -->
+                                     class="btn btn-sm btn-delete
+                                     ">
+                                 <i class="fa fa-trash-o"></i>
+                             </button>
+                         </td>
+                     </tr>
+                 </tbody>
+				<tfoot>
+				<tr>
+					<td colspan="5" class="text-center">
+						<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="10"></div>
+					</td>
+				</tr>
+				</tfoot>				 
+             </table>
+         </div>
+     </div>
+<!--  <div ng-if="numResults.length === 0">
     <strong>Geen resultaten gevonden...</strong>
-  </div>
+  </div>-->
 </div>
-<hr/>
