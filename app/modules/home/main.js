@@ -24,10 +24,10 @@ angular.module('polderweb')
                     regio: function (Regio) {
                         return Regio.findAll();
                     },
-                    soortlid: function (Soortlid) {
-                        return Soortlid.findAll();
+                    soortlid: function (SoortLid) {
+                        return SoortLid.findAll();
                     }
                 }
-            });
+            })
     });
 
