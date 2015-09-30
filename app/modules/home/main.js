@@ -5,7 +5,7 @@ angular.module('polderweb')
             .state('home', {
                 url:'/app',
                 abstract: true,
-                templateUrl: 'app/modules/home/abstract.html'
+                templateUrl: 'app/modules/home/abstract.html',
                 resolve : {
                     leaveItEnter: function(authService, loginState, $state) {
                         //It is the main state, it will be checked always before load any screen

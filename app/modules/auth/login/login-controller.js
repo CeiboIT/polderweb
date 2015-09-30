@@ -17,7 +17,7 @@ var LoginCtrl = ['User', '$state','$stateParams', '$cookies', 'flash', 'homeStat
 //        } else {
 
             User.getUser(ctrl.auth.username).then(function(data){
-                //console.log(data);
+                console.log(data);
                 if(!data) {
                     flash.error = 'Invalid username';
                     ctrl.suggestions = {
