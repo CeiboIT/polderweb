@@ -16,16 +16,16 @@ angular.module('polderweb.user', [])
              })
 
             .state('user.list',
-        {
-            url:'/list',
-            templateUrl:'app/modules/admin/user/user.html',
-            controller:'UserController',
-            resolve: {
-                user: function (User) {
-                    return User.findAll();
-                }
-            }
-        })
+                {
+                    url:'/list',
+                    templateUrl:'app/modules/admin/user/user.html',
+                    controller:'UserController',
+                    resolve: {
+                        user: function (User) {
+                            return User.findAll();
+                        }
+                    }
+                })
             .state('user.create',
                 {
                     url:'/create',
@@ -38,8 +38,9 @@ angular.module('polderweb.user', [])
                     templateUrl:'app/modules/admin/user/view-user/view-user.html',
                     controller:'viewUserCtrl',
                     resolve: {
-                        user: function(User, $stateParams) {
-                            return User.getUser($stateParams.userId).then(function(res){
+                        user: function(User, $cookieStore, $stateParams) {
+                            //return User.getUser($stateParams.userId).then(function(res){
+                            return User.getUser($cookieStore.get('user').Username).then(function(res){
                                 return res;
                             });
                         }

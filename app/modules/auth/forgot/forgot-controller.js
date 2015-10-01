@@ -1,4 +1,4 @@
-var ForgotController= ['User', 'flash','$stateParams' ,function(User, flash,$stateParams) {
+var ForgotController= ['User', 'flash','$stateParams' ,function(User, flash, $stateParams) {
 
     var ctrlContext = this;
 
