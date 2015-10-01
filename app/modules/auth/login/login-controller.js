@@ -1,6 +1,6 @@
 //use the array syntax or $injector for define a the controller function with his dependencies, or it will break when minified.
 
-var LoginCtrl = ['User', '$state','$stateParams', '$cookies', 'flash', 'homeState',function (User,$state, $stateParams, $cookies, flash, homeState) {
+var LoginCtrl = ['User', '$state','$stateParams', '$cookieStore', 'flash', 'homeState',function (User,$state, $stateParams, $cookieStore, flash, homeState) {
     var ctrl = this;
 
     ctrl.suggestions = {};
@@ -26,19 +26,8 @@ var LoginCtrl = ['User', '$state','$stateParams', '$cookies', 'flash', 'homeStat
                 } else {
                     if(data.Passwrd === ctrl.auth.password) {
 
-                        //save cookies
-                        $cookies.put('username', data.Username);
-                        $cookies.put('bedrijf', data.Bedrijf);
-                        $cookies.put('token', data.Token);
-
-                        //*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
-                        // TESTING
-                        //*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
-
-                        // save these values as constants across app
-                        angular.module('polderweb')
-                            .constant('userData', data)
-                        ;
+                        //save user as cookie
+                        $cookieStore.put('user', data);
 
                         $state.go(homeState);
                     } else {

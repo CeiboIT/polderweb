@@ -48,11 +48,9 @@ angular.module('polderweb.auth', ['angular-flash.service', 'angular-flash.flash-
 
       .state('auth.logout', {
         url: '/logout',
-        controller: function ($state, authService) {
+        controller: function ($state, $cookieStore, authService) {
             // clean cookies
-            $cookies.remove('username');
-            $cookies.remove('bedrijf');
-            $cookies.remove('token');
+            $cookieStore.remove('user');
 
             authService.logout();
             $state.go('auth.login');

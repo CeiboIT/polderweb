@@ -1,11 +1,11 @@
 angular.module('polderweb')
   .controller('HomeCtrl',
-    function ($rootScope, $scope, $state, Person, Regio, Soortlid, soortlid, regio, authService) {
+    function ($rootScope, $scope, $state, Person, Regio, SoortLid, soortlid, regio, authService) {
     if(authService.getToken()==null){
         $state.go('login');
      }else{
 
-        $scope.rootScope = $rootScope;
+      $scope.rootScope = $rootScope;
       $scope.regio=regio;
       $scope.soortlid=soortlid;
 
