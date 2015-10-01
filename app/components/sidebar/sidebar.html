@@ -67,7 +67,7 @@
 						<li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=t001.fr3&multipage=0&pagenav=1&format=PDF&bedrijfin=313">Actuarieel Rapport</a></li>
 						<li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=actuxls.fr3&multipage=0&pagenav=1&format=XLS&bedrijfin=313">Actuariëel XLS</a></li>
 						<li><a href="http://178.18.85.124:8097/cgi/fastreport.exe?report=lemu.fr3&multipage=0&pagenav=1&format=PDF&bedrijfin=313">Ledenkaart</a></li>
-							
+
                     </ul>
                 </li>
                 <li class="panel" data-title="Administratie" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle" ng-class="{active:$state.includes('admin')}">
@@ -93,7 +93,7 @@
                 <li class="panel" style="border:none">
                     <div class="sidebar-footer">
                         <div class="col-xs-12">
-                            <a ng-click="ctrl.logOut();">
+                            <a ui-sref="auth.logout">
                                 Logout <i class="fa fa-sign-out"></i>
                             </a>
                         </div>

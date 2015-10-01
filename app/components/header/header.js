@@ -1,10 +1,10 @@
-var pHeaderCtrl = function($state, $cookies, $element, $rootScope, userData) {
+var pHeaderCtrl = function($state, $cookieStore, $element, $rootScope) {
   var ctrl = this;
 
     //*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
     // TESTING
     //*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
-    ctrl.user = userData;
+    ctrl.user = $cookieStore.get('user');
 
     var toggleAsideNav = function(){
         var asideNav = $aside.open({
