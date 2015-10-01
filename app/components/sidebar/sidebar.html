@@ -73,17 +73,17 @@
                 <li class="panel" data-title="Administratie" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle" ng-class="{active:$state.includes('admin')}">
                     <span data-toggle="collapse" data-parent="#accordion" data-target="#admin" aria-expanded="true" aria-controls="products" ng-class="{collapsed:$state.includes('admin')}"><div class="img-link"><i class="fa fa-folder"></i></div>Administratie<i class="fa fa-angle-down"></i></span>
                     <ul class="collapse" id="admin" class="collapse" aria-labelledby="products" ng-class="{in:$state.includes('admin')}">
-                        <li><a ui-sref="adminLidsoorten">Soort Lid</a></li>
-                        <li><a ui-sref="adminGroep">Tariefgroepen</a></li>
-                        <li><a ui-sref="adminSoortBetaling">Tariefsoorten</a></li>
+                        <li><a ui-sref="soortlid.list">Soort Lid</a></li>
+                        <li><a ui-sref="groep.list">Tariefgroepen</a></li>
+                        <li><a ui-sref="soortbetaling.list">Tariefsoorten</a></li>
                         <li><a ui-sref="aanhef.list">Aanhef</a></li>
-                        <li><a ui-sref="adminKenmerk">Kenmerken</a></li>
-                        <li><a ui-sref="adminKenmKode">Waardes per Kenmerk</a></li>
-                        <li><a ui-sref="adminRegio">Regio's</a></li>
-                        <li><a ui-sref="adminTitel">Titels</a></li>
-                        <li><a ui-sref="adminCategorie">Categoriën</a></li>
-                        <li><a ui-sref="adminMutReden">Mutatieredenen</a></li>
-                        <li><a ui-sref="adminFunctie">Functies</a></li>
+                        <li><a ui-sref="kenmerk.list">Kenmerken</a></li>
+                        <li><a ui-sref="kenmkode.list">Waardes per Kenmerk</a></li>
+                        <li><a ui-sref="regio.list">Regio's</a></li>
+                        <li><a ui-sref="titel.list">Titels</a></li>
+                        <li><a ui-sref="categorie.list">Categoriën</a></li>
+                        <li><a ui-sref="mutreden.list">Mutatieredenen</a></li>
+                        <li><a ui-sref="functie.list">Functies</a></li>
                     </ul>
                 </li>
                 <li ui-sref-active="active" data-title="Gebruikers" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle">
