@@ -96,16 +96,17 @@ angular.module('polderweb')
             return addUserPromise.promise;
         },
 
-        updateUser:function(User,Passwrd){
+        updateUser:function(userData){
             var updateUserPromise = $q.defer();
-
             userService.get().$promise.then(function(res){
-                myUser.fromObject({Bedrijf : res.bedrijf
-                    ,Username : User
-                    ,Passwrd : Passwrd});
-
+                myUser.fromObject({
+                    Bedrijf : userData.Bedrijf,
+                    Username : userData.User,
+                    Passwrd : userData.Passwrd,
+                    Email: userData.Email,
+                    Name: userData.Name
+                  });
                 Service.SvcUser("U", myUser, function(result){
-
                     if(result) {
                         updateUserPromise.resolve(true)
                     }

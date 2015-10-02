@@ -39,7 +39,7 @@ angular.module('polderweb.persoon', [])
                 resolve: {
                     persoon: function (Persoon) { return Persoon.findAll(); },
                     regio: function (Regio) { return Regio.findAll(); },
-                    soortlid: function (Soortlid) { return Soortlid.findAll(); }
+                    soortlid: function (SoortLid) { return SoortLid.findAll(); }
                 }
             })
             .state('persoon.create',

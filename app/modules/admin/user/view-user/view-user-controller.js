@@ -10,8 +10,8 @@ angular.module('polderweb.user')
       $scope.clickSave = function (form) {
         $scope.submitted = true;
         if (form.$valid) {
-            User.updateUser($scope.user.User,$scope.user.Passwrd);
-             $state.go('adminUser');
+            User.updateUser($scope.user);
+            $state.go('home.init');
         }
       };
 
