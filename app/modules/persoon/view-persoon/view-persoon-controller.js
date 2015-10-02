@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('viewPersoonCtrl',
-    function ($scope, Persoon, Aanhef, $state, $stateParams, Person, authService) {
+    function ($scope, Persoon, Aanhef, $state, $stateParams, Person, bedrijf, authService) {
 /*
       if(authService.getToken()==null){
              $state.go('login');

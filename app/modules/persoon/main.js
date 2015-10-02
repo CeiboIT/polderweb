@@ -39,21 +39,34 @@ angular.module('polderweb.persoon', [])
                 resolve: {
                     persoon: function (Persoon) { return Persoon.findAll(); },
                     regio: function (Regio) { return Regio.findAll(); },
-                    soortlid: function (SoortLid) { return SoortLid.findAll(); }
+                    soortlid: function (SoortLid) { return SoortLid.findAll(); },
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
                 }
             })
             .state('persoon.create',
             {
                 url:'/create',
                 templateUrl:'app/modules/persoon/create-persoon/create-persoon.html',
-                controller:'createPersoonCtrl'
+                controller:'createPersoonCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             })
 
             .state('persoon.view',
             {
                 url:'/:persoonId',
                 templateUrl:'app/modules/persoon/view-persoon/view-persoon.html',
-                controller:'viewPersoonCtrl'
+                controller:'viewPersoonCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             });
 
     });

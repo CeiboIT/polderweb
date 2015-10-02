@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('PersoonController',
-    function ($rootScope, $scope, $state, Persoon, persoon, Regio, regio, SoortLid, soortlid, authService) {
+    function ($rootScope, $scope, $state, Persoon, persoon, Regio, regio, SoortLid, soortlid, bedrijf, authService) {
 
        var model = {
            selection : [],
