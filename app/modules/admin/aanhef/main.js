@@ -36,23 +36,37 @@ angular.module('polderweb.aanhef', [])
                 url:'/list',
                 templateUrl:'app/modules/admin/aanhef/aanhef.html',
                 controller:'AanhefController as ctrl',
-                resolve: { aanhefs: function (Aanhef) {
-                    return Aanhef.findAll();
-                    }
+                resolve: {
+                    aanhefs: function (Aanhef) {
+                        return Aanhef.findAll();
+                    },
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
                 }
             })
             .state('aanhef.create',
             {
                 url:'/create',
                 templateUrl:'app/modules/admin/aanhef/create-aanhef/create-aanhef.html',
-                controller:'createAanhefCtrl'
+                controller:'createAanhefCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             })
 
             .state('aanhef.view',
             {
                 url:'/:aanhefId',
                 templateUrl:'app/modules/admin/aanhef/view-aanhef/view-aanhef.html',
-                controller:'viewAanhefCtrl'
+                controller:'viewAanhefCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             });
 
     });

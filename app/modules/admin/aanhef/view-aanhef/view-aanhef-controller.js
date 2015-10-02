@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('viewAanhefCtrl',
-    function ($scope, Aanhef, $state, $stateParams, geslachtOptions) {
+    function ($scope, Aanhef, $state, $stateParams, bedrijf, geslachtOptions) {
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{

@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('AanhefController',
-   function ($rootScope, $scope, $state, Aanhef, aanhefs, authService, homeState) {
+   function ($rootScope, $scope, $state, Aanhef, aanhefs, bedrijf, authService, homeState) {
 
        var model = {
            selection : [],
@@ -8,7 +8,7 @@ angular.module('polderweb')
        };
 
        $rootScope.aanhef = aanhefs;
-
+       $scope.bedrijf = bedrijf;
 
      function clickSave (form) {
         $scope.submitted = true;
