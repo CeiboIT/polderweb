@@ -29,9 +29,7 @@ angular.module('polderweb')
           $scope.clickSave = function (form) {
             $scope.submitted = true;
             if (form.$valid) {
-                Persoon.updatePersoon($scope.pers.LidNr
-//				                    , $scope.pers.Naam);
-				                    , $scope.pers);
+                Persoon.updatePersoon($scope.pers);
                 $state.go('persoon.list');
             }
           };
@@ -39,9 +37,7 @@ angular.module('polderweb')
           $scope.clickDel = function () {
               var msg = confirm("Verwijderen ? J/N");
               if (msg == true) {
-                Persoon.delPersoon($scope.pers.LidNr
-//				                 , $scope.pers.Naam
-								 , $scope.pers);
+                Persoon.delPersoon($scope.pers);
                  $state.go('persoon.list'); // Terug naar homepage
               }
           };

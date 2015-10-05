@@ -83,83 +83,77 @@ angular.module('polderweb')
            userService.get().$promise.then(function(res){
 //                myPersoon.fromObject({Bedrijf : res.bedrijf,Persoon : Persoon, Naam : Naam});
                 myPersoon.fromObject({Bedrijf : res.bedrijf //, Persoon : ''
-									, Aanhef : ''
-									, AanhefOms : ''
-									, AantalTermijnen : 0
-									, BankRekNr : ''
-									, Bedrag : 0
-									, BedragBetaald : 0
-									, BedragOpenstaand : 0
-									, BetaalWijze : ''
-									, DatumEind : '1899-12-30T00:00:00'
-									, DatumGeb : '1899-12-30T00:00:00'
-									, DatumInschr : '1899-12-30T00:00:00'
-									, DatumInvoer : '1899-12-30T00:00:00'
-									, DatumMutatie : '1899-12-30T00:00:00'
-									, DatumOndertekening : '1899-12-30T00:00:00'
-									, Email : ''
-									, Email2 : ''
-									, Geslacht : ''
-									, Groep : ''
-									, Groepen : ''
-									, GroepOms : ''
-									, HfdBew : ''
-									, Hoofdbewoner : false
-									, HuisNr : ''
-									, HuisNrAanv : ''
-									, IncassoUitgevoerd : false
-									, KodeExtern : ''
-									, Land : ''
-									, Leeftijd : 0
-									, LidNr : persoonData.LidNr
-									, MachtigingsID : ''
-									, MailingList : false
-									, Medebewoners : false
-									, Naam : persoonData.Naam
-									, Naam_2 : ''
-									, Opmerking : ''
-									, Plaats : ''
-									, Postcode : ''
-									, RedenEind : ''
-									, RedenInschrijving : ''
-									, Regio : ''
-									, RegioOms : ''
-									, SofiNr : 0
-									, SoortLid : ''
-									, SoortLidOms : ''
-									, Straat : ''
-									, StraatAanv : ''
-									, TelNr : ''
-									, TelNrMobiel : ''
-									, TelNrWerk : ''
-									, Titel : ''
-									, Tussenvoegsel : ''
-									, Vlag1 : false, Vlag10 : false, Vlag11 : false, Vlag12 : false, Vlag13 : false, Vlag14 : false, Vlag15 : false, Vlag16 : false
-									, Vlag2 : false, Vlag3 : false, Vlag4 : false, Vlag5 : false, Vlag6 : false, Vlag7 : false, Vlag8 : false, Vlag9 : false
-									, Voorletters : ''
-									, Voornaam : ''
-									});
+					, Aanhef : ''
+					, AanhefOms : ''
+					, AantalTermijnen : 0
+					, BankRekNr : ''
+					, Bedrag : 0
+					, BedragBetaald : 0
+					, BedragOpenstaand : 0
+					, BetaalWijze : ''
+					, DatumEind : '1899-12-30T00:00:00'
+					, DatumGeb : '1899-12-30T00:00:00'
+					, DatumInschr : '1899-12-30T00:00:00'
+					, DatumInvoer : '1899-12-30T00:00:00'
+					, DatumMutatie : '1899-12-30T00:00:00'
+					, DatumOndertekening : '1899-12-30T00:00:00'
+					, Email : ''
+					, Email2 : ''
+					, Geslacht : ''
+					, Groep : ''
+					, Groepen : ''
+					, GroepOms : ''
+					, HfdBew : ''
+					, Hoofdbewoner : false
+					, HuisNr : ''
+					, HuisNrAanv : ''
+					, IncassoUitgevoerd : false
+					, KodeExtern : ''
+					, Land : ''
+					, Leeftijd : 0
+					, LidNr : persoonData.LidNr
+					, MachtigingsID : ''
+					, MailingList : false
+					, Medebewoners : false
+					, Naam : persoonData.Naam
+					, Naam_2 : ''
+					, Opmerking : ''
+					, Plaats : ''
+					, Postcode : ''
+					, RedenEind : ''
+					, RedenInschrijving : ''
+					, Regio : ''
+					, RegioOms : ''
+					, SofiNr : 0
+					, SoortLid : ''
+					, SoortLidOms : ''
+					, Straat : ''
+					, StraatAanv : ''
+					, TelNr : ''
+					, TelNrMobiel : ''
+					, TelNrWerk : ''
+					, Titel : ''
+					, Tussenvoegsel : ''
+					, Vlag1 : false, Vlag10 : false, Vlag11 : false, Vlag12 : false, Vlag13 : false, Vlag14 : false, Vlag15 : false, Vlag16 : false
+					, Vlag2 : false, Vlag3 : false, Vlag4 : false, Vlag5 : false, Vlag6 : false, Vlag7 : false, Vlag8 : false, Vlag9 : false
+					, Voorletters : ''
+					, Voornaam : ''
+				});
 				//console.log('svcPersoon : ' + JSON.stringify(myPersoon));
                 Service.SvcPersoon("C", currentUser.username, myPersoon);
             });
         },
 
-        updatePersoon:function(LidNr, Persoon){
+        updatePersoon:function(Persoon){
           userService.get().$promise.then(function(res){
-          // myPersoon.fromObject({Bedrijf : res.bedrijf,Persoon : Persoon, Naam : Naam});
-          // console.log('svcPersoon : ' + JSON.stringify(Persoon));
-          // Service.SvcPersoon("U", currentUser.username, myPersoon);
             Service.SvcPersoon("U", currentUser.username, Persoon);
           });
         },
 
-        delPersoon:function(LidNr, Persoon){
+        delPersoon:function(Persoon){
           userService.get().$promise.then(function(res){
 			Service.SvcPersoon("D", currentUser.username, Persoon);
           });
-          // _.remove($rootScope.persoon,function(persoons){
-          //   return persoons.persoon===persoonId;
-          // });
         },
 //-----------------------
 /*

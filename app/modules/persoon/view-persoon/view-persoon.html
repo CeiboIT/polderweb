@@ -14,7 +14,7 @@
       <tr>
         <td> Lidnr </td>
         <td>
-          <input type="text" readonly ng-model="pers.LidNr" name="lidnr" class="form-control input-lg" placeholder="Lidnr" required/><p class="help-block" ng-show="form.lidnr.$error.required && submitted">This input is required</p>
+          <input type="text" readonly ng-model="pers.LidNr" name="lidnr" class="form-control input-lg" placeholder="Lidnr" /><p class="help-block" ng-show="form.lidnr.$error.required && submitted">This input is required</p>
         </td>
         <td> &nbsp;&nbsp;Voorl.&nbsp; </td>
         <td>
@@ -26,13 +26,13 @@
       </tr>
       <tr>
         <td> Naam </td>
-        <td><input type="text" ng-model="pers.Naam" name="naam" class="form-control input-lg" placeholder="Naam" required/><p class="help-block" ng-show="form.naam.$error.required && submitted">This input is required</p></td>
+        <td><input type="text" ng-model="pers.Naam" name="naam" class="form-control input-lg" placeholder="Naam" /><p class="help-block" ng-show="form.naam.$error.required && submitted">This input is required</p></td>
         <td></td>
-        <td><select type="text" ng-model="pers.Sex" ng-options="item.name for item in sexList" name="naam" class="form-control input-lg" required/><p class="help-block" ng-show="form.naam.$error.required && submitted">This select is required</p></td>
+        <td><select type="text" ng-model="pers.Sex" ng-options="item.name for item in sexList" name="naam" class="form-control input-lg" /><p class="help-block" ng-show="form.naam.$error.required && submitted">This select is required</p></td>
         <td>&nbsp;&nbsp;Inschrijving&nbsp;</td>
         <td>
             <p class="input-group">
-              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="pers.Inschrijving" is-open="status.opened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="pers.Inschrijving" is-open="status.opened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -42,13 +42,13 @@
 
       <tr>
         <td> Aanhef </td>
-        <td><select type="text" ng-model="pers.Aanhef" ng-options="item.Omschrijving for item in aanhef" name="aanhef" class="form-control input-lg" required/><p class="help-block" ng-show="form.aanhef.$error.required && submitted">This select is required</p></td>
+        <td><select type="text" ng-model="pers.Aanhef" ng-options="item.Omschrijving for item in aanhef" name="aanhef" class="form-control input-lg" /><p class="help-block" ng-show="form.aanhef.$error.required && submitted">This select is required</p></td>
         <td></td>
         <td></td>
         <td>&nbsp;&nbsp;Geboren&nbsp;</td>
         <td>
             <p class="input-group">
-              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="pers.DatumGeb" is-open="status.opened1" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="pers.DatumGeb" is-open="status.opened1" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -74,28 +74,28 @@
       </tr>
 
       <tr>
-        <td> &nbsp;&nbsp;Land&nbsp; </td> <td><select type="text" ng-model="pers.Land" ng-options="item for item in land" name="land" class="form-control input-lg" required/><p class="help-block" ng-show="form.land.$error.required && submitted">This select is required</p></td>
+        <td> &nbsp;&nbsp;Land&nbsp; </td> <td><select type="text" ng-model="pers.Land" ng-options="item for item in land" name="land" class="form-control input-lg" /><p class="help-block" ng-show="form.land.$error.required && submitted">This select is required</p></td>
         <td></td>
         <td></td>
         <td> BSN </td> <td><input type="text" ng-model="pers.BSN" name="BSN" class="form-control input-lg" placeholder="BSN" /> <p class="help-block" ng-show="form.BSN.$error.required && submitted">This input is required</p></td>
       </tr>
 
       <tr>
-        <td> &nbsp;&nbsp;Regio&nbsp; </td> <td><select type="text" ng-model="pers.Regio" ng-options="item for item in regio" name="regio" class="form-control input-lg" required/><p class="help-block" ng-show="form.regio.$error.required && submitted">This select is required</p></td>
+        <td> &nbsp;&nbsp;Regio&nbsp; </td> <td><select type="text" ng-model="pers.Regio" ng-options="item for item in regio" name="regio" class="form-control input-lg" /><p class="help-block" ng-show="form.regio.$error.required && submitted">This select is required</p></td>
         <td></td>
         <td></td>
         <td> TelNr </td> <td><input type="text" ng-model="pers.TelNr" name="TelNr" class="form-control input-lg" placeholder="TelNr" /> <p class="help-block" ng-show="form.TelNr.$error.required && submitted">This input is required</p></td>
       </tr>
 
       <tr>
-        <td> &nbsp;&nbsp;SoortLid&nbsp; </td> <td><select type="text" ng-model="pers.SoortLid" ng-options="item for item in soortlid" name="soortlid" class="form-control input-lg" required/><p class="help-block" ng-show="form.soortlid.$error.required && submitted">This select is required</p></td>
+        <td> &nbsp;&nbsp;SoortLid&nbsp; </td> <td><select type="text" ng-model="pers.SoortLid" ng-options="item for item in soortlid" name="soortlid" class="form-control input-lg" /><p class="help-block" ng-show="form.soortlid.$error.required && submitted">This select is required</p></td>
         <td></td>
         <td></td>
         <td> Mobiel </td> <td><input type="text" ng-model="pers.Mobiel" name="Mobiel" class="form-control input-lg" placeholder="Mobiel" /> <p class="help-block" ng-show="form.Mobiel.$error.required && submitted">This input is required</p></td>
       </tr>
 
       <tr>
-        <td> &nbsp;&nbsp;Aantal Term.&nbsp; </td> <td><select type="text" ng-model="pers.AantalTerm" ng-options="item for item in aantalterm" name="aantalterm" class="form-control input-lg" required/><p class="help-block" ng-show="form.aantalterm.$error.required && submitted">This select is required</p></td>
+        <td> &nbsp;&nbsp;Aantal Term.&nbsp; </td> <td><select type="text" ng-model="pers.AantalTerm" ng-options="item for item in aantalterm" name="aantalterm" class="form-control input-lg" /><p class="help-block" ng-show="form.aantalterm.$error.required && submitted">This select is required</p></td>
         <td></td>
         <td></td>
         <td> Email </td> <td><input type="text" ng-model="pers.Email" name="Email" class="form-control input-lg" placeholder="Email" /> <p class="help-block" ng-show="form.Email.$error.required && submitted">This input is required</p></td>
@@ -119,7 +119,7 @@
         </tr>
 
         <tr>
-          <td> Land </td> <td><select type="text" ng-model="pers.Land" ng-options="item for item in land" name="land" class="form-control input-lg" required/><p class="help-block" ng-show="form.land.$error.required && submitted">This select is required</p></td>
+          <td> Land </td> <td><select type="text" ng-model="pers.Land" ng-options="item for item in land" name="land" class="form-control input-lg" /><p class="help-block" ng-show="form.land.$error.required && submitted">This select is required</p></td>
         </tr>
       </table>
     </tab>
@@ -127,7 +127,7 @@
       <br>
       <table>
         <tr>
-          <td> Betaalwijze </td> <td><select type="text" ng-model="pers.Betaalwijze" ng-options="item for item in betaalwijze" name="Betaalwijze" class="form-control input-lg" required/><p class="help-block" ng-show="form.Betaalwijze.$error.required && submitted">This select is required</p></td>
+          <td> Betaalwijze </td> <td><select type="text" ng-model="pers.Betaalwijze" ng-options="item for item in betaalwijze" name="Betaalwijze" class="form-control input-lg" /><p class="help-block" ng-show="form.Betaalwijze.$error.required && submitted">This select is required</p></td>
         </tr>
 
         <tr>
@@ -144,7 +144,7 @@
           <td> Ondertekening </td>
           <td>
               <p class="input-group">
-                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="pers.Ondertekening" is-open="status.opened3" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="pers.Ondertekening" is-open="status.opened3" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default" ng-click="open3($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
@@ -160,7 +160,7 @@
           <td> Eind </td>
           <td>
               <p class="input-group">
-                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="pers.Eind" is-open="status.opened4" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="pers.Eind" is-open="status.opened4" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default" ng-click="open4($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
@@ -173,7 +173,7 @@
           <td> Externe code&nbsp;</td> <td><input type="text" ng-model="pers.ExterneCode" name="ExterneCode" class="form-control input-lg" placeholder="Externe Code" /> <p class="help-block" ng-show="form.ExterneCode.$error.required && submitted">This input is required</p></td>
         </tr>
         <tr>
-          <td> Reden Eind </td> <td><select type="text" ng-model="pers.RedenEind" ng-options="item for item in redeneind" name="RedenEind" class="form-control input-lg" required/><p class="help-block" ng-show="form.RedenEind.$error.required && submitted">This select is required</p></td>
+          <td> Reden Eind </td> <td><select type="text" ng-model="pers.RedenEind" ng-options="item for item in redeneind" name="RedenEind" class="form-control input-lg"/><p class="help-block" ng-show="form.RedenEind.$error.required && submitted">This select is required</p></td>
           <td style="padding-left:15px;">
             <label style="margin-left:20px;" for="Vlag1">Vlag1</label><input style="margin-top: -20px;" type="checkbox" ng-model="pers.Vlag1" name="Vlag1" class="form-control"/><p class="help-block" ng-show="form.Vlag1.$error.required && submitted">This input is required</p>
           </td>
@@ -188,7 +188,7 @@
           </td>
         </tr>
         <tr>
-          <td> Tariefgroep </td> <td><select type="text" ng-model="pers.Tariefgroep" ng-options="item for item in tariefgroep" name="Tariefgroep" class="form-control input-lg" required/><p class="help-block" ng-show="form.Tariefgroep.$error.required && submitted">This select is required</p></td>
+          <td> Tariefgroep </td> <td><select type="text" ng-model="pers.Tariefgroep" ng-options="item for item in tariefgroep" name="Tariefgroep" class="form-control input-lg"/><p class="help-block" ng-show="form.Tariefgroep.$error.required && submitted">This select is required</p></td>
           <td style="padding-left:15px;">
             <label style="margin-left:20px;">Vlag5</label><input style="margin-top: -20px;" type="checkbox" ng-model="pers.Vlag5" name="Vlag5" class="form-control"/><p class="help-block" ng-show="form.hoofdbew.$error.required && submitted">This input is required</p>
           </td>
@@ -209,7 +209,7 @@
       <br>
       <table>
         <tr>
-          <td><textarea ng-model="pers.Opmerking" name="Opmerking" class="form-control input-lg" rows="4" cols="50" required/><p class="help-block" ng-show="form.Opmerking.$error.required && submitted">This input is required</p></td>
+          <td><textarea ng-model="pers.Opmerking" name="Opmerking" class="form-control input-lg" rows="4" cols="50" /><p class="help-block" ng-show="form.Opmerking.$error.required && submitted">This input is required</p></td>
         </tr>
       </table>
     </tab>
