@@ -13,8 +13,8 @@ angular.module('polderweb')
 			$rootScope.display.soortlidSoortLid=true;       //20150801 always display
 			$rootScope.display.soortlidOmschrijving=true;
             var defer = $q.defer();
-            userService.get().$promise.then(function(res){
-            mySoortLid.fromObject({ Bedrijf : res.bedrijf,SoortLid : '', Omschrijving : '' });
+            userService.get().then(function(res){
+            mySoortLid.fromObject({ Bedrijf : res.Bedrijf,SoortLid : '', Omschrijving : '' });
             Service.SvcSoortLid("R", currentUser.username, mySoortLid, function(result) {
             defer.resolve(result.toObject());
             });
@@ -24,14 +24,14 @@ angular.module('polderweb')
 
         getSoortLid: function (soortlid) {
             var defer = $q.defer();
-			userService.get().$promise.then(function(res){
-            // mySoortLid.fromObject({ Bedrijf : res.bedrijf,SoortLid : '', Omschrijving : ''});
+			userService.get().then(function(res){
+            // mySoortLid.fromObject({ Bedrijf : res.Bedrijf,SoortLid : '', Omschrijving : ''});
             // Service.SvcSoortLid("R", currentUser.username, mySoortLid, function(result) {
             //   var data = _.find(result.toObject(), {'SoortLid':soortlid});
             //   defer.resolve(data);
 			// niet gehele tabel lezen
-            //mySoortLid.fromObject({ Bedrijf : res.bedrijf,SoortLid : soortlid, Omschrijving : ''});
-            mySoortLid.fromObject({ Bedrijf : res.bedrijf,SoortLid : '', Omschrijving : ''});
+            //mySoortLid.fromObject({ Bedrijf : res.Bedrijf,SoortLid : soortlid, Omschrijving : ''});
+            mySoortLid.fromObject({ Bedrijf : res.Bedrijf,SoortLid : '', Omschrijving : ''});
             Service.SvcSoortLid("R", currentUser.username, mySoortLid, function(result) {
             var data = _.find(result.toObject(), {'SoortLid':soortlid});
             //var data = result.toObject()[0]; //niet zoeken in array maar tonen gevonden regel
@@ -47,21 +47,21 @@ angular.module('polderweb')
         },
 
         addSoortLid: function (soortlid,omschrijving) {
-          userService.get().$promise.then(function(res){
-                 mySoortLid.fromObject({ Bedrijf : res.bedrijf,SoortLid : soortlid, Omschrijving : omschrijving });
+          userService.get().then(function(res){
+                 mySoortLid.fromObject({ Bedrijf : res.Bedrijf,SoortLid : soortlid, Omschrijving : omschrijving });
                  Service.SvcSoortLid("C", currentUser.username, mySoortLid);
            });
         },
 
         updateSoortLid:function(soortlid,omschrijving){
-          userService.get().$promise.then(function(res){
-                 mySoortLid.fromObject({ Bedrijf : res.bedrijf,SoortLid : soortlid, Omschrijving : omschrijving });
+          userService.get().then(function(res){
+                 mySoortLid.fromObject({ Bedrijf : res.Bedrijf,SoortLid : soortlid, Omschrijving : omschrijving });
                  Service.SvcSoortLid("U", currentUser.username, mySoortLid);
           });
         },
         delSoortLid:function(soortlid,omschrijving){
-            userService.get().$promise.then(function(res){
-                mySoortLid.fromObject({ Bedrijf : res.bedrijf,SoortLid : soortlid, Omschrijving : omschrijving });
+            userService.get().then(function(res){
+                mySoortLid.fromObject({ Bedrijf : res.Bedrijf,SoortLid : soortlid, Omschrijving : omschrijving });
                 Service.SvcSoortLid("D", currentUser.username, mySoortLid);
             });
         },

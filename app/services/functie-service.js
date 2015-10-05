@@ -11,8 +11,8 @@ angular.module('polderweb')
 //			$rootScope.display.functieFunctie=true;       //20150801 always display
 //			$rootScope.display.functieOmschrijving=true;
 			var defer = $q.defer();
-            userService.get().$promise.then(function(res){
-                myFunctie.fromObject({Bedrijf : res.bedrijf,Functie : '', Omschrijving : ''});
+            userService.get().then(function(res){
+                myFunctie.fromObject({Bedrijf : res.Bedrijf,Functie : '', Omschrijving : ''});
                 Service.SvcFunctie("R", currentUser.username, myFunctie, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(myFunctie));
@@ -23,9 +23,9 @@ angular.module('polderweb')
         },
         getFunctie: function (functieId) {
             var defer = $q.defer();
-             userService.get().$promise.then(function(res){
-             myFunctie.fromObject({Bedrijf : res.bedrijf,Functie : functieId, Omschrijving : ''});
-             //myFunctie.fromObject({Bedrijf : res.bedrijf,Functie : '', Omschrijving : ''});
+             userService.get().then(function(res){
+             myFunctie.fromObject({Bedrijf : res.Bedrijf,Functie : functieId, Omschrijving : ''});
+             //myFunctie.fromObject({Bedrijf : res.Bedrijf,Functie : '', Omschrijving : ''});
              Service.SvcFunctie("R", currentUser.username, myFunctie, function(result) {
                 var data = _.find(result.toObject(), {'Functie':functieId});
                 defer.resolve(data);
@@ -34,15 +34,15 @@ angular.module('polderweb')
             return defer.promise;
         },
         addFunctie: function (functieData) {
-           userService.get().$promise.then(function(res){
-                myFunctie.fromObject({Bedrijf : res.bedrijf,Functie : functieData.Functie, Omschrijving : functieData.Omschrijving});
+           userService.get().then(function(res){
+                myFunctie.fromObject({Bedrijf : res.Bedrijf,Functie : functieData.Functie, Omschrijving : functieData.Omschrijving});
                 Service.SvcFunctie("C", currentUser.username, myFunctie);
             });
 
         },
         updateFunctie:function(functieData){
-           userService.get().$promise.then(function(res){
-                myFunctie.fromObject({Bedrijf : res.bedrijf,Functie : functieData.Functie, Omschrijving : functieData.Omschrijving});
+           userService.get().then(function(res){
+                myFunctie.fromObject({Bedrijf : res.Bedrijf,Functie : functieData.Functie, Omschrijving : functieData.Omschrijving});
                 Service.SvcFunctie("U", currentUser.username, myFunctie);
             });
         },
@@ -51,8 +51,8 @@ angular.module('polderweb')
 
             var delFunctiePromise = $q.defer();
 
-            userService.get().$promise.then(function(res){
-                myFunctie.fromObject({Bedrijf : res.bedrijf,Functie : Functie, Omschrijving : Omschrijving});
+            userService.get().then(function(res){
+                myFunctie.fromObject({Bedrijf : res.Bedrijf,Functie : Functie, Omschrijving : Omschrijving});
                 Service.SvcFunctie("D", currentUser.username, myFunctie, function(result){
                     console.log(result);
 

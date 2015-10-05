@@ -11,8 +11,8 @@ angular.module('polderweb')
 //			$rootScope.display.titelTitel=true;       //20150801 always display
 //			$rootScope.display.titelOmschrijving=true;
 			var defer = $q.defer();
-            userService.get().$promise.then(function(res){
-                myTitel.fromObject({Bedrijf : res.bedrijf,Titel : '', Omschrijving : ''});
+            userService.get().then(function(res){
+                myTitel.fromObject({Bedrijf : res.Bedrijf,Titel : '', Omschrijving : ''});
                 Service.SvcTitel("R", currentUser.username, myTitel, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(myTitel));
@@ -23,9 +23,9 @@ angular.module('polderweb')
         },
         getTitel: function (titelId) {
             var defer = $q.defer();
-             userService.get().$promise.then(function(res){
-             myTitel.fromObject({Bedrijf : res.bedrijf,Titel : titelId, Omschrijving : ''});
-             //myTitel.fromObject({Bedrijf : res.bedrijf,Titel : '', Omschrijving : ''});
+             userService.get().then(function(res){
+             myTitel.fromObject({Bedrijf : res.Bedrijf,Titel : titelId, Omschrijving : ''});
+             //myTitel.fromObject({Bedrijf : res.Bedrijf,Titel : '', Omschrijving : ''});
              Service.SvcTitel("R", currentUser.username, myTitel, function(result) {
                 var data = _.find(result.toObject(), {'Titel':titelId});
                 defer.resolve(data);
@@ -34,15 +34,15 @@ angular.module('polderweb')
             return defer.promise;
         },
         addTitel: function (titelData) {
-           userService.get().$promise.then(function(res){
-                myTitel.fromObject({Bedrijf : res.bedrijf,Titel : titelData.Titel, Omschrijving : titelData.Omschrijving});
+           userService.get().then(function(res){
+                myTitel.fromObject({Bedrijf : res.Bedrijf,Titel : titelData.Titel, Omschrijving : titelData.Omschrijving});
                 Service.SvcTitel("C", currentUser.username, myTitel);
             });
 
         },
         updateTitel:function(titelData){
-           userService.get().$promise.then(function(res){
-                myTitel.fromObject({Bedrijf : res.bedrijf,Titel : titelData.Titel, Omschrijving : titelData.Omschrijving});
+           userService.get().then(function(res){
+                myTitel.fromObject({Bedrijf : res.Bedrijf,Titel : titelData.Titel, Omschrijving : titelData.Omschrijving});
                 Service.SvcTitel("U", currentUser.username, myTitel);
             });
         },
@@ -51,8 +51,8 @@ angular.module('polderweb')
 
             var delTitelPromise = $q.defer();
 
-            userService.get().$promise.then(function(res){
-                myTitel.fromObject({Bedrijf : res.bedrijf,Titel : Titel, Omschrijving : Omschrijving});
+            userService.get().then(function(res){
+                myTitel.fromObject({Bedrijf : res.Bedrijf,Titel : Titel, Omschrijving : Omschrijving});
                 Service.SvcTitel("D", currentUser.username, myTitel, function(result){
                     console.log(result);
 

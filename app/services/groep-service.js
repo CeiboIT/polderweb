@@ -11,8 +11,8 @@ angular.module('polderweb')
 //			$rootScope.display.groepGroep=true;       //20150801 always display
 //			$rootScope.display.groepOmschrijving=true;
 			var defer = $q.defer();
-            userService.get().$promise.then(function(res){
-                myGroep.fromObject({Bedrijf : res.bedrijf,Groep : '', Omschrijving : '', Periode : 0});
+            userService.get().then(function(res){
+                myGroep.fromObject({Bedrijf : res.Bedrijf,Groep : '', Omschrijving : '', Periode : 0});
                 Service.SvcGroep("R", currentUser.username, myGroep, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(myGroep));
@@ -24,12 +24,12 @@ angular.module('polderweb')
 
         getGroep: function (groepId) {
             var defer = $q.defer();
-             userService.get().$promise.then(function(res){
-             myGroep.fromObject({Bedrijf : res.bedrijf
+             userService.get().then(function(res){
+             myGroep.fromObject({Bedrijf : res.Bedrijf
 			                   , Groep : groepId
 							   , Omschrijving : ''
 							   , Periode : 0});
-             //myGroep.fromObject({Bedrijf : res.bedrijf,Groep : '', Omschrijving : ''});
+             //myGroep.fromObject({Bedrijf : res.Bedrijf,Groep : '', Omschrijving : ''});
              Service.SvcGroep("R", currentUser.username, myGroep, function(result) {
                 var data = _.find(result.toObject(), {'Groep':groepId});
                 defer.resolve(data);
@@ -39,8 +39,8 @@ angular.module('polderweb')
         },
 
         addGroep: function (groepData) {
-           userService.get().$promise.then(function(res){
-                myGroep.fromObject({Bedrijf : res.bedrijf
+           userService.get().then(function(res){
+                myGroep.fromObject({Bedrijf : res.Bedrijf
 				                  , Groep : groepData.Groep
 								  , Omschrijving : groepData.Omschrijving
 				                  , Periode : groepData.Periode
@@ -50,8 +50,8 @@ angular.module('polderweb')
         },
 
         updateGroep:function(groepData){
-           userService.get().$promise.then(function(res){
-                myGroep.fromObject({Bedrijf : res.bedrijf
+           userService.get().then(function(res){
+                myGroep.fromObject({Bedrijf : res.Bedrijf
 				                  , Groep : groepData.Groep
 								  , Omschrijving : groepData.Omschrijving
 				                  , Periode : groepData.Periode
@@ -62,8 +62,8 @@ angular.module('polderweb')
 
         delGroep: function(Groep,Omschrijving){
             var delGroepPromise = $q.defer();
-            userService.get().$promise.then(function(res){
-                myGroep.fromObject({Bedrijf : res.bedrijf
+            userService.get().then(function(res){
+                myGroep.fromObject({Bedrijf : res.Bedrijf
 				                  , Groep : Groep
 								  , Omschrijving : Omschrijving
 								  , Periode : 0});

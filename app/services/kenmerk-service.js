@@ -11,8 +11,8 @@ angular.module('polderweb')
 //			$rootScope.display.kenmerkKenmerk=true;       //20150801 always display
 //			$rootScope.display.kenmerkOmschrijving=true;
 			var defer = $q.defer();
-            userService.get().$promise.then(function(res){
-                myKenmerk.fromObject({Bedrijf : res.bedrijf,Kenmerk : '', Omschrijving : '', IndNieuw : false});
+            userService.get().then(function(res){
+                myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : '', Omschrijving : '', IndNieuw : false});
                 Service.SvcKenmerk("R", currentUser.username, myKenmerk, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(myKenmerk));
@@ -24,9 +24,9 @@ angular.module('polderweb')
 
         getKenmerk: function (kenmerkId) {
             var defer = $q.defer();
-             userService.get().$promise.then(function(res){
-             myKenmerk.fromObject({Bedrijf : res.bedrijf,Kenmerk : kenmerkId, Omschrijving : '', IndNieuw : false});
-             //myKenmerk.fromObject({Bedrijf : res.bedrijf,Kenmerk : '', Omschrijving : ''});
+             userService.get().then(function(res){
+             myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : kenmerkId, Omschrijving : '', IndNieuw : false});
+             //myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : '', Omschrijving : ''});
              Service.SvcKenmerk("R", currentUser.username, myKenmerk, function(result) {
                 var data = _.find(result.toObject(), {'Kenmerk':kenmerkId});
                 defer.resolve(data);
@@ -36,24 +36,24 @@ angular.module('polderweb')
         },
 
         addKenmerk: function (kenmerkData) {
-           userService.get().$promise.then(function(res){
-                myKenmerk.fromObject({Bedrijf : res.bedrijf,Kenmerk : kenmerkData.Kenmerk, Omschrijving : kenmerkData.Omschrijving, IndNieuw : kenmerkData.IndNieuw});
+           userService.get().then(function(res){
+                myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : kenmerkData.Kenmerk, Omschrijving : kenmerkData.Omschrijving, IndNieuw : kenmerkData.IndNieuw});
                 Service.SvcKenmerk("C", currentUser.username, myKenmerk);
             });
 
         },
 
         updateKenmerk:function(kenmerkData){
-           userService.get().$promise.then(function(res){
-                myKenmerk.fromObject({Bedrijf : res.bedrijf,Kenmerk : kenmerkData.Kenmerk, Omschrijving : kenmerkData.Omschrijving, IndNieuw : kenmerkData.IndNieuw});
+           userService.get().then(function(res){
+                myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : kenmerkData.Kenmerk, Omschrijving : kenmerkData.Omschrijving, IndNieuw : kenmerkData.IndNieuw});
                 Service.SvcKenmerk("U", currentUser.username, myKenmerk);
             });
         },
 
         delKenmerk: function(Kenmerk,Omschrijving){
             var delKenmerkPromise = $q.defer();
-            userService.get().$promise.then(function(res){
-                myKenmerk.fromObject({Bedrijf : res.bedrijf,Kenmerk : Kenmerk, Omschrijving : Omschrijving, IndNieuw : false});
+            userService.get().then(function(res){
+                myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : Kenmerk, Omschrijving : Omschrijving, IndNieuw : false});
                 Service.SvcKenmerk("D", currentUser.username, myKenmerk, function(result){
                     console.log(result);
                     delKenmerkPromise.resolve(result)

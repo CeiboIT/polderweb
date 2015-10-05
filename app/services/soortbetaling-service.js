@@ -23,8 +23,8 @@ angular.module('polderweb')
 			$rootScope.display.soortbetalingIndProlongeren=true;
 
 			var defer = $q.defer();
-            userService.get().$promise.then(function(res){
-                mySoortBetaling.fromObject({Bedrijf : res.bedrijf
+            userService.get().then(function(res){
+                mySoortBetaling.fromObject({Bedrijf : res.Bedrijf
 				                          , SoortBetaling : ''
 										  , Omschrijving : ''
     									  , Negatief : false
@@ -34,7 +34,7 @@ angular.module('polderweb')
     									  , DefaultTermijn : ''
     									  , Actief : false
     									  , Volgorde : 0
-    									  , BTWCode : '' 
+    									  , BTWCode : ''
     									  , IndProlongeren : false
 										  });
                 Service.SvcSoortBetaling("R", currentUser.username, mySoortBetaling, function(result) {
@@ -48,8 +48,8 @@ angular.module('polderweb')
 
         getSoortBetaling: function (soortbetalingId) {
             var defer = $q.defer();
-             userService.get().$promise.then(function(res){
-             mySoortBetaling.fromObject({Bedrijf : res.bedrijf
+             userService.get().then(function(res){
+             mySoortBetaling.fromObject({Bedrijf : res.Bedrijf
 				                          , SoortBetaling : soortbetalingId
 										  , Omschrijving : ''
     									  , Negatief : false
@@ -59,7 +59,7 @@ angular.module('polderweb')
     									  , DefaultTermijn : ''
     									  , Actief : false
     									  , Volgorde : 0
-    									  , BTWCode : '' 
+    									  , BTWCode : ''
     									  , IndProlongeren : false
 										  });
              Service.SvcSoortBetaling("R", currentUser.username, mySoortBetaling, function(result) {
@@ -71,8 +71,8 @@ angular.module('polderweb')
         },
 
         addSoortBetaling: function (soortbetalingData) {
-           userService.get().$promise.then(function(res){
-                mySoortBetaling.fromObject({Bedrijf : res.bedrijf
+           userService.get().then(function(res){
+                mySoortBetaling.fromObject({Bedrijf : res.Bedrijf
  	 			                          , SoortBetaling : soortbetalingData.SoortBetaling
 										  , Omschrijving : soortbetalingData.Omschrijving
     									  , Negatief : false
@@ -82,7 +82,7 @@ angular.module('polderweb')
     									  , DefaultTermijn : ''
     									  , Actief : false
     									  , Volgorde : 0
-    									  , BTWCode : '' 
+    									  , BTWCode : ''
     									  , IndProlongeren : false
 										  });
                 Service.SvcSoortBetaling("C", currentUser.username, mySoortBetaling);
@@ -90,8 +90,8 @@ angular.module('polderweb')
         },
 
         updateSoortBetaling:function(soortbetalingData){
-           userService.get().$promise.then(function(res){
-                mySoortBetaling.fromObject({Bedrijf : res.bedrijf
+           userService.get().then(function(res){
+                mySoortBetaling.fromObject({Bedrijf : res.Bedrijf
  	 			                          , SoortBetaling : soortbetalingData.SoortBetaling
 										  , Omschrijving : soortbetalingData.Omschrijving
     									  , Negatief : false
@@ -101,7 +101,7 @@ angular.module('polderweb')
     									  , DefaultTermijn : ''
     									  , Actief : false
     									  , Volgorde : 0
-    									  , BTWCode : '' 
+    									  , BTWCode : ''
     									  , IndProlongeren : false
 										  });
                 Service.SvcSoortBetaling("U", currentUser.username, mySoortBetaling);
@@ -110,8 +110,8 @@ angular.module('polderweb')
 
         delSoortBetaling: function(SoortBetaling, Omschrijving){
             var delSoortBetalingPromise = $q.defer();
-            userService.get().$promise.then(function(res){
-                mySoortBetaling.fromObject({Bedrijf : res.bedrijf
+            userService.get().then(function(res){
+                mySoortBetaling.fromObject({Bedrijf : res.Bedrijf
  	 			                          , SoortBetaling : SoortBetaling
 										  , Omschrijving : Omschrijving
     									  , Negatief : false
@@ -121,7 +121,7 @@ angular.module('polderweb')
     									  , DefaultTermijn : ''
     									  , Actief : false
     									  , Volgorde : 0
-    									  , BTWCode : '' 
+    									  , BTWCode : ''
     									  , IndProlongeren : false
 										  });
                 Service.SvcSoortBetaling("D", currentUser.username, mySoortBetaling, function(result){

@@ -17,8 +17,8 @@ angular.module('polderweb')
 			$rootScope.display.persoonDatumGeb=true;
 			$rootScope.display.persoonLeeftijd=true;
 			var defer = $q.defer();
-            userService.get().$promise.then(function(res){
-                myPersoon.fromObject({Bedrijf : res.bedrijf
+            userService.get().then(function(res){
+                myPersoon.fromObject({Bedrijf : res.Bedrijf
 					, Persoon : ''
 					, Aanhef : '', AanhefOms : '', AantalTermijnen : 0, BankRekNr : '', Bedrag : 0, BedragBetaald : 0, BedragOpenstaand : 0, BetaalWijze : ''
 					, DatumEind : '1899-12-30T00:00:00', DatumGeb : '1899-12-30T00:00:00', DatumInschr : '1899-12-30T00:00:00', DatumInvoer : '1899-12-30T00:00:00', DatumMutatie : '1899-12-30T00:00:00'
@@ -52,11 +52,11 @@ angular.module('polderweb')
         getPersoon: function (persoonId) {
             var defer = $q.defer();
 		    //console.log('Lidnr2  : ' + persoonId);
-			userService.get().$promise.then(function(res){
-				// myPersoon.fromObject({Bedrijf : res.bedrijf,Persoon : '', Naam : ''});
-				// console.log('Bedrijf : ' + res.bedrijf);
+			userService.get().then(function(res){
+				// myPersoon.fromObject({Bedrijf : res.Bedrijf,Persoon : '', Naam : ''});
+				// console.log('Bedrijf : ' + res.Bedrijf);
 				// specify all input-fields, maybe used in future
-				myPersoon.fromObject({Bedrijf : res.bedrijf //, Persoon : ''
+				myPersoon.fromObject({Bedrijf : res.Bedrijf //, Persoon : ''
 					, Aanhef : '', AanhefOms : '', AantalTermijnen : 0, BankRekNr : '', Bedrag : 0, BedragBetaald : 0, BedragOpenstaand : 0, BetaalWijze : ''
 					, DatumEind : '1899-12-30T00:00:00', DatumGeb : '1899-12-30T00:00:00', DatumInschr : '1899-12-30T00:00:00', DatumInvoer : '1899-12-30T00:00:00', DatumMutatie : '1899-12-30T00:00:00'
 					, DatumOndertekening : '1899-12-30T00:00:00', Email : '', Email2 : '', Geslacht : '', Groep : '', Groepen : '', GroepOms : '', HfdBew : '', Hoofdbewoner : false, HuisNr : '', HuisNrAanv : ''
@@ -80,9 +80,9 @@ angular.module('polderweb')
         },
 
         addPersoon: function (persoonData) {
-           userService.get().$promise.then(function(res){
-//                myPersoon.fromObject({Bedrijf : res.bedrijf,Persoon : Persoon, Naam : Naam});
-                myPersoon.fromObject({Bedrijf : res.bedrijf //, Persoon : ''
+           userService.get().then(function(res){
+//                myPersoon.fromObject({Bedrijf : res.Bedrijf,Persoon : Persoon, Naam : Naam});
+                myPersoon.fromObject({Bedrijf : res.Bedrijf //, Persoon : ''
 					, Aanhef : ''
 					, AanhefOms : ''
 					, AantalTermijnen : 0
@@ -145,13 +145,13 @@ angular.module('polderweb')
         },
 
         updatePersoon:function(Persoon){
-          userService.get().$promise.then(function(res){
+          userService.get().then(function(res){
             Service.SvcPersoon("U", currentUser.username, Persoon);
           });
         },
 
         delPersoon:function(Persoon){
-          userService.get().$promise.then(function(res){
+          userService.get().then(function(res){
 			Service.SvcPersoon("D", currentUser.username, Persoon);
           });
         },

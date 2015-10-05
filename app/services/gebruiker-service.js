@@ -12,7 +12,7 @@ angular.module('polderweb')
 			$rootScope.display.userUsername=true;
 			$rootScope.display.userPasswrd=true;
 			var defer = $q.defer();
-            userService.get().$promise.then(function(res){
+            userService.get().then(function(res){
                 myUser.fromObject({Bedrijf : 0
 				                 , Username : 'admin'
 								 , Passwrd : '123456'});
@@ -27,19 +27,32 @@ angular.module('polderweb')
         },
         // a user can only be found be specifying the right username + passwrd
 
-        getUser: function (userId) {
+        getUser: function (userId, password) {
             var defer = $q.defer();
-             userService.get().$promise.then(function(res){
-             myUser.fromObject({Bedrijf : 0
-			                   ,Username : userId
-							   ,Passwrd : '123456'
-							   });
-             Service.SvcUser("R", myUser, function(result) {
-                var data = _.find(result.toObject(), {'Username':userId});
-                defer.resolve(data);
-           alert(JSON.stringify(data));
-             });
-            });
+            if(password) {
+                myUser.fromObject({Bedrijf : 0
+                    ,Username : userId
+                    ,Passwrd : password
+                });
+                Service.SvcUser("R", myUser, function(result) {
+                    var data = _.find(result.toObject(), {'Username':userId});
+                    defer.resolve(data);
+                    alert(JSON.stringify(data));
+                });
+            } else {
+                userService.get().then(function(res){
+                    myUser.fromObject({Bedrijf : 0
+                        ,Username : userId
+                        ,Passwrd : '123456'
+                    });
+                    Service.SvcUser("R", myUser, function(result) {
+                        var data = _.find(result.toObject(), {'Username':userId});
+                        defer.resolve(data);
+                        alert(JSON.stringify(data));
+                    });
+                });
+            }
+
             return defer.promise;
         },
 
@@ -80,9 +93,9 @@ angular.module('polderweb')
         addUser: function (userData) {
 
             var addUserPromise = $q.defer();
-           userService.get().$promise.then(function(res){
+           userService.get().then(function(res){
                 myUser.fromObject({
-                    Bedrijf : res.bedrijf
+                    Bedrijf : res.Bedrijf
 				           ,Username : userData.username
 								   ,Passwrd : userData.password
                    ,Email : userData.email
@@ -97,14 +110,14 @@ angular.module('polderweb')
         },
 
         updateUser:function(userData){
-            userService.get().$promise.then(function(res){
+            userService.get().then(function(res){
                 Service.SvcUser("U", userData);
             });
         },
 
         delUser:function(User,Passwrd){
-         userService.get().$promise.then(function(res){
-                myUser.fromObject({Bedrijf : res.bedrijf
+         userService.get().then(function(res){
+                myUser.fromObject({Bedrijf : res.Bedrijf
 				                       ,Username : User
 									   ,Passwrd : Passwrd});
 //             Service.SvcUser("D", currentUser.username, myUser);

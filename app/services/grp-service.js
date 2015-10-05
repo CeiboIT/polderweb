@@ -11,8 +11,8 @@ angular.module('polderweb')
 			$rootScope.display.grpGrp=true; //20150801
 			$rootScope.display.grpOmschrijving=true; //20150801
 			var defer = $q.defer();
-            userService.get().$promise.then(function(res){
-                myGrp.fromObject({Bedrijf : res.bedrijf, Grp : '', Omschrijving : ''});
+            userService.get().then(function(res){
+                myGrp.fromObject({Bedrijf : res.Bedrijf, Grp : '', Omschrijving : ''});
                 Service.SvcGrp("R", currentUser.username, myGrp, function(result) {
                     defer.resolve(result.toObject());
                 });
@@ -21,8 +21,8 @@ angular.module('polderweb')
         },
         getGrp: function (grpId) {
             var defer = $q.defer();
-             userService.get().$promise.then(function(res){
-             myGrp.fromObject({Bedrijf : res.bedrijf, Grp : '', Omschrijving : ''});
+             userService.get().then(function(res){
+             myGrp.fromObject({Bedrijf : res.Bedrijf, Grp : '', Omschrijving : ''});
              Service.SvcGrp("R", currentUser.username, myGrp, function(result) {
                 var data = _.find(result.toObject(), {'Grp':grpId});
                 defer.resolve(data);
@@ -31,21 +31,21 @@ angular.module('polderweb')
             return defer.promise;
         },
         addGrp: function (Grp,Omschrijving) {
-           userService.get().$promise.then(function(res){
-                myGrp.fromObject({Bedrijf : res.bedrijf, Grp : Grp, Omschrijving : Omschrijving});
+           userService.get().then(function(res){
+                myGrp.fromObject({Bedrijf : res.Bedrijf, Grp : Grp, Omschrijving : Omschrijving});
                 Service.SvcGrp("C", currentUser.username, myGrp);
             });
 
         },
         updateGrp:function(Grp,Omschrijving){
-           userService.get().$promise.then(function(res){
-                myGrp.fromObject({Bedrijf : res.bedrijf, Grp : Grp, Omschrijving : Omschrijving});
+           userService.get().then(function(res){
+                myGrp.fromObject({Bedrijf : res.Bedrijf, Grp : Grp, Omschrijving : Omschrijving});
                 Service.SvcGrp("U", currentUser.username, myGrp);
             });
         },
         delGrp:function(Grp,Omschrijving){
-         userService.get().$promise.then(function(res){
-                myGrp.fromObject({Bedrijf : res.bedrijf, Grp : Grp, Omschrijving : Omschrijving});
+         userService.get().then(function(res){
+                myGrp.fromObject({Bedrijf : res.Bedrijf, Grp : Grp, Omschrijving : Omschrijving});
              Service.SvcGrp("D", currentUser.username, myGrp);
          });
 

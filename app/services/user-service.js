@@ -1,14 +1,15 @@
 angular.module('polderweb')
-.factory('userService', function($resource) {
-  return $resource('data/user.json', {
-    id: '@id'
-  },
-  {
-    get: {
-      method: 'GET',
-      params: {
-        id: 'me'
-      }
-    }
-  });
+.factory('userService', function($resource, $cookieStore, $q) {
+
+
+        var get = function() {
+            var deferPromise = $q.defer();
+            deferPromise.resolve($cookieStore.get('user'));
+            return deferPromise.promise;
+        };
+
+        return {
+            get : get
+        }
+
 });

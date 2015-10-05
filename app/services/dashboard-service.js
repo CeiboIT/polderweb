@@ -10,8 +10,8 @@ angular.module('polderweb')
 //      getDashBoard: function () {
         findAll: function ($cookieStore) {
             var defer = $q.defer();
-             userService.get().$promise.then(function(res){
-               myDashBoard.fromObject({Bedrijf : res.bedrijf
+             userService.get().then(function(res){
+               myDashBoard.fromObject({Bedrijf : res.Bedrijf
 			                         , Aantal : 0
 			                         , Bedrag : 0
 			                         , Omschrijving : ''

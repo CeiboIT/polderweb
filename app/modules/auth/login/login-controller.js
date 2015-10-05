@@ -16,7 +16,7 @@ var LoginCtrl = ['User', '$state','$stateParams', '$cookieStore', 'flash', 'home
 //            $state.go('home');
 //        } else {
 
-            User.getUser(ctrl.auth.username).then(function(data){
+            User.getUser(ctrl.auth.username, ctrl.auth.password).then(function(data){
                 console.log(data);
                 if(!data) {
                     flash.error = 'Invalid username';

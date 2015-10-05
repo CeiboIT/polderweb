@@ -11,8 +11,8 @@ angular.module('polderweb')
 //			$rootScope.display.kenmkodeKenmKode=true;       //20150801 always display
 //			$rootScope.display.kenmkodeOmschrijving=true;
 			var defer = $q.defer();
-            userService.get().$promise.then(function(res){
-                myKenmKode.fromObject({Bedrijf : res.bedrijf
+            userService.get().then(function(res){
+                myKenmKode.fromObject({Bedrijf : res.Bedrijf
 				                     , Kenmerk : 'TEST'
 									 , Kode : ''
 									 , Omschrijving : ''
@@ -30,15 +30,15 @@ angular.module('polderweb')
 
         getKenmKode: function (kenmkodeId) {
             var defer = $q.defer();
-             userService.get().$promise.then(function(res){
-             myKenmKode.fromObject({Bedrijf : res.bedrijf
+             userService.get().then(function(res){
+             myKenmKode.fromObject({Bedrijf : res.Bedrijf
 			                      , Kenmerk : 'TEST'
 								  , Kode : kenmkodeId
 								  , Omschrijving : ''
 								  , Extra1 : ''
 								  , Extra2 : ''
 								  , Extra3 : ''});
-             //myKenmKode.fromObject({Bedrijf : res.bedrijf, Kode : '', Omschrijving : ''});
+             //myKenmKode.fromObject({Bedrijf : res.Bedrijf, Kode : '', Omschrijving : ''});
              Service.SvcKenmKode("R", currentUser.username, myKenmKode, function(result) {
                 var data = _.find(result.toObject(), {'Kode':kenmkodeId});
                 defer.resolve(data);
@@ -48,8 +48,8 @@ angular.module('polderweb')
         },
 
         addKenmKode: function (kenmkodeData) {
-           userService.get().$promise.then(function(res){
-                myKenmKode.fromObject({Bedrijf : res.bedrijf
+           userService.get().then(function(res){
+                myKenmKode.fromObject({Bedrijf : res.Bedrijf
 				                     , Kenmerk : 'TEST' //kenmkodeData.Kenmerk
 									 , Kode : kenmkodeData.Kode
 									 , Omschrijving : kenmkodeData.Omschrijving
@@ -62,8 +62,8 @@ angular.module('polderweb')
         },
 
         updateKenmKode:function(kenmkodeData){
-           userService.get().$promise.then(function(res){
-                myKenmKode.fromObject({Bedrijf : res.bedrijf
+           userService.get().then(function(res){
+                myKenmKode.fromObject({Bedrijf : res.Bedrijf
 				                     , Kenmerk : 'TEST' //kenmkodeData.Kenmerk
 									 , Kode : kenmkodeData.Kode
 									 , Omschrijving : kenmkodeData.Omschrijving
@@ -76,8 +76,8 @@ angular.module('polderweb')
 
         delKenmKode: function(Kode, Omschrijving){
             var delKenmKodePromise = $q.defer();
-            userService.get().$promise.then(function(res){
-                myKenmKode.fromObject({Bedrijf : res.bedrijf
+            userService.get().then(function(res){
+                myKenmKode.fromObject({Bedrijf : res.Bedrijf
 				                     , Kenmerk : 'TEST'
 									 , Kode : Kode
 									 , Omschrijving : Omschrijving

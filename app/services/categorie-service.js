@@ -11,8 +11,8 @@ angular.module('polderweb')
 //			$rootScope.display.categorieCategorie=true;       //20150801 always display
 //			$rootScope.display.categorieOmschrijving=true;
 			var defer = $q.defer();
-            userService.get().$promise.then(function(res){
-                myCategorie.fromObject({Bedrijf : res.bedrijf,Categorie : '', Omschrijving : ''});
+            userService.get().then(function(res){
+                myCategorie.fromObject({Bedrijf : res.Bedrijf,Categorie : '', Omschrijving : ''});
                 Service.SvcCategorie("R", currentUser.username, myCategorie, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(myCategorie));
@@ -23,9 +23,9 @@ angular.module('polderweb')
         },
         getCategorie: function (categorieId) {
             var defer = $q.defer();
-             userService.get().$promise.then(function(res){
-             myCategorie.fromObject({Bedrijf : res.bedrijf,Categorie : categorieId, Omschrijving : ''});
-             //myCategorie.fromObject({Bedrijf : res.bedrijf,Categorie : '', Omschrijving : ''});
+             userService.get().then(function(res){
+             myCategorie.fromObject({Bedrijf : res.Bedrijf,Categorie : categorieId, Omschrijving : ''});
+             //myCategorie.fromObject({Bedrijf : res.Bedrijf,Categorie : '', Omschrijving : ''});
              Service.SvcCategorie("R", currentUser.username, myCategorie, function(result) {
                 var data = _.find(result.toObject(), {'Categorie':categorieId});
                 defer.resolve(data);
@@ -34,15 +34,15 @@ angular.module('polderweb')
             return defer.promise;
         },
         addCategorie: function (categorieData) {
-           userService.get().$promise.then(function(res){
-                myCategorie.fromObject({Bedrijf : res.bedrijf,Categorie : categorieData.Categorie, Omschrijving : categorieData.Omschrijving});
+           userService.get().then(function(res){
+                myCategorie.fromObject({Bedrijf : res.Bedrijf,Categorie : categorieData.Categorie, Omschrijving : categorieData.Omschrijving});
                 Service.SvcCategorie("C", currentUser.username, myCategorie);
             });
 
         },
         updateCategorie:function(categorieData){
-           userService.get().$promise.then(function(res){
-                myCategorie.fromObject({Bedrijf : res.bedrijf,Categorie : categorieData.Categorie, Omschrijving : categorieData.Omschrijving});
+           userService.get().then(function(res){
+                myCategorie.fromObject({Bedrijf : res.Bedrijf,Categorie : categorieData.Categorie, Omschrijving : categorieData.Omschrijving});
                 Service.SvcCategorie("U", currentUser.username, myCategorie);
             });
         },
@@ -51,8 +51,8 @@ angular.module('polderweb')
 
             var delCategoriePromise = $q.defer();
 
-            userService.get().$promise.then(function(res){
-                myCategorie.fromObject({Bedrijf : res.bedrijf,Categorie : Categorie, Omschrijving : Omschrijving});
+            userService.get().then(function(res){
+                myCategorie.fromObject({Bedrijf : res.Bedrijf,Categorie : Categorie, Omschrijving : Omschrijving});
                 Service.SvcCategorie("D", currentUser.username, myCategorie, function(result){
                     console.log(result);
 
