@@ -8,15 +8,9 @@ angular.module('polderweb')
 */
 		  Persoon.getPersoon($stateParams.persoonId).then(function(res){
 		    $scope.pers = res;
-//		console.log('resultaat na getPersoon : '
-//		    + JSON.stringify($scope.pers[0].LidNr) + ' '
-//		    + JSON.stringify($scope.pers[0].Naam) + ' '
-//		    + JSON.stringify($scope.pers[0].Email)
-//			);
       });
 
       Aanhef.findAll().then(function(res) {
-        console.log(res);
         $scope.aanhef = res;
       });
 
