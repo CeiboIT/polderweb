@@ -81,13 +81,13 @@ angular.module('polderweb')
 
             var addUserPromise = $q.defer();
            userService.get().$promise.then(function(res){
-                myUser.fromObject({Bedrijf : res.bedrijf
-				                  ,Username : userData.username
-								  ,Passwrd : userData.password
-                                    ,Email : userData.email
-                                    ,Name : userData.name
+                myUser.fromObject({
+                    Bedrijf : res.bedrijf
+				           ,Username : userData.username
+								   ,Passwrd : userData.password
+                   ,Email : userData.email
+                   ,Name : userData.name
                 });
-//                Service.SvcUser("C", currentUser.username, myUser);
                 Service.SvcUser("C", myUser, function(result){
                     addUserPromise.resolve(!!result.items && !!result.items[0]);
                 });
@@ -97,28 +97,9 @@ angular.module('polderweb')
         },
 
         updateUser:function(userData){
-            var updateUserPromise = $q.defer();
             userService.get().$promise.then(function(res){
-                myUser.fromObject({
-                    Bedrijf : userData.Bedrijf,
-                    Username : userData.User,
-                    Passwrd : userData.Passwrd,
-                    Email: userData.Email,
-                    Name: userData.Name
-                  });
-                Service.SvcUser("U", myUser, function(result){
-                    if(result) {
-                        updateUserPromise.resolve(true)
-                    }
-
-                    updateUserPromise.reject(true);
-
-                });
+                Service.SvcUser("U", userData);
             });
-
-            return updateUserPromise.promise;
-
-
         },
 
         delUser:function(User,Passwrd){
