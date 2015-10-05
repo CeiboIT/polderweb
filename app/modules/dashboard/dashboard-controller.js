@@ -1,10 +1,12 @@
 angular.module('polderweb')
-  .controller('PersoonController',
-    function ($rootScope, $scope, $state, DashBoard, dashboard, bedrijf, authService) {
+//20151005  .controller('PersoonController',
+  .controller('DashBoardController',
+    function ($rootScope, $scope, $state, DashBoard, dashboards, bedrijf, authService) {
 
        var model = {
            selection : [],
-           dashboard: dashboard
+//20151005
+           dashboards: dashboards
        };
 
        $scope.bedrijf = bedrijf;
