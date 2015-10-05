@@ -11,7 +11,10 @@ angular.module('polderweb')
           },
           soortlid: function (Soortlid) {
             return Soortlid.findAll();
-          }
+          },
+           bedrijf: function($cookieStore) {
+               return $cookieStore.get('user').Bedrijf;
+           }
         }
     })
     .state('viewPerson', {
@@ -24,7 +27,10 @@ angular.module('polderweb')
           },
           soortlid: function (Soortlid) {
             return Soortlid.findAll();
-          }
+          },
+           bedrijf: function($cookieStore) {
+               return $cookieStore.get('user').Bedrijf;
+           }
         }
     });
 });

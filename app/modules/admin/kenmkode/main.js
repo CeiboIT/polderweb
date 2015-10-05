@@ -15,23 +15,37 @@ angular.module('polderweb.kenmkode', [])
                 url:'/list',
                 templateUrl:'app/modules/admin/kenmkode/kenmkode.html',
                 controller:'KenmKodeController as ctrl',
-                resolve: { kenmkodes: function (KenmKode) {
-                    return KenmKode.findAll();
-                    }
+                resolve: {
+                    kenmkodes: function (KenmKode) {
+                        return KenmKode.findAll();
+                    },
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
                 }
             })
             .state('kenmkode.create',
             {
                 url:'/create',
                 templateUrl:'app/modules/admin/kenmkode/create-kenmkode/create-kenmkode.html',
-                controller:'createKenmKodeCtrl'
+                controller:'createKenmKodeCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             })
 
             .state('kenmkode.view',
             {
                 url:'/:kenmkodeId',
                 templateUrl:'app/modules/admin/kenmkode/view-kenmkode/view-kenmkode.html',
-                controller:'viewKenmKodeCtrl'
+                controller:'viewKenmKodeCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             });
 
     });

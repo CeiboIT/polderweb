@@ -1,9 +1,12 @@
 angular.module('polderweb')
 	.controller('createSoortLidCtrl',
-		function($scope, $state,SoortLid,authService){
+		function($scope, $state, SoortLid, authService){
         if(authService.getToken()==null){
              $state.go('login');
          }else{
+
+            $scope.bedrijf = bedrijf;
+
     		$scope.addSoortLid = function (form) {
     	         $scope.submitted = true;
     	        if (form.$valid) {

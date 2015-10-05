@@ -15,23 +15,37 @@ angular.module('polderweb.titel', [])
                 url:'/list',
                 templateUrl:'app/modules/admin/titel/titel.html',
                 controller:'TitelController as ctrl',
-                resolve: { titels: function (Titel) {
-                    return Titel.findAll();
-                    }
+                resolve: {
+                    titels: function (Titel) {
+                        return Titel.findAll();
+                    },
+                       bedrijf: function($cookieStore) {
+                           return $cookieStore.get('user').Bedrijf;
+                       }
                 }
             })
             .state('titel.create',
             {
                 url:'/create',
                 templateUrl:'app/modules/admin/titel/create-titel/create-titel.html',
-                controller:'createTitelCtrl'
+                controller:'createTitelCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             })
 
             .state('titel.view',
             {
                 url:'/:titelId',
                 templateUrl:'app/modules/admin/titel/view-titel/view-titel.html',
-                controller:'viewTitelCtrl'
+                controller:'viewTitelCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             });
 
     });

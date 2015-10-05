@@ -1,9 +1,11 @@
 angular.module('polderweb')
   .controller('viewKenmKodeCtrl',
-    function ($scope, KenmKode, $state, $stateParams) {
+    function ($scope, KenmKode, $state, bedrijf, $stateParams) {
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{
+
+    $scope.bedrijf = bedrijf;
 
 	  KenmKode.getKenmKode($stateParams.kenmkodeId).then(function(res){
         $scope.kenmkode = res;

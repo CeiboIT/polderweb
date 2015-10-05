@@ -1,9 +1,12 @@
 angular.module('polderweb.user')
 	.controller('createUserCtrl',
-		function($scope, $state,User,authService){
+		function($scope, $state, User, bedrijf, authService){
          if(authService.getToken()==null){
            $state.go('login');
          }else{
+
+         $scope.bedrijf = bedrijf;
+
 		 $scope.addUser = function (form) {
 	        $scope.submitted = true;
 	        if (form.$valid) {

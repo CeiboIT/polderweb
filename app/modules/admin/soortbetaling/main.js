@@ -15,23 +15,37 @@ angular.module('polderweb.soortbetaling', [])
                 url:'/list',
                 templateUrl:'app/modules/admin/soortbetaling/soortbetaling.html',
                 controller:'SoortBetalingController as ctrl',
-                resolve: { soortbetalings: function (SoortBetaling) {
-                    return SoortBetaling.findAll();
-                    }
+                resolve: {
+                    soortbetalings: function (SoortBetaling) {
+                        return SoortBetaling.findAll();
+                    },
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
                 }
             })
             .state('soortbetaling.create',
             {
                 url:'/create',
                 templateUrl:'app/modules/admin/soortbetaling/create-soortbetaling/create-soortbetaling.html',
-                controller:'createSoortBetalingCtrl'
+                controller:'createSoortBetalingCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             })
 
             .state('soortbetaling.view',
             {
                 url:'/:soortbetalingId',
                 templateUrl:'app/modules/admin/soortbetaling/view-soortbetaling/view-soortbetaling.html',
-                controller:'viewSoortBetalingCtrl'
+                controller:'viewSoortBetalingCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             });
 
     });

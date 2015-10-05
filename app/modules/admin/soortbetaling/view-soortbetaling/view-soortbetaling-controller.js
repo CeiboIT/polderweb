@@ -1,9 +1,11 @@
 angular.module('polderweb')
   .controller('viewSoortBetalingCtrl',
-    function ($scope, SoortBetaling, $state, $stateParams) {
+    function ($scope, SoortBetaling, $state, bedrijf, $stateParams) {
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{
+
+    $scope.bedrijf = bedrijf;
 
 	  SoortBetaling.getSoortBetaling($stateParams.soortbetalingId).then(function(res){
         $scope.soortbetaling = res;

@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('GroepController',
-   function ($rootScope, $scope, $state, Groep, groeps, authService, homeState) {
+   function ($rootScope, $scope, $state, Groep, groeps, bedrijf, authService, homeState) {
 
        var model = {
            selection : [],
@@ -9,6 +9,7 @@ angular.module('polderweb')
 
        $rootScope.groep = groeps;
 
+       $scope.bedrijf = bedrijf;
 
      function clickSave (form) {
         $scope.submitted = true;

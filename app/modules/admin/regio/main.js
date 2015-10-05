@@ -15,23 +15,37 @@ angular.module('polderweb.regio', [])
                 url:'/list',
                 templateUrl:'app/modules/admin/regio/regio.html',
                 controller:'RegioController as ctrl',
-                resolve: { regios: function (Regio) {
-                    return Regio.findAll();
-                    }
+                resolve: {
+                    regios: function (Regio) {
+                        return Regio.findAll();
+                    },
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
                 }
             })
             .state('regio.create',
             {
                 url:'/create',
                 templateUrl:'app/modules/admin/regio/create-regio/create-regio.html',
-                controller:'createRegioCtrl'
+                controller:'createRegioCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             })
 
             .state('regio.view',
             {
                 url:'/:regioId',
                 templateUrl:'app/modules/admin/regio/view-regio/view-regio.html',
-                controller:'viewRegioCtrl'
+                controller:'viewRegioCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             });
 
     });

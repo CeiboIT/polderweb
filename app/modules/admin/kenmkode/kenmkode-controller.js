@@ -1,6 +1,8 @@
 angular.module('polderweb')
   .controller('KenmKodeController',
-   function ($rootScope, $scope, $state, KenmKode, kenmkodes, authService, homeState) {
+   function ($rootScope, $scope, $state, KenmKode, bedrijf, kenmkodes, authService, homeState) {
+
+      $scope.bedrijf = bedrijf;
 
        var model = {
            selection : [],

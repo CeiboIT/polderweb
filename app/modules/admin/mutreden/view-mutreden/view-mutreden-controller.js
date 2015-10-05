@@ -1,9 +1,11 @@
 angular.module('polderweb')
   .controller('viewMutRedenCtrl',
-    function ($scope, MutReden, $state, $stateParams) {
+    function ($scope, MutReden, $state, bedrijf, $stateParams) {
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{
+
+    $scope.bedrijf = bedrijf;
 
 	  MutReden.getMutReden($stateParams.mutredenId).then(function(res){
         $scope.mutreden = res;

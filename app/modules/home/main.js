@@ -26,7 +26,10 @@ angular.module('polderweb')
                     },
                     soortlid: function (SoortLid) {
                         return SoortLid.findAll();
-                    }
+                    },
+                       bedrijf: function($cookieStore) {
+                           return $cookieStore.get('user').Bedrijf;
+                       }
                 }
             })
     });

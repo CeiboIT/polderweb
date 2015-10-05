@@ -1,11 +1,13 @@
 angular.module('polderweb')
   .controller('FunctieController',
-  function ($rootScope, $scope, $state, Functie, functies, authService, homeState) {
+  function ($rootScope, $scope, $state, Functie, bedrijf, functies, authService, homeState) {
      var model = {
            selection : [],
            functies: functies
        };
        $rootScope.functie = functies;
+
+       $scope.bedrijf = bedrijf;
 
      function clickSave (form) {
         $scope.submitted = true;

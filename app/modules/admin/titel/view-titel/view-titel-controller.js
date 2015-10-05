@@ -1,9 +1,11 @@
 angular.module('polderweb')
   .controller('viewTitelCtrl',
-    function ($scope, Titel, $state, $stateParams) {
+    function ($scope, Titel, $state, bedrijf, $stateParams) {
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{
+
+    $scope.bedrijf = bedrijf;
 
 	  Titel.getTitel($stateParams.titelId).then(function(res){
         $scope.titel = res;

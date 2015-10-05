@@ -15,23 +15,37 @@ angular.module('polderweb.soortlid', [])
                 url:'/list',
                 templateUrl:'app/modules/admin/soortlid/soortlid.html',
                 controller:'SoortLidController as ctrl',
-                resolve: { soortlids: function (SoortLid) {
-                    return SoortLid.findAll();
-                    }
+                resolve: {
+                    soortlids: function (SoortLid) {
+                        return SoortLid.findAll();
+                    },
+                       bedrijf: function($cookieStore) {
+                           return $cookieStore.get('user').Bedrijf;
+                       }
                 }
             })
             .state('soortlid.create',
             {
                 url:'/create',
                 templateUrl:'app/modules/admin/soortlid/create-soortlid/create-soortlid.html',
-                controller:'createSoortLidCtrl'
+                controller:'createSoortLidCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             })
 
             .state('soortlid.view',
             {
                 url:'/:soortlidId',
                 templateUrl:'app/modules/admin/soortlid/view-soortlid/view-soortlid.html',
-                controller:'viewSoortLidCtrl'
+                controller:'viewSoortLidCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             });
 
     });

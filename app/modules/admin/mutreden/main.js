@@ -15,23 +15,37 @@ angular.module('polderweb.mutreden', [])
                 url:'/list',
                 templateUrl:'app/modules/admin/mutreden/mutreden.html',
                 controller:'MutRedenController as ctrl',
-                resolve: { mutredens: function (MutReden) {
-                    return MutReden.findAll();
-                    }
+                resolve: {
+                    mutredens: function (MutReden) {
+                        return MutReden.findAll();
+                    },
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
                 }
             })
             .state('mutreden.create',
             {
                 url:'/create',
                 templateUrl:'app/modules/admin/mutreden/create-mutreden/create-mutreden.html',
-                controller:'createMutRedenCtrl'
+                controller:'createMutRedenCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             })
 
             .state('mutreden.view',
             {
                 url:'/:mutredenId',
                 templateUrl:'app/modules/admin/mutreden/view-mutreden/view-mutreden.html',
-                controller:'viewMutRedenCtrl'
+                controller:'viewMutRedenCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             });
 
     });

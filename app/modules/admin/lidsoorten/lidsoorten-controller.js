@@ -1,9 +1,11 @@
 angular.module('polderweb')
   .controller('LidsoortenController',
-     function ($rootScope, $scope, $state, SoortLid, soortlid, authService) {
+     function ($rootScope, $scope, $state, bedrijf, SoortLid, soortlid, authService) {
       if(authService.getToken()==null){
         $state.go('login');
      }else{
+
+      $scope.bedrijf = bedrijf;
 
 	 //start checkbox
       $rootScope.soortl=soortlid;
@@ -42,7 +44,7 @@ angular.module('polderweb')
 		// console.log('soortlid2 ' + soortlid);
         $state.go('viewSoortLid', {soortlid: soortlid});
 		// $scope.so=SoortLid.getSoortLid(soortlid);
-        // niet direct opstarten : dan wordt scherm niet leeg gemaakt 
+        // niet direct opstarten : dan wordt scherm niet leeg gemaakt
 	  };
 
       $scope.viewSoortLid=function(soortlid){

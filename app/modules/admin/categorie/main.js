@@ -15,23 +15,37 @@ angular.module('polderweb.categorie', [])
                 url:'/list',
                 templateUrl:'app/modules/admin/categorie/categorie.html',
                 controller:'CategorieController as ctrl',
-                resolve: { categories: function (Categorie) {
-                    return Categorie.findAll();
-                    }
+                resolve: {
+                    categories: function (Categorie) {
+                        return Categorie.findAll();
+                    },
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
                 }
             })
             .state('categorie.create',
             {
                 url:'/create',
                 templateUrl:'app/modules/admin/categorie/create-categorie/create-categorie.html',
-                controller:'createCategorieCtrl'
+                controller:'createCategorieCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             })
 
             .state('categorie.view',
             {
                 url:'/:categorieId',
                 templateUrl:'app/modules/admin/categorie/view-categorie/view-categorie.html',
-                controller:'viewCategorieCtrl'
+                controller:'viewCategorieCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             });
 
     });

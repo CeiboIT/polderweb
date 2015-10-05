@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('SoortBetalingController',
-   function ($rootScope, $scope, $state, SoortBetaling, soortbetalings, authService, homeState) {
+   function ($rootScope, $scope, $state, SoortBetaling, soortbetalings, authService, bedrijf, homeState) {
 
        var model = {
            selection : [],
@@ -9,6 +9,7 @@ angular.module('polderweb')
 
        $rootScope.soortbetaling = soortbetalings;
 
+       $scope.bedrijf = bedrijf;
 
      function clickSave (form) {
         $scope.submitted = true;

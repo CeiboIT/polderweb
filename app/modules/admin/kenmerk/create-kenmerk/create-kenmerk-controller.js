@@ -1,9 +1,11 @@
 angular.module('polderweb')
 	.controller('createKenmerkCtrl',
-		function($scope, $state,Kenmerk,authService){
+		function($scope, $state, Kenmerk, bedrijf, authService){
          if(authService.getToken()==null){
            $state.go('auth.login');
          }else{
+
+         $scope.bedrijf = bedrijf;
 
 		 $scope.addKenmerk = function (form) {
 	        $scope.submitted = true;

@@ -1,9 +1,11 @@
 angular.module('polderweb')
   .controller('viewCategorieCtrl',
-    function ($scope, Categorie, $state, $stateParams) {
+    function ($scope, Categorie, $state, bedrijf, $stateParams) {
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{
+
+    $scope.bedrijf = bedrijf;
 
 	  Categorie.getCategorie($stateParams.categorieId).then(function(res){
         $scope.categorie = res;

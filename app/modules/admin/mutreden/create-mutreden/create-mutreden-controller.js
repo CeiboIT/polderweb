@@ -1,9 +1,11 @@
 angular.module('polderweb')
 	.controller('createMutRedenCtrl',
-		function($scope, $state,MutReden,authService){
+		function($scope, $state, MutReden, bedrijf, authService){
          if(authService.getToken()==null){
            $state.go('auth.login');
          }else{
+
+         $scope.bedrijf = bedrijf;
 
 		 $scope.addMutReden = function (form) {
 	        $scope.submitted = true;

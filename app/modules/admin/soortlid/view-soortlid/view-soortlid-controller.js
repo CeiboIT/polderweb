@@ -1,9 +1,11 @@
 angular.module('polderweb')
   .controller('viewSoortLidCtrl',
-    function ($scope, SoortLid, $state, $stateParams) {
+    function ($scope, SoortLid, $state, bedrijf, $stateParams) {
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{
+
+    $scope.bedrijf = bedrijf;
 
 	  SoortLid.getSoortLid($stateParams.soortlidId).then(function(res){
         $scope.soortlid = res;

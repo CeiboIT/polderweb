@@ -15,23 +15,37 @@ angular.module('polderweb.kenmerk', [])
                 url:'/list',
                 templateUrl:'app/modules/admin/kenmerk/kenmerk.html',
                 controller:'KenmerkController as ctrl',
-                resolve: { kenmerks: function (Kenmerk) {
-                    return Kenmerk.findAll();
-                    }
+                resolve: {
+                    kenmerks: function (Kenmerk) {
+                        return Kenmerk.findAll();
+                    },
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
                 }
             })
             .state('kenmerk.create',
             {
                 url:'/create',
                 templateUrl:'app/modules/admin/kenmerk/create-kenmerk/create-kenmerk.html',
-                controller:'createKenmerkCtrl'
+                controller:'createKenmerkCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             })
 
             .state('kenmerk.view',
             {
                 url:'/:kenmerkId',
                 templateUrl:'app/modules/admin/kenmerk/view-kenmerk/view-kenmerk.html',
-                controller:'viewKenmerkCtrl'
+                controller:'viewKenmerkCtrl',
+                resolve: {
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
             });
 
     });

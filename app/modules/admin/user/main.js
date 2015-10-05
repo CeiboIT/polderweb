@@ -23,7 +23,10 @@ angular.module('polderweb.user', [])
                     resolve: {
                         user: function (User) {
                             return User.findAll();
-                        }
+                        },
+                       bedrijf: function($cookieStore) {
+                           return $cookieStore.get('user').Bedrijf;
+                       }
                     }
                 })
             .state('user.create',
@@ -43,7 +46,10 @@ angular.module('polderweb.user', [])
                             return User.getUser($cookieStore.get('user').Username).then(function(res){
                                 return res;
                             });
-                        }
+                        },
+                       bedrijf: function($cookieStore) {
+                           return $cookieStore.get('user').Bedrijf;
+                       }
                     }
                 })
 

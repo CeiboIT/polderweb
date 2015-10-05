@@ -1,12 +1,15 @@
 angular.module('polderweb.user')
   .controller('UserController',
-   function ($rootScope, $scope, $state, User,user,authService) {
+   function ($rootScope, $scope, $state, bedrijf, User, user, authService) {
     if(authService.getToken()==null){
        $state.go('login');
      }else{
        //start checkbox
       $rootScope.user=user;
       $scope.user=user;
+
+      $scope.bedrijf = bedrijf;
+
       $scope.selection=[];
       $scope.toggleSelection = function toggleSelection(personId) {
        var idx = $scope.selection.indexOf(personId);

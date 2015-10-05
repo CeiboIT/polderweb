@@ -1,9 +1,11 @@
 angular.module('polderweb')
   .controller('viewKenmerkCtrl',
-    function ($scope, Kenmerk, $state, $stateParams) {
+    function ($scope, Kenmerk, $state, bedrijf, $stateParams) {
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{
+
+    $scope.bedrijf = bedrijf;
 
 	  Kenmerk.getKenmerk($stateParams.kenmerkId).then(function(res){
         $scope.kenmerk = res;

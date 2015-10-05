@@ -1,9 +1,11 @@
 angular.module('polderweb')
 	.controller('createCategorieCtrl',
-		function($scope, $state,Categorie,authService){
+		function($scope, $state, Categorie, bedrijf, authService){
          if(authService.getToken()==null){
            $state.go('auth.login');
          }else{
+
+         $scope.bedrijf = bedrijf;
 
 		 $scope.addCategorie = function (form) {
 	        $scope.submitted = true;
