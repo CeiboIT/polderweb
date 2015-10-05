@@ -9,13 +9,13 @@ angular.module('polderweb')
       return {
 	  findAll: function () {
 			$rootScope.display.persoonLidNr=true; //20150801
-			$rootScope.display.persoonNaam=true; 
-			$rootScope.display.persoonStraat=true; 
-			$rootScope.display.persoonHuisNr=true; 
-			$rootScope.display.persoonPostcode=true; 
-			$rootScope.display.persoonPlaats=true; 
-			$rootScope.display.persoonDatumGeb=true; 
-			$rootScope.display.persoonLeeftijd=true; 
+			$rootScope.display.persoonNaam=true;
+			$rootScope.display.persoonStraat=true;
+			$rootScope.display.persoonHuisNr=true;
+			$rootScope.display.persoonPostcode=true;
+			$rootScope.display.persoonPlaats=true;
+			$rootScope.display.persoonDatumGeb=true;
+			$rootScope.display.persoonLeeftijd=true;
 			var defer = $q.defer();
             userService.get().$promise.then(function(res){
                 myPersoon.fromObject({Bedrijf : res.bedrijf
@@ -44,8 +44,8 @@ angular.module('polderweb')
 //console.log(JSON.stringify(result.toObject()[1].DatumGeb.toUTCString()));
 //console.log(JSON.stringify(result.toObject()[1].DatumGeb.toGMTString()));
 //nextday=new Date(result.toObject()[1].DatumGeb.getFullYear(),result.toObject()[1].DatumGeb.getMonth(),result.toObject()[1].DatumGeb.getDate()+1);
-//console.log('Datum ' + nextday.toLocaleDateString('nl-NL'));	  
-//console.log(datumgeb.setHours(0));	  
+//console.log('Datum ' + nextday.toLocaleDateString('nl-NL'));
+//console.log(datumgeb.setHours(0));
 //result.toObject()[1].DatumGeb=result.toObject()[1].DatumGeb.toLocaleDateString('nl-NL');
 //console.log(JSON.stringify(result.toObject()[1].DatumGeb));
 
@@ -79,7 +79,7 @@ angular.module('polderweb')
             return defer.promise;
         },
 
-        addPersoon: function (LidNr, Naam) {
+        addPersoon: function (persoonData) {
            userService.get().$promise.then(function(res){
 //                myPersoon.fromObject({Bedrijf : res.bedrijf,Persoon : Persoon, Naam : Naam});
                 myPersoon.fromObject({Bedrijf : res.bedrijf //, Persoon : ''
@@ -111,11 +111,11 @@ angular.module('polderweb')
 									, KodeExtern : ''
 									, Land : ''
 									, Leeftijd : 0
-									, LidNr : LidNr
+									, LidNr : persoonData.LidNr
 									, MachtigingsID : ''
 									, MailingList : false
 									, Medebewoners : false
-									, Naam : Naam
+									, Naam : persoonData.Naam
 									, Naam_2 : ''
 									, Opmerking : ''
 									, Plaats : ''
@@ -139,7 +139,7 @@ angular.module('polderweb')
 									, Voorletters : ''
 									, Voornaam : ''
 									});
-				// console.log('svcPersoon : ' + JSON.stringify(myPersoon));
+				//console.log('svcPersoon : ' + JSON.stringify(myPersoon));
                 Service.SvcPersoon("C", currentUser.username, myPersoon);
             });
         },
@@ -186,8 +186,8 @@ console.log('Index ' + index);
           }
           return cb($rootScope.persoon[index-1]);
         }
-*/		
-//--------------------		
+*/
+//--------------------
 
         prePersoon:function(lidnr, cb){
           var index=_.findIndex( $rootScope.pers, function(pers){
@@ -208,6 +208,6 @@ console.log('Index ' + index);
           }
           return cb($rootScope.pers[index-1]);
         }
-		
+
       };
     }]);
