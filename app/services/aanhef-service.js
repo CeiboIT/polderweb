@@ -1,10 +1,11 @@
 angular.module('polderweb')
   .factory('Aanhef',
-  ['GLOBALS', '$http', '$rootScope','$q','userService', '$cookieStore',
-    function (GLOBALS, $http, $rootScope,$q,userService, $cookieStore)
+//  ['GLOBALS', '$http', '$rootScope','$q','userService', '$cookieStore',
+//    function (GLOBALS, $http, $rootScope,$q,userService, $cookieStore)
+  ['GLOBALS', '$http', '$rootScope','$q','userService', 
+    function (GLOBALS, $http, $rootScope,$q,userService)
      {
-
-         var Bedrijf =  $cookieStore.get('user').Bedrijf;
+//         var Bedrijf =  $cookieStore.get('user').Bedrijf;
       var currentUser = userService.get(); //20150801
       var lastId="";
       var myAanhef = new TAanhef();
@@ -27,7 +28,6 @@ angular.module('polderweb')
             var defer = $q.defer();
              userService.get().then(function(res){
              myAanhef.fromObject({Bedrijf : res.Bedrijf,Aanhef : aanhefId, Omschrijving : ''});
-             //myAanhef.fromObject({Bedrijf : res.Bedrijf,Aanhef : '', Omschrijving : ''});
              Service.SvcAanhef("R", currentUser.username, myAanhef, function(result) {
                 var data = _.find(result.toObject(), {'Aanhef':aanhefId});
                 defer.resolve(data);
@@ -63,8 +63,6 @@ angular.module('polderweb')
             });
 
             return delAanhefPromise.promise;
-
-
 
           // _.remove($rootScope.aanhef,function(aanhefs){
           //   return aanhefs.aanhef===aanhefId;
