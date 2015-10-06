@@ -45,17 +45,17 @@
 			 <table st-table="ctrl.model.openstaands" class="table table-striped">
                  <thead>
                      <tr>
-                         <th st-sort="Openstaand">Openstaand</th>
-                         <th st-sort="Omschrijving">Omschrijving</th>
-                         <th st-sort="Geslacht">Geslacht</th>
+                         <th st-sort="Naam">Naam</th>
+                         <th st-sort="Bedrag">Bedrag</th>
+                         <th st-sort="BedragOpenstaand">BedragOpenstaand</th>
                          <th class="col-md-1"></th>
                      </tr>
                  </thead>
                  <tbody>
                      <tr ng-repeat="row in ctrl.model.openstaands">
-                         <td>{{row.Openstaand}}</td>
-                         <td>{{row.Omschrijving}}</td>
-                         <td>{{row.Geslacht | geslachtFilter}}</td>
+                         <td>{{row.Naam}}</td>
+                         <td>{{row.Bedrag}}</td>
+                         <td>{{row.BedragOpenstaand}}</td>
                          <td>
 <!--                         <a class="btn btn-sm btn-primary" ui-sref="openstaand.view({openstaandId: row.Openstaand})"><i class="fa fa-pencil"></i></a> -->
                              <a class="btn btn-sm btn-edit" ui-sref="openstaand.view({openstaandId: row.Openstaand})"><i class="fa fa-pencil"></i></a>

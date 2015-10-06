@@ -10,9 +10,21 @@ angular.module('polderweb')
         findAll: function () {
             var defer = $q.defer();
             userService.get().then(function(res){
-                myOpenstaand.fromObject({Bedrijf : res.Bedrijf,Openstaand : '', Omschrijving : ''});
-                Service.SvcOpenstaand("R", currentUser.username, myOpenstaand, function(result) {
+            myOpenstaand.fromObject({Bedrijf : res.Bedrijf
+			                        , Bedrag : 0
+			                        , BedragBetaald : 0
+			                        , BedragOpenstaand : 0
+									, BetaalWijze : ''
+									, DatumTotMet : '1899-12-30T00:00:00'
+									, DatumVan : '1899-12-30T00:00:00'
+			                        , AantalTermijnen : 0
+			                        , LidNr : 0
+									, Naam : ''
+									});
+//       alert(JSON.stringify(myOpenstaand));
+			Service.SvcOpenstaand("R", currentUser.username, myOpenstaand, function(result) {
                     defer.resolve(result.toObject());
+//       alert(JSON.stringify(result.toObject()));
                 });
             });
              return defer.promise;
@@ -21,7 +33,17 @@ angular.module('polderweb')
         getOpenstaand: function (openstaandId) {
             var defer = $q.defer();
              userService.get().then(function(res){
-             myOpenstaand.fromObject({Bedrijf : res.Bedrijf,Openstaand : openstaandId, Omschrijving : ''});
+            myOpenstaand.fromObject({Bedrijf : res.Bedrijf
+			                        , Bedrag : 0
+			                        , BedragBetaald : 0
+			                        , BedragOpenstaand : 0
+									, BetaalWijze : ''
+									, DatumTotMet : '1899-12-30T00:00:00'
+									, DatumVan : '1899-12-30T00:00:00'
+			                        , AantalTermijnen : 0
+			                        , LidNr : 0
+									, Naam : ''
+									});
              //myOpenstaand.fromObject({Bedrijf : res.Bedrijf,Openstaand : '', Omschrijving : ''});
              Service.SvcOpenstaand("R", currentUser.username, myOpenstaand, function(result) {
                 var data = _.find(result.toObject(), {'Openstaand':openstaandId});
@@ -36,7 +58,6 @@ angular.module('polderweb')
                 myOpenstaand.fromObject({Bedrijf : res.Bedrijf,Openstaand : openstaandData.Openstaand, Omschrijving : openstaandData.Omschrijving, IndNieuw : openstaandData.IndNieuw});
                 Service.SvcOpenstaand("C", currentUser.username, myOpenstaand);
             });
-
         },
 
         updateOpenstaand:function(openstaandData){
