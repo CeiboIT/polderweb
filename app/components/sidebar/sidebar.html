@@ -15,8 +15,8 @@
                 <li class="panel" data-title="Leden" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle" ng-class="{active:$state.includes('leden')}">
                     <span data-toggle="collapse" data-parent="#accordion" data-target="#leden" aria-expanded="true" aria-controls="products" ng-class="{collapsed:$state.includes('leden')}"><div class="img-link"><i class="fa fa-th-large"></i></div>Leden<i class="fa fa-angle-down"></i></span>
                     <ul class="collapse" id="leden" class="collapse" aria-labelledby="products" ng-class="{in:$state.includes('leden')}">
-                        <li class="collapse-subitem"><a ui-sref="aanhef.list">Ledenlijst</a></li>
-                        <li class="collapse-subitem"><a ui-sref="aanhef.list">Nieuw lid</a></li>
+                        <li class="collapse-subitem"><a ui-sref="persoon.list">Ledenlijst</a></li>
+                        <li class="collapse-subitem"><a ui-sref="persoon.create">Nieuw lid</a></li>
                     </ul>
                 </li>
                 <li class="panel" data-title="Organisatie" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle" ng-class="{active:$state.includes('orga')}">
@@ -27,13 +27,6 @@
                         <li class="collapse-subitem"><a ui-sref="aanhef.list">Functies</a></li>
                     </ul>
                 </li>
-
-                <li ui-sref-active="active" data-title="Persoon" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle">
-                    <a ui-sref="persoon.list"><span><div class="img-link"><i class="fa fa-users"></i></div>Persoon</span></a>
-                </li>
-
-
-
 
                 <li class="panel" data-title="Financiëel" data-container="body" data-placement="right" bs-tooltip bs-enabled="ctrl.toggle" ng-class="{active:$state.includes('fina')}">
                     <span data-toggle="collapse" data-parent="#accordion" data-target="#fina" aria-expanded="true" aria-controls="products" ng-class="{collapsed:$state.includes('fina')}"><div class="img-link"><i class="fa fa-money"></i></div>Financiëel<i class="fa fa-angle-down"></i></span>
