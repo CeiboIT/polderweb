@@ -90,6 +90,7 @@ __namespace.TPersoon = function TPersoon() {
     this.Regio = {dataType : "AnsiString", value : null};
     this.RegioOms = {dataType : "AnsiString", value : null};
     this.SofiNr = {dataType : "Double", value : null};
+    this.Sex = {dataType : "AnsiString", value : ""};
     this.SoortLid = {dataType : "AnsiString", value : null};
     this.SoortLidOms = {dataType : "AnsiString", value : null};
     this.Straat = {dataType : "AnsiString", value : null};

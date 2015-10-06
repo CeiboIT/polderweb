@@ -20,6 +20,7 @@ angular.module('polderweb', [
     //our modules
     'polderweb.auth',
     'polderweb.admin',
+    'polderweb.financieel',
     'polderweb.dashboard',
 
 ]);
