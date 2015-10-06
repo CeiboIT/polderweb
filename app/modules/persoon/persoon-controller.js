@@ -9,6 +9,10 @@ angular.module('polderweb')
            soortlid: soortlid
        };
 
+       $scope.regio = regio;
+       $scope.soortlid = soortlid;
+
+
      function clickSave (form) {
         $scope.submitted = true;
         if (form.$valid) {

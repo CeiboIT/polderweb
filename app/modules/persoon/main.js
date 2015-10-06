@@ -63,6 +63,8 @@ angular.module('polderweb.persoon', [])
                 templateUrl:'app/modules/persoon/view-persoon/view-persoon.html',
                 controller:'viewPersoonCtrl',
                 resolve: {
+                    regio: function (Regio) { return Regio.findAll(); },
+                    soortlid: function (SoortLid) { return SoortLid.findAll(); },
                    bedrijf: function($cookieStore) {
                        return $cookieStore.get('user').Bedrijf;
                    }

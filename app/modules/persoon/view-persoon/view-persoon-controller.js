@@ -1,11 +1,15 @@
 angular.module('polderweb')
   .controller('viewPersoonCtrl',
-    function ($scope, Persoon, Aanhef, $state, $stateParams, Person, bedrijf, authService) {
+    function ($scope, Persoon, Aanhef, $state, $stateParams, Person, regio, soortlid, bedrijf, authService) {
 /*
       if(authService.getToken()==null){
              $state.go('login');
       }else{
 */
+
+      $scope.regio = regio;
+      $scope.soortlid = soortlid;
+
 		  Persoon.getPersoon($stateParams.persoonId).then(function(res){
 		    $scope.pers = res;
       });

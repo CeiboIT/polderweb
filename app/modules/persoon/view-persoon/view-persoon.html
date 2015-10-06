@@ -81,14 +81,14 @@
       </tr>
 
       <tr>
-        <td> &nbsp;&nbsp;Regio&nbsp; </td> <td><select type="text" ng-model="pers.Regio" ng-options="item for item in regio" name="regio" class="form-control input-lg" /><p class="help-block" ng-show="form.regio.$error.required && submitted">This select is required</p></td>
+        <td> &nbsp;&nbsp;Regio&nbsp; </td> <td><select type="text" ng-model="pers.Regio" ng-options="item.Regio as item.Omschrijving for item in regio" name="regio" class="form-control input-lg" /><p class="help-block" ng-show="form.regio.$error.required && submitted">This select is required</p></td>
         <td></td>
         <td></td>
         <td> TelNr </td> <td><input type="text" ng-model="pers.TelNr" name="TelNr" class="form-control input-lg" placeholder="TelNr" /> <p class="help-block" ng-show="form.TelNr.$error.required && submitted">This input is required</p></td>
       </tr>
 
       <tr>
-        <td> &nbsp;&nbsp;SoortLid&nbsp; </td> <td><select type="text" ng-model="pers.SoortLid" ng-options="item for item in soortlid" name="soortlid" class="form-control input-lg" /><p class="help-block" ng-show="form.soortlid.$error.required && submitted">This select is required</p></td>
+        <td> &nbsp;&nbsp;SoortLid&nbsp; </td> <td><select type="text" ng-model="pers.SoortLid" ng-options="item.SoortLid as item.Omschrijving for item in soortlid" name="soortlid" class="form-control input-lg" /><p class="help-block" ng-show="form.soortlid.$error.required && submitted">This select is required</p></td>
         <td></td>
         <td></td>
         <td> Mobiel </td> <td><input type="text" ng-model="pers.Mobiel" name="Mobiel" class="form-control input-lg" placeholder="Mobiel" /> <p class="help-block" ng-show="form.Mobiel.$error.required && submitted">This input is required</p></td>
