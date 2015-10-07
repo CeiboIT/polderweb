@@ -506,6 +506,10 @@ a.list-group-item.hover {
   padding: 8px 15px;
   border-top: 1px solid #d6d6d6;
 }
+.table > tbody > tr > td:last-child {
+  padding: 8px 5px !important;
+  border-top: 1px solid #d6d6d6;
+}
 .table > thead > tr > th {
   padding: 8px 15px;
   border-bottom: 1px solid #d6d6d6;
