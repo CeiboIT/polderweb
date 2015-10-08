@@ -29,7 +29,29 @@
             <p class="help-block" ng-show="form.omschrijving.$error.required && submitted">Dit veld is verplicht</p>
           </td>
       </tr>
+      <tr>
+          <td><b>Extra 1</b></td>
+          <td>
+            <input type="text" ng-model="kenmkode.Extra1" name="extra1" class="form-control input" placeholder="Extra1" required/>
+            <p class="help-block" ng-show="form.extra1.$error.required && submitted">Dit veld is verplicht</p>
+          </td>
+      </tr>
+      <tr>
+          <td><b>Extra 2</b></td>
+          <td>
+            <input type="text" ng-model="kenmkode.Extra2" name="extra2" class="form-control input" placeholder="Extra2" required/>
+            <p class="help-block" ng-show="form.extra2.$error.required && submitted">Dit veld is verplicht</p>
+          </td>
+      </tr>
+      <tr>
+          <td><b>Extra 3</b></td>
+          <td>
+            <input type="text" ng-model="kenmkode.Extra3" name="extra3" class="form-control input" placeholder="Extra3" required/>
+            <p class="help-block" ng-show="form.extra3.$error.required && submitted">Dit veld is verplicht</p>
+          </td>
+      </tr>
     </table>
+    <button type="button" ui-sref="kenmerk.view({kenmerkId: kenmkode.Kenmerk})"  class="btn btn-lg btn-success">Kenmerk</button>
   </div>
   <hr/>
   <!-- <a href="#/home" class="btn btn-lg btn-success">Home</a> -->

@@ -53,10 +53,9 @@
                  </thead>
                  <tbody>
                      <tr ng-repeat="row in ctrl.model.kenmerks">
-                         <td>{{row.Kenmerk}}</td>
-                         <td>{{row.Omschrijving}}</td>
-                         <td>
-<!--                         <a class="btn btn-sm btn-primary" ui-sref="kenmerk.view({kenmerkId: row.Kenmerk})"><i class="fa fa-pencil"></i></a> -->
+                         <td class="col-sm-4">{{row.Kenmerk}}</td>
+                         <td class="col-sm-6">{{row.Omschrijving}}</td>
+                         <td class="col-sm-2">
                              <a class="btn btn-sm btn-edit" ui-sref="kenmerk.view({kenmerkId: row.Kenmerk})"><i class="fa fa-pencil"></i></a>
                              <button type="button" element-deletion
                                      collection="ctrl.model.kenmerks"
@@ -66,7 +65,6 @@
                                         askBeforeDelete: true}"
                                      ng-model="row.Kenmerk"
                                      deletion-service="ctrl.kenmerkService.delKenmerk"
-<!--                                     class="btn btn-sm btn-danger -->
                                      class="btn btn-sm btn-delete
                                      ">
                                  <i class="fa fa-trash-o"></i>
@@ -80,7 +78,7 @@
 						<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="10"></div>
 					</td>
 				</tr>
-				</tfoot>				 
+				</tfoot>
              </table>
          </div>
      </div>
