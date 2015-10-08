@@ -6,7 +6,7 @@
         <div class="col-xs-4">
           <div class="form-group" ng-class="{'has-error':form.name.$invalid && submitted}">
             <input type="text" ng-model="person.name" name="name"
-                   class="form-control input-lg"
+                   class="form-control input"
                    placeholder="voornaam" required/>
             <p class="help-block" ng-show="form.name.$error.required && submitted">
               This input is required
@@ -14,14 +14,14 @@
           </div>
           <div class="form-group" ng-class="{'has-error':form.lastname.$invalid && submitted}">
             <input type="text" ng-model="person.lastname" name="lastname"
-                   class="form-control input-lg" placeholder="achternaam" required/>
+                   class="form-control input" placeholder="achternaam" required/>
             <p class="help-block" ng-show="form.lastname.$error.required && submitted">
               This input is required
             </p>
           </div>
           <div class="form-group" ng-class="{'has-error':form.age.$invalid && submitted}">
             <input type="number" ng-model="person.age" name="age"
-                   class="form-control input-lg" min="18"
+                   class="form-control input" min="18"
                    placeholder="leeftijd" required/>
             <p class="help-block" ng-show="form.age.$error.required && submitted">
               This input is required
@@ -32,7 +32,7 @@
           </div>
           <div class="form-group" ng-class="{'has-error':form.email.$invalid && submitted}">
             <input type="text" ng-model="person.email" name="email"
-                   class="form-control input-lg"
+                   class="form-control input"
                    ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
                    placeholder="e-mailadres" required/>
             <p class="help-block" ng-show="form.email.$error.required && submitted">
@@ -45,7 +45,7 @@
           <div class="form-group" ng-class="{'has-error':form.soortlid.$invalid && submitted}">
             <select ng-model="person.soortlid" name="soortlid"
                     ng-options="item.SoortLid as item.Omschrijving for item in soortlid"
-                    class="form-control input-lg" required>
+                    class="form-control input" required>
               <option value="">soortlid</option>
             </select>
             <p class="help-block" ng-show="form.soortlid.$error.required && submitted">
@@ -55,7 +55,7 @@
           <div class="form-group" ng-class="{'has-error':form.regio.$invalid && submitted}">
             <select ng-model="person.regio" name="regio"
                     ng-options="item.Regio as item.Omschrijving for item in regio"
-                    class="form-control input-lg" required>
+                    class="form-control input" required>
               <option value="">regio</option>
             </select>
             <p class="help-block" ng-show="form.regio.$error.required && submitted">

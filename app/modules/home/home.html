@@ -8,17 +8,17 @@
   <br><br>
 <hr/>
   <p>
-    Filter : <input type="text" size="10" height="28" ng-model="filter.id" class="input-lg" placeholder="Nummer..."/>
-    <input type="text" size="10" ng-model="filter.name" class="input-lg" placeholder="Voornaam..." />
-    <input type="text" size="10" ng-model="filter.lastname" class="input-lg" placeholder="Naam..." />
+    Filter : <input type="text" size="10" height="28" ng-model="filter.id" class="input" placeholder="Nummer..."/>
+    <input type="text" size="10" ng-model="filter.name" class="input" placeholder="Voornaam..." />
+    <input type="text" size="10" ng-model="filter.lastname" class="input" placeholder="Naam..." />
     <select ng-model="filter.soortlid" name="soortlid"
             ng-options="item.SoortLid as item.Omschrijving for item in soortlid"
-            class="input-lg">
+            class="input">
     <option value="">soortlid</option>
     </select>
     <select ng-model="filter.regio" name="regio"
             ng-options="item.Regio as item.Omschrijving for item in regio"
-            class="input-lg">
+            class="input">
       <option value="">regio</option>
     </select>
     <button class="btn btn-lg btn-primary" ng-click="clearFilter();">Clear</button>
