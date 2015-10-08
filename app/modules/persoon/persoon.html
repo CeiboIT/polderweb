@@ -5,11 +5,32 @@
 <h3>Overzicht Leden</h3>
 <hr/>
 <div>
-  <a ui-sref="home.init"               class="btn btn-lg btn-success">Terug</a>
-  <a ui-sref="persoon.create"      class="btn btn-lg btn-primary">Nieuw</a>
   <!-- <button ng-click="clickGet()"  class="btn btn-lg btn-primary">Zoeken</button> -->
   <!-- <button ng-click="clickCancel()" class="btn btn-lg btn-primary">Doe iets</button> -->
   <!-- <button ng-click="delPersoon()" class="btn btn-lg btn-primary">Verwijder</button> -->
+             <a ui-sref="home.init"              class="btn btn-lg btn-back">Terug</a>
+             <a ui-sref="persoon.create"      class="btn btn-lg btn-new">Nieuw</a>
+             <div class="row pull-right">
+                 <div class="dropdown">
+                     <button class="btn btn-lg btn-export dropdown-toggle" margin-right=46px type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                         <i class=""></i>Export
+                         <span class="caret"></span>
+                     </button>
+                     <ul class="table-export dropdown-menu" table-selector="'table'" export-options="{type: 'pdf', escape: true, ignoreColumn : '[4]', tableName: 'Aanhefs' }" aria-labelledby="dropdownMenu1">
+                         <li te-option te-value="'pdf'" te-param="'type'">
+                             <a href="#">PDF</a>
+                         </li>
+
+                         <li te-option te-value="'excel'" te-param="'type'">
+                             <a href="#">Excel</a>
+                         </li>
+
+                         <li te-option te-value="'csv'" te-param="'type'">
+                             <a href="#">CSV</a>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
   <br><br>
 <!--
   <p>
@@ -45,10 +66,22 @@
   </p>
   <div class="person-grid">
     <scrollable-table watch="pers" watch-cols="display">
-      <table class="table table-bordered table-striped table-hover">
+<!--      <table class="table table-bordered table-striped table-hover"> -->
+	 <table st-table="ctrl.model.persoon" class="table table-striped">
         <thead>
           <tr>
            <!--  <th><center><input type="checkbox" ng-change="checkAll(selectedAll);" ng-model="selectedAll" ng-true-value="true" ng-false-value="false" /></center></th> -->
+            <th ng-if="display.persoonLidNr" st-sort="LidNr">LidNr</th>
+            <th ng-if="display.persoonNaam" st-sort="Naam">Naam</th>
+            <th ng-if="display.persoonStraat" st-sort="Straat">Straat</th>
+            <th ng-if="display.persoonHuisNr" st-sort="Huisnr">Huisnr</th>
+            <th ng-if="display.persoonPostcode" st-sort="Postcode">Postcode</th>
+            <th ng-if="display.persoonPlaats" st-sort="Plaats">Plaats</th>
+            <th ng-if="display.persoonDatumGeb" st-sort="DatumGeb">DatumGeb</th>
+            <th ng-if="display.persoonLeeftijd" st-sort="Leeftijd">Leeftijd</th>
+            <th ng-if="display.persoonSoortLid" st-sort="SoortLid">SoortLid</th>
+            <th ng-if="display.persoonRegio" st-sort="Regio">Regio</th>
+<!--
             <th ng-if="display.persoonLidNr"><a href="javascript:void(0);"    ng-click="clickSort('LidNr',        !reverse)">LidNr</a></th>
             <th ng-if="display.persoonNaam"> <a href="javascript:void(0);"    ng-click="clickSort('Omschrijving', !reverse)">Naam</a></th>
             <th ng-if="display.persoonStraat"><a href="javascript:void(0);"   ng-click="clickSort('Straat',       !reverse)">Straat</a></th>
@@ -59,18 +92,20 @@
             <th ng-if="display.persoonLeeftijd"><a href="javascript:void(0);" ng-click="clickSort('Leeftijd',     !reverse)">Leeftijd</a></th>
             <th ng-if="display.persoonSoortLid"><a href="javascript:void(0);" ng-click="clickSort('SoortLid',     !reverse)">Soortlid</a></th>
             <th ng-if="display.persoonRegio"><a href="javascript:void(0);"    ng-click="clickSort('Regio',        !reverse)">Regio</a></th>
-            <th class="col-md-1"></th>
+-->
+	<th class="col-md-1"></th>
 		  </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="pe in ctrl.model.persoon | orderBy: mySort : reverse | filter : {Naam: filter.naam, Plaats: filter.plaats, LidNr: filter.lidnr, SoortLid: filter.soortlid?filter.soortlid:'', Regio: filter.regio?filter.regio:'' } as numResults" >
+<!--          <tr ng-repeat="pe in ctrl.model.persoon | orderBy: mySort : reverse | filter : {Naam: filter.naam, Plaats: filter.plaats, LidNr: filter.lidnr, SoortLid: filter.soortlid?filter.soortlid:'', Regio: filter.regio?filter.regio:'' } as numResults" >  -->
+          <tr ng-repeat="pe in ctrl.model.persoon"> 
             <td ng-if="display.persoonLidNr">{{ pe.LidNr }}</td>
             <td ng-if="display.persoonNaam">{{ pe.Naam }}</td>
             <td ng-if="display.persoonStraat">{{ pe.Straat }}</td>
             <td ng-if="display.persoonHuisNr">{{ pe.HuisNr }}</td>
             <td ng-if="display.persoonPostcode">{{ pe.Postcode }}</td>
             <td ng-if="display.persoonPlaats">{{ pe.Plaats }}</td>
-            <td ng-if="display.persoonDatumGeb">{{ pe.DatumGeb }}</td>
+            <td ng-if="display.persoonDatumGeb">{{ pe.DatumGeb | date : 'dd/MM/yyyy' }}</td>
             <td ng-if="display.persoonLeeftijd">{{ pe.Leeftijd }}</td>
             <td ng-if="display.persoonSoortLid"><p title="{{persoon.soortlidoms}}">{{ pe.SoortLidOms}}</p></td>
             <td ng-if="display.persoonRegio"><p title="{{persoon.regiooms}}">{{ pe.RegioOms}}</p></td>
@@ -91,6 +126,14 @@
              </td>
           </tr>
         </tbody>
+				<tfoot>
+				<tr>
+					<td colspan="5" class="text-center">
+						<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="10"></div>
+					</td>
+				</tr>
+				</tfoot>
+		
       </table>
     </scrollable-table>
   </div>

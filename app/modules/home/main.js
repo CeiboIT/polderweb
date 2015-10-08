@@ -16,6 +16,7 @@ angular.module('polderweb')
                 }
             })
 
+/*
             .state('home.init', {
                 url: '/init',
                 templateUrl: 'app/modules/home/home.html',
@@ -32,5 +33,37 @@ angular.module('polderweb')
                        }
                 }
             })
+            .state('persoon.list', {
+
+            .state('home.init', {
+                url:'/list',
+                templateUrl:'app/modules/persoon/persoon.html',
+                controller:'PersoonController as ctrl',
+                resolve: {
+                    persoon: function (Persoon) { return Persoon.findAll(); },
+                    regio: function (Regio) { return Regio.findAll(); },
+                    soortlid: function (SoortLid) { return SoortLid.findAll(); },
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   }
+                }
+            })
+			
+            .state('dashboard.list', {
+*/
+            .state('home.init', {
+                url:'/list',
+                templateUrl:'app/modules/dashboard/dashboard.html',
+                controller:'DashBoardController as ctrl',
+                resolve: {
+                    dashboards: function (DashBoard) {
+                        return DashBoard.findAll();
+                    },
+                    bedrijf: function($cookieStore) {
+                        return $cookieStore.get('user').Bedrijf;
+                    }
+                }
+            });
+			
     });
 
