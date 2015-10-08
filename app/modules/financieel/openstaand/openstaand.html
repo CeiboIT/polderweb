@@ -1,8 +1,7 @@
 <!--                                     -->
-<!-- Overzicht Openstaand                    -->
-<!-- 20150816 onnodige div verwijderd    -->
+<!-- Openstaande posten                  -->
 <!--                                     -->
-<h3><b>Overzicht Openstaand</b></h3>
+<h3><b>Openstaand posten</b></h3>
 <hr/>
  <div>
   <div class="row">
@@ -33,54 +32,55 @@
                      </ul>
                  </div>
              </div>
-
          </div>
          <div class="col-md-12">
              <!--<select name="exportbutton" id="" class="table-export" table-selector="'table'" export-options="{'escape': false}">
                  <option te-option te-value="'pdf'" te-param="'type'">PDF</option>
                  <option te-option te-value="'xls'" te-param="'type'">XLS</option>
              </select>-->
-<!-- 			 <table st-table="ctrl.model.openstaands" class="table table-striped"> -->
 			<hr/>
 			 <table st-table="ctrl.model.openstaands" class="table table-striped">
-                 <thead>
-                     <tr>
-                         <th st-sort="Naam">Naam</th>
-                         <th st-sort="Bedrag">Bedrag</th>
-                         <th st-sort="BedragOpenstaand">BedragOpenstaand</th>
-                         <th class="col-md-1"></th>
-                     </tr>
-                 </thead>
-                 <tbody>
-                     <tr ng-repeat="row in ctrl.model.openstaands">
-                         <td>{{row.Naam}}</td>
-                         <td>{{row.Bedrag}}</td>
-                         <td>{{row.BedragOpenstaand}}</td>
-                         <td>
-<!--                         <a class="btn btn-sm btn-primary" ui-sref="openstaand.view({openstaandId: row.Openstaand})"><i class="fa fa-pencil"></i></a> -->
-                             <a class="btn btn-sm btn-edit" ui-sref="openstaand.view({openstaandId: row.Openstaand})"><i class="fa fa-pencil"></i></a>
-                             <button type="button" element-deletion
-                                     collection="ctrl.model.openstaands"
-                                     options="{liveUpdate: true,
-                                        compareBy : 'Openstaand',
-                                        usePromise: true,
-                                        askBeforeDelete: true}"
-                                     ng-model="row.Openstaand"
-                                     deletion-service="ctrl.openstaandService.delOpenstaand"
-<!--                                     class="btn btn-sm btn-danger -->
-                                     class="btn btn-sm btn-delete
-                                     ">
-                                 <i class="fa fa-trash-o"></i>
-                             </button>
-                         </td>
-                     </tr>
-                 </tbody>
+                <thead>
+                    <tr>
+                        <th st-sort="Totaal">Totaal</th>
+                        <th st-sort="TotaalOpenstaand">TotaalOpenstaand</th>
+                        <th class="col-md-1"></th>
+					</tr>
+					</tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in ctrl.model.openstaands">
+                        <td>{{row.Totaal | currency}}</td>
+                        <td>{{row.TotaalOpenstaand | currency}}</td>
+						<tr>
+							<th st-sort="LidNr">LidNr</th>
+							<th st-sort="Naam">Naam</th>
+							<th st-sort="Plaats">Plaats</th>
+							<th st-sort="Bedrag">Bedrag</th>
+							<th st-sort="AantalTermijnen">Termijnen</th>
+							<th st-sort="BedragOpenstaand">BedragOpenstaand</th>
+							<th st-sort="DatumBetaald">Laatste Betaling</th>
+							<th st-sort="BetaalWijze">BetaalWijze</th>
+						</tr>
+						<tr ng-repeat="row in ctrl.model.openstaands[0].OpenstaandArray">
+							<td>{{row.LidNr}}</td>
+							<td>{{row.Voorletters + ' ' + row.Tussenvoegsel + ' ' + row.Naam}}</td>
+							<td>{{row.Plaats}}</td>
+							<td>{{row.Bedrag | currency}}</td>
+							<td>{{row.AantalTermijnen}}</td>
+							<td>{{row.BedragOpenstaand | currency}}</td>
+							<td>{{row.DatumBetaald | date}}</td>
+							<td>{{row.BetaalWijze}}</td>
+							<td><a class="btn btn-sm btn-edit" ui-sref="openstaand.view({LidNr: row.LidNr})">Betaald</a></td>
+						</tr>
+					</tr>
+                </tbody>
 				<tfoot>
-				<tr>
-					<td colspan="5" class="text-center">
-						<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="10"></div>
-					</td>
-				</tr>
+					<tr>
+						<td colspan="5" class="text-center">
+							<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="10"></div>
+						</td>
+					</tr>
 				</tfoot>
              </table>
          </div>

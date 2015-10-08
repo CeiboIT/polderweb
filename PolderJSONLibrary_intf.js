@@ -385,8 +385,8 @@ __namespace.TOpenstaandIn.prototype = new RemObjects.SDK.ROStructType();
 __namespace.TOpenstaandIn.prototype.constructor = __namespace.TOpenstaandIn;
 RemObjects.SDK.RTTI["TOpenstaandIn"] = __namespace.TOpenstaandIn;
 
-// Struct: TOpenstaand
-__namespace.TOpenstaand = function TOpenstaand() {
+// Struct: TOpenstaand1
+__namespace.TOpenstaand1 = function TOpenstaand1() {
     this.AantalTermijnen = {dataType : "Integer", value : null};
     this.Bedrag = {dataType : "Currency", value : null};
     this.BedragBetaald = {dataType : "Currency", value : null};
@@ -404,9 +404,9 @@ __namespace.TOpenstaand = function TOpenstaand() {
     this.Tussenvoegsel = {dataType : "AnsiString", value : null};
     this.Voorletters = {dataType : "AnsiString", value : null};
 };
-__namespace.TOpenstaand.prototype = new RemObjects.SDK.ROStructType();
-__namespace.TOpenstaand.prototype.constructor = __namespace.TOpenstaand;
-RemObjects.SDK.RTTI["TOpenstaand"] = __namespace.TOpenstaand;
+__namespace.TOpenstaand1.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TOpenstaand1.prototype.constructor = __namespace.TOpenstaand1;
+RemObjects.SDK.RTTI["TOpenstaand1"] = __namespace.TOpenstaand1;
 
 // Struct: TStorneringIn
 __namespace.TStorneringIn = function TStorneringIn() {
@@ -1000,6 +1000,16 @@ __namespace.TBedrijf.prototype = new RemObjects.SDK.ROStructType();
 __namespace.TBedrijf.prototype.constructor = __namespace.TBedrijf;
 RemObjects.SDK.RTTI["TBedrijf"] = __namespace.TBedrijf;
 
+// Struct: TOpenstaand
+__namespace.TOpenstaand = function TOpenstaand() {
+    this.OpenstaandArray = {dataType : "TOpenstaandArray1", value : null};
+    this.Totaal = {dataType : "Currency", value : null};
+    this.TotaalOpenstaand = {dataType : "Currency", value : null};
+};
+__namespace.TOpenstaand.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TOpenstaand.prototype.constructor = __namespace.TOpenstaand;
+RemObjects.SDK.RTTI["TOpenstaand"] = __namespace.TOpenstaand;
+
 
 // Array: TAanhefArray
 __namespace.TAanhefArray = function TAanhefArray() {
@@ -1153,6 +1163,15 @@ __namespace.TOpenstaandArray = function TOpenstaandArray() {
 __namespace.TOpenstaandArray.prototype = new RemObjects.SDK.ROArrayType();
 __namespace.TOpenstaandArray.prototype.constructor = __namespace.TOpenstaandArray;
 RemObjects.SDK.RTTI["TOpenstaandArray"] = __namespace.TOpenstaandArray;
+
+// Array: TOpenstaandArray1
+__namespace.TOpenstaandArray1 = function TOpenstaandArray1() {
+  RemObjects.SDK.ROArrayType.call(this);
+  this.elementType = "TOpenstaand1";
+};
+__namespace.TOpenstaandArray1.prototype = new RemObjects.SDK.ROArrayType();
+__namespace.TOpenstaandArray1.prototype.constructor = __namespace.TOpenstaandArray1;
+RemObjects.SDK.RTTI["TOpenstaandArray1"] = __namespace.TOpenstaandArray1;
 
 // Array: TPersBetArray
 __namespace.TPersBetArray = function TPersBetArray() {
