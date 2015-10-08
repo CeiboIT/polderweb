@@ -6,14 +6,14 @@
   <br/>
   <div class="clearfix"></div>
   <br/>
-  <!--  <div class="jumbotron"> 
+  <!--  <div class="jumbotron">
   Override rounded corners in jumbotron -->
-    <div style="border-radius: 0px !important" class="jumbotron"> 
+    <div style="border-radius: 0px !important" class="jumbotron">
       <div class="row">
         <div class="col-xs-4">
           <div class="form-group" ng-class="{'has-error':form.functie.$invalid && submitted}">
             <input type="text" ng-model="functies.Functie" name="functie"
-                   class="form-control input-lg"
+                   class="form-control input"
                    placeholder="Functie" required />
             <p class="help-block" ng-show="form.functies.$error.required && submitted">
               This input is required
@@ -21,7 +21,7 @@
           </div>
           <div class="form-group" ng-class="{'has-error':form.omschrijving.$invalid && submitted}">
             <input type="text" ng-model="functies.Omschrijving" name="omschrijving"
-                   class="form-control input-lg" placeholder="Omschrijving" required/>
+                   class="form-control input" placeholder="Omschrijving" required/>
             <p class="help-block" ng-show="form.omschrijving.$error.required && submitted">
               This input is required
             </p>

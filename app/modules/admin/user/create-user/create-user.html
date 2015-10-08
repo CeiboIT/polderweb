@@ -6,7 +6,7 @@
         <div class="col-xs-4">
           <div class="form-group" ng-class="{'has-error':form.user.$invalid && submitted}">
             <input type="text" ng-model="users.user" name="user"
-                   class="form-control input-lg"
+                   class="form-control input"
                    placeholder="users" required />
             <p class="help-block" ng-show="form.users.$error.required && submitted">
               This input is required
@@ -14,7 +14,7 @@
           </div>
           <div class="form-group" ng-class="{'has-error':form.passwrd.$invalid && submitted}">
             <input type="text" ng-model="users.passwrd" name="passwrd"
-                   class="form-control input-lg" placeholder="passwrd" required/>
+                   class="form-control input" placeholder="passwrd" required/>
             <p class="help-block" ng-show="form.passwrd.$error.required && submitted">
               This input is required
             </p>
