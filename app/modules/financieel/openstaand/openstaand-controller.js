@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('OpenstaandController',
-   function ($rootScope, $scope, $state, Openstaand, openstaands, bedrijf, authService, homeState) {
+   function ($rootScope, $scope, $state, Openstaand, openstaands, bedrijf, username, authService, homeState) {
 
        var model = {
            selection : [],
@@ -9,6 +9,7 @@ angular.module('polderweb')
 
        $rootScope.openstaand = openstaands;
        $scope.bedrijf = bedrijf;
+       $scope.username = username;
 
      function clickSave (form) {
         $scope.submitted = true;

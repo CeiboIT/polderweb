@@ -14,6 +14,9 @@ angular.module('polderweb')
           },
            bedrijf: function($cookieStore) {
                return $cookieStore.get('user').Bedrijf;
+           },
+           username: function($cookieStore) {
+               return $cookieStore.get('user').Username;
            }
         }
     })
@@ -30,6 +33,9 @@ angular.module('polderweb')
           },
            bedrijf: function($cookieStore) {
                return $cookieStore.get('user').Bedrijf;
+           },
+           username: function($cookieStore) {
+               return $cookieStore.get('user').Username;
            }
         }
     });

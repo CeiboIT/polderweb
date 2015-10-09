@@ -1,11 +1,12 @@
 angular.module('polderweb')
 	.controller('createTitelCtrl',
-		function($scope, $state, Titel, bedrijf, authService){
+		function($scope, $state, Titel, bedrijf, username, authService){
          if(authService.getToken()==null){
            $state.go('auth.login');
          }else{
 
-         $scope.bedrijf = bedrijf;
+           $scope.bedrijf = bedrijf;
+           $scope.username = username;
 
 		 $scope.addTitel = function (form) {
 	        $scope.submitted = true;

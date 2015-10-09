@@ -1,11 +1,12 @@
 angular.module('polderweb')
   .controller('viewFunctieCtrl',
-    function ($scope, Functie, $state, bedrijf, $stateParams) {
+    function ($scope, Functie, $state, bedrijf, username, $stateParams) {
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{
 
     $scope.bedrijf = bedrijf;
+    $scope.username = username;
 
 	  Functie.getFunctie($stateParams.functieId).then(function(res){
         $scope.functie = res;

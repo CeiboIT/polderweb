@@ -19,9 +19,12 @@ angular.module('polderweb.soortlid', [])
                     soortlids: function (SoortLid) {
                         return SoortLid.findAll();
                     },
-                       bedrijf: function($cookieStore) {
-                           return $cookieStore.get('user').Bedrijf;
-                       }
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   },
+                   username: function($cookieStore) {
+                       return $cookieStore.get('user').Username;
+                   }
                 }
             })
             .state('soortlid.create',
@@ -32,6 +35,9 @@ angular.module('polderweb.soortlid', [])
                 resolve: {
                    bedrijf: function($cookieStore) {
                        return $cookieStore.get('user').Bedrijf;
+                   },
+                   username: function($cookieStore) {
+                       return $cookieStore.get('user').Username;
                    }
                 }
             })
@@ -44,6 +50,9 @@ angular.module('polderweb.soortlid', [])
                 resolve: {
                    bedrijf: function($cookieStore) {
                        return $cookieStore.get('user').Bedrijf;
+                   },
+                   username: function($cookieStore) {
+                       return $cookieStore.get('user').Username;
                    }
                 }
             });

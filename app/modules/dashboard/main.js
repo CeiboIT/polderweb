@@ -23,8 +23,11 @@ angular.module('polderweb.dashboard', [])
                     },
                     bedrijf: function($cookieStore) {
                         return $cookieStore.get('user').Bedrijf;
-                    }
+                    },
+                   username: function($cookieStore) {
+                       return $cookieStore.get('user').Username;
+                   }
                 }
             });
-			
+
     });

@@ -42,6 +42,9 @@ angular.module('polderweb.aanhef', [])
                     },
                    bedrijf: function($cookieStore) {
                        return $cookieStore.get('user').Bedrijf;
+                   },
+                   username: function($cookieStore) {
+                       return $cookieStore.get('user').Username;
                    }
                 }
             })
@@ -53,6 +56,9 @@ angular.module('polderweb.aanhef', [])
                 resolve: {
                    bedrijf: function($cookieStore) {
                        return $cookieStore.get('user').Bedrijf;
+                   },
+                   username: function($cookieStore) {
+                       return $cookieStore.get('user').Username;
                    }
                 }
             })
@@ -65,6 +71,9 @@ angular.module('polderweb.aanhef', [])
                 resolve: {
                    bedrijf: function($cookieStore) {
                        return $cookieStore.get('user').Bedrijf;
+                   },
+                   username: function($cookieStore) {
+                       return $cookieStore.get('user').Username;
                    }
                 }
             });

@@ -1,11 +1,12 @@
 angular.module('polderweb')
   .controller('viewRegioCtrl',
-    function ($scope, Regio, $state, bedrijf, $stateParams) {
+    function ($scope, Regio, $state, bedrijf, username, $stateParams) {
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{
 
-    $scope.bedrijf = bedrijf;
+       $scope.bedrijf = bedrijf;
+       $scope.username = username;
 
 	  Regio.getRegio($stateParams.regioId).then(function(res){
         $scope.regio = res;

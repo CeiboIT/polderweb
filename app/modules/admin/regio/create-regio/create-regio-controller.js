@@ -1,11 +1,12 @@
 angular.module('polderweb')
 	.controller('createRegioCtrl',
-		function($scope, $state, Regio, bedrijf, authService){
+		function($scope, $state, Regio, bedrijf, username, authService){
          if(authService.getToken()==null){
            $state.go('auth.login');
          }else{
 
-         $scope.bedrijf = bedrijf;
+           $scope.bedrijf = bedrijf;
+           $scope.username = username;
 
 		 $scope.addRegio = function (form) {
 	        $scope.submitted = true;

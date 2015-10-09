@@ -19,9 +19,12 @@ angular.module('polderweb.titel', [])
                     titels: function (Titel) {
                         return Titel.findAll();
                     },
-                       bedrijf: function($cookieStore) {
-                           return $cookieStore.get('user').Bedrijf;
-                       }
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   },
+                   username: function($cookieStore) {
+                       return $cookieStore.get('user').Username;
+                   }
                 }
             })
             .state('titel.create',
@@ -32,6 +35,9 @@ angular.module('polderweb.titel', [])
                 resolve: {
                    bedrijf: function($cookieStore) {
                        return $cookieStore.get('user').Bedrijf;
+                   },
+                   username: function($cookieStore) {
+                       return $cookieStore.get('user').Username;
                    }
                 }
             })
@@ -44,6 +50,9 @@ angular.module('polderweb.titel', [])
                 resolve: {
                    bedrijf: function($cookieStore) {
                        return $cookieStore.get('user').Bedrijf;
+                   },
+                   username: function($cookieStore) {
+                       return $cookieStore.get('user').Username;
                    }
                 }
             });

@@ -1,9 +1,12 @@
 angular.module('polderweb')
   .controller('viewAanhefCtrl',
-    function ($scope, Aanhef, $state, $stateParams, bedrijf, geslachtOptions) {
+    function ($scope, Aanhef, $state, $stateParams, bedrijf, username, geslachtOptions) {
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{
+
+    $scope.bedrijf = bedrijf;
+    $scope.username = username;
 
 	  Aanhef.getAanhef($stateParams.aanhefId).then(function(res){
         $scope.aanhef = res;

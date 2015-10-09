@@ -1,8 +1,9 @@
 angular.module('polderweb')
   .controller('CategorieController',
-   function ($rootScope, $scope, $state, Categorie, categories, bedrijf, authService, homeState) {
+   function ($rootScope, $scope, $state, Categorie, categories, bedrijf, username, authService, homeState) {
 
       $scope.bedrijf = bedrijf;
+      $scope.username = username;
 
        var model = {
            selection : [],

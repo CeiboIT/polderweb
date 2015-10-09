@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('MutRedenController',
-   function ($rootScope, $scope, $state, MutReden, bedrijf, mutredens, authService, homeState) {
+   function ($rootScope, $scope, $state, MutReden, bedrijf, username, mutredens, authService, homeState) {
 
        var model = {
            selection : [],
@@ -10,6 +10,7 @@ angular.module('polderweb')
        $rootScope.mutreden = mutredens;
 
        $scope.bedrijf = bedrijf;
+       $scope.username = username;
 
      function clickSave (form) {
         $scope.submitted = true;

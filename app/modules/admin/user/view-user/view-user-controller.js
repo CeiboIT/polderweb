@@ -1,13 +1,14 @@
 angular.module('polderweb.user')
   .controller('viewUserCtrl',
-    function ($scope, User, user, $state, bedrijf, $stateParams,authService) {
+    function ($scope, User, user, $state, bedrijf, username, $stateParams,authService) {
       if(authService.getToken()==null){
            $state.go('login');
          }else{
 
     $scope.user = user;
 
-    $scope.bedrijf = bedrijf;
+       $scope.bedrijf = bedrijf;
+       $scope.username = username;
 
       $scope.clickSave = function (form) {
         $scope.submitted = true;

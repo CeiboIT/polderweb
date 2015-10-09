@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('RegioController',
-   function ($rootScope, $scope, $state, Regio, regios, bedrijf, authService, homeState) {
+   function ($rootScope, $scope, $state, Regio, regios, bedrijf, username, authService, homeState) {
 
        var model = {
            selection : [],
@@ -10,6 +10,7 @@ angular.module('polderweb')
        $rootScope.regio = regios;
 
        $scope.bedrijf = bedrijf;
+       $scope.username = username;
 
      function clickSave (form) {
         $scope.submitted = true;

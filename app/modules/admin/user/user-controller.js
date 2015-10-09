@@ -1,6 +1,6 @@
 angular.module('polderweb.user')
   .controller('UserController',
-   function ($rootScope, $scope, $state, bedrijf, User, user, authService) {
+   function ($rootScope, $scope, $state, bedrijf, username, User, user, authService) {
     if(authService.getToken()==null){
        $state.go('login');
      }else{
@@ -8,7 +8,8 @@ angular.module('polderweb.user')
       $rootScope.user=user;
       $scope.user=user;
 
-      $scope.bedrijf = bedrijf;
+       $scope.bedrijf = bedrijf;
+       $scope.username = username;
 
       $scope.selection=[];
       $scope.toggleSelection = function toggleSelection(personId) {

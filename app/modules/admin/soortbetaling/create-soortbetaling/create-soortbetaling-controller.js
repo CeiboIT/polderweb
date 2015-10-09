@@ -1,11 +1,12 @@
 angular.module('polderweb')
 	.controller('createSoortBetalingCtrl',
-		function($scope, $state, SoortBetaling, bedrijf, authService){
+		function($scope, $state, SoortBetaling, bedrijf, username, authService){
          if(authService.getToken()==null){
            $state.go('auth.login');
          }else{
 
-         $scope.bedrijf = bedrijf;
+           $scope.bedrijf = bedrijf;
+           $scope.username = username;
 
 		 $scope.addSoortBetaling = function (form) {
 	        $scope.submitted = true;

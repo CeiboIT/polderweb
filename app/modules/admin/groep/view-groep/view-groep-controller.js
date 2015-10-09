@@ -1,11 +1,12 @@
 angular.module('polderweb')
   .controller('viewGroepCtrl',
-    function ($scope, Groep, $state, bedrijf, $stateParams) {
+    function ($scope, Groep, $state, bedrijf, username, $stateParams) {
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{
 
     $scope.bedrijf = bedrijf;
+    $scope.username = username;
 
 	  Groep.getGroep($stateParams.groepId).then(function(res){
         $scope.groep = res;

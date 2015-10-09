@@ -42,6 +42,9 @@ angular.module('polderweb.persoon', [])
                     soortlid: function (SoortLid) { return SoortLid.findAll(); },
                    bedrijf: function($cookieStore) {
                        return $cookieStore.get('user').Bedrijf;
+                   },
+                   username: function($cookieStore) {
+                       return $cookieStore.get('user').Username;
                    }
                 }
             })
@@ -53,6 +56,9 @@ angular.module('polderweb.persoon', [])
                 resolve: {
                    bedrijf: function($cookieStore) {
                        return $cookieStore.get('user').Bedrijf;
+                   },
+                   username: function($cookieStore) {
+                       return $cookieStore.get('user').Username;
                    }
                 }
             })
@@ -67,6 +73,9 @@ angular.module('polderweb.persoon', [])
                     soortlid: function (SoortLid) { return SoortLid.findAll(); },
                    bedrijf: function($cookieStore) {
                        return $cookieStore.get('user').Bedrijf;
+                   },
+                   username: function($cookieStore) {
+                       return $cookieStore.get('user').Username;
                    }
                 }
             });

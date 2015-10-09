@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('HomeCtrl',
-    function ($rootScope, $scope, $state, Person, Regio, SoortLid, soortlid, regio, bedrijf, authService) {
+    function ($rootScope, $scope, $state, Person, Regio, SoortLid, soortlid, regio, bedrijf, username, authService) {
     if(authService.getToken()==null){
         $state.go('login');
      }else{
@@ -9,7 +9,8 @@ angular.module('polderweb')
       $scope.regio=regio;
       $scope.soortlid=soortlid;
 
-      $scope.bedrijf = bedrijf;
+       $scope.bedrijf = bedrijf;
+       $scope.username = username;
 
       //start checkbox
       $scope.selection=[];

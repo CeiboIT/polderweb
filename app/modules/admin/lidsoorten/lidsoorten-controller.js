@@ -1,11 +1,12 @@
 angular.module('polderweb')
   .controller('LidsoortenController',
-     function ($rootScope, $scope, $state, bedrijf, SoortLid, soortlid, authService) {
+     function ($rootScope, $scope, $state, bedrijf, username, SoortLid, soortlid, authService) {
       if(authService.getToken()==null){
         $state.go('login');
      }else{
 
       $scope.bedrijf = bedrijf;
+      $scope.username = username;
 
 	 //start checkbox
       $rootScope.soortl=soortlid;
