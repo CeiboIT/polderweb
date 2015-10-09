@@ -13,7 +13,7 @@ angular.module('polderweb')
 			var defer = $q.defer();
             userService.get().then(function(res){
                 myGrp.fromObject({Bedrijf : res.Bedrijf, Grp : '', Omschrijving : ''});
-                Service.SvcGrp("R", currentUser.username, myGrp, function(result) {
+                Service.SvcGrp("R", res.Username, myGrp, function(result) {
                     defer.resolve(result.toObject());
                 });
             });
@@ -23,7 +23,7 @@ angular.module('polderweb')
             var defer = $q.defer();
              userService.get().then(function(res){
              myGrp.fromObject({Bedrijf : res.Bedrijf, Grp : '', Omschrijving : ''});
-             Service.SvcGrp("R", currentUser.username, myGrp, function(result) {
+             Service.SvcGrp("R", res.Username, myGrp, function(result) {
                 var data = _.find(result.toObject(), {'Grp':grpId});
                 defer.resolve(data);
              });
@@ -33,20 +33,20 @@ angular.module('polderweb')
         addGrp: function (Grp,Omschrijving) {
            userService.get().then(function(res){
                 myGrp.fromObject({Bedrijf : res.Bedrijf, Grp : Grp, Omschrijving : Omschrijving});
-                Service.SvcGrp("C", currentUser.username, myGrp);
+                Service.SvcGrp("C", res.Username, myGrp);
             });
 
         },
         updateGrp:function(Grp,Omschrijving){
            userService.get().then(function(res){
                 myGrp.fromObject({Bedrijf : res.Bedrijf, Grp : Grp, Omschrijving : Omschrijving});
-                Service.SvcGrp("U", currentUser.username, myGrp);
+                Service.SvcGrp("U", res.Username, myGrp);
             });
         },
         delGrp:function(Grp,Omschrijving){
          userService.get().then(function(res){
                 myGrp.fromObject({Bedrijf : res.Bedrijf, Grp : Grp, Omschrijving : Omschrijving});
-             Service.SvcGrp("D", currentUser.username, myGrp);
+             Service.SvcGrp("D", res.Username, myGrp);
          });
 
           // _.remove($rootScope.grp,function(grps){

@@ -13,7 +13,7 @@ angular.module('polderweb')
 			var defer = $q.defer();
             userService.get().then(function(res){
                 myCategorie.fromObject({Bedrijf : res.Bedrijf,Categorie : '', Omschrijving : ''});
-                Service.SvcCategorie("R", currentUser.username, myCategorie, function(result) {
+                Service.SvcCategorie("R", res.Username, myCategorie, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(myCategorie));
 //          alert(JSON.stringify(result.toObject()));
@@ -26,7 +26,7 @@ angular.module('polderweb')
              userService.get().then(function(res){
              myCategorie.fromObject({Bedrijf : res.Bedrijf,Categorie : categorieId, Omschrijving : ''});
              //myCategorie.fromObject({Bedrijf : res.Bedrijf,Categorie : '', Omschrijving : ''});
-             Service.SvcCategorie("R", currentUser.username, myCategorie, function(result) {
+             Service.SvcCategorie("R", res.Username, myCategorie, function(result) {
                 var data = _.find(result.toObject(), {'Categorie':categorieId});
                 defer.resolve(data);
              });
@@ -36,14 +36,14 @@ angular.module('polderweb')
         addCategorie: function (categorieData) {
            userService.get().then(function(res){
                 myCategorie.fromObject({Bedrijf : res.Bedrijf,Categorie : categorieData.Categorie, Omschrijving : categorieData.Omschrijving});
-                Service.SvcCategorie("C", currentUser.username, myCategorie);
+                Service.SvcCategorie("C", res.Username, myCategorie);
             });
 
         },
         updateCategorie:function(categorieData){
            userService.get().then(function(res){
                 myCategorie.fromObject({Bedrijf : res.Bedrijf,Categorie : categorieData.Categorie, Omschrijving : categorieData.Omschrijving});
-                Service.SvcCategorie("U", currentUser.username, myCategorie);
+                Service.SvcCategorie("U", res.Username, myCategorie);
             });
         },
 
@@ -53,7 +53,7 @@ angular.module('polderweb')
 
             userService.get().then(function(res){
                 myCategorie.fromObject({Bedrijf : res.Bedrijf,Categorie : Categorie, Omschrijving : Omschrijving});
-                Service.SvcCategorie("D", currentUser.username, myCategorie, function(result){
+                Service.SvcCategorie("D", res.Username, myCategorie, function(result){
                     console.log(result);
 
                     delCategoriePromise.resolve(result)

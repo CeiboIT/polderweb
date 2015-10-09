@@ -13,7 +13,7 @@ angular.module('polderweb')
 			var defer = $q.defer();
             userService.get().then(function(res){
                 mySoortLid.fromObject({Bedrijf : res.Bedrijf,SoortLid : '', Omschrijving : ''});
-                Service.SvcSoortLid("R", currentUser.username, mySoortLid, function(result) {
+                Service.SvcSoortLid("R", res.Username, mySoortLid, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(mySoortLid));
 //          alert(JSON.stringify(result.toObject()));
@@ -26,7 +26,7 @@ angular.module('polderweb')
              userService.get().then(function(res){
              mySoortLid.fromObject({Bedrijf : res.Bedrijf,SoortLid : soortlidId, Omschrijving : ''});
              //mySoortLid.fromObject({Bedrijf : res.Bedrijf,SoortLid : '', Omschrijving : ''});
-             Service.SvcSoortLid("R", currentUser.username, mySoortLid, function(result) {
+             Service.SvcSoortLid("R", res.Username, mySoortLid, function(result) {
                 var data = _.find(result.toObject(), {'SoortLid':soortlidId});
                 defer.resolve(data);
              });
@@ -36,14 +36,14 @@ angular.module('polderweb')
         addSoortLid: function (soortlidData) {
            userService.get().then(function(res){
                 mySoortLid.fromObject({Bedrijf : res.Bedrijf,SoortLid : soortlidData.SoortLid, Omschrijving : soortlidData.Omschrijving});
-                Service.SvcSoortLid("C", currentUser.username, mySoortLid);
+                Service.SvcSoortLid("C", res.Username, mySoortLid);
             });
 
         },
         updateSoortLid:function(soortlidData){
            userService.get().then(function(res){
                 mySoortLid.fromObject({Bedrijf : res.Bedrijf,SoortLid : soortlidData.SoortLid, Omschrijving : soortlidData.Omschrijving});
-                Service.SvcSoortLid("U", currentUser.username, mySoortLid);
+                Service.SvcSoortLid("U", res.Username, mySoortLid);
             });
         },
 
@@ -53,7 +53,7 @@ angular.module('polderweb')
 
             userService.get().then(function(res){
                 mySoortLid.fromObject({Bedrijf : res.Bedrijf,SoortLid : SoortLid, Omschrijving : Omschrijving});
-                Service.SvcSoortLid("D", currentUser.username, mySoortLid, function(result){
+                Service.SvcSoortLid("D", res.Username, mySoortLid, function(result){
                     console.log(result);
 
                     delSoortLidPromise.resolve(result)

@@ -5,24 +5,37 @@ angular.module('polderweb')
      {
       var currentUser = userService.get(); //20150801
       var lastId="";
-      var myOpenstaand = new TOpenstaand();
+
+      var myOpenstaandIn = new TOpenstaandIn();
+/*
+    this.Bedrag = {dataType : "Currency", value : null};
+    this.BedragBetaald = {dataType : "Currency", value : null};
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.BetaalWijze = {dataType : "AnsiString", value : null};
+    this.DatumTotMet = {dataType : "AnsiString", value : null};
+    this.DatumVan = {dataType : "AnsiString", value : null};
+    this.LidNr = {dataType : "Integer", value : null};
+    this.Naam = {dataType : "AnsiString", value : null};
+*/
       return {
         findAll: function () {
             var defer = $q.defer();
             userService.get().then(function(res){
-            myOpenstaand.fromObject({Bedrijf : res.Bedrijf
+            myOpenstaandIn.fromObject({Bedrijf : res.Bedrijf
 			                        , Bedrag : 0
 			                        , BedragBetaald : 0
-			                        , BedragOpenstaand : 0
 									, BetaalWijze : ''
-									, DatumTotMet : '1899-12-30T00:00:00'
-									, DatumVan : '1899-12-30T00:00:00'
-			                        , AantalTermijnen : 0
+//									, DatumTotMet : '' // '1899-12-30T00:00:00'
+//									, DatumVan : '' // '1899-12-30T00:00:00'
 			                        , LidNr : 0
 									, Naam : ''
 									});
-//       alert(JSON.stringify(myOpenstaand));
-			Service.SvcOpenstaand("R", currentUser.username, myOpenstaand, function(result) {
+//            myOpenstaand.fromObject({ OpenstaandArray : null
+//									, Totaal : 0
+//			                        , TotaalOpenstaand : 0
+//									});
+//       alert(JSON.stringify(myOpenstaandIn));
+	   Service.SvcOpenstaand("R", res.Username, myOpenstaandIn, function(result) {
                     defer.resolve(result.toObject());
 //       alert(JSON.stringify(result.toObject()));
                 });
@@ -45,7 +58,7 @@ angular.module('polderweb')
 									, Naam : ''
 									});
              //myOpenstaand.fromObject({Bedrijf : res.Bedrijf,Openstaand : '', Omschrijving : ''});
-             Service.SvcOpenstaand("R", currentUser.username, myOpenstaand, function(result) {
+             Service.SvcOpenstaand("R", res.Username, myOpenstaand, function(result) {
                 var data = _.find(result.toObject(), {'Openstaand':openstaandId});
                 defer.resolve(data);
              });
@@ -56,14 +69,14 @@ angular.module('polderweb')
         addOpenstaand: function (openstaandData) {
            userService.get().then(function(res){
                 myOpenstaand.fromObject({Bedrijf : res.Bedrijf,Openstaand : openstaandData.Openstaand, Omschrijving : openstaandData.Omschrijving, IndNieuw : openstaandData.IndNieuw});
-                Service.SvcOpenstaand("C", currentUser.username, myOpenstaand);
+                Service.SvcOpenstaand("C", res.Username, myOpenstaand);
             });
         },
 
         updateOpenstaand:function(openstaandData){
            userService.get().then(function(res){
                 myOpenstaand.fromObject({Bedrijf : res.Bedrijf,Openstaand : openstaandData.Openstaand, Omschrijving : openstaandData.Omschrijving, IndNieuw : openstaandData.IndNieuw});
-                Service.SvcOpenstaand("U", currentUser.username, myOpenstaand);
+                Service.SvcOpenstaand("U", res.Username, myOpenstaand);
             });
         },
 
@@ -71,7 +84,7 @@ angular.module('polderweb')
             var delOpenstaandPromise = $q.defer();
             userService.get().then(function(res){
                 myOpenstaand.fromObject({Bedrijf : res.Bedrijf,Openstaand : Openstaand, Omschrijving : Omschrijving});
-                Service.SvcOpenstaand("D", currentUser.username, myOpenstaand, function(result){
+                Service.SvcOpenstaand("D", res.Username, myOpenstaand, function(result){
                     console.log(result);
                     delOpenstaandPromise.resolve(result)
                 });

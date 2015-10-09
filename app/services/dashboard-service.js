@@ -21,7 +21,7 @@ angular.module('polderweb')
 			                         , Vlag3 : false
 			                         , Vlag4 : false
 									 });
-               Service.SvcDashBoard("R", currentUser.username, myDashBoard, function(result) {
+               Service.SvcDashBoard("R", res.Username, myDashBoard, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(result.toObject()));
                });

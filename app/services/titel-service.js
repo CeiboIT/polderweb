@@ -13,7 +13,7 @@ angular.module('polderweb')
 			var defer = $q.defer();
             userService.get().then(function(res){
                 myTitel.fromObject({Bedrijf : res.Bedrijf,Titel : '', Omschrijving : ''});
-                Service.SvcTitel("R", currentUser.username, myTitel, function(result) {
+                Service.SvcTitel("R", res.Username, myTitel, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(myTitel));
 //          alert(JSON.stringify(result.toObject()));
@@ -26,7 +26,7 @@ angular.module('polderweb')
              userService.get().then(function(res){
              myTitel.fromObject({Bedrijf : res.Bedrijf,Titel : titelId, Omschrijving : ''});
              //myTitel.fromObject({Bedrijf : res.Bedrijf,Titel : '', Omschrijving : ''});
-             Service.SvcTitel("R", currentUser.username, myTitel, function(result) {
+             Service.SvcTitel("R", res.Username, myTitel, function(result) {
                 var data = _.find(result.toObject(), {'Titel':titelId});
                 defer.resolve(data);
              });
@@ -36,14 +36,14 @@ angular.module('polderweb')
         addTitel: function (titelData) {
            userService.get().then(function(res){
                 myTitel.fromObject({Bedrijf : res.Bedrijf,Titel : titelData.Titel, Omschrijving : titelData.Omschrijving});
-                Service.SvcTitel("C", currentUser.username, myTitel);
+                Service.SvcTitel("C", res.Username, myTitel);
             });
 
         },
         updateTitel:function(titelData){
            userService.get().then(function(res){
                 myTitel.fromObject({Bedrijf : res.Bedrijf,Titel : titelData.Titel, Omschrijving : titelData.Omschrijving});
-                Service.SvcTitel("U", currentUser.username, myTitel);
+                Service.SvcTitel("U", res.Username, myTitel);
             });
         },
 
@@ -53,7 +53,7 @@ angular.module('polderweb')
 
             userService.get().then(function(res){
                 myTitel.fromObject({Bedrijf : res.Bedrijf,Titel : Titel, Omschrijving : Omschrijving});
-                Service.SvcTitel("D", currentUser.username, myTitel, function(result){
+                Service.SvcTitel("D", res.Username, myTitel, function(result){
                     console.log(result);
 
                     delTitelPromise.resolve(result)

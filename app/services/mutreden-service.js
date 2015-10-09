@@ -20,7 +20,7 @@ angular.module('polderweb')
 				     , Omschrijving : ''
 				     , StopFactureren : false
 				 });
-                Service.SvcMutReden("R", currentUser.username, myMutReden, function(result) {
+                Service.SvcMutReden("R", res.Username, myMutReden, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(myMutReden));
 //          alert(JSON.stringify(result.toObject()));
@@ -37,7 +37,7 @@ angular.module('polderweb')
 				  , Omschrijving : ''
 				  });
              //myMutReden.fromObject({Bedrijf : res.Bedrijf,MutReden : '', Omschrijving : ''});
-             Service.SvcMutReden("R", currentUser.username, myMutReden, function(result) {
+             Service.SvcMutReden("R", res.Username, myMutReden, function(result) {
                 var data = _.find(result.toObject(), {'MutReden':mutredenId});
                 defer.resolve(data);
              });
@@ -52,7 +52,7 @@ angular.module('polderweb')
 		                     , Omschrijving : mutredenData.Omschrijving
  				     , StopFactureren : mutredenData.StopFactureren
 				     });
-                Service.SvcMutReden("C", currentUser.username, myMutReden);
+                Service.SvcMutReden("C", res.Username, myMutReden);
             });
 
         },
@@ -64,7 +64,7 @@ angular.module('polderweb')
 				     , Omschrijving : mutredenData.Omschrijving
  				     , StopFactureren : mutredenData.StopFactureren
 				     });
-                Service.SvcMutReden("U", currentUser.username, myMutReden);
+                Service.SvcMutReden("U", res.Username, myMutReden);
             });
         },
 
@@ -79,7 +79,7 @@ angular.module('polderweb')
 				     , Omschrijving : Omschrijving
  				     , StopFactureren : false
 				     });
-                Service.SvcMutReden("D", currentUser.username, myMutReden, function(result){
+                Service.SvcMutReden("D", res.Username, myMutReden, function(result){
                     console.log(result);
 
                     delMutRedenPromise.resolve(result)

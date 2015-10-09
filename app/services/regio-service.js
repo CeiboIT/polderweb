@@ -13,7 +13,7 @@ angular.module('polderweb')
 			var defer = $q.defer();
             userService.get().then(function(res){
                 myRegio.fromObject({Bedrijf : res.Bedrijf,Regio : '', Omschrijving : ''});
-                Service.SvcRegio("R", currentUser.username, myRegio, function(result) {
+                Service.SvcRegio("R", res.Username, myRegio, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(myRegio));
 //          alert(JSON.stringify(result.toObject()));
@@ -26,7 +26,7 @@ angular.module('polderweb')
              userService.get().then(function(res){
              myRegio.fromObject({Bedrijf : res.Bedrijf,Regio : regioId, Omschrijving : ''});
              //myRegio.fromObject({Bedrijf : res.Bedrijf,Regio : '', Omschrijving : ''});
-             Service.SvcRegio("R", currentUser.username, myRegio, function(result) {
+             Service.SvcRegio("R", res.Username, myRegio, function(result) {
                 var data = _.find(result.toObject(), {'Regio':regioId});
                 defer.resolve(data);
              });
@@ -36,14 +36,14 @@ angular.module('polderweb')
         addRegio: function (regioData) {
            userService.get().then(function(res){
                 myRegio.fromObject({Bedrijf : res.Bedrijf,Regio : regioData.Regio, Omschrijving : regioData.Omschrijving});
-                Service.SvcRegio("C", currentUser.username, myRegio);
+                Service.SvcRegio("C", res.Username, myRegio);
             });
 
         },
         updateRegio:function(regioData){
            userService.get().then(function(res){
                 myRegio.fromObject({Bedrijf : res.Bedrijf,Regio : regioData.Regio, Omschrijving : regioData.Omschrijving});
-                Service.SvcRegio("U", currentUser.username, myRegio);
+                Service.SvcRegio("U", res.Username, myRegio);
             });
         },
 
@@ -53,7 +53,7 @@ angular.module('polderweb')
 
             userService.get().then(function(res){
                 myRegio.fromObject({Bedrijf : res.Bedrijf,Regio : Regio, Omschrijving : Omschrijving});
-                Service.SvcRegio("D", currentUser.username, myRegio, function(result){
+                Service.SvcRegio("D", res.Username, myRegio, function(result){
                     console.log(result);
 
                     delRegioPromise.resolve(result)

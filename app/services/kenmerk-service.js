@@ -13,7 +13,7 @@ angular.module('polderweb')
 			var defer = $q.defer();
             userService.get().then(function(res){
                 myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : '', Omschrijving : '', IndNieuw : false});
-                Service.SvcKenmerk("R", currentUser.username, myKenmerk, function(result) {
+                Service.SvcKenmerk("R", res.Username, myKenmerk, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(myKenmerk));
 //          alert(JSON.stringify(result.toObject()));
@@ -27,7 +27,7 @@ angular.module('polderweb')
              userService.get().then(function(res){
              myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : kenmerkId, Omschrijving : '', IndNieuw : false});
              //myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : '', Omschrijving : ''});
-             Service.SvcKenmerk("R", currentUser.username, myKenmerk, function(result) {
+             Service.SvcKenmerk("R", res.Username, myKenmerk, function(result) {
                 var data = _.find(result.toObject(), {'Kenmerk':kenmerkId});
                 defer.resolve(data);
              });
@@ -38,7 +38,7 @@ angular.module('polderweb')
         addKenmerk: function (kenmerkData) {
            userService.get().then(function(res){
                 myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : kenmerkData.Kenmerk, Omschrijving : kenmerkData.Omschrijving, IndNieuw : kenmerkData.IndNieuw});
-                Service.SvcKenmerk("C", currentUser.username, myKenmerk);
+                Service.SvcKenmerk("C", res.Username, myKenmerk);
             });
 
         },
@@ -46,7 +46,7 @@ angular.module('polderweb')
         updateKenmerk:function(kenmerkData){
            userService.get().then(function(res){
                 myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : kenmerkData.Kenmerk, Omschrijving : kenmerkData.Omschrijving, IndNieuw : kenmerkData.IndNieuw});
-                Service.SvcKenmerk("U", currentUser.username, myKenmerk);
+                Service.SvcKenmerk("U", res.Username, myKenmerk);
             });
         },
 
@@ -54,7 +54,7 @@ angular.module('polderweb')
             var delKenmerkPromise = $q.defer();
             userService.get().then(function(res){
                 myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : Kenmerk, Omschrijving : Omschrijving, IndNieuw : false});
-                Service.SvcKenmerk("D", currentUser.username, myKenmerk, function(result){
+                Service.SvcKenmerk("D", res.Username, myKenmerk, function(result){
                     console.log(result);
                     delKenmerkPromise.resolve(result)
                 });

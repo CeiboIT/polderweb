@@ -19,7 +19,7 @@ angular.module('polderweb')
 									 , Extra1 : ''
 									 , Extra2 : ''
 									 , Extra3 : ''});
-                Service.SvcKenmKode("R", currentUser.username, myKenmKode, function(result) {
+                Service.SvcKenmKode("R", res.Username, myKenmKode, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(myKenmKode));
 //          alert(JSON.stringify(result.toObject()));
@@ -39,7 +39,7 @@ angular.module('polderweb')
 								  , Extra2 : ''
 								  , Extra3 : ''});
              //myKenmKode.fromObject({Bedrijf : res.Bedrijf, Kode : '', Omschrijving : ''});
-             Service.SvcKenmKode("R", currentUser.username, myKenmKode, function(result) {
+             Service.SvcKenmKode("R", res.Username, myKenmKode, function(result) {
                 var data = _.find(result.toObject(), {'Kode':kenmkodeId});
                 defer.resolve(data);
              });
@@ -56,7 +56,7 @@ angular.module('polderweb')
 									 , Extra1 : kenmkodeData.Extra1
 									 , Extra2 : kenmkodeData.Extra2
 									 , Extra3 : kenmkodeData.Extra3});
-                Service.SvcKenmKode("C", currentUser.username, myKenmKode);
+                Service.SvcKenmKode("C", res.Username, myKenmKode);
             });
 
         },
@@ -70,7 +70,7 @@ angular.module('polderweb')
 									 , Extra1 : kenmkodeData.Extra1
 									 , Extra2 : kenmkodeData.Extra2
 									 , Extra3 : kenmkodeData.Extra3});
-                Service.SvcKenmKode("U", currentUser.username, myKenmKode);
+                Service.SvcKenmKode("U", res.Username, myKenmKode);
             });
         },
 
@@ -84,7 +84,7 @@ angular.module('polderweb')
 									 , Extra1 : ''
 									 , Extra2 : ''
 									 , Extra3 : ''});
-                Service.SvcKenmKode("D", currentUser.username, myKenmKode, function(result){
+                Service.SvcKenmKode("D", res.Username, myKenmKode, function(result){
                     console.log(result);
                     delKenmKodePromise.resolve(result)
                 });

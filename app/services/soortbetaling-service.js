@@ -37,7 +37,7 @@ angular.module('polderweb')
     									  , BTWCode : ''
     									  , IndProlongeren : false
 										  });
-                Service.SvcSoortBetaling("R", currentUser.username, mySoortBetaling, function(result) {
+                Service.SvcSoortBetaling("R", res.Username, mySoortBetaling, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(mySoortBetaling));
 //          alert(JSON.stringify(result.toObject()));
@@ -62,7 +62,7 @@ angular.module('polderweb')
     									  , BTWCode : ''
     									  , IndProlongeren : false
 										  });
-             Service.SvcSoortBetaling("R", currentUser.username, mySoortBetaling, function(result) {
+             Service.SvcSoortBetaling("R", res.Username, mySoortBetaling, function(result) {
                 var data = _.find(result.toObject(), {'SoortBetaling':soortbetalingId});
                 defer.resolve(data);
              });
@@ -85,7 +85,7 @@ angular.module('polderweb')
     									  , BTWCode : ''
     									  , IndProlongeren : false
 										  });
-                Service.SvcSoortBetaling("C", currentUser.username, mySoortBetaling);
+                Service.SvcSoortBetaling("C", res.Username, mySoortBetaling);
             });
         },
 
@@ -104,7 +104,7 @@ angular.module('polderweb')
     									  , BTWCode : ''
     									  , IndProlongeren : false
 										  });
-                Service.SvcSoortBetaling("U", currentUser.username, mySoortBetaling);
+                Service.SvcSoortBetaling("U", res.Username, mySoortBetaling);
             });
         },
 
@@ -124,7 +124,7 @@ angular.module('polderweb')
     									  , BTWCode : ''
     									  , IndProlongeren : false
 										  });
-                Service.SvcSoortBetaling("D", currentUser.username, mySoortBetaling, function(result){
+                Service.SvcSoortBetaling("D", res.Username, mySoortBetaling, function(result){
                     console.log(result);
 
                     delSoortBetalingPromise.resolve(result)

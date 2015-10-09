@@ -28,7 +28,7 @@ angular.module('polderweb')
 					, Titel : '', Tussenvoegsel : '', Vlag1 : false, Vlag10 : false, Vlag11 : false, Vlag12 : false, Vlag13 : false, Vlag14 : false, Vlag15 : false, Vlag16 : false, Vlag2 : false, Vlag3 : false
 					, Vlag4 : false, Vlag5 : false, Vlag6 : false, Vlag7 : false, Vlag8 : false, Vlag9 : false, Voorletters : '', Voornaam : ''
 				});
-                Service.SvcPersoon("R", currentUser.username, myPersoon, function(result) {
+                Service.SvcPersoon("R", res.Username, myPersoon, function(result) {
                     defer.resolve(result.toObject());
 				});
 			});
@@ -67,7 +67,7 @@ angular.module('polderweb')
 					, Titel : '', Tussenvoegsel : '', Vlag1 : false, Vlag10 : false, Vlag11 : false, Vlag12 : false, Vlag13 : false, Vlag14 : false, Vlag15 : false, Vlag16 : false, Vlag2 : false, Vlag3 : false
 					, Vlag4 : false, Vlag5 : false, Vlag6 : false, Vlag7 : false, Vlag8 : false, Vlag9 : false, Voorletters : '', Voornaam : ''
 				});
-            Service.SvcPersoon("R", currentUser.username, myPersoon, function(result) {
+            Service.SvcPersoon("R", res.Username, myPersoon, function(result) {
 				var data = _.find(result.toObject(), {'LidNr': parseInt(persoonId)});
                 //when only first row returns, then no prev/next possible
 				//var data = result.toObject()[0];
@@ -140,19 +140,19 @@ angular.module('polderweb')
 					, Voornaam : ''
 				});
 				//console.log('svcPersoon : ' + JSON.stringify(myPersoon));
-                Service.SvcPersoon("C", currentUser.username, myPersoon);
+                Service.SvcPersoon("C", res.Username, myPersoon);
             });
         },
 
         updatePersoon:function(Persoon){
           userService.get().then(function(res){
-            Service.SvcPersoon("U", currentUser.username, Persoon);
+            Service.SvcPersoon("U", res.Username, Persoon);
           });
         },
 
         delPersoon:function(Persoon){
           userService.get().then(function(res){
-			Service.SvcPersoon("D", currentUser.username, Persoon);
+			Service.SvcPersoon("D", res.Username, Persoon);
           });
         },
 //-----------------------

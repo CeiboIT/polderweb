@@ -13,7 +13,7 @@ angular.module('polderweb')
 			var defer = $q.defer();
             userService.get().then(function(res){
                 myFunctie.fromObject({Bedrijf : res.Bedrijf,Functie : '', Omschrijving : ''});
-                Service.SvcFunctie("R", currentUser.username, myFunctie, function(result) {
+                Service.SvcFunctie("R", res.Username, myFunctie, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(myFunctie));
 //          alert(JSON.stringify(result.toObject()));
@@ -26,7 +26,7 @@ angular.module('polderweb')
              userService.get().then(function(res){
              myFunctie.fromObject({Bedrijf : res.Bedrijf,Functie : functieId, Omschrijving : ''});
              //myFunctie.fromObject({Bedrijf : res.Bedrijf,Functie : '', Omschrijving : ''});
-             Service.SvcFunctie("R", currentUser.username, myFunctie, function(result) {
+             Service.SvcFunctie("R", res.Username, myFunctie, function(result) {
                 var data = _.find(result.toObject(), {'Functie':functieId});
                 defer.resolve(data);
              });
@@ -36,14 +36,14 @@ angular.module('polderweb')
         addFunctie: function (functieData) {
            userService.get().then(function(res){
                 myFunctie.fromObject({Bedrijf : res.Bedrijf,Functie : functieData.Functie, Omschrijving : functieData.Omschrijving});
-                Service.SvcFunctie("C", currentUser.username, myFunctie);
+                Service.SvcFunctie("C", res.Username, myFunctie);
             });
 
         },
         updateFunctie:function(functieData){
            userService.get().then(function(res){
                 myFunctie.fromObject({Bedrijf : res.Bedrijf,Functie : functieData.Functie, Omschrijving : functieData.Omschrijving});
-                Service.SvcFunctie("U", currentUser.username, myFunctie);
+                Service.SvcFunctie("U", res.Username, myFunctie);
             });
         },
 
@@ -53,7 +53,7 @@ angular.module('polderweb')
 
             userService.get().then(function(res){
                 myFunctie.fromObject({Bedrijf : res.Bedrijf,Functie : Functie, Omschrijving : Omschrijving});
-                Service.SvcFunctie("D", currentUser.username, myFunctie, function(result){
+                Service.SvcFunctie("D", res.Username, myFunctie, function(result){
                     console.log(result);
 
                     delFunctiePromise.resolve(result)

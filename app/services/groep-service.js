@@ -13,7 +13,7 @@ angular.module('polderweb')
 			var defer = $q.defer();
             userService.get().then(function(res){
                 myGroep.fromObject({Bedrijf : res.Bedrijf,Groep : '', Omschrijving : '', Periode : 0});
-                Service.SvcGroep("R", currentUser.username, myGroep, function(result) {
+                Service.SvcGroep("R", res.Username, myGroep, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(myGroep));
 //          alert(JSON.stringify(result.toObject()));
@@ -30,7 +30,7 @@ angular.module('polderweb')
 							   , Omschrijving : ''
 							   , Periode : 0});
              //myGroep.fromObject({Bedrijf : res.Bedrijf,Groep : '', Omschrijving : ''});
-             Service.SvcGroep("R", currentUser.username, myGroep, function(result) {
+             Service.SvcGroep("R", res.Username, myGroep, function(result) {
                 var data = _.find(result.toObject(), {'Groep':groepId});
                 defer.resolve(data);
              });
@@ -45,7 +45,7 @@ angular.module('polderweb')
 								  , Omschrijving : groepData.Omschrijving
 				                  , Periode : groepData.Periode
 								  });
-                Service.SvcGroep("C", currentUser.username, myGroep);
+                Service.SvcGroep("C", res.Username, myGroep);
             });
         },
 
@@ -56,7 +56,7 @@ angular.module('polderweb')
 								  , Omschrijving : groepData.Omschrijving
 				                  , Periode : groepData.Periode
 								  });
-                Service.SvcGroep("U", currentUser.username, myGroep);
+                Service.SvcGroep("U", res.Username, myGroep);
             });
         },
 
@@ -67,7 +67,7 @@ angular.module('polderweb')
 				                  , Groep : Groep
 								  , Omschrijving : Omschrijving
 								  , Periode : 0});
-                Service.SvcGroep("D", currentUser.username, myGroep, function(result){
+                Service.SvcGroep("D", res.Username, myGroep, function(result){
                     console.log(result);
                     delGroepPromise.resolve(result)
                 });
