@@ -18,15 +18,15 @@
                      </button>
                      <ul class="table-export dropdown-menu" table-selector="'table'" export-options="{type: 'pdf', escape: true, ignoreColumn : '[4]', tableName: 'Aanhefs' }" aria-labelledby="dropdownMenu1">
                          <li te-option te-value="'pdf'" te-param="'type'">
-                             <a href="#">PDF</a>
+                             <a>PDF</a>
                          </li>
 
                          <li te-option te-value="'excel'" te-param="'type'">
-                             <a href="#">Excel</a>
+                             <a>Excel</a>
                          </li>
 
                          <li te-option te-value="'csv'" te-param="'type'">
-                             <a href="#">CSV</a>
+                             <a>CSV</a>
                          </li>
                      </ul>
                  </div>
@@ -98,7 +98,7 @@
         </thead>
         <tbody>
 <!--          <tr ng-repeat="pe in ctrl.model.persoon | orderBy: mySort : reverse | filter : {Naam: filter.naam, Plaats: filter.plaats, LidNr: filter.lidnr, SoortLid: filter.soortlid?filter.soortlid:'', Regio: filter.regio?filter.regio:'' } as numResults" >  -->
-          <tr ng-repeat="pe in ctrl.model.persoon"> 
+          <tr ng-repeat="pe in ctrl.model.persoon">
             <td ng-if="display.persoonLidNr">{{ pe.LidNr }}</td>
             <td ng-if="display.persoonNaam">{{ pe.Naam }}</td>
             <td ng-if="display.persoonStraat">{{ pe.Straat }}</td>
@@ -133,7 +133,7 @@
 					</td>
 				</tr>
 				</tfoot>
-		
+
       </table>
     </scrollable-table>
   </div>
