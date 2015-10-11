@@ -6,26 +6,74 @@
 <div>
   <br><br>
   <div class="dashboard-grid">
-      <table st-table="ctrl.model.aanhefs" class="table table-striped">
-	  <thead>
-          <tr>
-            <th st-sort="Omschrijving">Omschrijving</th>
-            <th st-sort="Aantal">Aantal</th>
-            <th st-sort="Bedrag">Bedrag</th>
-            <th class="col-md-1"></th>
-		  </tr>
-        </thead>
         <tbody>
-		<tr ng-repeat="db in ctrl.model.dashboards" >
-            <td>{{ db.Omschrijving }}</td>
+		<!-- 		<tr ng-repeat="db in ctrl.model.dashboards | limitTo:2" > -->
+<!--
+		<tr ng-repeat="db in ctrl.model.dashboards.slice(0,2)" >
+		<td>{{ db.Omschrijving }}</td>
             <td>{{ db.Aantal }}</td>
-            <td>{{ db.Bedrag }}</td>
+            <td>{{ db.Bedrag | currency }}</td>
           </tr>
-        </tbody>
-      </table>
-  </div>
-  <div ng-if="numResults.length === 0">
-    <strong>Geen resultaten gevonden...</strong>
+
+		  
+		<div class="container">		  
+			<div class="row">
+
+<div class="col-md-6">
+<p> bla bla </p>
+		<tr ng-repeat="db in ctrl.model.dashboards.slice(2,3)" >
+		{{ db.Omschrijving }}
+        {{ db.Aantal }}
+        {{ db.Bedrag | currency }}
+        </tr>
+</div>
+<div class="col-md-6">
+<p> bla bla </p>
+		<tr ng-repeat="db in ctrl.model.dashboards.slice(3,4)" >
+		<td>{{ db.Omschrijving }}</td>
+            <td>{{ db.Aantal }}</td>
+            <td>{{ db.Bedrag | currency }}</td>
+          </tr>
+</div>
+			</div>
+		</div>
+-->
+    <div class="container" ng-cloak>
+        <h1>PolderWeb</h1>
+        <div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" ng-repeat="db in ctrl.model.dashboards">
+                <div class="flightCard">
+                    <div class="approvedFlight">
+                        <h3>{{db.Omschrijving}}</h3>
+                    </div>
+                    <div>
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;Bedrag: {{db.Bedrag | currency}}</span>					
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;Aantal: {{db.Aantal}}</span>					
+<!--
+  <code>bedrag={{db.Bedrag}}</code>
+<div ng-switch on="bedrag">
+    <div ng-switch-when=0>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;Bedrag: {{db.Bedrag | currency}}</p>					
+    </div>
+    <div ng-switch-default>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;Aantal: {{db.Aantal}}</p>					
+    </div>
+</div>				
+-->
+                        <div class="pull-right">
+							<button type="button" ng-click="clickCancel()" class="btn btn-sm btn-cancel">Meer..</button>
+						</div>
+						</br>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+		
+    </tbody>
+	</div>
   </div>
 </div>
-<hr/>

@@ -290,7 +290,8 @@ a:hover .caret-white {
   margin-top: -7px;
 }
 .input-lg {
-  height: 45px;
+//  height: 45px;
+  height: 40px;
 }
 .input-group-addon {
   border-color: #cccccc;
@@ -355,7 +356,8 @@ a.list-group-item.hover {
 }
 .list-group-sp .list-group-item {
   margin-bottom: 5px;
-  border-radius: 3px;
+//  border-radius: 3px;
+  border-radius: 0px;
 }
 .list-group-item > .badge {
   margin-right: 0;
@@ -399,7 +401,8 @@ a.list-group-item.hover {
   padding: 1px 10px;
 }
 .nav.nav-rounded > li > a {
-  border-radius: 20px;
+//  border-radius: 20px;
+  border-radius: 0px;
 }
 .nav .open > a,
 .nav .open > a:hover,
@@ -655,7 +658,8 @@ body {
   overflow-x: hidden;
 }
 .rounded {
-  border-radius: 4px;
+//  border-radius: 4px;
+  border-radius: 0px;
 }
 .app {
   height: auto;
@@ -979,7 +983,8 @@ body {
 .login-page .container .login-box .signup {
   position: relative;
   border: 1px solid #cccccc;
-  border-radius: 4px;
+//  border-radius: 4px;
+  border-radius: 0px;
   padding: 15px;
   margin-top: 5px;
   margin-bottom: 10px;
@@ -2261,7 +2266,8 @@ fieldset[disabled] .btn-black.active {
   line-height: 45px;
 }
 .btn-rounded {
-  border-radius: 4px;
+//  border-radius: 4px;
+  border-radius: 0px;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -2391,7 +2397,8 @@ fieldset[disabled] .btn-black.active {
   border-color: inherit;
   border-width: 1px;
   border-style: solid;
-  border-radius: 10px;
+//  border-radius: 10px;
+  border-radius: 0px;
   width: 9px;
   height: 9px;
   margin-left: -5px;
@@ -3775,7 +3782,8 @@ a.text-black:hover {
   float: none;
 }
 .rounded {
-  border-radius: 4px;
+//  border-radius: 4px;
+  border-radius: 0px;
 }
 .clear {
   display: block;
@@ -4625,11 +4633,13 @@ a.navbar-brand:hover {
   margin-right: 15px;
 }
 .filters-desktop .form-control {
-  border-radius: 4px;
+//  border-radius: 4px;
+  border-radius: 0px;
 }
 .filters-desktop input {
   max-width: 50px;
-  border-radius: 4px;
+//  border-radius: 4px;
+  border-radius: 0px;
 }
 .filters-desktop .locale .ui-select-container {
   min-width: 150px;
@@ -4660,7 +4670,7 @@ a.navbar-brand:hover {
   border-bottom: none;
 }
 form.auth .form-control {
-  height: 42px;
+  height: 40px;
 }
 .dropdown-menu > li > a.admin {
   background-color: #428bca;
@@ -6285,4 +6295,20 @@ p.title {
     /* has to be scroll, not auto */
     -webkit-overflow-scrolling: touch;
   }
+}
+
+.flightCard {
+    /*background-color: #f3f0f0;*/
+    border-color: black;
+    -ms-border-radius: 10px;
+    border-radius: 0px;
+    border-width: 2px;
+}
+
+.approvedFlight {
+    background-color: #f0f3f4;
+    border-radius: 0px;
+    border-color: #cccccc;
+    border-width: 2px;
+    padding: 2px;
 }
