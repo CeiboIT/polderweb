@@ -137,36 +137,36 @@
       </table>
     </scrollable-table>
 
-         <table id="auxTable" style="opacity: 0; position: absolute;">
-            <thead>
-                <tr>
-                    <th>LidNr</th>
-                    <th>Naam</th>
-                    <th>Straat</th>
-                    <th>Huisnr</th>
-                    <th>Postcode</th>
-                    <th>Plaats</th>
-                    <th>DatumGeb</th>
-                    <th>Leeftijd</th>
-                    <th>SoortLid</th>
-                    <th>Regio</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="x in filteredCollection">
-                     <td>{{x.LidNr}}</td>
-                     <td>{{x.Naam}}</td>
-                     <td>{{x.Straat}}</td>
-                     <td>{{x.HuisNr}}</td>
-                     <td>{{x.Postcode}}</td>
-                     <td>{{x.DatumGeb | date : 'dd/MM/yyyy' }}</td>
-                     <td>{{x.Leeftijd}}</td>
-                     <td>{{x.Straat}}</td>
-                     <td>{{x.SoortLidOms}}</td>
-                     <td>{{x.RegioOms}}</td>
-                </tr>
-            </tbody>
-        </table>
+    <table id="auxTable" style="opacity: 0; position: absolute;">
+        <thead>
+            <tr>
+                <th>LidNr</th>
+                <th>Naam</th>
+                <th>Straat</th>
+                <th>Huisnr</th>
+                <th>Postcode</th>
+                <th>Plaats</th>
+                <th>DatumGeb</th>
+                <th>Leeftijd</th>
+                <th>SoortLid</th>
+                <th>Regio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in filteredCollection">
+                 <td>{{x.LidNr}}</td>
+                 <td>{{x.Naam}}</td>
+                 <td>{{x.Straat}}</td>
+                 <td>{{x.HuisNr}}</td>
+                 <td>{{x.Postcode}}</td>
+                 <td>{{x.DatumGeb | date : 'dd/MM/yyyy' }}</td>
+                 <td>{{x.Leeftijd}}</td>
+                 <td>{{x.Straat}}</td>
+                 <td>{{x.SoortLidOms}}</td>
+                 <td>{{x.RegioOms}}</td>
+            </tr>
+        </tbody>
+    </table>
 
   </div>
   <div ng-if="numResults.length === 0">
