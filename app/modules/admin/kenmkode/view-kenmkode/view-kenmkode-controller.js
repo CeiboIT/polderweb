@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('viewKenmKodeCtrl',
-    function ($scope, KenmKode, $state, bedrijf, username, $stateParams) {
+    function ($scope, KenmKode, kenmerks, $state, bedrijf, username, $stateParams) {
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{
@@ -12,7 +12,9 @@ angular.module('polderweb')
         $scope.kenmkode = res;
       });
 
-        $scope.kenmkodeService = KenmKode;
+    $scope.allKenmerk = kenmerks;
+
+    $scope.kenmkodeService = KenmKode;
 
 	  $scope.clickSave = function (form) {
         $scope.submitted = true;

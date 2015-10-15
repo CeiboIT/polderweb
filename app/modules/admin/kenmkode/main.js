@@ -53,7 +53,10 @@ angular.module('polderweb.kenmkode', [])
                    },
                    username: function($cookieStore) {
                        return $cookieStore.get('user').Username;
-                   }
+                   },
+                    kenmerks: function (Kenmerk) {
+                        return Kenmerk.findAll();
+                    }
                 }
             });
 

@@ -13,7 +13,7 @@ angular.module('polderweb')
 			var defer = $q.defer();
             userService.get().then(function(res){
                 myKenmKode.fromObject({Bedrijf : res.Bedrijf
-				                     , Kenmerk : 'TEST'
+				           , Kenmerk : 'TEST'
 									 , Kode : ''
 									 , Omschrijving : ''
 									 , Extra1 : ''
@@ -21,8 +21,8 @@ angular.module('polderweb')
 									 , Extra3 : ''});
                 Service.SvcKenmKode("R", res.Username, myKenmKode, function(result) {
                     defer.resolve(result.toObject());
-//          alert(JSON.stringify(myKenmKode));
-//          alert(JSON.stringify(result.toObject()));
+//                  alert(JSON.stringify(myKenmKode));
+//                  alert(JSON.stringify(result.toObject()));
                 });
             });
              return defer.promise;
@@ -32,7 +32,7 @@ angular.module('polderweb')
             var defer = $q.defer();
              userService.get().then(function(res){
              myKenmKode.fromObject({Bedrijf : res.Bedrijf
-			                      , Kenmerk : 'TEST'
+			            , Kenmerk : 'TEST'
 								  , Kode : kenmkodeId
 								  , Omschrijving : ''
 								  , Extra1 : ''
