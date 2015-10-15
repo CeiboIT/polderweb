@@ -1,7 +1,6 @@
 node_modules
 dist
 .tmp
-app/components/tables
 .sass-cache
 bower_components
 template
