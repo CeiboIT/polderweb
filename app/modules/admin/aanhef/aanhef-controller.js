@@ -21,7 +21,6 @@ angular.module('polderweb')
       }
 
       function clickDel(aanhef) {
-
           Aanhef.nextAanhef(aanhef, function (aanhefId) {
               if (aanhefId) {
                   Aanhef.delAanhef(aanhef);
