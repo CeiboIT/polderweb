@@ -18,17 +18,17 @@
                          <i class=""></i>Export
                          <span class="caret"></span>
                      </button>
-                     <ul class="table-export dropdown-menu" table-selector="'table'" export-options="{type: 'pdf', escape: true, ignoreColumn : '[4]', tableName: 'Regios' }" aria-labelledby="dropdownMenu1">
+                     <ul class="table-export dropdown-menu" table-selector="'auxTable'" export-options="{type: 'pdf', escape: true, ignoreColumn : '[4]', tableName: 'Regios' }" aria-labelledby="dropdownMenu1">
                          <li te-option te-value="'pdf'" te-param="'type'">
-                             <a href="#">PDF</a>
+                             <a href="">PDF</a>
                          </li>
 
                          <li te-option te-value="'excel'" te-param="'type'">
-                             <a href="#">Excel</a>
+                             <a href="">Excel</a>
                          </li>
 
                          <li te-option te-value="'csv'" te-param="'type'">
-                             <a href="#">CSV</a>
+                             <a href="">CSV</a>
                          </li>
                      </ul>
                  </div>
@@ -43,7 +43,7 @@
 
 <!-- 			 <table st-table="ctrl.model.regios" class="table table-striped"> -->
 			<hr/>
-			 <table st-table="ctrl.model.regios" class="table table-striped">
+			 <table st-table="ctrl.model.regios" st-filtered-collection="filteredCollection" class="table table-striped">
                  <thead>
                      <tr>
                          <th st-sort="Regio">Regio</th>
@@ -66,7 +66,6 @@
                                         askBeforeDelete: true}"
                                      ng-model="row.Regio"
                                      deletion-service="ctrl.regioService.delRegio"
-<!--                                     class="btn btn-sm btn-danger -->
                                      class="btn btn-sm btn-delete
                                      ">
                                  <i class="fa fa-trash-o"></i>
@@ -80,8 +79,24 @@
 						<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="10"></div>
 					</td>
 				</tr>
-				</tfoot>				 
+				</tfoot>
              </table>
+
+             <table id="auxTable" style="opacity: 0; position: absolute;">
+                <thead>
+                    <tr>
+                        <th>Regio</th>
+                        <th>Omschrijving</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in filteredCollection">
+                         <td>{{x.Regio}}</td>
+                         <td>{{x.Omschrijving}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
          </div>
      </div>
 <!--  <div ng-if="numResults.length === 0">

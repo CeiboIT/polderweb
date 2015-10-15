@@ -17,17 +17,17 @@
                          <i class=""></i>Export
                          <span class="caret"></span>
                      </button>
-                     <ul class="table-export dropdown-menu" table-selector="'table'" export-options="{type: 'pdf', escape: true, ignoreColumn : '[4]', tableName: 'Openstaands' }" aria-labelledby="dropdownMenu1">
+                     <ul class="table-export dropdown-menu" table-selector="'auxTable'" export-options="{type: 'pdf', escape: true, tableName: 'Openstaands' }" aria-labelledby="dropdownMenu1">
                          <li te-option te-value="'pdf'" te-param="'type'">
-                             <a href="#">PDF</a>
+                             <a href="">PDF</a>
                          </li>
 
                          <li te-option te-value="'excel'" te-param="'type'">
-                             <a href="#">Excel</a>
+                             <a href="">Excel</a>
                          </li>
 
                          <li te-option te-value="'csv'" te-param="'type'">
-                             <a href="#">CSV</a>
+                             <a href="">CSV</a>
                          </li>
                      </ul>
                  </div>
@@ -39,7 +39,7 @@
                  <option te-option te-value="'xls'" te-param="'type'">XLS</option>
              </select>-->
 			<hr/>
-			 <table st-table="ctrl.model.openstaands" class="table table-striped">
+			 <table st-table="ctrl.model.openstaands" st-filtered-collection="filteredCollection" class="table table-striped">
                 <thead>
                     <tr>
                         <th st-sort="Totaal">Totaal</th>
@@ -83,6 +83,34 @@
 					</tr>
 				</tfoot>
              </table>
+
+             <table id="auxTable" style="opacity: 0; position: absolute;">
+                <thead>
+                    <tr>
+                        <th>LidNr</th>
+                        <th>Naam</th>
+                        <th>Plaats</th>
+                        <th>Bedrag</th>
+                        <th>Termijnen</th>
+                        <th>BedragOpenstaand</th>
+                        <th>Laatste Betaling</th>
+                        <th>BetaalWijze</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in filteredCollection">
+                         <td>{{x.LidNr}}</td>
+                         <td>{{x.Voorletters + ' ' + x.Tussenvoegsel + ' ' + x.Naam}}</td>
+                         <td>{{x.Plaats}}</td>
+                         <td>{{x.Bedrag | currency}}</td>
+                         <td>{{x.AantalTermijnen}}</td>
+                         <td>{{x.BedragOpenstaand | currency}}</td>
+                         <td>{{x.DatumBetaald | date}}</td>
+                         <td>{{x.BetaalWijze}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
          </div>
      </div>
 <!--  <div ng-if="numResults.length === 0">

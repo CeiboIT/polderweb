@@ -16,7 +16,7 @@
                          <i class=""></i>Export
                          <span class="caret"></span>
                      </button>
-                     <ul class="table-export dropdown-menu" table-selector="'auxTable'" export-options="{type: 'pdf', escape: true, ignoreColumn : '[4]', tableName: 'Persoons' }" aria-labelledby="dropdownMenu1">
+                     <ul class="table-export dropdown-menu" table-selector="'auxTable'" export-options="{type: 'pdf', escape: true, ignoreColumn : '[2]', tableName: 'Persoons' }" aria-labelledby="dropdownMenu1">
                          <li te-option te-value="'pdf'" te-param="'type'">
                              <a href=''>PDF</a>
                          </li>
@@ -143,9 +143,9 @@
                 <th>LidNr</th>
                 <th>Naam</th>
                 <th>Straat</th>
-                <th>Huisnr</th>
-                <th>Postcode</th>
-                <th>Plaats</th>
+<!--                <th>Huisnr</th>     -->
+<!--                <th>Postcode</th>   -->
+<!--                <th>Plaats</th>     -->
                 <th>DatumGeb</th>
                 <th>Leeftijd</th>
                 <th>SoortLid</th>
@@ -157,11 +157,11 @@
                  <td>{{x.LidNr}}</td>
                  <td>{{x.Naam}}</td>
                  <td>{{x.Straat}}</td>
+                 <td>{{x.DatumGeb | date : 'dd/MM/yyyy' }}</td>
                  <td>{{x.HuisNr}}</td>
                  <td>{{x.Postcode}}</td>
-                 <td>{{x.DatumGeb | date : 'dd/MM/yyyy' }}</td>
+                 <td>{{x.Plaats}}</td>
                  <td>{{x.Leeftijd}}</td>
-                 <td>{{x.Straat}}</td>
                  <td>{{x.SoortLidOms}}</td>
                  <td>{{x.RegioOms}}</td>
             </tr>
