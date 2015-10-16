@@ -13,7 +13,7 @@ angular.module('polderweb')
 			var defer = $q.defer();
             userService.get().then(function(res){
                 myKenmKode.fromObject({Bedrijf : res.Bedrijf
-				           , Kenmerk : 'TEST'
+				           , Kenmerk : ''
 									 , Kode : ''
 									 , Omschrijving : ''
 									 , Extra1 : ''
@@ -32,7 +32,7 @@ angular.module('polderweb')
             var defer = $q.defer();
              userService.get().then(function(res){
              myKenmKode.fromObject({Bedrijf : res.Bedrijf
-			            , Kenmerk : 'TEST'
+			            , Kenmerk : ''
 								  , Kode : kenmkodeId
 								  , Omschrijving : ''
 								  , Extra1 : ''
@@ -50,7 +50,7 @@ angular.module('polderweb')
         addKenmKode: function (kenmkodeData) {
            userService.get().then(function(res){
                 myKenmKode.fromObject({Bedrijf : res.Bedrijf
-				                     , Kenmerk : 'TEST' //kenmkodeData.Kenmerk
+				           , Kenmerk : kenmkodeData.Kenmerk
 									 , Kode : kenmkodeData.Kode
 									 , Omschrijving : kenmkodeData.Omschrijving
 									 , Extra1 : kenmkodeData.Extra1
@@ -64,7 +64,7 @@ angular.module('polderweb')
         updateKenmKode:function(kenmkodeData){
            userService.get().then(function(res){
                 myKenmKode.fromObject({Bedrijf : res.Bedrijf
-				                     , Kenmerk : 'TEST' //kenmkodeData.Kenmerk
+				           , Kenmerk : kenmkodeData.Kenmerk
 									 , Kode : kenmkodeData.Kode
 									 , Omschrijving : kenmkodeData.Omschrijving
 									 , Extra1 : kenmkodeData.Extra1
@@ -78,7 +78,7 @@ angular.module('polderweb')
             var delKenmKodePromise = $q.defer();
             userService.get().then(function(res){
                 myKenmKode.fromObject({Bedrijf : res.Bedrijf
-				                     , Kenmerk : 'TEST'
+				           , Kenmerk : ''
 									 , Kode : Kode
 									 , Omschrijving : Omschrijving
 									 , Extra1 : ''
