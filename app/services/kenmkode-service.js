@@ -1,27 +1,30 @@
 angular.module('polderweb')
   .factory('KenmKode',
   ['GLOBALS', '$http', '$rootScope','$q','userService',
-    function (GLOBALS, $http, $rootScope,$q,userService)
+//    function (GLOBALS, $http, $rootScope, $q, userService)
+    function (GLOBALS, $http, $rootScope, $q, userService)
      {
       var currentUser = userService.get(); //20150801
       var lastId="";
       var myKenmKode = new TKenmKode();
       return {
-        findAll: function () {
+//20151020        findAll: function () {
+        findAll: function (kenmerkId) {
 //			$rootScope.display.kenmkodeKenmKode=true;       //20150801 always display
 //			$rootScope.display.kenmkodeOmschrijving=true;
 			var defer = $q.defer();
             userService.get().then(function(res){
                 myKenmKode.fromObject({Bedrijf : res.Bedrijf
-				           , Kenmerk : ''
+//20151020							 , Kenmerk : ''
+									 , Kenmerk : kenmerkId
 									 , Kode : ''
 									 , Omschrijving : ''
 									 , Extra1 : ''
 									 , Extra2 : ''
 									 , Extra3 : ''});
+//   alert(JSON.stringify(myKenmKode));
                 Service.SvcKenmKode("R", res.Username, myKenmKode, function(result) {
                     defer.resolve(result.toObject());
-//                  alert(JSON.stringify(myKenmKode));
 //                  alert(JSON.stringify(result.toObject()));
                 });
             });

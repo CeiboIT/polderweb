@@ -12,16 +12,17 @@ angular.module('polderweb.kenmkode', [])
             })
 
             .state('kenmkode.list', {
-//20151020      url:'/list',
-                url:'/list/:kenmerkId',
+                url:'/list',
                 templateUrl:'app/modules/admin/kenmkode/kenmkode.html',
                 controller:'KenmKodeController as ctrl',
                 resolve: {
                     kenmkodes: function (KenmKode) {
-//20151020				return KenmKode.findAll();
-                        return KenmKode.findAll($stateProvider.kenmerkId);
+//"kenmkode.list({kenmerkId: kenmkode.Kenmerk})"
+//					return KenmKode.findAll();
+					return KenmKode.findAll(KenmKode.kenmerk);
+//					return KenmKode.findAll(kenmKode);
                     },
-					bedrijf: function($cookieStore) {
+                   bedrijf: function($cookieStore) {
                        return $cookieStore.get('user').Bedrijf;
                    },
                    username: function($cookieStore) {
@@ -55,10 +56,7 @@ angular.module('polderweb.kenmkode', [])
                    },
                    username: function($cookieStore) {
                        return $cookieStore.get('user').Username;
-                   },
-                    kenmerks: function (Kenmerk) {
-                        return Kenmerk.findAll();
-                    }
+                   }
                 }
             });
 

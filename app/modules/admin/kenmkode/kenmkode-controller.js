@@ -1,10 +1,14 @@
 angular.module('polderweb')
-  .controller('KenmKodeController',
-   function ($rootScope, $scope, $state, KenmKode, bedrijf, username, kenmkodes, authService, homeState) {
+// .controller('KenmKodeController', function ($rootScope, $scope, $state, KenmKode, bedrijf, username, kenmkodes, authService, homeState) {
+   .controller('KenmKodeController', function ($rootScope, $scope, $state, $stateParams, Kenmerk, KenmKode, bedrijf, username, kenmkodes, authService, homeState) {
 
       $scope.bedrijf = bedrijf;
       $scope.username = username;
 
+	  Kenmerk.getKenmerk($stateParams.kenmerkId).then(function(res){ //20151020
+        $scope.kenmerk = res;
+      });
+	  
        var model = {
            selection : [],
            kenmkodes: kenmkodes
