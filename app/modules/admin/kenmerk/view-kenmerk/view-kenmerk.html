@@ -30,7 +30,7 @@
           </td>
       </tr>
     </table>
-    <button ng-if="kenmerk.Kenmkode" type="button" ui-sref="kenmkode.list"  class="btn btn-lg btn-success">Waarden</button>
+    <button ng-if="kenmerk.Kenmkode" type="button" ui-sref="kenmkode.list[kenmerk]({kenmerk: kenmerk.Kenmerk, omschrijving: kenmerk.Omschrijving})"  class="btn btn-lg btn-success">Waarden</button>
     <label ng-if="!kenmerk.Kenmkode">
       This Kenmerk don't have Kenmkode associated. Associate one here
       <button type="button" ui-sref="kenmkode.list"  class="btn btn-lg btn-success">Kenmkodes</button>

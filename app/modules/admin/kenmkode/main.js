@@ -16,7 +16,7 @@ angular.module('polderweb.kenmkode', [])
                 templateUrl:'app/modules/admin/kenmkode/kenmkode.html',
                 controller:'KenmKodeController as ctrl',
                 resolve: {
-                    kenmkodes: function (KenmKode) {
+                   kenmkodes: function (KenmKode) {
                         return KenmKode.findAll();
                     },
                    bedrijf: function($cookieStore) {
@@ -27,6 +27,27 @@ angular.module('polderweb.kenmkode', [])
                    }
                 }
             })
+
+            .state('kenmkode.list[kenmerk]', {
+                url:'/list/:kenmerk/:omschrijving',
+                templateUrl:'app/modules/admin/kenmkode/kenmkode.html',
+                controller:'KenmKodeController2 as ctrl',
+                resolve: {
+                   kenmkodes: function (KenmKode) {
+                        return KenmKode.findAll();
+                    },
+                   params: function($stateParams) {
+                      return [$stateParams.kenmerk, $stateParams.omschrijving];
+                   },
+                   bedrijf: function($cookieStore) {
+                       return $cookieStore.get('user').Bedrijf;
+                   },
+                   username: function($cookieStore) {
+                       return $cookieStore.get('user').Username;
+                   }
+                }
+            })
+
             .state('kenmkode.create',
             {
                 url:'/create',
