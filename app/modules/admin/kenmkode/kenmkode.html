@@ -48,6 +48,7 @@
 			 <table st-table="ctrl.model.kenmkodes" st-filtered-collection="filteredCollection" class="table table-striped">
                  <thead>
                      <tr>
+                         <th st-sort="Kenmerk">Kenmerk</th>
                          <th st-sort="Kode">Kode</th>
                          <th st-sort="Omschrijving">Omschrijving</th>
                          <th class="col-md-1"></th>
@@ -55,6 +56,7 @@
                  </thead>
                  <tbody>
                      <tr ng-repeat="row in ctrl.model.kenmkodes">
+                         <td>{{row.Kenmerk}}</td>
                          <td>{{row.Kode}}</td>
                          <td>{{row.Omschrijving}}</td>
                          <td>
@@ -87,12 +89,14 @@
              <table id="auxTable" style="opacity: 0; position: absolute;">
                 <thead>
                     <tr>
+                        <th>Kenmerk</th>
                         <th>Kode</th>
                         <th>Omschrijving</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="x in filteredCollection">
+                         <td>{{x.Kenmerk}}</td>
                          <td>{{x.Kode}}</td>
                          <td>{{x.Omschrijving}}</td>
                     </tr>
