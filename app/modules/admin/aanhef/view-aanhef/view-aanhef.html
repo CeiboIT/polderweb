@@ -33,7 +33,7 @@
           <td><b>Geslacht</b></td>
           <td>
               <select ng-model="aanhef.Geslacht" class="form-control input" ng-options="geslacht.value as geslacht.label for geslacht in geslachtOptions"></select>
-              <p class="help-block" ng-show="form.omschrijving.$error.required && submitted">Dit veld is verplicht</p>
+              <p class="help-block" ng-show="form.geslacht.$error.required && submitted">Dit veld is verplicht</p>
           </td>
       </tr>
     </table>
