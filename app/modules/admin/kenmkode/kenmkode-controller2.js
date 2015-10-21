@@ -1,13 +1,23 @@
 angular.module('polderweb')
-  .controller('KenmKodeController',
-   function ($rootScope, $scope, $state, KenmKode, bedrijf, username, kenmkodes, authService, homeState) {
+  .controller('KenmKodeController2',
+   function ($rootScope, $scope, $state, KenmKode, bedrijf, username, kenmkodes, params, authService, homeState) {
+
+      $scope.params = params;
 
       $scope.bedrijf = bedrijf;
       $scope.username = username;
 
+      // show only kenmkodes that match with kenmerk
+      $scope.kenmkodes = [];
+      for (var i in kenmkodes) {
+        if (kenmkodes[i].Kenmerk === $scope.params[0]) {
+          $scope.kenmkodes.push(kenmkodes[i]);
+        };
+      };
+
        var model = {
            selection : [],
-           kenmkodes: kenmkodes
+           kenmkodes: $scope.kenmkodes
        };
        $rootScope.kenmkode = kenmkodes;
 
