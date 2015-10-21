@@ -4,13 +4,12 @@ angular.module('polderweb')
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{
-
-    $scope.bedrijf = bedrijf;
-    $scope.username = username;
+      $scope.bedrijf = bedrijf;
+      $scope.username = username;
 
 	  Kenmerk.getKenmerk($stateParams.kenmerkId).then(function(res){
         $scope.kenmerk = res;
-
+/*
         KenmKode.findAll().then(function(kenmkodes) {
           for (var item in kenmkodes) {
             console.log(kenmkodes[item].Kenmerk);
@@ -21,6 +20,7 @@ angular.module('polderweb')
             };
           };
         });
+*/
       });
 
         $scope.kenmerkService = Kenmerk;

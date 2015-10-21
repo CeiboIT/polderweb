@@ -11,6 +11,7 @@ angular.module('polderweb.kenmkode', [])
                 template: '<div ui-view=""></div>'
             })
 
+/*
             .state('kenmkode.list', {
                 url:'/list',
                 templateUrl:'app/modules/admin/kenmkode/kenmkode.html',
@@ -27,14 +28,17 @@ angular.module('polderweb.kenmkode', [])
                    }
                 }
             })
-
+*/
             .state('kenmkode.list[kenmerk]', {
                 url:'/list/:kenmerk/:omschrijving',
                 templateUrl:'app/modules/admin/kenmkode/kenmkode.html',
                 controller:'KenmKodeController2 as ctrl',
                 resolve: {
                    kenmkodes: function (KenmKode) {
-                        return KenmKode.findAll();
+//20151021                        return KenmKode.findAll();
+//alert (JSON.stringify($stateProvider.kenmerkId));
+//alert (JSON.stringify($scope.params[0]));
+                        return KenmKode.findAll($stateProvider.kenmerkId);
                     },
                    params: function($stateParams) {
                       return [$stateParams.kenmerk, $stateParams.omschrijving];

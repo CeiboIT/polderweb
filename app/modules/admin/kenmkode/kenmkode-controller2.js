@@ -1,8 +1,12 @@
 angular.module('polderweb')
   .controller('KenmKodeController2',
-   function ($rootScope, $scope, $state, KenmKode, bedrijf, username, kenmkodes, params, authService, homeState) {
+//   function ($rootScope, $scope, $state, KenmKode, bedrijf, username, kenmkodes, authService, homeState) {
+//EP function ($rootScope, $scope, $state, KenmKode, bedrijf, username, kenmkodes, params, authService, homeState) {
+//JS function ($rootScope, $scope, $state, $stateParams, Kenmerk, KenmKode, bedrijf, username, kenmkodes, authService, homeState) {
+     function ($rootScope, $scope, $state, $stateParams, Kenmerk, KenmKode, bedrijf, username, kenmkodes, params, authService, homeState) {
 
       $scope.params = params;
+//alert (JSON.stringify($stateParams.kenmerkId));
 
       $scope.bedrijf = bedrijf;
       $scope.username = username;
