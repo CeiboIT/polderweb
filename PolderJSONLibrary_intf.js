@@ -711,6 +711,29 @@ __namespace.TPersPeri.prototype = new RemObjects.SDK.ROStructType();
 __namespace.TPersPeri.prototype.constructor = __namespace.TPersPeri;
 RemObjects.SDK.RTTI["TPersPeri"] = __namespace.TPersPeri;
 
+// Struct: TPersKenm
+__namespace.TPersKenm = function TPersKenm() {
+    this.Aantal = {dataType : "Integer", value : null};
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.Datum = {dataType : "DateTime", value : null};
+    this.DatumEind = {dataType : "DateTime", value : null};
+    this.Kenmerk = {dataType : "AnsiString", value : null};
+    this.Kode = {dataType : "AnsiString", value : null};
+    this.LidNr = {dataType : "Integer", value : null};
+    this.Opmerking = {dataType : "WideString", value : null};
+    this.Vlag1 = {dataType : "Boolean", value : null};
+    this.Vlag2 = {dataType : "Boolean", value : null};
+    this.Vlag3 = {dataType : "Boolean", value : null};
+    this.Vlag4 = {dataType : "Boolean", value : null};
+    this.Vlag5 = {dataType : "Boolean", value : null};
+    this.Vlag6 = {dataType : "Boolean", value : null};
+    this.Vlag7 = {dataType : "Boolean", value : null};
+    this.Vlag8 = {dataType : "Boolean", value : null};
+};
+__namespace.TPersKenm.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TPersKenm.prototype.constructor = __namespace.TPersKenm;
+RemObjects.SDK.RTTI["TPersKenm"] = __namespace.TPersKenm;
+
 // Struct: TPersBet
 __namespace.TPersBet = function TPersBet() {
     this.Aantal = {dataType : "Integer", value : null};
@@ -1181,6 +1204,15 @@ __namespace.TPersBetArray = function TPersBetArray() {
 __namespace.TPersBetArray.prototype = new RemObjects.SDK.ROArrayType();
 __namespace.TPersBetArray.prototype.constructor = __namespace.TPersBetArray;
 RemObjects.SDK.RTTI["TPersBetArray"] = __namespace.TPersBetArray;
+
+// Array: TPersKenmArray
+__namespace.TPersKenmArray = function TPersKenmArray() {
+  RemObjects.SDK.ROArrayType.call(this);
+  this.elementType = "TPersKenm";
+};
+__namespace.TPersKenmArray.prototype = new RemObjects.SDK.ROArrayType();
+__namespace.TPersKenmArray.prototype.constructor = __namespace.TPersKenmArray;
+RemObjects.SDK.RTTI["TPersKenmArray"] = __namespace.TPersKenmArray;
 
 // Array: TPersoonArray
 __namespace.TPersoonArray = function TPersoonArray() {
@@ -1971,6 +2003,34 @@ __namespace.PolderJSONService.prototype.SvcPersPeri = function(
         }
         __success(
 		__PersPeriOut,
+		__Rslt,
+		__Mess
+		);
+        }, __error);
+
+    } catch (e) {
+        __error(msg, e);
+    };
+};
+
+__namespace.PolderJSONService.prototype.SvcPersKenm = function(
+	Actie,
+	Username,
+	PersKenmIn,
+	__success, __error) {
+    try {
+        var msg = this.fMessage.clone();
+        msg.initialize(this.fServiceName, "SvcPersKenm");
+        msg.write("Actie", "AnsiString", Actie);
+        msg.write("Username", "AnsiString", Username);
+        msg.write("PersKenmIn", "TPersKenm", PersKenmIn);
+        msg.finalize();
+        this.fChannel.dispatch(msg, function (__message) {
+		var __PersKenmOut = __message.read("PersKenmOut", "TPersKenmArray");
+		var __Rslt = __message.read("Rslt", "Boolean");
+		var __Mess = __message.read("Mess", "AnsiString");
+	        __success(
+		__PersKenmOut,
 		__Rslt,
 		__Mess
 		);
