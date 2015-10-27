@@ -22,15 +22,7 @@ nav#sidebar-wrapper {
   left: 150px;
   margin-left: -150px;
   width: 250px;
-/* sidebar zelf
-  background: #d98401; 
-  background: #f0ad4e; 
-  background: #3e313c;
-  slack background: #4D394B;
-  sarah background: #696969;
-  ellen : background: #48d1cc;
-  */
-  background: #4D394B;
+  background: #d98401;
   position: fixed;
   height: 100%;
   z-index: 999;
@@ -61,15 +53,7 @@ nav#sidebar-wrapper ul.menu li.sidebar-main a {
   display: block;
   font-size: 18px;
   line-height: 60px;
-/*
-  Left Top bar
-  background: #f0ad4e;
-  background: #4D394B;
-  slack : background: #ca7b01;
-  sarah : background: #ffc800;
-  ellen background: #e9967a;
-*/
-  background: #dfa941;
+  background: #ca7b01;
   text-indent: 20px;
   font-weight: 500;
 }
@@ -160,15 +144,7 @@ nav#sidebar-wrapper ul.menu div > li.active a {
 }
 nav#sidebar-wrapper ul.menu div > li.active span,
 nav#sidebar-wrapper ul.menu div > li:hover span {
-/*  background: #cf7e01; */
-/* mouse over
-  background: #f0ad4e; 
-  background: #ffc800;
-  background: #ff7f50;
-  background: #89964C;  
-  background: #ca7b01;  
-*/
-  background: #4c9689;  
+  background: #cf7e01;
 }
 nav#sidebar-wrapper ul.menu div > li.panel {
   margin-bottom: 0;
@@ -181,13 +157,7 @@ nav#sidebar-wrapper ul.menu div > li.panel {
 }
 nav#sidebar-wrapper .sidebar-footer {
   position: fixed;
-/*
   background: #ca7b01;
-  background: #ffc800;
-  background: #ca7b01;  
-  slack background: #dfa941;
-*/
-  background: #dfa941;
   bottom: 0;
   text-align: center;
   overflow: hidden;

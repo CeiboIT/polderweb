@@ -1,7 +1,7 @@
 /**
  * Created by mmasuyama on 9/15/2015.
  */
-var ceiboSideBarCtrl = function($rootScope, $scope, $window) {
+var ceiboSideBarCtrl = function($rootScope, $scope, $window, userService) {
   var ctrl = this;
     ctrl.rootScope = $rootScope;
 
@@ -24,6 +24,10 @@ var ceiboSideBarCtrl = function($rootScope, $scope, $window) {
 
     function init() {
         ctrl.setToggle();
+        userService.get().then(function(userData) {
+            ctrl.Bedrijf = userData.Bedrijf;
+        });
+
         var id;
         $(window).resize(function() {
             clearTimeout(id);
