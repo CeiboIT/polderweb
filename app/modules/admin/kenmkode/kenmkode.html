@@ -7,7 +7,8 @@
  <div>
   <div class="row">
          <div class="col-md-12">
-             <a ui-sref="home.init"              class="btn btn-lg btn-back">Terug</a>
+             <a ui-sref="kenmerk.list"                        class="btn btn-lg btn-success">Terug</a>
+<!--             <a ui-sref="home.init"              class="btn btn-lg btn-back">Terug</a> -->
              <!-- <button ng-click="clickGet()"  class="btn btn-lg btn-primary">Zoeken</button> -->
              <a ui-sref="kenmkode.create"      class="btn btn-lg btn-new">Nieuw</a>
              <!-- <button ng-click="clickCancel()" class="btn btn-lg btn-primary">Doe iets</button> -->
@@ -59,7 +60,9 @@
                          <td>{{row.Omschrijving}}</td>
                          <td>
 <!--                         <a class="btn btn-sm btn-primary" ui-sref="kenmkode.view({kenmkodeId: row.Kode})"><i class="fa fa-pencil"></i></a> -->
-                             <a class="btn btn-sm btn-edit" ui-sref="kenmkode.view({kenmkodeId: row.Kode})"><i class="fa fa-pencil"></i></a>
+<!--                             <a class="btn btn-sm btn-edit" ui-sref="kenmkode.view({kenmkodeId: row.Kode})"><i class="fa fa-pencil"></i></a> -->
+                             <a class="btn btn-sm btn-edit" ui-sref="kenmkode.view({kenmerk: row.Kenmerk, kode: row.Kode, kenmerkomschrijving: params[1]})"><i class="fa fa-pencil"></i></a>
+
                              <button type="button" element-deletion
                                      collection="ctrl.model.kenmkodes"
                                      options="{liveUpdate: true,

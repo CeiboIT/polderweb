@@ -8,31 +8,35 @@ angular.module('polderweb')
     $scope.bedrijf = bedrijf;
     $scope.username = username;
 
-	  KenmKode.getKenmKode($stateParams.kenmkodeId).then(function(res){
-        $scope.kenmkode = res;
-      });
-
+//	  KenmKode.getKenmKode($stateParams.kenmkodeId).then(function(res){
+	KenmKode.getKenmKode($stateParams.kenmerk, $stateParams.kode).then(function(res){
+      $scope.kenmkode = res;
+    });
+	  
     $scope.allKenmerk = kenmerks;
-
+  
     $scope.kenmkodeService = KenmKode;
 
 	  $scope.clickSave = function (form) {
         $scope.submitted = true;
         if (form.$valid) {
             KenmKode.updateKenmKode($scope.kenmkode);
-             $state.go('kenmkode.list');
+//             $state.go('kenmkode.list');
+// 20151029 HowTo go back and show omschrijving
+//             $state.go('kenmkode.list[kenmerk]', {kenmerk: $stateParams.kenmerk, omschrijving: kenmerks.Omschrijving});
+             $state.go('kenmkode.list[kenmerk]', {kenmerk: $stateParams.kenmerk, omschrijving: $stateParams.kenmerkomschrijving});
         }
       };
 
-        $scope.deletionOnSuccess = function() {
-            $state.go('kenmkode.list')
-        };
+      $scope.deletionOnSuccess = function() {
+          $state.go('kenmkode.list')
+      };
 
       $scope.clickDel = function () {
          var msg = confirm("Verwijderen ? J/N");
           if (msg == true) {
             KenmKode.delKenmKode($scope.kenmkode.KenmKode,$scope.kenmkode.Omschrijving);
-            $state.go('kenmkode.list'); // Terug naar homepage
+            $state.go('kenmkode.list'); 
           }
       };
 

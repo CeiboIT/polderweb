@@ -37,15 +37,15 @@ angular.module('polderweb')
 
         addKenmerk: function (kenmerkData) {
            userService.get().then(function(res){
-                myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : kenmerkData.Kenmerk, Omschrijving : kenmerkData.Omschrijving, IndNieuw : kenmerkData.IndNieuw});
+//                myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : kenmerkData.Kenmerk, Omschrijving : kenmerkData.Omschrijving, IndNieuw : kenmerkData.IndNieuw});
+                myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : kenmerkData.Kenmerk, Omschrijving : kenmerkData.Omschrijving, IndNieuw : false});
                 Service.SvcKenmerk("C", res.Username, myKenmerk);
             });
-
         },
 
         updateKenmerk:function(kenmerkData){
            userService.get().then(function(res){
-                myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : kenmerkData.Kenmerk, Omschrijving : kenmerkData.Omschrijving, IndNieuw : kenmerkData.IndNieuw});
+                myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : kenmerkData.Kenmerk, Omschrijving : kenmerkData.Omschrijving, IndNieuw : false});
                 Service.SvcKenmerk("U", res.Username, myKenmerk);
             });
         },

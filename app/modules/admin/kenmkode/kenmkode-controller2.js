@@ -4,13 +4,18 @@ angular.module('polderweb')
 //EP function ($rootScope, $scope, $state, KenmKode, bedrijf, username, kenmkodes, params, authService, homeState) {
 //JS function ($rootScope, $scope, $state, $stateParams, Kenmerk, KenmKode, bedrijf, username, kenmkodes, authService, homeState) {
      function ($rootScope, $scope, $state, $stateParams, Kenmerk, KenmKode, bedrijf, username, kenmkodes, params, authService, homeState) {
-
       $scope.params = params;
-//alert (JSON.stringify($stateParams.kenmerkId));
-
       $scope.bedrijf = bedrijf;
       $scope.username = username;
-
+//------------	  
+//	  Kenmerk.getKenmerk($stateParams.kenmerkId).then(function(res){ //20151020
+//        $scope.kenmerk = res;
+//      });
+//	  KenmKode.findAll($scope.params[0]).then(function(res){ //20151020
+//        $scope.kenmkodes = res;
+//      });
+//------------	  
+	  
       // show only kenmkodes that match with kenmerk
       $scope.kenmkodes = [];
       for (var i in kenmkodes) {

@@ -1,12 +1,15 @@
 <!--                                     -->
 <!-- Details KenmKode                      -->
-<!-- 20150816 layout                     -->
-<!-- 20150914 Tekstueel                  -->
-<!--                                     -->
-<h3><b>Details Waarden per Kenmerk</b></h3>
+
+<!-- HowTo display kenmerk.Omschrijving -->
+<h3><b>Details waarden van kenmerk : {{kenmkode.Kenmerk}} {{kenmerk.Omschrijving}} </b></h3>
 <hr/>
 <form ng-submit="clickSave(form)" name="form" novalidate>
-  <a ui-sref="kenmkode.list"                        class="btn btn-lg btn-success">Terug</a>
+<!--  <a ui-sref="kenmkode.list"                                                                           class="btn btn-lg btn-success">Terug</a> -->
+
+<!-- HowTo display kenmerk.Omschrijving -->
+  <a ui-sref="kenmkode.list[kenmerk]({kenmerk: kenmkode.Kenmerk, omschrijving: kenmerk.Omschrijving})"  class="btn btn-lg btn-success">Terug</a> 
+  
   <div class='pull-right mb10'>
      <button type="button" ng-click="clickPre()"  class="btn btn-lg btn-success">Vorige</button>
      <button type="button" ng-click="clickNext()" class="btn btn-lg btn-success">Volgende</button>
@@ -29,12 +32,14 @@
             <p class="help-block" ng-show="form.omschrijving.$error.required && submitted">Dit veld is verplicht</p>
           </td>
       </tr>
+<!--
       <tr>
         <td><b>Kenmerk associated</b></td>
         <td>
           <select type="text" ng-model="kenmkode.Kenmerk" ng-options="item.Kenmerk as item.Kenmerk for item in allKenmerk" name="sex" class="form-control input" /><p class="help-block" ng-show="form.sex.$error.required && submitted">This select is required</p>
         </td>
       </tr>
+-->
       <tr>
           <td><b>Extra 1</b></td>
           <td>
@@ -57,7 +62,7 @@
           </td>
       </tr>
     </table>
-    <button type="button" ui-sref="kenmerk.view({kenmerkId: kenmkode.Kenmerk})"  class="btn btn-lg btn-success">Kenmerk: {{kenmkode.Kenmerk}}</button>
+<!--    <button type="button" ui-sref="kenmerk.view({kenmerkId: kenmkode.Kenmerk})"  class="btn btn-lg btn-success">Kenmerk: {{kenmkode.Kenmerk}}</button> -->
   </div>
   <hr/>
   <!-- <a href="#/home" class="btn btn-lg btn-success">Home</a> -->

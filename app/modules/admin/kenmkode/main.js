@@ -11,7 +11,7 @@ angular.module('polderweb.kenmkode', [])
                 template: '<div ui-view=""></div>'
             })
 
-/*
+/* HowTo : this one isn't used ..?
             .state('kenmkode.list', {
                 url:'/list',
                 templateUrl:'app/modules/admin/kenmkode/kenmkode.html',
@@ -35,10 +35,7 @@ angular.module('polderweb.kenmkode', [])
                 controller:'KenmKodeController2 as ctrl',
                 resolve: {
                    kenmkodes: function (KenmKode) {
-//20151021                        return KenmKode.findAll();
-//alert (JSON.stringify($stateProvider.kenmerkId));
-//alert (JSON.stringify($scope.params[0]));
-                        return KenmKode.findAll($stateProvider.kenmerkId);
+                        return KenmKode.findAll();
                     },
                    params: function($stateParams) {
                       return [$stateParams.kenmerk, $stateParams.omschrijving];
@@ -69,7 +66,9 @@ angular.module('polderweb.kenmkode', [])
 
             .state('kenmkode.view',
             {
-                url:'/:kenmkodeId',
+//                url:'/:kenmkodeId',
+//                url:'/:kenmerk/:kode',
+                url:'/:kenmerk/:kode/:kenmerkomschrijving',
                 templateUrl:'app/modules/admin/kenmkode/view-kenmkode/view-kenmkode.html',
                 controller:'viewKenmKodeCtrl',
                 resolve: {
@@ -79,10 +78,11 @@ angular.module('polderweb.kenmkode', [])
                    username: function($cookieStore) {
                        return $cookieStore.get('user').Username;
                    },
-                    kenmerks: function (Kenmerk) {
-                        return Kenmerk.findAll();
-                    }
+                   kenmerks: function (Kenmerk) {
+//HowTo get the kenmerk. Is it nessary ?
+//                       return Kenmerk.findAll();
+                       return Kenmerk.getKenmerk(Kenmerk.kenmerk);
+                   }
                 }
             });
-
     });

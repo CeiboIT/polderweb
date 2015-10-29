@@ -30,19 +30,22 @@ angular.module('polderweb')
              return defer.promise;
         },
 
-        getKenmKode: function (kenmkodeId) {
+//        getKenmKode: function (kenmkodeId) {
+        getKenmKode: function (kenmerk, kode) {
             var defer = $q.defer();
              userService.get().then(function(res){
              myKenmKode.fromObject({Bedrijf : res.Bedrijf
-			            , Kenmerk : ''
-								  , Kode : kenmkodeId
-								  , Omschrijving : ''
-								  , Extra1 : ''
-								  , Extra2 : ''
-								  , Extra3 : ''});
-             //myKenmKode.fromObject({Bedrijf : res.Bedrijf, Kode : '', Omschrijving : ''});
+								, Kenmerk : kenmerk
+//								, Kode : kenmkodeId
+								, Kode : kode
+								, Omschrijving : ''
+								, Extra1 : ''
+								, Extra2 : ''
+								, Extra3 : ''});
              Service.SvcKenmKode("R", res.Username, myKenmKode, function(result) {
-                var data = _.find(result.toObject(), {'Kode':kenmkodeId});
+//                var data = _.find(result.toObject(), {'Kode':kenmkodeId});
+//HowTo : what's happening here. Is this necessary ?
+                var data = _.find(result.toObject(), {'Kenmerk':kenmerk, 'Kode':kode});
                 defer.resolve(data);
              });
             });
@@ -52,7 +55,7 @@ angular.module('polderweb')
         addKenmKode: function (kenmkodeData) {
            userService.get().then(function(res){
                 myKenmKode.fromObject({Bedrijf : res.Bedrijf
-				           , Kenmerk : kenmkodeData.Kenmerk
+							         , Kenmerk : kenmkodeData.Kenmerk
 									 , Kode : kenmkodeData.Kode
 									 , Omschrijving : kenmkodeData.Omschrijving
 									 , Extra1 : kenmkodeData.Extra1
@@ -66,7 +69,7 @@ angular.module('polderweb')
         updateKenmKode:function(kenmkodeData){
            userService.get().then(function(res){
                 myKenmKode.fromObject({Bedrijf : res.Bedrijf
-				           , Kenmerk : kenmkodeData.Kenmerk
+				                     , Kenmerk : kenmkodeData.Kenmerk
 									 , Kode : kenmkodeData.Kode
 									 , Omschrijving : kenmkodeData.Omschrijving
 									 , Extra1 : kenmkodeData.Extra1
@@ -80,7 +83,7 @@ angular.module('polderweb')
             var delKenmKodePromise = $q.defer();
             userService.get().then(function(res){
                 myKenmKode.fromObject({Bedrijf : res.Bedrijf
-				           , Kenmerk : ''
+				                     , Kenmerk : ''
 									 , Kode : Kode
 									 , Omschrijving : Omschrijving
 									 , Extra1 : ''
