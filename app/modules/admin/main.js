@@ -12,7 +12,8 @@ angular.module('polderweb.admin', [
     'polderweb.categorie',
     'polderweb.soortlid',
     'polderweb.soortbetaling',
-    'polderweb.persoon'
+    'polderweb.persoon',
+    'polderweb.contriburieregels'
 ])
     //configure the parent state for this module here
     .constant('adminParentState', 'home')
