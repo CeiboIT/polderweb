@@ -9,8 +9,8 @@
 <!-- <hr/> -->
 </br>
 </br>
-  <div class="clearfix"></div> 
-  <div class="jumbotron"> 
+  <div class="clearfix"></div>
+  <div class="jumbotron">
 <!--  <div class="col-lg-2 control-label"> -->
 <!--    <table class="table table-bordered table-striped table-hover"> -->
     <table STYLE="font-size: 14px;">
@@ -74,7 +74,7 @@
         <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Leeftijd&nbsp;&nbsp;</b></td><td><input type="text" readonly ng-model="pers.Leeftijd" name="leeftijd" class="form-control input" placeholder="Leeftijd" /> <p class="help-block" ng-show="form.leeftijd.$error.required && submitted">This input is required</p></td>
       </tr>
       <tr>
-        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Land&nbsp;&nbsp;</b></td><td><select type="text" ng-model="pers.Land" ng-options="item for item in land" name="land" class="form-control input" /><p class="help-block" ng-show="form.land.$error.required && submitted">This select is required</p></td>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Land&nbsp;&nbsp;</b></td><td><input type="text" ng-model="pers.Land" name="land" class="form-control input" placeholder="Land" /> <p class="help-block" ng-show="form.land.$error.required && submitted">This input is required</p></td>
         <td></td>
         <td></td>
         <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Email&nbsp;&nbsp;</b></td><td><input type="text" ng-model="pers.Email" name="Email" class="form-control input" placeholder="Email" /> <p class="help-block" ng-show="form.Email.$error.required && submitted">This input is required</p></td>
@@ -108,7 +108,7 @@
         </tr>
 
         <tr>
-          <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Land&nbsp;&nbsp;</b></td> <td><select type="text" ng-model="pers.Land" ng-options="item for item in land" name="land" class="form-control input" /><p class="help-block" ng-show="form.land.$error.required && submitted">This select is required</p></td>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Land&nbsp;&nbsp;</b></td><td><input type="text" ng-model="pers.Land" name="land" class="form-control input" placeholder="Land" /> <p class="help-block" ng-show="form.land.$error.required && submitted">This input is required</p></td>
         </tr>
       </table>
     </tab>
@@ -210,7 +210,7 @@
   <button type="button" ng-click="clickCancel()" class="btn btn-lg btn-primary">Annuleer</button>
   <button type="button" ng-click="clickDel()"    class="btn btn-lg btn-success">Verwijder</button>
   <hr/>
--->  
+-->
   <button type="submit" class="btn btn-lg btn-new"> Opslaan</button>
   <button type="button" ng-click="clickCancel()" class="btn btn-lg btn-cancel">Annuleer</button>
   <button type="button"    class="btn btn-lg btn-delete" element-deletion
@@ -219,5 +219,5 @@
           ng-model="persoon.Persoon"
           deletion-service="persoonService.delPersoon">Verwijder</button>
   <hr/>
-  
+
 </form>
