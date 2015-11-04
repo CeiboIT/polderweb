@@ -12,6 +12,9 @@ angular.module('polderweb.kenmkode', [])
             })
 
 /* HowTo : this one isn't used ..?
+  Answer: THIS IS NOT USED NOW. IT WAS REPLACED BY THE FOLLOWING STATE 'kenmkode.list[kenmerk]'
+          WHERE FILTER BY THE KENMERK ID
+
             .state('kenmkode.list', {
                 url:'/list',
                 templateUrl:'app/modules/admin/kenmkode/kenmkode.html',
