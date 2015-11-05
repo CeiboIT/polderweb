@@ -37,8 +37,8 @@ angular.module('polderweb.kenmkode', [])
                 templateUrl:'app/modules/admin/kenmkode/kenmkode.html',
                 controller:'KenmKodeController2 as ctrl',
                 resolve: {
-                   kenmkodes: function (KenmKode) {
-                        return KenmKode.findAll();
+                   kenmkodes: function (KenmKode, $stateParams) {
+                        return KenmKode.findAll($stateParams.kenmerk);
                     },
                    params: function($stateParams) {
                       return [$stateParams.kenmerk, $stateParams.omschrijving];
@@ -54,7 +54,7 @@ angular.module('polderweb.kenmkode', [])
 
             .state('kenmkode.create',
             {
-                url:'/create',
+                url:'/create/:kenmerk/:omschrijving',
                 templateUrl:'app/modules/admin/kenmkode/create-kenmkode/create-kenmkode.html',
                 controller:'createKenmKodeCtrl',
                 resolve: {
@@ -63,14 +63,15 @@ angular.module('polderweb.kenmkode', [])
                    },
                    username: function($cookieStore) {
                        return $cookieStore.get('user').Username;
+                   },
+                   params: function($stateParams) {
+                      return [$stateParams.kenmerk, $stateParams.omschrijving];
                    }
                 }
             })
 
             .state('kenmkode.view',
             {
-//                url:'/:kenmkodeId',
-//                url:'/:kenmerk/:kode',
                 url:'/:kenmerk/:kode/:kenmerkomschrijving',
                 templateUrl:'app/modules/admin/kenmkode/view-kenmkode/view-kenmkode.html',
                 controller:'viewKenmKodeCtrl',
@@ -81,10 +82,8 @@ angular.module('polderweb.kenmkode', [])
                    username: function($cookieStore) {
                        return $cookieStore.get('user').Username;
                    },
-                   kenmerks: function (Kenmerk) {
-//HowTo get the kenmerk. Is it nessary ?
-//                       return Kenmerk.findAll();
-                       return Kenmerk.getKenmerk(Kenmerk.kenmerk);
+                   kenmerk: function ($stateParams) {
+                       return $stateParams.kenmerk;
                    }
                 }
             });

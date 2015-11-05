@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('viewKenmKodeCtrl',
-    function ($scope, KenmKode, kenmerks, $state, bedrijf, username, $stateParams) {
+    function ($scope, KenmKode, kenmerk, $state, bedrijf, username, $stateParams) {
 //      if(authService.getToken()==null){
 //           $state.go('login');
 //         }else{
@@ -12,9 +12,7 @@ angular.module('polderweb')
 	KenmKode.getKenmKode($stateParams.kenmerk, $stateParams.kode).then(function(res){
       $scope.kenmkode = res;
     });
-	  
-    $scope.allKenmerk = kenmerks;
-  
+
     $scope.kenmkodeService = KenmKode;
 
 	  $scope.clickSave = function (form) {
@@ -24,7 +22,7 @@ angular.module('polderweb')
 //             $state.go('kenmkode.list');
 // 20151029 HowTo go back and show omschrijving
 //             $state.go('kenmkode.list[kenmerk]', {kenmerk: $stateParams.kenmerk, omschrijving: kenmerks.Omschrijving});
-             $state.go('kenmkode.list[kenmerk]', {kenmerk: $stateParams.kenmerk, omschrijving: $stateParams.kenmerkomschrijving});
+             $state.go('kenmkode.list[kenmerk]', {kenmerk: kenmerk, omschrijving: $stateParams.kenmerkomschrijving});
         }
       };
 
@@ -36,7 +34,7 @@ angular.module('polderweb')
          var msg = confirm("Verwijderen ? J/N");
           if (msg == true) {
             KenmKode.delKenmKode($scope.kenmkode.KenmKode,$scope.kenmkode.Omschrijving);
-            $state.go('kenmkode.list'); 
+            $state.go('kenmkode.list');
           }
       };
 
