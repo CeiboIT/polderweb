@@ -1,19 +1,218 @@
 <div>
-  <div class="jumbotron">
+  <div class="">
     <h1><b>Nieuw lid toevoegen</b></h1>
-    <form ng-submit="addPersoon(form)" name="form" novalidate>
-      <div class="row">
-        <div class="col-xs-4">
-          <div class="form-group" ng-class="{'has-error':form.lidnr.$invalid && submitted}">
-		    <input type="text" ng-model="persoon.LidNr" name="lidnr" class="form-control input" placeholder="lidnr" required/><p class="help-block" ng-show="form.lidnr.$error.required && submitted">This input is required</p>
-  	      </div>
-          <div class="form-group" ng-class="{'has-error':form.naam.$invalid && submitted}">
-            <input type="text" ng-model="persoon.Naam" name="naam" class="form-control input" placeholder="naam" required/><p class="help-block" ng-show="form.naam.$error.required && submitted">This input is required</p>
-          </div>
-          <button class="btn btn-lg btn-primary" type="submit">Toevoegen</button>
-        </div>
-      </div>
-    </form>
+
+
+<form ng-submit="addPersoon(form)" name="form" novalidate>
+  <div class="clearfix"></div>
+  <div class="jumbotron">
+<!--  <div class="col-lg-2 control-label"> -->
+<!--    <table class="table table-bordered table-striped table-hover"> -->
+    <table STYLE="font-size: 14px;">
+      <tr>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Lidnr&nbsp;&nbsp;</b></td>
+        <td>
+          <input type="text" ng-model="persoon.LidNr" name="lidnr" class="form-control input" placeholder="Lidnr" /><p class="help-block" ng-show="form.lidnr.$error.required && submitted">This input is required</p>
+        </td>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Voorl.&nbsp;&nbsp;</b></td>
+        <td>
+          <input type="text" ng-model="persoon.Voorletters" name="voorletters" class="form-control input" placeholder="Voorletters" size="3" maxlength="3" /> <p class="help-block" ng-show="form.voorletters.$error.required && submitted">This input is required</p>
+        </td>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Voornaam&nbsp;&nbsp;</b></td>
+        <td><input type="text" ng-model="persoon.Voornaam" name="voornaam" class="form-control input" placeholder="Voornaam" /> <p class="help-block" ng-show="form.voornaam.$error.required && submitted">This input is required</p></td>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Tussenv&nbsp;</td><td><input type="text"      ng-model="persoon.Tussenvoegsel"  name="tussenvoegsel"  class="form-control input" placeholder="Tussenvoegsel" />        <p class="help-block" ng-show="form.tussenvoegsel.$error.required && submitted">This input is required</p></td>
+      </tr>
+      <tr>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Naam&nbsp;&nbsp;</b></td>
+        <td><input type="text" ng-model="persoon.Naam" name="naam" class="form-control input" placeholder="Naam" /><p class="help-block" ng-show="form.naam.$error.required && submitted">This input is required</p></td>
+        <td></td>
+        <td><select type="text" ng-model="persoon.Sex" ng-options="item.name as item.name for item in sexList" name="sex" class="form-control input" /><p class="help-block" ng-show="form.sex.$error.required && submitted">This select is required</p></td>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inschrijving&nbsp;&nbsp;</b></td>
+        <td>
+            <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="persoon.DatumInschr" is-open="status.opened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </td>
+      </tr>
+      <tr>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Aanhef&nbsp;&nbsp;</b></td>
+        <td><select type="text" ng-model="persoon.Aanhef" ng-options="item.Omschrijving as item.Omschrijving for item in aanhef" name="aanhef" class="form-control input" /><p class="help-block" ng-show="form.aanhef.$error.required && submitted">This select is required</p></td>
+        <td></td>
+        <td></td>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Geboren&nbsp;&nbsp;</b></td>
+        <td>
+            <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="persoon.DatumGeb" is-open="status.opened1" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </td>
+      </tr>
+      <tr>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Straat&nbsp;&nbsp;</b></td> <td><input type="text" ng-model="persoon.Straat" name="straat" class="form-control input" placeholder="Straat" /> <p class="help-block" ng-show="form.straat.$error.required && submitted">This input is required</p></td>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HuisNr&nbsp;&nbsp;</b></td> <td><input type="text" ng-model="persoon.HuisNr" name="huisnr" class="form-control input" placeholder="Huisnr" /> <p class="help-block" ng-show="form.huisnr.$error.required && submitted">This input is required</p></td>
+      </tr>
+      <tr>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Postcode&nbsp;&nbsp;</b></td> <td><input type="text" ng-model="persoon.Postcode" name="postcode" class="form-control input" placeholder="Postcode" /> <p class="help-block" ng-show="form.postcode.$error.required && submitted">This input is required</p></td>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Plaats&nbsp;&nbsp;</b></td> <td><input type="text" ng-model="persoon.Plaats" name="plaats" class="form-control input" placeholder="Plaats" /> <p class="help-block" ng-show="form.plaats.$error.required && submitted">This input is required</p></td>
+
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Hoofdbew&nbsp;&nbsp;</b></td>
+<!--        <td style="padding-left: 20px;"><input type="checkbox" ng-model="persoon.Hoofdbewoner" name="hoofdbew" class="form-control input" placeholder="Hoofdbew"/> <p class="help-block" ng-show="form.hoofdbew.$error.required && submitted">This input is required</p></td> -->
+        <td><input type="checkbox" ng-model="persoon.Hoofdbewoner" name="hoofdbew" class="input" placeholder="Hoofdbew"/> <p class="help-block" ng-show="form.hoofdbew.$error.required && submitted">This input is required</p></td>
+
+    </tr>
+      <tr>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Leeftijd&nbsp;&nbsp;</b></td><td><input type="text" readonly ng-model="persoon.Leeftijd" name="leeftijd" class="form-control input" placeholder="Leeftijd" /> <p class="help-block" ng-show="form.leeftijd.$error.required && submitted">This input is required</p></td>
+      </tr>
+      <tr>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Land&nbsp;&nbsp;</b></td><td><input type="text" ng-model="persoon.Land" name="land" class="form-control input" placeholder="Land" /> <p class="help-block" ng-show="form.land.$error.required && submitted">This input is required</p></td>
+        <td></td>
+        <td></td>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Email&nbsp;&nbsp;</b></td><td><input type="text" ng-model="persoon.Email" name="Email" class="form-control input" placeholder="Email" /> <p class="help-block" ng-show="form.Email.$error.required && submitted">This input is required</p></td>
+      </tr>
+      <tr>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Regio&nbsp;&nbsp;</b></td><td><select type="text" ng-model="persoon.Regio" ng-options="item.Regio as item.Omschrijving for item in regio" name="regio" class="form-control input" /><p class="help-block" ng-show="form.regio.$error.required && submitted">This select is required</p></td>
+        <td></td>
+        <td></td>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;TelNr&nbsp;&nbsp;</b></td><td><input type="text" ng-model="persoon.TelNr" name="TelNr" class="form-control input" placeholder="TelNr" /> <p class="help-block" ng-show="form.TelNr.$error.required && submitted">This input is required</p></td>
+      </tr>
+      <tr>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SoortLid&nbsp;&nbsp;</b></td><td><select type="text" ng-model="persoon.SoortLid" ng-options="item.SoortLid as item.Omschrijving for item in soortlid" name="soortlid" class="form-control input" /><p class="help-block" ng-show="form.soortlid.$error.required && submitted">This select is required</p></td>
+        <td></td>
+        <td></td>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Mobiel&nbsp;&nbsp;</b></td><td><input type="text" ng-model="persoon.TelNrMobiel" name="TelNrMobiel" class="form-control input" placeholder="TelNrMobiel" /> <p class="help-block" ng-show="form.TelNrMobiel.$error.required && submitted">This input is required</p></td>
+      </tr>
+    </table>
+<br>
+  <tabset>
+    <tab STYLE="font-size: 14px;" heading="Postadres">
+      <br>
+      <table STYLE="font-size: 14px;">
+        <tr>
+          <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Straat&nbsp;&nbsp;</b></td> <td><input type="text" ng-model="persoon.Straat" name="straat" class="form-control input" placeholder="Straat" /> <p class="help-block" ng-show="form.straat.$error.required && submitted">This input is required</p></td>
+          <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;HuisNr&nbsp;&nbsp;</b></td> <td><input type="text" ng-model="persoon.HuisNr" name="huisnr" class="form-control input" placeholder="Huisnr" /> <p class="help-block" ng-show="form.huisnr.$error.required && submitted">This input is required</p></td>
+        </tr>
+
+        <tr>
+          <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Postcode&nbsp;&nbsp;</b></td> <td><input type="text" ng-model="persoon.Postcode" name="postcode" class="form-control input" placeholder="Postcode" /> <p class="help-block" ng-show="form.postcode.$error.required && submitted">This input is required</p></td>
+          <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Plaats&nbsp;&nbsp;</b></td> <td><input type="text" ng-model="persoon.Plaats" name="plaats" class="form-control input" placeholder="Plaats" /> <p class="help-block" ng-show="form.plaats.$error.required && submitted">This input is required</p></td>
+        </tr>
+
+        <tr>
+        <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Land&nbsp;&nbsp;</b></td><td><input type="text" ng-model="persoon.Land" name="land" class="form-control input" placeholder="Land" /> <p class="help-block" ng-show="form.land.$error.required && submitted">This input is required</p></td>
+        </tr>
+      </table>
+    </tab>
+    <tab STYLE="font-size: 14px;" heading="Bankgegevens">
+      <br>
+      <table STYLE="font-size: 14px;">
+        <tr>
+          <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Betaalwijze&nbsp;&nbsp;</b></td> <td><select type="text" ng-model="persoon.Betaalwijze" ng-options="item for item in betaalwijze" name="Betaalwijze" class="form-control input" /><p class="help-block" ng-show="form.Betaalwijze.$error.required && submitted">This select is required</p></td>
+        </tr>
+
+        <tr>
+          <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;BankRekNr&nbsp;&nbsp;</b></td> <td><input type="text" ng-model="persoon.BankRekNr" name="BankRekNr" class="form-control input" placeholder="BankRekNr" /> <p class="help-block" ng-show="form.BankRekNr.$error.required && submitted">This input is required</p></td>
+          <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Aantal term.&nbsp;&nbsp;</b></td> <td><input type="text" ng-model="persoon.AantalTermijnen" name="AantalTermijnen" class="form-control input" placeholder="Aantal Termijnen" /> <p class="help-block" ng-show="form.plaats.$error.required && submitted">This input is required</p></td>
+          <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;IncassoUitgevoerd&nbsp;&nbsp;</b></td>
+          <td><input type="checkbox" ng-model="persoon.IncassoUitgevoerd" name="IncassoUitgevoerd" class="input"/><p class="help-block" ng-show="form.IncassoUitgevoerd.$error.required && submitted">This input is required</p></td>
+<!--          <td style="padding-left: 40px;"><input type="checkbox" ng-model="persoon.IncassoUitgevoerd" name="IncassoUitgevoerd" class="input"/> <p class="help-block" ng-show="form.IncassoUitgevoerd.$error.required && submitted">This input is required</p></td> -->
+        </tr>
+
+        <tr>
+          <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;MachtigingsID&nbsp;&nbsp;</b></td> <td><input type="text" ng-model="persoon.MachtigingsID" name="MachtigingsID" class="form-control input" placeholder="MachtigingsID" /> <p class="help-block" ng-show="form.MachtigingsID.$error.required && submitted">This input is required</p></td>
+          <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;HuisNr&nbsp;&nbsp;</b></td> <td><input type="text" ng-model="persoon.HuisNr" name="HuisNr" class="form-control input" placeholder="HuisNr" /> <p class="help-block" ng-show="form.HuisNr.$error.required && submitted">This input is required</p></td>
+          <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;DatumOndertekening&nbsp;&nbsp;</b></td>
+          <td>
+              <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="persoon.DatumOndertekening" is-open="status.opened3" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open3($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+              </p>
+          </td>
+        </tr>
+      </table>
+    </tab>
+    <tab STYLE="font-size: 14px;" heading="Lidmaatschap">
+      <br>
+      <table STYLE="font-size: 14px;">
+        <tr>
+          <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Eind&nbsp;&nbsp;</b></td>
+          <td>
+              <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="persoon.DatumEind" is-open="status.opened4" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open4($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+              </p>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Postcode&nbsp;&nbsp;</b></td> <td><input type="text" ng-model="persoon.Postcode" name="Postcode" class="form-control input" placeholder="Postcode" /> <p class="help-block" ng-show="form.Postcode.$error.required && submitted">This input is required</p></td>
+        </tr>
+        <tr>
+          <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;RedenEind&nbsp;&nbsp;</b></td> <td><select type="text" ng-model="persoon.RedenEind" ng-options="item for item in redeneind" name="RedenEind" class="form-control input"/><p class="help-block" ng-show="form.RedenEind.$error.required && submitted">This select is required</p></td>
+          <td style="padding-left:15px;">
+            <!-- <label style="margin-left:20px;" for="Vlag3"><b>Vlag3</b></label><input style="margin-top: -20px;" type="checkbox" ng-model="persoon.Vlag3" name="Vlag3" class="form-control"/><p class="help-block" ng-show="form.Vlag3.$error.required && submitted">This input is required</p> -->
+            <label style="margin-left:20px;" for="Vlag1"><b>Vlag1&nbsp;&nbsp;</b></label><input style="margin-top: -20px;" type="checkbox" ng-model="persoon.Vlag1" name="Vlag1" /><p class="help-block" ng-show="form.Vlag1.$error.required && submitted">This input is required</p>
+          </td>
+          <td style="padding-left:15px;">
+            <label style="margin-left:20px;" for="Vlag2"><b>Vlag2&nbsp;&nbsp;</b></label><input style="margin-top: -20px;" type="checkbox" ng-model="persoon.Vlag2" name="Vlag2" /><p class="help-block" ng-show="form.Vlag2.$error.required && submitted">This input is required</p>
+          </td>
+          <td style="padding-left:15px;">
+            <label style="margin-left:20px;" for="Vlag3"><b>Vlag3&nbsp;&nbsp;</b></label><input style="margin-top: -20px;" type="checkbox" ng-model="persoon.Vlag3" name="Vlag3" /><p class="help-block" ng-show="form.Vlag3.$error.required && submitted">This input is required</p>
+          </td>
+          <td style="padding-left:15px;">
+            <label style="margin-left:20px;" for="Vlag4"><b>Vlag4&nbsp;&nbsp;</b></label><input style="margin-top: -20px;" type="checkbox" ng-model="persoon.Vlag4" name="Vlag4" /><p class="help-block" ng-show="form.Vlag4.$error.required && submitted">This input is required</p>
+          </td>
+        </tr>
+        <tr>
+          <td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;Groep&nbsp;&nbsp;</b></td> <td><select type="text" ng-model="persoon.Groep" ng-options="item for item in tariefgroep" name="Groep" class="form-control input"/><p class="help-block" ng-show="form.Groep.$error.required && submitted">This select is required</p></td>
+          <td style="padding-left:15px;">
+            <label style="margin-left:20px;"><b>Vlag5&nbsp;&nbsp;</b></label><input style="margin-top: -20px;" type="checkbox" ng-model="persoon.Vlag5" name="Vlag5" /><p class="help-block" ng-show="form.hoofdbew.$error.required && submitted">This input is required</p>
+          </td>
+          <td style="padding-left:15px;">
+            <label style="margin-left:20px;" for="Vlag6"><b>Vlag6&nbsp;&nbsp;</b></label><input style="margin-top: -20px;" type="checkbox" ng-model="persoon.Vlag6" name="Vlag6" /><p class="help-block" ng-show="form.hoofdbew.$error.required && submitted">This input is required</p>
+          </td>
+          <td style="padding-left:15px;">
+            <label style="margin-left:20px;" for="Vlag7"><b>Vlag7&nbsp;&nbsp;</b></label><input style="margin-top: -20px;" type="checkbox" ng-model="persoon.Vlag7" name="Vlag7" /><p class="help-block" ng-show="form.hoofdbew.$error.required && submitted">This input is required</p>
+          </td>
+          <td style="padding-left:15px;">
+            <label style="margin-left:20px;" for="Vlag8"><b>Vlag8&nbsp;&nbsp;</b></label><input style="margin-top: -20px;" type="checkbox" ng-model="persoon.Vlag8" name="Vlag8" /><p class="help-block" ng-show="form.hoofdbew.$error.required && submitted">This input is required</p>
+          </td>
+        </tr>
+      </table>
+    </tab>
+    <tab STYLE="font-size: 14px;" heading="Opmerking">
+      <br>
+      <table>
+        <tr>
+          <td><textarea ng-model="persoon.Opmerking" name="Opmerking" class="form-control input" rows="4" cols="50" /><p class="help-block" ng-show="form.Opmerking.$error.required && submitted">This input is required</p></td>
+        </tr>
+      </table>
+    </tab>
+  </tabset>
+  </div>
+<!--  <hr/> -->
+  <!-- <a href="#/home" class="btn btn-lg btn-success">Home</a> -->
+<!--
+  <button type="submit"                          class="btn btn-lg btn-primary"> Opslaan </button>
+  <button type="button" ng-click="clickCancel()" class="btn btn-lg btn-primary">Annuleer</button>
+  <button type="button" ng-click="clickDel()"    class="btn btn-lg btn-success">Verwijder</button>
+  <hr/>
+-->
+  <button type="submit" class="btn btn-lg btn-primary"> Toevoegen</button>
+
+</form>
+
+
+
+
   </div>
   <hr/>
   <a ui-sref="persoon.list" class="btn btn-lg btn-warning">Annuleren</a>
