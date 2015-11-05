@@ -1,10 +1,10 @@
-<h3><b>Contriburieregels</b></h3>
+<h3><b>Contriburieregels</b> - LidNr: {{params[0]}} </h3>
 <hr/>
  <div>
   <div class="row">
          <div class="col-md-12">
              <a ui-sref="home.init"     class="btn btn-lg btn-back">Terug</a>
-             <a ui-sref="contriburieregel.create"  class="btn btn-lg btn-new">Nieuw</a>
+             <a ui-sref="contriburieregel.create({lidnr: params[0]})"  class="btn btn-lg btn-new">Nieuw</a>
              <div class="row pull-right">
                  <div class="dropdown">
                      <button class="btn btn-lg btn-export dropdown-toggle" margin-right=46px type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -39,18 +39,28 @@
              <table st-table="ctrl.model.contriburieregels" st-filtered-collection="filteredCollection" class="table table-striped">
                  <thead>
                      <tr>
-                         <th st-sort="Contriburieregels">Contriburieregels</th>
-                         <th st-sort="Omschrijving">Omschrijving</th>
+                         <th st-sort="Groep">Tariefgroep</th>
+                         <th st-sort="Periode">Periode</th>
+                         <th st-sort="DatumIngang">DatumIngang</th>
+                         <th st-sort="Bedrag">Bedrag</th>
+                         <th st-sort="BetaalWijze">Betaalwijze</th>
+                         <th st-sort="Opmerking">Opmerking</th>
+                         <th st-sort="DatumEind">DatumEind</th>
                          <th class="col-md-1"></th>
                      </tr>
                  </thead>
                  <tbody>
                      <tr ng-repeat="row in ctrl.model.contriburieregels">
-                         <td>{{row.Contriburieregels}}</td>
-                         <td>{{row.Omschrijving}}</td>
+                         <td>{{row.Groep}}</td>
+                         <td>{{row.Periode}}</td>
+                         <td>{{row.DatumIngang}}</td>
+                         <td>{{row.Bedrag}}</td>
+                         <td>{{row.BetaalWijze}}</td>
+                         <td>{{row.Opmerking}}</td>
+                         <td>{{row.DatumEind}}</td>
                          <td>
 <!--                         <a class="btn btn-sm btn-primary" ui-sref="contriburieregel.view({contriburieregelId: row.Contriburieregels})"><i class="fa fa-pencil"></i></a> -->
-                             <a class="btn btn-sm btn-edit" ui-sref="contriburieregel.view({contriburieregelId: row.Contriburieregels})"><i class="fa fa-pencil"></i></a>
+                             <a class="btn btn-sm btn-edit" ui-sref="contriburieregel.view({})"><i class="fa fa-pencil"></i></a>
                              <button type="button" element-deletion
                                      collection="ctrl.model.contriburieregels"
                                      options="{liveUpdate: true,
@@ -78,14 +88,24 @@
              <table id="auxTable" style="opacity: 0; position: absolute;">
                 <thead>
                     <tr>
-                        <th>Contriburieregels</th>
-                        <th>Omschrijving</th>
+                        <th>Tariefgroep</th>
+                        <th>Periode</th>
+                        <th>DatumIngang</th>
+                        <th>Bedrag</th>
+                        <th>Betaalwijze</th>
+                        <th>Opmerking</th>
+                        <th>DatumEind</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="x in filteredCollection">
-                         <td>{{x.Contriburieregels}}</td>
-                         <td>{{x.Omschrijving}}</td>
+                         <td>{{x.Groep}}</td>
+                         <td>{{x.Periode}}</td>
+                         <td>{{x.DatumIngang}}</td>
+                         <td>{{x.Bedrag}}</td>
+                         <td>{{x.BetaalWijze}}</td>
+                         <td>{{x.Opmerking}}</td>
+                         <td>{{x.DatumEind}}</td>
                     </tr>
                 </tbody>
             </table>

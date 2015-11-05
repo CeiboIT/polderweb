@@ -19,6 +19,9 @@ angular.module('polderweb.contriburieregels', [])
                     contriburieregels: function (Contriburieregels, $stateParams) {
                         return Contriburieregels.findAll($stateParams.lidnr);
                     },
+                    params: function ($stateParams) {
+                      return $stateParams.lidnr;
+                    },
                    bedrijf: function($cookieStore) {
                        return $cookieStore.get('user').Bedrijf;
                    },
@@ -29,7 +32,7 @@ angular.module('polderweb.contriburieregels', [])
             })
             .state('contriburieregels.create',
             {
-                url:'/create',
+                url:'/create/:lidnr',
                 templateUrl:'app/modules/admin/contriburieregels/create-contriburieregels/create-contriburieregels.html',
                 controller:'createContriburieregelsCtrl',
                 resolve: {
@@ -38,7 +41,10 @@ angular.module('polderweb.contriburieregels', [])
                    },
                    username: function($cookieStore) {
                        return $cookieStore.get('user').Username;
-                   }
+                   },
+                    params: function ($stateParams) {
+                      return $stateParams.lidnr;
+                    }
                 }
             })
 
@@ -48,6 +54,9 @@ angular.module('polderweb.contriburieregels', [])
                 templateUrl:'app/modules/admin/contriburieregels/view-contriburieregels/view-contriburieregels.html',
                 controller:'viewContriburieregelsCtrl',
                 resolve: {
+                    contriburieregels: function (Contriburieregels, $stateParams) {
+                        return Contriburieregels.getContriburieregels($stateParams.contriburieregelsId);
+                    },
                    bedrijf: function($cookieStore) {
                        return $cookieStore.get('user').Bedrijf;
                    },

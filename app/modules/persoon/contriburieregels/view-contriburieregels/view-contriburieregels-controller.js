@@ -4,50 +4,50 @@ angular.module('polderweb')
        $scope.bedrijf = bedrijf;
        $scope.username = username;
 
-      Contriburieregels.getContriburieregels($stateParams.titelId).then(function(res){
-        $scope.titel = res;
+      Contriburieregels.getContriburieregels($stateParams.contriburieregelsId).then(function(res){
+        $scope.contriburieregels = res;
       });
 
-        $scope.titelService = Contriburieregels;
+        $scope.contriburieregelsService = Contriburieregels;
 
       $scope.clickSave = function (form) {
         $scope.submitted = true;
         if (form.$valid) {
-            Contriburieregels.updateContriburieregels($scope.titel);
-             $state.go('titel.list');
+            Contriburieregels.updateContriburieregels($scope.contriburieregels);
+             $state.go('contriburieregels.list');
         }
       };
 
         $scope.deletionOnSuccess = function() {
-            $state.go('titel.list')
+            $state.go('contriburieregels.list')
         };
 
       $scope.clickDel = function () {
          var msg = confirm("Verwijderen ? J/N");
           if (msg == true) {
-            Contriburieregels.delContriburieregels($scope.titel.Contriburieregels,$scope.titel.Omschrijving);
-            $state.go('titel.list'); // Terug naar homepage
+            Contriburieregels.delContriburieregels($scope.contriburieregels.Contriburieregels,$scope.contriburieregels.Omschrijving);
+            $state.go('contriburieregels.list'); // Terug naar homepage
           }
       };
 
       $scope.clickCancel = function () {
-         Contriburieregels.getContriburieregels($stateParams.titelId).then(function(res){
-          $scope.titel = res;
+         Contriburieregels.getContriburieregels($stateParams.contriburieregelsId).then(function(res){
+          $scope.contriburieregels = res;
          });
       };
 
       $scope.clickNext = function () {
-        Contriburieregels.nextContriburieregels($scope.titel.Contriburieregels,function (titelId) {
-          if (titelId) {
-            $scope.titel = titelId;
+        Contriburieregels.nextContriburieregels($scope.contriburieregels.Contriburieregels,function (contriburieregelsId) {
+          if (contriburieregelsId) {
+            $scope.contriburieregels = contriburieregelsId;
           }
         });
       };
 
       $scope.clickPre = function () {
-        Contriburieregels.preContriburieregels($scope.titel.Contriburieregels, function (titelId) {
-          if (titelId) {
-            $scope.titel = titelId;
+        Contriburieregels.preContriburieregels($scope.contriburieregels.Contriburieregels, function (contriburieregelsId) {
+          if (contriburieregelsId) {
+            $scope.contriburieregels = contriburieregelsId;
           }
         });
       };

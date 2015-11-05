@@ -1,0 +1,77 @@
+<div>
+  <h3><b>Nieuwe contriburieregels</b></h3>
+  <hr/>
+  <form ng-submit="addContriburieregels(form)" name="form" novalidate>
+  <a ui-sref="groep.list"                        class="btn btn-lg btn-success">Terug</a>
+  <br/>
+  <div class="clearfix"></div>
+  <br/>
+  <!--  <div class="jumbotron">
+  Override rounded corners in jumbotron -->
+
+    <div style="border-radius: 0px !important" class="jumbotron">
+      <div class="row">
+        <div class="col-xs-4">
+
+          <div class="form-group" ng-class="{'has-error':form.groep.$invalid && submitted}">
+            <input type="text"
+                   ng-model="contrib.Groep"
+                   name="groep"
+                   class="form-control input"
+                   placeholder="Groep" required />
+            <p class="help-block" ng-show="form.groep.$error.required && submitted">This input is required</p>
+          </div>
+
+          <div class="form-group" ng-class="{'has-error':form.omschrijving.$invalid && submitted}">
+            <input type="text"
+                   ng-model="contrib.Periode"
+                   name="periode"
+                   class="form-control input"
+                   placeholder="Periode" required/>
+            <p class="help-block" ng-show="form.periode.$error.required && submitted">This input is required</p>
+          </div>
+
+          <div class="form-group" ng-class="{'has-error':form.omschrijving.$invalid && submitted}">
+            <input type="text"
+                   ng-model="contrib.DatumIngang"
+                   name="datumingang"
+                   class="form-control input"
+                   placeholder="DatumIngang" required/>
+            <p class="help-block" ng-show="form.datumingang.$error.required && submitted">This input is required</p>
+          </div>
+
+          <div class="form-group" ng-class="{'has-error':form.omschrijving.$invalid && submitted}">
+            <input type="text"
+                   ng-model="contrib.BetaalWijze"
+                   name="betaalwijze"
+                   class="form-control input"
+                   placeholder="BetaalWijze" required/>
+            <p class="help-block" ng-show="form.betaalwijze.$error.required && submitted">This input is required</p>
+          </div>
+
+          <div class="form-group" ng-class="{'has-error':form.omschrijving.$invalid && submitted}">
+            <input type="text"
+                   ng-model="contrib.Opmerking"
+                   name="opmerking"
+                   class="form-control input"
+                   placeholder="Opmerking" required/>
+            <p class="help-block" ng-show="form.opmerking.$error.required && submitted">This input is required</p>
+          </div>
+
+          <div class="form-group" ng-class="{'has-error':form.omschrijving.$invalid && submitted}">
+            <input type="text"
+                   ng-model="contrib.DatumEind"
+                   name="datumeind"
+                   class="form-control input"
+                   placeholder="DatumEind" required/>
+            <p class="help-block" ng-show="form.datumeind.$error.required && submitted">This input is required</p>
+          </div>
+
+            <button class="btn btn-lg btn-new" type="submit">Toevoegen</button>
+            <a ui-sref="contriburieregels.list({lidnr: params[0]})" class="btn btn-lg btn-cancel">Annuleren</a>
+        </div>
+      </div>
+    </form>
+  </div>
+  <hr/>
+</div>

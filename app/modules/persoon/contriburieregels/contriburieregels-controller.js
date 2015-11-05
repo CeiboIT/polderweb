@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('ContriburieregelsController',
-   function ($rootScope, $scope, $state, Contriburieregels, contriburieregels, bedrijf, username, authService, homeState) {
+   function ($rootScope, $scope, $state, Contriburieregels, contriburieregels, params, bedrijf, username, authService, homeState) {
 
        var model = {
            selection : [],
@@ -12,6 +12,10 @@ angular.module('polderweb')
        $scope.bedrijf = bedrijf;
        $scope.username = username;
 
+       $scope.params = params;
+       $scope.lidnr = params[0];
+
+
      function clickSave (form) {
         $scope.submitted = true;
         if (form.$valid) {
@@ -21,7 +25,6 @@ angular.module('polderweb')
       }
 
       function clickDel(contriburieregels) {
-
           Contriburieregels.nextContriburieregels(contriburieregels, function (contriburieregelsId) {
               if (contriburieregelsId) {
                   Contriburieregels.delContriburieregels(contriburieregels);
