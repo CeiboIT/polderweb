@@ -1,13 +1,13 @@
 angular.module('polderweb')
   .controller('ContriburieregelsController',
-   function ($rootScope, $scope, $state, Contriburieregels, contriburieregelss, bedrijf, username, authService, homeState) {
+   function ($rootScope, $scope, $state, Contriburieregels, contriburieregels, bedrijf, username, authService, homeState) {
 
        var model = {
            selection : [],
-           contriburieregelss: contriburieregelss
+           contriburieregels: contriburieregels
        };
 
-       $rootScope.contriburieregels = contriburieregelss;
+       $rootScope.contriburieregels = contriburieregels;
 
        $scope.bedrijf = bedrijf;
        $scope.username = username;

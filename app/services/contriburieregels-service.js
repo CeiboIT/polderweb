@@ -3,17 +3,34 @@ angular.module('polderweb')
   ['GLOBALS', '$http', '$rootScope','$q','userService',
     function (GLOBALS, $http, $rootScope,$q,userService)
      {
-      var currentUser = userService.get(); //20150801
+      var currentUser = userService.get();
       var lastId="";
-      var myContriburieregels = new TContriburieregels();
+      var myContriburieregels = new TPersPeri();
       return {
-        findAll: function () {
-//          $rootScope.display.contriburieregelsContriburieregels=true;       //20150801 always display
-//          $rootScope.display.contriburieregelsOmschrijving=true;
+        findAll: function (lidnr) {
             var defer = $q.defer();
             userService.get().then(function(res){
-                myContriburieregels.fromObject({Bedrijf : res.Bedrijf,Contriburieregels : '', Omschrijving : ''});
-                Service.SvcContriburieregels("R", res.Username, myContriburieregels, function(result) {
+                myContriburieregels.fromObject({
+                    Aantal : '',
+                    AantalTermijnen : '',
+                    Bedrag : '',
+                    BedragBetaald : '',
+                    Bedrijf : res.Bedrijf, // master-field
+                    BetaalWijze : '',
+                    DatumBetaald : '',
+                    DatumEind : '',
+                    DatumFactuur : '',
+                    DatumIngang : '',
+                    DatumVerstuurd : '',
+                    Dispensatie : '',
+                    Fatuurnr : '',
+                    Groep : '',
+                    LidNr : lidnr, // master-field
+                    Opmerking : '',
+                    Periode : '',
+                    TermijnNr : ''
+                });
+                Service.SvcPersPeri("R", res.Username, myContriburieregels, function(result) {
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(myContriburieregels));
 //          alert(JSON.stringify(result.toObject()));
@@ -24,9 +41,13 @@ angular.module('polderweb')
         getContriburieregels: function (contriburieregelsId) {
             var defer = $q.defer();
              userService.get().then(function(res){
-             myContriburieregels.fromObject({Bedrijf : res.Bedrijf,Contriburieregels : contriburieregelsId, Omschrijving : ''});
+             myContriburieregels.fromObject({
+                Bedrijf : res.Bedrijf,
+                Contriburieregels : contriburieregelsId,
+                Omschrijving : ''
+             });
              //myContriburieregels.fromObject({Bedrijf : res.Bedrijf,Contriburieregels : '', Omschrijving : ''});
-             Service.SvcContriburieregels("R", res.Username, myContriburieregels, function(result) {
+             Service.SvcPersPeri("R", res.Username, myContriburieregels, function(result) {
                 var data = _.find(result.toObject(), {'Contriburieregels':contriburieregelsId});
                 defer.resolve(data);
              });
@@ -35,15 +56,23 @@ angular.module('polderweb')
         },
         addContriburieregels: function (contriburieregelsData) {
            userService.get().then(function(res){
-                myContriburieregels.fromObject({Bedrijf : res.Bedrijf,Contriburieregels : contriburieregelsData.Contriburieregels, Omschrijving : contriburieregelsData.Omschrijving});
-                Service.SvcContriburieregels("C", res.Username, myContriburieregels);
+                myContriburieregels.fromObject({
+                    Bedrijf : res.Bedrijf,
+                    Contriburieregels : contriburieregelsData.Contriburieregels,
+                    Omschrijving : contriburieregelsData.Omschrijving
+                });
+                Service.SvcPersPeri("C", res.Username, myContriburieregels);
             });
 
         },
         updateContriburieregels:function(contriburieregelsData){
            userService.get().then(function(res){
-                myContriburieregels.fromObject({Bedrijf : res.Bedrijf,Contriburieregels : contriburieregelsData.Contriburieregels, Omschrijving : contriburieregelsData.Omschrijving});
-                Service.SvcContriburieregels("U", res.Username, myContriburieregels);
+                myContriburieregels.fromObject({
+                    Bedrijf : res.Bedrijf,
+                    Contriburieregels : contriburieregelsData.Contriburieregels,
+                    Omschrijving : contriburieregelsData.Omschrijving
+                });
+                Service.SvcPersPeri("U", res.Username, myContriburieregels);
             });
         },
 
@@ -52,8 +81,12 @@ angular.module('polderweb')
             var delContriburieregelsPromise = $q.defer();
 
             userService.get().then(function(res){
-                myContriburieregels.fromObject({Bedrijf : res.Bedrijf,Contriburieregels : Contriburieregels, Omschrijving : Omschrijving});
-                Service.SvcContriburieregels("D", res.Username, myContriburieregels, function(result){
+                myContriburieregels.fromObject({
+                    Bedrijf : res.Bedrijf,
+                    Contriburieregels : Contriburieregels,
+                    Omschrijving : Omschrijving
+                });
+                Service.SvcPersPeri("D", res.Username, myContriburieregels, function(result){
                     console.log(result);
 
                     delContriburieregelsPromise.resolve(result)
@@ -61,13 +94,8 @@ angular.module('polderweb')
             });
 
             return delContriburieregelsPromise.promise;
-
-
-
-          // _.remove($rootScope.contriburieregels,function(contriburieregels){
-          //   return contriburieregels.contriburieregels===contriburieregelsId;
-          // });
         },
+
         nextContriburieregels:function(contriburieregelsId, cb){
           var index=_.findIndex($rootScope.contriburieregels, function(contriburieregels){
             return contriburieregels.Contriburieregels===contriburieregelsId;
@@ -78,6 +106,7 @@ angular.module('polderweb')
           }
           return cb($rootScope.contriburieregels[index+1]);
         },
+
         preContriburieregels:function(contriburieregelsId, cb){
           var index=_.findIndex($rootScope.contriburieregels, function(contriburieregels){
             return contriburieregels.Contriburieregels===contriburieregelsId;
@@ -88,5 +117,6 @@ angular.module('polderweb')
           }
           return cb($rootScope.contriburieregels[index-1]);
         }
+
       };
     }]);

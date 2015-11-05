@@ -1,1 +1,0 @@
-create-contriburieregels-controller.js

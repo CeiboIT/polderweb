@@ -15,6 +15,7 @@ angular.module('polderweb')
 
 		  Persoon.getPersoon($stateParams.persoonId).then(function(res){
 		    $scope.pers = res;
+        console.log($scope.pers);
       });
 
       Aanhef.findAll().then(function(res) {
@@ -51,11 +52,12 @@ angular.module('polderweb')
 */
           };
 
+
           $scope.clickNext = function () {
             Persoon.nextPersoon($scope.pers.LidNr,function (persoon) {
               if (persoon) {
                 $scope.pers = persoon;
-//		console.log('Next : ' + JSON.stringify($scope.pers.LidNr) );
+		console.log('Next : ' + JSON.stringify($scope.pers.LidNr) );
 				}
             });
           };
@@ -64,7 +66,7 @@ angular.module('polderweb')
             Persoon.prePersoon($scope.pers.LidNr, function (persoon) {
               if (persoon) {
                 $scope.pers = persoon;
-//		console.log('Pre : ' + JSON.stringify($scope.pers.LidNr) );
+		console.log('Pre : ' + JSON.stringify($scope.pers.LidNr) );
 				      }
             });
           };

@@ -6,8 +6,15 @@
     <button type="button" ng-click="clickPre()"  class="btn btn-lg btn-success">Vorig</button>
     <button type="button" ng-click="clickNext()" class="btn btn-lg btn-success">Volgende</button>
   </div>
+  </br>
+  </br>
+  <div>
+    <button type="button" ui-sref="contriburieregels.list({lidnr: pers.LidNr})" class="btn btn-cancel">Contriburieregels</button>
+    <button type="button" ui-sref="betalingen.list({})" class="btn btn-cancel" disabled>Betalingen</button>
+    <button type="button" ui-sref="kenmerk.list" class="btn btn-cancel">Kenmerken</button>
+
+  </div>
 <!-- <hr/> -->
-</br>
 </br>
   <div class="clearfix"></div>
   <div class="jumbotron">

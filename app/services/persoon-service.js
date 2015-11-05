@@ -155,33 +155,6 @@ angular.module('polderweb')
 			Service.SvcPersoon("D", res.Username, Persoon);
           });
         },
-//-----------------------
-/*
-        nextPersoon:function(persoonId, cb){
-          var index=_.findIndex($rootScope.persoon, function(persoons){
-            return persoons.Persoon===persoonId;
-          });
-console.log('Index ' + index);
-          if(index===-1 || index+1 >= $rootScope.persoon.length){
-           // return cb();
-           return cb($rootScope.persoon[0]);
-          }
-          return cb($rootScope.persoon[index+1]);
-        },
-
-        prePersoon:function(persoonId, cb){
-          var index=_.findIndex($rootScope.persoon, function(persoons){
-            return persoons.Persoon===persoonId;
-          });
-console.log('Index ' + index);
-          if(index===-1 || index===0){
-           // return cb();
-           return cb($rootScope.persoon[0]);
-          }
-          return cb($rootScope.persoon[index-1]);
-        }
-*/
-//--------------------
 
         prePersoon:function(lidnr, cb){
           var index=_.findIndex( $rootScope.pers, function(pers){

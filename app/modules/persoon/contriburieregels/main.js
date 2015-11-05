@@ -12,12 +12,12 @@ angular.module('polderweb.contriburieregels', [])
             })
 
             .state('contriburieregels.list', {
-                url:'/list',
+                url:'/list/:lidnr',
                 templateUrl:'app/modules/admin/contriburieregels/contriburieregels.html',
                 controller:'ContriburieregelsController as ctrl',
                 resolve: {
-                    contriburieregelss: function (Contriburieregels) {
-                        return Contriburieregels.findAll();
+                    contriburieregels: function (Contriburieregels, $stateParams) {
+                        return Contriburieregels.findAll($stateParams.lidnr);
                     },
                    bedrijf: function($cookieStore) {
                        return $cookieStore.get('user').Bedrijf;
