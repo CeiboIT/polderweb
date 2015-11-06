@@ -6,6 +6,7 @@ angular.module('polderweb')
          }else{
              $scope.bedrijf = bedrijf;
              $scope.username = username;
+             $scope.kenmerk = params[0];
 
     		 $scope.addKenmKode = function (form) {
     	        $scope.submitted = true;
