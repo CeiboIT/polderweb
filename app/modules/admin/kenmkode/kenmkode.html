@@ -63,16 +63,7 @@
 <!--                             <a class="btn btn-sm btn-edit" ui-sref="kenmkode.view({kenmkodeId: row.Kode})"><i class="fa fa-pencil"></i></a> -->
                              <a class="btn btn-sm btn-edit" ui-sref="kenmkode.view({kenmerk: row.Kenmerk, kode: row.Kode, kenmerkomschrijving: params[1]})"><i class="fa fa-pencil"></i></a>
 
-                             <button type="button" element-deletion
-                                     collection="ctrl.model.kenmkodes"
-                                     options="{liveUpdate: true,
-                                        compareBy : 'Kode',
-                                        usePromise: true,
-                                        askBeforeDelete: true}"
-                                     ng-model="row.Kode"
-                                     deletion-service="ctrl.kenmkodeService.delKenmKode"
-                                     class="btn btn-sm btn-delete
-                                     ">
+                             <button type="button" ng-click="clickDel(row)" class="btn btn-sm btn-delete">
                                  <i class="fa fa-trash-o"></i>
                              </button>
                          </td>

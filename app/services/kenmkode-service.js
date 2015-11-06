@@ -79,11 +79,11 @@ angular.module('polderweb')
             });
         },
 
-        delKenmKode: function(Kode, Omschrijving){
+        delKenmKode: function(Kode, Kenmerk, Omschrijving){
             var delKenmKodePromise = $q.defer();
             userService.get().then(function(res){
                 myKenmKode.fromObject({Bedrijf : res.Bedrijf
-				                     , Kenmerk : ''
+				                     , Kenmerk : Kenmerk
 									 , Kode : Kode
 									 , Omschrijving : Omschrijving
 									 , Extra1 : ''

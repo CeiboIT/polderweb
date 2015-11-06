@@ -8,8 +8,8 @@
 <!--  <a ui-sref="kenmkode.list"                                                                           class="btn btn-lg btn-success">Terug</a> -->
 
 <!-- HowTo display kenmerk.Omschrijving -->
-  <a ui-sref="kenmkode.list[kenmerk]({kenmerk: kenmkode.Kenmerk, omschrijving: kenmerk.Omschrijving})"  class="btn btn-lg btn-success">Terug</a> 
-  
+  <a ui-sref="kenmkode.list[kenmerk]({kenmerk: kenmkode.Kenmerk, omschrijving: kenmerk.Omschrijving})"  class="btn btn-lg btn-success">Terug</a>
+
   <div class='pull-right mb10'>
      <button type="button" ng-click="clickPre()"  class="btn btn-lg btn-success">Vorige</button>
      <button type="button" ng-click="clickNext()" class="btn btn-lg btn-success">Volgende</button>
@@ -68,10 +68,6 @@
   <!-- <a href="#/home" class="btn btn-lg btn-success">Home</a> -->
   <button type="submit" class="btn btn-lg btn-new"> Opslaan</button>
   <button type="button" ng-click="clickCancel()" class="btn btn-lg btn-cancel">Annuleer</button>
-  <button type="button"    class="btn btn-lg btn-delete" element-deletion
-          options="{askBeforeDelete: true, usePromise: true}"
-          deletion-on-success="deletionOnSuccess"
-          ng-model="kenmkode.KenmKode"
-          deletion-service="kenmkodeService.delKenmKode">Verwijder</button>
+  <button type="button" class="btn btn-lg btn-delete" ng-click="clickDel(kenmkode)">Verwijder</button>
   <hr/>
 </form>

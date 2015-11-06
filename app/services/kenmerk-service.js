@@ -53,7 +53,12 @@ angular.module('polderweb')
         delKenmerk: function(Kenmerk,Omschrijving){
             var delKenmerkPromise = $q.defer();
             userService.get().then(function(res){
-                myKenmerk.fromObject({Bedrijf : res.Bedrijf,Kenmerk : Kenmerk, Omschrijving : Omschrijving, IndNieuw : false});
+                myKenmerk.fromObject({
+                    Bedrijf : res.Bedrijf,
+                    Kenmerk : Kenmerk,
+                    Omschrijving : Omschrijving,
+                    IndNieuw : false
+                });
                 Service.SvcKenmerk("D", res.Username, myKenmerk, function(result){
                     console.log(result);
                     delKenmerkPromise.resolve(result)

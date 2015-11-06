@@ -82,8 +82,8 @@ angular.module('polderweb.kenmkode', [])
                    username: function($cookieStore) {
                        return $cookieStore.get('user').Username;
                    },
-                   kenmerk: function ($stateParams) {
-                       return $stateParams.kenmerk;
+                   params: function ($stateParams) {
+                       return [$stateParams.kenmerk, $stateParams.kode, $stateParams.kenmerkomschrijving];
                    }
                 }
             });

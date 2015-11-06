@@ -24,6 +24,15 @@ angular.module('polderweb')
         };
       };
 
+      $scope.clickDel = function(kenmkode) {
+         var msg = confirm("Verwijderen ? J/N");
+          if (msg == true) {
+            KenmKode.delKenmKode(kenmkode.Kode, kenmkode.Kenmerk, kenmkode.Omschrijving);
+            setTimeout(function () { location.reload(); }, 200);
+            //$state.go('kenmkode.list[kenmerk]', {kenmerk: params[0], omschrijving: params[1]});
+          }
+      };
+
        var model = {
            selection : [],
            kenmkodes: $scope.kenmkodes
@@ -39,12 +48,8 @@ angular.module('polderweb')
       }
 
       function clickDel(kenmkode) {
-          KenmKode.nextKenmKode(kenmkode, function (kenmkodeId) {
-              if (kenmkodeId) {
-                  KenmKode.delKenmKode(kenmkode);
-                  $state.go(homeState);
-              }
-          });
+        //KenmKode.delKenmKode(kenmkode.KenmKode, kenmkode.Kenmerk, kenmkode.Omschrijving);
+        //$state.go(homeState);
       }
 
         angular.extend(this,{
@@ -52,5 +57,5 @@ angular.module('polderweb')
             kenmkodeService: KenmKode,
             clickSave: clickSave,
             clickDel: clickDel
-        })
+        });
     });
