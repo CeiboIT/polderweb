@@ -2,7 +2,7 @@
     <div ng-show="ctrl.isArray">
         <p>De volgende regels verwijderen ? </p>
         <ul>
-            <li ng-repeat="item in ctrl.items">
+            <li ng-repeat="item in ctrl.items track by $index">
                 {{ item }}
             </li>
         </ul>
