@@ -76,6 +76,12 @@ angular.module('polderweb.persoon', [])
                    },
                    username: function($cookieStore) {
                        return $cookieStore.get('user').Username;
+                   },
+                   persoon: function ($stateParams, Persoon) {
+                      return Persoon.getPersoon($stateParams.persoonId);
+                   },
+                   persoons: function (Persoon) {
+                      return Persoon.findAll();
                    }
                 }
             });

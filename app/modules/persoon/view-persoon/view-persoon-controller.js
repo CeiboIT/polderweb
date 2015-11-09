@@ -1,6 +1,6 @@
 angular.module('polderweb')
   .controller('viewPersoonCtrl',
-    function ($scope, Persoon, Aanhef, $state, $stateParams, Person, regio, soortlid, bedrijf, username, authService) {
+    function ($scope, Persoon, persoon, persoons, Aanhef, $state, $stateParams, Person, regio, soortlid, bedrijf, username, authService) {
 /*
       if(authService.getToken()==null){
              $state.go('login');
@@ -13,10 +13,8 @@ angular.module('polderweb')
        $scope.bedrijf = bedrijf;
        $scope.username = username;
 
-		  Persoon.getPersoon($stateParams.persoonId).then(function(res){
-		    $scope.pers = res;
-        console.log($scope.pers);
-      });
+       $scope.pers = persoon;
+       $scope.persoonAll = persoons;
 
       Aanhef.findAll().then(function(res) {
         $scope.aanhef = res;
@@ -52,23 +50,19 @@ angular.module('polderweb')
 */
           };
 
-
+          var num = 0;
           $scope.clickNext = function () {
-            Persoon.nextPersoon($scope.pers.LidNr,function (persoon) {
-              if (persoon) {
-                $scope.pers = persoon;
-		console.log('Next : ' + JSON.stringify($scope.pers.LidNr) );
-				}
-            });
+            if (num !== $scope.persoonAll.length) {
+              var aux = num++;
+              $scope.pers = $scope.persoonAll[aux];
+            };
           };
 
           $scope.clickPre = function () {
-            Persoon.prePersoon($scope.pers.LidNr, function (persoon) {
-              if (persoon) {
-                $scope.pers = persoon;
-		console.log('Pre : ' + JSON.stringify($scope.pers.LidNr) );
-				      }
-            });
+            if (num !== 0) {
+              var aux = num--;
+              $scope.pers = $scope.persoonAll[aux];
+            };
           };
 
 
