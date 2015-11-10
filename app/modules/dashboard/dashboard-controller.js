@@ -5,7 +5,6 @@ angular.module('polderweb')
 
        var model = {
            selection : [],
-//20151005
            dashboards: dashboards
        };
 

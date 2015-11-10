@@ -10,6 +10,7 @@ angular.module('polderweb', [
     'smart-table',
     'ui.checkbox',
     'angular-loading-bar',
+    'chart.js',
 
     //our components
     'ceibo.components.table.export',
