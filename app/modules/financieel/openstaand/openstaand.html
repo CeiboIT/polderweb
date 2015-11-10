@@ -42,14 +42,27 @@
 			 <table st-table="ctrl.model.openstaands" st-filtered-collection="filteredCollection" class="table table-striped">
                 <thead>
                     <tr>
+                        <th class="col-md-1"></th>
+                        <th class="col-md-1"></th>
+                        <th class="col-md-1"></th>
+                        <th class="col-md-1"></th>
+                        <th class="col-md-1"></th>
+                        <th class="col-md-1"></th>
+                        <th class="col-md-1"></th>
                         <th st-sort="Totaal">Totaal</th>
                         <th st-sort="TotaalOpenstaand">TotaalOpenstaand</th>
-                        <th class="col-md-1"></th>
 					</tr>
 					</tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="row in ctrl.model.openstaands">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td>{{row.Totaal | currency}}</td>
                         <td>{{row.TotaalOpenstaand | currency}}</td>
 						<tr>
@@ -60,7 +73,8 @@
 							<th st-sort="AantalTermijnen">Termijnen</th>
 							<th st-sort="BedragOpenstaand">BedragOpenstaand</th>
 							<th st-sort="DatumBetaald">Laatste Betaling</th>
-							<th st-sort="BetaalWijze">BetaalWijze</th>
+                            <th st-sort="BetaalWijze">BetaalWijze</th>
+							<th></th>
 						</tr>
 						<tr ng-repeat="row in ctrl.model.openstaands[0].OpenstaandArray">
 							<td>{{row.LidNr}}</td>
