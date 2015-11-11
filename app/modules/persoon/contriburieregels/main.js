@@ -13,8 +13,8 @@ angular.module('polderweb.contriburieregels', [])
 
             .state('contriburieregels.list', {
                 url:'/list/:lidnr',
-                templateUrl:'app/modules/admin/contriburieregels/contriburieregels.html',
-                controller:'ContriburieregelsController as ctrl',
+                templateUrl:'app/modules/persoon/contriburieregels/contriburieregels.html',
+                controller:'ContriburieregelsController as list',
                 resolve: {
                     contriburieregels: function (Contriburieregels, $stateParams) {
                         return Contriburieregels.findAll($stateParams.lidnr);
@@ -33,7 +33,7 @@ angular.module('polderweb.contriburieregels', [])
             .state('contriburieregels.create',
             {
                 url:'/create/:lidnr',
-                templateUrl:'app/modules/admin/contriburieregels/create-contriburieregels/create-contriburieregels.html',
+                templateUrl:'app/modules/persoon/contriburieregels/create-contriburieregels/create-contriburieregels.html',
                 controller:'createContriburieregelsCtrl',
                 resolve: {
                    bedrijf: function($cookieStore) {
@@ -51,7 +51,7 @@ angular.module('polderweb.contriburieregels', [])
             .state('contriburieregels.view',
             {
                 url:'/:contriburieregelsId',
-                templateUrl:'app/modules/admin/contriburieregels/view-contriburieregels/view-contriburieregels.html',
+                templateUrl:'app/modules/persoon/contriburieregels/view-contriburieregels/view-contriburieregels.html',
                 controller:'viewContriburieregelsCtrl',
                 resolve: {
                     contriburieregels: function (Contriburieregels, $stateParams) {

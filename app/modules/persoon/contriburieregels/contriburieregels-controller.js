@@ -7,14 +7,15 @@ angular.module('polderweb')
            contriburieregels: contriburieregels
        };
 
+       console.log(contriburieregels);
+
        $rootScope.contriburieregels = contriburieregels;
 
        $scope.bedrijf = bedrijf;
        $scope.username = username;
 
        $scope.params = params;
-       $scope.lidnr = params[0];
-
+       $scope.lidnr = params;
 
      function clickSave (form) {
         $scope.submitted = true;

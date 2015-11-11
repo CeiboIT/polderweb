@@ -9,13 +9,16 @@ angular.module('polderweb')
            $scope.username = username;
 
            $scope.params = params;
-           $scope.lidnr = params[0];
+           $scope.lidnr = params;
+
+           $scope.contrib = {};
+           $scope.contrib.LidNr = $scope.lidnr;
 
             $scope.addContriburieregels = function (form) {
                  $scope.submitted = true;
                 if (form.$valid) {
                     Contriburieregels.addContriburieregels($scope.contrib);
-                    $state.go('persoon.list', { lidnr : params[0]}); // Terug naar homepage
+                    $state.go('contriburieregels.list', { lidnr : $scope.lidnr}); // Terug naar homepage
                 }
             }
         }

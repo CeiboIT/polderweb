@@ -1,10 +1,10 @@
-<h3><b>Contriburieregels</b> - LidNr: {{params[0]}} </h3>
+<h3><b>Contriburieregels</b> - LidNr: {{lidnr}} </h3>
 <hr/>
  <div>
   <div class="row">
          <div class="col-md-12">
              <a ui-sref="home.init"     class="btn btn-lg btn-back">Terug</a>
-             <a ui-sref="contriburieregel.create({lidnr: params[0]})"  class="btn btn-lg btn-new">Nieuw</a>
+             <a ui-sref="contriburieregels.create({lidnr: lidnr})"  class="btn btn-lg btn-new">Nieuw</a>
              <div class="row pull-right">
                  <div class="dropdown">
                      <button class="btn btn-lg btn-export dropdown-toggle" margin-right=46px type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

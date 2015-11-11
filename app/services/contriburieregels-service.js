@@ -5,34 +5,35 @@ angular.module('polderweb')
      {
       var currentUser = userService.get();
       var lastId="";
-      var myContriburieregels = new TPersPeri();
+      var PersPeriIn = new TPersPeri();
       return {
         findAll: function (lidnr) {
             var defer = $q.defer();
             userService.get().then(function(res){
-                myContriburieregels.fromObject({
-                    Aantal : '',
-                    AantalTermijnen : '',
-                    Bedrag : '',
-                    BedragBetaald : '',
+                PersPeriIn.fromObject({
+                    Aantal : 0,
+                    AantalTermijnen : 0,
+                    BankRekNr : '',
+                    Bedrag : 0,
+                    BedragBetaald : 0,
                     Bedrijf : res.Bedrijf, // master-field
                     BetaalWijze : '',
-                    DatumBetaald : '',
-                    DatumEind : '',
-                    DatumFactuur : '',
-                    DatumIngang : '',
-                    DatumVerstuurd : '',
-                    Dispensatie : '',
+                    DatumBetaald : '1899-12-30T00:00:00',
+                    DatumEind : '1899-12-30T00:00:00',
+                    DatumFactuur : '1899-12-30T00:00:00',
+                    DatumIngang : '1899-12-30T00:00:00',
+                    DatumVerstuurd : '1899-12-30T00:00:00',
+                    Dispensatie : false,
                     Fatuurnr : '',
                     Groep : '',
                     LidNr : lidnr, // master-field
                     Opmerking : '',
-                    Periode : '',
-                    TermijnNr : ''
+                    Periode : 2013,
+                    TermijnNr : 0
                 });
-                Service.SvcPersPeri("R", res.Username, myContriburieregels, function(result) {
+                Service.SvcPersPeri("R", res.Username, PersPeriIn, function(result) {
                     defer.resolve(result.toObject());
-//          alert(JSON.stringify(myContriburieregels));
+//          alert(JSON.stringify(PersPeriIn));
 //          alert(JSON.stringify(result.toObject()));
                 });
             });
@@ -41,13 +42,13 @@ angular.module('polderweb')
         getContriburieregels: function (contriburieregelsId) {
             var defer = $q.defer();
              userService.get().then(function(res){
-             myContriburieregels.fromObject({
+             PersPeriIn.fromObject({
                 Bedrijf : res.Bedrijf,
                 Contriburieregels : contriburieregelsId,
                 Omschrijving : ''
              });
-             //myContriburieregels.fromObject({Bedrijf : res.Bedrijf,Contriburieregels : '', Omschrijving : ''});
-             Service.SvcPersPeri("R", res.Username, myContriburieregels, function(result) {
+             //PersPeriIn.fromObject({Bedrijf : res.Bedrijf,Contriburieregels : '', Omschrijving : ''});
+             Service.SvcPersPeri("R", res.Username, PersPeriIn, function(result) {
                 var data = _.find(result.toObject(), {'Contriburieregels':contriburieregelsId});
                 defer.resolve(data);
              });
@@ -56,23 +57,45 @@ angular.module('polderweb')
         },
         addContriburieregels: function (contriburieregelsData) {
            userService.get().then(function(res){
-                myContriburieregels.fromObject({
-                    Bedrijf : res.Bedrijf,
-                    Contriburieregels : contriburieregelsData.Contriburieregels,
-                    Omschrijving : contriburieregelsData.Omschrijving
+
+            console.log(contriburieregelsData);
+
+                PersPeriIn.fromObject({
+                    Aantal : 0,
+                    AantalTermijnen : 0,
+                    BankRekNr : '',
+                    Bedrag : 0,
+                    BedragBetaald : 0,
+                    Bedrijf : res.Bedrijf, // master-field
+                    BetaalWijze : contriburieregelsData.BetaalWijze,
+                    DatumBetaald : '1899-12-30T00:00:00',
+                    DatumEind : contriburieregelsData.DatumEind,
+                    DatumFactuur : '1899-12-30T00:00:00',
+                    DatumIngang : contriburieregelsData.DatumIngang,
+                    DatumVerstuurd : '1899-12-30T00:00:00',
+                    Dispensatie : false,
+                    Fatuurnr : '',
+                    Groep : contriburieregelsData.Groep,
+                    LidNr : contriburieregelsData.LidNr, // master-field
+                    Opmerking : contriburieregelsData.Opmerking,
+                    Periode : contriburieregelsData.Periode,
+                    TermijnNr : 0
                 });
-                Service.SvcPersPeri("C", res.Username, myContriburieregels);
+
+                console.log(PersPeriIn);
+
+                Service.SvcPersPeri("C", res.Username, PersPeriIn);
             });
 
         },
         updateContriburieregels:function(contriburieregelsData){
            userService.get().then(function(res){
-                myContriburieregels.fromObject({
+                PersPeriIn.fromObject({
                     Bedrijf : res.Bedrijf,
                     Contriburieregels : contriburieregelsData.Contriburieregels,
                     Omschrijving : contriburieregelsData.Omschrijving
                 });
-                Service.SvcPersPeri("U", res.Username, myContriburieregels);
+                Service.SvcPersPeri("U", res.Username, PersPeriIn);
             });
         },
 
@@ -81,12 +104,12 @@ angular.module('polderweb')
             var delContriburieregelsPromise = $q.defer();
 
             userService.get().then(function(res){
-                myContriburieregels.fromObject({
+                PersPeriIn.fromObject({
                     Bedrijf : res.Bedrijf,
                     Contriburieregels : Contriburieregels,
                     Omschrijving : Omschrijving
                 });
-                Service.SvcPersPeri("D", res.Username, myContriburieregels, function(result){
+                Service.SvcPersPeri("D", res.Username, PersPeriIn, function(result){
                     console.log(result);
 
                     delContriburieregelsPromise.resolve(result)
