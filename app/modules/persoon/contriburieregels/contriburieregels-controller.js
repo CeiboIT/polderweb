@@ -7,7 +7,7 @@ angular.module('polderweb')
            contriburieregels: contriburieregels
        };
 
-       console.log(contriburieregels);
+//       console.log(contriburieregels);
 
        $rootScope.contriburieregels = contriburieregels;
 

@@ -26,7 +26,7 @@ angular.module('polderweb')
                     Dispensatie : false,
                     Fatuurnr : '',
                     Groep : '',
-                    LidNr : lidnr, // master-field
+                    LidNr : parseInt(lidnr), // master-field
                     Opmerking : '',
                     Periode : 2013,
                     TermijnNr : 0
@@ -39,7 +39,7 @@ angular.module('polderweb')
             });
              return defer.promise;
         },
-        getContriburieregels: function (contriburieregelsId) {
+        getContriburieregels: function (lidNId) {
             var defer = $q.defer();
              userService.get().then(function(res){
              PersPeriIn.fromObject({
@@ -57,9 +57,33 @@ angular.module('polderweb')
         },
         addContriburieregels: function (contriburieregelsData) {
            userService.get().then(function(res){
+                PersPeriIn.fromObject({
+                    Aantal : 0,
+                    AantalTermijnen : 0,
+                    BankRekNr : '',
+                    Bedrag : 0,
+                    BedragBetaald : 0,
+                    Bedrijf : res.Bedrijf, // master-field
+                    BetaalWijze : contriburieregelsData.BetaalWijze,
+                    DatumBetaald : '1899-12-30T00:00:00',
+                    DatumEind : contriburieregelsData.DatumEind,
+                    DatumFactuur : '1899-12-30T00:00:00',
+                    DatumIngang : contriburieregelsData.DatumIngang,
+                    DatumVerstuurd : '1899-12-30T00:00:00',
+                    Dispensatie : false,
+                    Fatuurnr : '',
+                    Groep : contriburieregelsData.Groep,
+                    LidNr : parseInt(contriburieregelsData.LidNr), // master-field
+                    Opmerking : contriburieregelsData.Opmerking,
+                    Periode : contriburieregelsData.Periode,
+                    TermijnNr : 0
+                });
+                Service.SvcPersPeri("C", res.Username, PersPeriIn);
+            });
 
-            console.log(contriburieregelsData);
-
+        },
+        updateContriburieregels:function(contriburieregelsData){
+           userService.get().then(function(res){
                 PersPeriIn.fromObject({
                     Aantal : 0,
                     AantalTermijnen : 0,
@@ -79,22 +103,7 @@ angular.module('polderweb')
                     LidNr : contriburieregelsData.LidNr, // master-field
                     Opmerking : contriburieregelsData.Opmerking,
                     Periode : contriburieregelsData.Periode,
-                    TermijnNr : 0
-                });
-
-                console.log(PersPeriIn);
-
-                Service.SvcPersPeri("C", res.Username, PersPeriIn);
-            });
-
-        },
-        updateContriburieregels:function(contriburieregelsData){
-           userService.get().then(function(res){
-                PersPeriIn.fromObject({
-                    Bedrijf : res.Bedrijf,
-                    Contriburieregels : contriburieregelsData.Contriburieregels,
-                    Omschrijving : contriburieregelsData.Omschrijving
-                });
+                    TermijnNr : 0                });
                 Service.SvcPersPeri("U", res.Username, PersPeriIn);
             });
         },
