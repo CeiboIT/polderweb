@@ -6,7 +6,6 @@
 // unit is regenerated the next time you compile the project.                 //
 //----------------------------------------------------------------------------//
 
-
 /* This codegen depends on RemObjectsSDK.js
 * Usage:
 * var Channel = new RemObjects.SDK.HTTPClientChannel("http://localhost:8099/JSON");
@@ -347,6 +346,26 @@ __namespace.TDashBoard = function TDashBoard() {
 __namespace.TDashBoard.prototype = new RemObjects.SDK.ROStructType();
 __namespace.TDashBoard.prototype.constructor = __namespace.TDashBoard;
 RemObjects.SDK.RTTI["TDashBoard"] = __namespace.TDashBoard;
+
+// Struct: TGraph1
+__namespace.TGraph1 = function TGraph1() {
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.Column1 = {dataType : "Integer", value : null};
+    this.Column2 = {dataType : "Integer", value : null};
+};
+__namespace.TGraph1.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TGraph1.prototype.constructor = __namespace.TGraph1;
+RemObjects.SDK.RTTI["TGraph1"] = __namespace.TGraph1;
+
+// Struct: TGraph2
+__namespace.TGraph2 = function TGraph2() {
+    this.Bedrijf = {dataType : "Integer", value : null};
+    this.Column1 = {dataType : "Integer", value : null};
+    this.Column2 = {dataType : "Integer", value : null};
+};
+__namespace.TGraph2.prototype = new RemObjects.SDK.ROStructType();
+__namespace.TGraph2.prototype.constructor = __namespace.TGraph2;
+RemObjects.SDK.RTTI["TGraph2"] = __namespace.TGraph2;
 
 // Struct: TMutReden
 __namespace.TMutReden = function TMutReden() {
@@ -1097,6 +1116,24 @@ __namespace.TFunctieArray.prototype = new RemObjects.SDK.ROArrayType();
 __namespace.TFunctieArray.prototype.constructor = __namespace.TFunctieArray;
 RemObjects.SDK.RTTI["TFunctieArray"] = __namespace.TFunctieArray;
 
+// Array: TGraph1Array
+__namespace.TGraph1Array = function TGraph1Array() {
+  RemObjects.SDK.ROArrayType.call(this);
+  this.elementType = "TGraph1";
+};
+__namespace.TGraph1Array.prototype = new RemObjects.SDK.ROArrayType();
+__namespace.TGraph1Array.prototype.constructor = __namespace.TGraph1Array;
+RemObjects.SDK.RTTI["TGraph1Array"] = __namespace.TGraph1Array;
+
+// Array: TGraph2Array
+__namespace.TGraph2Array = function TGraph2Array() {
+  RemObjects.SDK.ROArrayType.call(this);
+  this.elementType = "TGraph2";
+};
+__namespace.TGraph2Array.prototype = new RemObjects.SDK.ROArrayType();
+__namespace.TGraph2Array.prototype.constructor = __namespace.TGraph2Array;
+RemObjects.SDK.RTTI["TGraph2Array"] = __namespace.TGraph2Array;
+
 // Array: TGroepArray
 __namespace.TGroepArray = function TGroepArray() {
   RemObjects.SDK.ROArrayType.call(this);
@@ -1401,6 +1438,62 @@ __namespace.PolderJSONService.prototype.SvcDashBoard = function(
 		var __Mess = __message.read("Mess", "AnsiString");
 	        __success(
 		__DashBoardOut,
+		__Rslt,
+		__Mess
+		);
+        }, __error);
+
+    } catch (e) {
+        __error(msg, e);
+    };
+};
+
+__namespace.PolderJSONService.prototype.SvcGraph1 = function(
+	Actie,
+	Username,
+	Graph1In,
+	__success, __error) {
+    try {
+        var msg = this.fMessage.clone();
+        msg.initialize(this.fServiceName, "SvcGraph1");
+        msg.write("Actie", "AnsiString", Actie);
+        msg.write("Username", "AnsiString", Username);
+        msg.write("Graph1In", "TGraph1", Graph1In);
+        msg.finalize();
+        this.fChannel.dispatch(msg, function (__message) {
+		var __Graph1Out = __message.read("Graph1Out", "TGraph1Array");
+		var __Rslt = __message.read("Rslt", "Boolean");
+		var __Mess = __message.read("Mess", "AnsiString");
+	        __success(
+		__Graph1Out,
+		__Rslt,
+		__Mess
+		);
+        }, __error);
+
+    } catch (e) {
+        __error(msg, e);
+    };
+};
+
+__namespace.PolderJSONService.prototype.SvcGraph2 = function(
+	Actie,
+	Username,
+	Graph2In,
+	__success, __error) {
+    try {
+        var msg = this.fMessage.clone();
+        msg.initialize(this.fServiceName, "SvcGraph2");
+        msg.write("Actie", "AnsiString", Actie);
+        msg.write("Username", "AnsiString", Username);
+        msg.write("Graph2In", "TGraph2", Graph2In);
+        msg.finalize();
+        this.fChannel.dispatch(msg, function (__message) {
+		var __Graph2Out = __message.read("Graph2Out", "TGraph2Array");
+		var __Rslt = __message.read("Rslt", "Boolean");
+		var __Mess = __message.read("Mess", "AnsiString");
+	        __success(
+		__Graph2Out,
 		__Rslt,
 		__Mess
 		);
