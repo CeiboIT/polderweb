@@ -16,7 +16,7 @@ angular.module('polderweb')
                 Column2 : 0
              });
 
-             Service.SvcCategorie("R", res.Username, myGraph1, function(result) {
+             Service.SvcGraph1("R", res.Username, myGraph1, function(result) {
                 var data = _.find(result.toObject(), {});
                 defer.resolve(data);
              });
@@ -32,7 +32,7 @@ angular.module('polderweb')
                 Column2 : 0
              });
 
-             Service.SvcCategorie("R", res.Username, myGraph2, function(result) {
+             Service.SvcGraph2("R", res.Username, myGraph2, function(result) {
                 var data = _.find(result.toObject(), {});
                 defer.resolve(data);
              });
