@@ -26,6 +26,12 @@ angular.module('polderweb.dashboard', [])
                     },
                    username: function($cookieStore) {
                        return $cookieStore.get('user').Username;
+                   },
+                   graph1: function(Graphs) {
+                        return Graphs.getGraph1();
+                   },
+                   graph2: function(Graphs) {
+                        return Graphs.getGraph2();
                    }
                 }
             });
