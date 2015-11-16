@@ -1,7 +1,7 @@
 angular.module('polderweb')
 //20151005  .controller('PersoonController',
   .controller('DashBoardController',
-    function ($rootScope, $scope, $state, DashBoard, dashboards, bedrijf, username, authService, graph1,) {
+    function ($rootScope, $scope, $state, DashBoard, dashboards, bedrijf, username, authService, graph1, graph2) {
 
        var model = {
            selection : [],
