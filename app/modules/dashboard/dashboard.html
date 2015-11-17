@@ -38,9 +38,12 @@
 			</div>
 		</div>
 -->
-    <div class="container" ng-cloak>
+    <div class="container" style="margin: 20px;" ng-cloak>
         <h1>PolderWeb</h1>
         <div>
+            <canvas id="bar" class="chart chart-bar"
+              chart-data="graph1data" chart-labels="graph1labels">
+            </canvas>
             <canvas id="bar" class="chart chart-bar"
               chart-data="graph2data" chart-labels="graph2labels">
             </canvas
