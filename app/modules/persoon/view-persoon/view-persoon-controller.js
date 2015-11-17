@@ -15,6 +15,7 @@ angular.module('polderweb')
 
        $scope.pers = persoon;
        $scope.persoonAll = persoons;
+       $scope.persoonLidNrs = _.map(persoons, _.iteratee('LidNr'));
 
       Aanhef.findAll().then(function(res) {
         $scope.aanhef = res;
@@ -50,19 +51,19 @@ angular.module('polderweb')
 */
           };
 
-          var num = 0;
+          var min = 0;
+          var max = $scope.persoonLidNrs.length;
+
           $scope.clickNext = function () {
-            if (num !== $scope.persoonAll.length) {
-              var aux = num++;
-              $scope.pers = $scope.persoonAll[aux];
-            };
+            if ($scope.persoonLidNrs.indexOf($scope.pers.LidNr)+1 < max) {
+              $scope.pers = $scope.persoonAll[$scope.persoonLidNrs.indexOf($scope.pers.LidNr)+1];
+            }
           };
 
           $scope.clickPre = function () {
-            if (num !== 0) {
-              var aux = num--;
-              $scope.pers = $scope.persoonAll[aux];
-            };
+            if ($scope.persoonLidNrs.indexOf($scope.pers.LidNr)-1 >= min) {
+              $scope.pers = $scope.persoonAll[$scope.persoonLidNrs.indexOf($scope.pers.LidNr)-1];
+            }
           };
 
 
