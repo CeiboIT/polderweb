@@ -40,7 +40,8 @@
     "angular-perfect-scrollbar": "https://github.com/CeiboIT/angular-perfect-scrollbar.git#fbff161155621288d81b6d78890f13c1ff9d88a3",
     "toastr": "~2.1.2",
     "angular-chart.js": "~0.8.5",
-    "Chart.js": "~1.0.2"
+    "Chart.js": "~1.0.2",
+    "underscore": "~1.8.3"
   },
   "resolutions": {
     "angular": "^1.4.0",
