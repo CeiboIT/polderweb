@@ -12,6 +12,7 @@ angular.module('polderweb')
         $scope.graph1data = [];
         $scope.graph1data.push(_.map(data, _.iteratee('Column2')).splice(0,30));
         $scope.graph1labels = _.map(data, _.iteratee('Column1')).splice(0,30);
+        console.log($scope.graph1data);
        });
 
        DashBoard.getGraph2().then(function(data) {

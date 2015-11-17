@@ -41,10 +41,10 @@
     <div class="container" style="margin: 20px;" ng-cloak>
         <h1>PolderWeb</h1>
         <div>
-            <canvas id="bar" class="chart chart-bar"
+            <canvas ng-if="graph1data[0].length" id="bar" class="chart chart-bar"
               chart-data="graph1data" chart-labels="graph1labels">
             </canvas>
-            <canvas id="bar" class="chart chart-bar"
+            <canvas ng-if="graph2data[0].length" id="bar" class="chart chart-bar"
               chart-data="graph2data" chart-labels="graph2labels">
             </canvas
         </div>
