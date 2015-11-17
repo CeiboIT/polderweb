@@ -15,8 +15,8 @@
             <td>{{ db.Bedrag | currency }}</td>
           </tr>
 
-		  
-		<div class="container">		  
+
+		<div class="container">
 			<div class="row">
 
 <div class="col-md-6">
@@ -41,6 +41,9 @@
     <div class="container" ng-cloak>
         <h1>PolderWeb</h1>
         <div>
+            <canvas id="bar" class="chart chart-bar"
+              chart-data="graph2data" chart-labels="graph2labels">
+            </canvas
         </div>
         <div class="row">
             <div class="col-md-6" ng-repeat="db in ctrl.model.dashboards">
@@ -49,18 +52,18 @@
                         <h3>{{db.Omschrijving}}</h3>
                     </div>
                     <div>
-					<span>&nbsp;&nbsp;&nbsp;&nbsp;Bedrag: {{db.Bedrag | currency}}</span>					
-					<span>&nbsp;&nbsp;&nbsp;&nbsp;Aantal: {{db.Aantal}}</span>					
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;Bedrag: {{db.Bedrag | currency}}</span>
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;Aantal: {{db.Aantal}}</span>
 <!--
   <code>bedrag={{db.Bedrag}}</code>
 <div ng-switch on="bedrag">
     <div ng-switch-when=0>
-						<p>&nbsp;&nbsp;&nbsp;&nbsp;Bedrag: {{db.Bedrag | currency}}</p>					
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;Bedrag: {{db.Bedrag | currency}}</p>
     </div>
     <div ng-switch-default>
-						<p>&nbsp;&nbsp;&nbsp;&nbsp;Aantal: {{db.Aantal}}</p>					
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;Aantal: {{db.Aantal}}</p>
     </div>
-</div>				
+</div>
 -->
                         <div class="pull-right">
 							<button type="button" ng-click="clickCancel()" class="btn btn-sm btn-cancel">Meer..</button>
@@ -72,7 +75,7 @@
             </div>
         </div>
     </div>
-		
+
     </tbody>
 	</div>
   </div>

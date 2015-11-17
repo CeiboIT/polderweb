@@ -16,8 +16,6 @@ angular.module('polderweb.dashboard', [])
                 templateUrl:'app/modules/dashboard/dashboard.html',
                 controller:'DashBoardController as ctrl',
                 resolve: {
-//                    dashboard: function (DashBoard) {
-//                        return DashBoard.getDashBoard();
                     dashboards: function (DashBoard) {
                         return DashBoard.findAll();
                     },
@@ -26,12 +24,6 @@ angular.module('polderweb.dashboard', [])
                     },
                    username: function($cookieStore) {
                        return $cookieStore.get('user').Username;
-                   },
-                   graph1: function(Graphs) {
-                        return Graphs.getGraph1();
-                   },
-                   graph2: function(Graphs) {
-                        return Graphs.getGraph2();
                    }
                 }
             });
