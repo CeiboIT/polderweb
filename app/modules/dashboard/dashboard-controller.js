@@ -13,6 +13,7 @@ angular.module('polderweb')
         $scope.graph1data.push(_.map(data, _.iteratee('Column2')).splice(0,15));
         $scope.graph1labels = _.map(data, _.iteratee('Column1')).splice(0,15);
         $scope.graph1data[0].reverse();
+        $scope.graph1labels.reverse();
        });
 
        DashBoard.getGraph2().then(function(data) {
@@ -20,6 +21,7 @@ angular.module('polderweb')
         $scope.graph2data.push(_.map(data, _.iteratee('Column2')).splice(0,15));
         $scope.graph2labels = _.map(data, _.iteratee('Column1')).splice(0,15);
         $scope.graph2data[0].reverse();
+        $scope.graph2labels.reverse();
        });
 
        $scope.bedrijf = bedrijf;

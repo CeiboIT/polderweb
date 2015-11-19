@@ -42,11 +42,13 @@
         <h1>PolderWeb</h1>
         <div ng-if="!graph1data[0].length || !graph2data[0].length" class="col-sm-3"></div>
         <div ng-if="graph1data[0].length" class="col-sm-6">
+            <h4>Betaald per maand</h4>
             <canvas id="bar" class="chart chart-bar"
               chart-data="graph1data" chart-labels="graph1labels">
             </canvas>
         </div>
         <div ng-if="graph2data[0].length" class="col-sm-6">
+            <h4>Inschrijvingen per maand</h4>
             <canvas id="bar" class="chart chart-bar"
               chart-data="graph2data" chart-labels="graph2labels">
             </canvas>
