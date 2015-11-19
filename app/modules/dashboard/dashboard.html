@@ -40,14 +40,18 @@
 -->
     <div class="container" style="margin: 20px;" ng-cloak>
         <h1>PolderWeb</h1>
-        <div>
-            <canvas ng-if="graph1data[0].length" id="bar" class="chart chart-bar"
+        <div ng-if="!graph1data[0].length || !graph2data[0].length" class="col-sm-3"></div>
+        <div ng-if="graph1data[0].length" class="col-sm-6">
+            <canvas id="bar" class="chart chart-bar"
               chart-data="graph1data" chart-labels="graph1labels">
             </canvas>
-            <canvas ng-if="graph2data[0].length" id="bar" class="chart chart-bar"
-              chart-data="graph2data" chart-labels="graph2labels">
-            </canvas
         </div>
+        <div ng-if="graph2data[0].length" class="col-sm-6">
+            <canvas id="bar" class="chart chart-bar"
+              chart-data="graph2data" chart-labels="graph2labels">
+            </canvas>
+        </div>
+        <div ng-if="!graph1data[0].length || !graph2data[0].length" class="col-sm-3"></div>
         <div class="row">
             <div class="col-md-6" ng-repeat="db in ctrl.model.dashboards">
                 <div class="flightCard">
