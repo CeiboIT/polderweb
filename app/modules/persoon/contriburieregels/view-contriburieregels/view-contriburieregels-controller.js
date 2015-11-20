@@ -3,7 +3,7 @@ angular.module('polderweb')
     function ($scope, Contriburieregels, $state, bedrijf, username, contriburieregels, $stateParams) {
        $scope.bedrijf = bedrijf;
        $scope.username = username;
-       $scope.contriburieregels = contriburieregels;
+       $scope.contriburieregels = contriburieregels[0];
 
         $scope.contriburieregelsService = Contriburieregels;
 
