@@ -50,12 +50,12 @@ angular.module('polderweb.contriburieregels', [])
 
             .state('contriburieregels.view',
             {
-                url:'/:contriburieregelsId',
+                url:'/view/:lidnr/:groep',
                 templateUrl:'app/modules/persoon/contriburieregels/view-contriburieregels/view-contriburieregels.html',
                 controller:'viewContriburieregelsCtrl',
                 resolve: {
                     contriburieregels: function (Contriburieregels, $stateParams) {
-                        return Contriburieregels.getContriburieregels($stateParams.contriburieregelsId);
+                        return Contriburieregels.getContriburieregels($stateParams.lidnr, $stateParams.groep);
                     },
                    bedrijf: function($cookieStore) {
                        return $cookieStore.get('user').Bedrijf;

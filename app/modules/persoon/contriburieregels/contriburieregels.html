@@ -59,8 +59,7 @@
                          <td>{{row.Opmerking}}</td>
                          <td>{{row.DatumEind}}</td>
                          <td>
-<!--                         <a class="btn btn-sm btn-primary" ui-sref="contriburieregel.view({contriburieregelId: row.Contriburieregels})"><i class="fa fa-pencil"></i></a> -->
-                             <a class="btn btn-sm btn-edit" ui-sref="contriburieregel.view({})"><i class="fa fa-pencil"></i></a>
+                             <a class="btn btn-sm btn-edit" ui-sref="contriburieregels.view({lidnr: lidnr, groep: row.Groep})"><i class="fa fa-pencil"></i></a>
                              <button type="button" element-deletion
                                      collection="contriburieregels"
                                      options="{liveUpdate: true,

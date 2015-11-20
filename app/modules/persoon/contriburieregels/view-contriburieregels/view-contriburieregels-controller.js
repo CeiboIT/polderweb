@@ -1,12 +1,9 @@
 angular.module('polderweb')
   .controller('viewContriburieregelsCtrl',
-    function ($scope, Contriburieregels, $state, bedrijf, username, $stateParams) {
+    function ($scope, Contriburieregels, $state, bedrijf, username, contriburieregels, $stateParams) {
        $scope.bedrijf = bedrijf;
        $scope.username = username;
-
-      Contriburieregels.getContriburieregels($stateParams.contriburieregelsId).then(function(res){
-        $scope.contriburieregels = res;
-      });
+       $scope.contriburieregels = contriburieregels;
 
         $scope.contriburieregelsService = Contriburieregels;
 
