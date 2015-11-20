@@ -1,15 +1,14 @@
 angular.module('polderweb')
   .controller('ContriburieregelsController',
    function ($rootScope, $scope, $state, Contriburieregels, contriburieregels, params, bedrijf, username, authService, homeState) {
+       var self = this;
 
-       var model = {
+       self.model = {
            selection : [],
            contriburieregels: contriburieregels
        };
 
-       console.log(contriburieregels);
-
-       $rootScope.contriburieregels = contriburieregels;
+       $scope.contriburieregels = contriburieregels;
 
        $scope.bedrijf = bedrijf;
        $scope.username = username;
@@ -36,7 +35,7 @@ angular.module('polderweb')
 
 
         angular.extend(this,{
-            model: model,
+            model: self.model,
             contriburieregelsService: Contriburieregels,
             clickSave: clickSave,
             clickDel: clickDel

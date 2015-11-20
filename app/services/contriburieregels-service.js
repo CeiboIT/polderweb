@@ -16,7 +16,7 @@ angular.module('polderweb')
                     BankRekNr : '',
                     Bedrag : 0,
                     BedragBetaald : 0,
-                    Bedrijf : 314,//res.Bedrijf, // master-field
+                    Bedrijf : res.Bedrijf, // master-field
                     BetaalWijze : '',
                     DatumBetaald : '1899-12-30T00:00:00',
                     DatumEind : '1899-12-30T00:00:00',
@@ -26,13 +26,12 @@ angular.module('polderweb')
                     Dispensatie : false,
                     Fatuurnr : '',
                     Groep : '',
-                    LidNr : 1000,//lidnr, // master-field
+                    LidNr : lidnr, // master-field
                     Opmerking : '',
                     Periode : 0,
                     TermijnNr : 0
                 });
                 Service.SvcPersPeri("R", res.Username, PersPeriIn, function(result) {
-                    console.log(result);
                     defer.resolve(result.toObject());
 //          alert(JSON.stringify(PersPeriIn));
 //          alert(JSON.stringify(result.toObject()));
